@@ -525,6 +525,7 @@
     <Content Include="Content\magento\font\Metrophobic.eot" />
     <Content Include="Content\magento\font\Metrophobic.ttf" />
     <None Include="Project_Readme.html" />
+    <Content Include="Views\Shared\DisplayTemplates\ProductSummaryView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Neemo.DataAccess\Neemo.DataAccess.csproj">

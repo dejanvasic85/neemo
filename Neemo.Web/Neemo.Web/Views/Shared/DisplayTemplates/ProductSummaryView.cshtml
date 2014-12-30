@@ -1,0 +1,28 @@
+﻿@model Neemo.Web.Models.ProductSummaryView
+
+
+<li class="Modelslider-item" style="width: 187px; float: left; display: block;">
+    <div class="feadture-inner">
+        <a href="http://www.plazathemes.com/demo/ma_carstore_res/lorem-ipsum-dolor.html"
+           title="@Model.Description"
+           class="product-image">
+            <img src="@Url.Action("Download", "Image", new { id = Model.ImageId })" alt="Lorem ipsum dolor">
+        </a>
+
+        <h2 class="product-name">
+            <a href="http://www.plazathemes.com/demo/ma_carstore_res/lorem-ipsum-dolor.html" title="Lorem ipsum dolor">
+                @Model.Description
+            </a>
+        </h2>
+
+        <div class="price-box">
+            <span class="regular-price" id="product-price-2">
+                <span class="price">@Model.Price.ToString("C")</span>
+            </span>
+        </div>
+
+        <div class="actions">
+            <button type="button" title="Add to Cart" class="button btn-cart"><span><span>Add to Cart</span></span></button>
+        </div>
+    </div>
+</li>

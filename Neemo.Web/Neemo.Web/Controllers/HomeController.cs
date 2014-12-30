@@ -17,8 +17,8 @@ namespace Neemo.Web.Controllers
 
         public ActionResult Index()
         {
-            var newProducts = _productService.GetNewProducts().Select(Mapper.Map<Product, ProductSummaryView>);
-            var featuredProducts = _productService.GetFeaturedProducts().Select(Mapper.Map<Product, ProductSummaryView>);
+            var newProducts = _productService.GetNewProducts().Take(3).Select(Mapper.Map<Product, ProductSummaryView>);
+            var featuredProducts = _productService.GetFeaturedProducts().Take(3).Select(Mapper.Map<Product, ProductSummaryView>);
             
             var homeModel = new HomeView
             {
