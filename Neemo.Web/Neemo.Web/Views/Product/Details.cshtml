@@ -55,11 +55,14 @@
                                     <div class="more-views ma-more-img">
                                         <h2>More Views</h2>
                                         <ul>
-                                            <li>
-                                                <a href="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/image/1200x1200/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-1_1.png" class="cloud-zoom-gallery" title="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/image/500x500/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-1_1.png" rel="useZoom: 'ma-zoom1', smallImage: 'http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/image/265x/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-1_1.png'">
-                                                    <img src="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/thumbnail/56x/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-1_1.png" width="56" height="56" alt="">
-                                                </a>
-                                            </li>
+                                            @foreach (var imageId in Model.Images)
+                                            {
+                                                <li>
+                                                    <a href="@Url.Image(imageId)" class="cloud-zoom-gallery" title="View">
+                                                        <img src="@Url.Image(imageId)" width="56" height="56" alt="">
+                                                    </a>
+                                                </li>
+                                            }
                                         </ul>
                                         <!-- thumbnail for lighbox-->
                                         <ul class="mt-thumb-light" style="display:none;">
