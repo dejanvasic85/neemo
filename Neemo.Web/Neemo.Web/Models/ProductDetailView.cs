@@ -8,7 +8,7 @@
         public string QuickOverview { get; set; }
         public decimal Price { get; set; }
         public string[] Images { get; set; }
-        public string AvailableQty { get; set; }
+        public int AvailableQty { get; set; }
         public string Category { get; set; }
     }
 }

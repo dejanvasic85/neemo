@@ -4,7 +4,7 @@
     {
         public int ProductId { get; set; }
         public string Title { get; set; }
-        public string Overview { get; set; }
+        public string QuickOverview { get; set; }
         public string Description { get; set; }
         public string[] Images { get; set; }
         public string ImageId { get; set; }
@@ -13,5 +13,6 @@
         public decimal Price { get; set; }
         public bool IsBestSeller { get; set; }
         public string Category { get; set; }
+        public int AvailableQty { get; set; }
     }
 }

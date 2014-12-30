@@ -86,24 +86,31 @@
 
                                     <p class="no-rating"><a href="http://www.plazathemes.com/demo/ma_carstore_res/review/product/list/id/2/category/3/#review-form">Be the first to review this product</a></p>
 
-                                    <p class="availability in-stock">Availability: <span>In stock</span></p>
-
-
+                                    <p class="availability in-stock">
+                                        Availability:
+                                        <span>
+                                            @if (Model.AvailableQty == 0)
+                                            {
+                                                <text>Out of stock</text>
+                                            }
+                                            else
+                                            {
+                                                <text>In Stock</text>
+                                            }
+                                        </span>
+                                    </p>
 
                                     <div class="price-box">
                                         <span class="regular-price" id="product-price-2">
-                                            <span class="price">$399.00</span>
+                                            <span class="price">@Model.Price.ToString("C")</span>
                                         </span>
 
                                     </div>
 
-
-
-
                                     <div class="short-description">
                                         <h2>Quick Overview</h2>
                                         <div class="std">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, arcu et dignissim ultrices, tellus nulla semper turpis, quis interdum diam tortor nec risus. Vivamus eu fringilla erat. Curabitur tincidunt, leo ac auctor sodales, odio mauris fermentum justo, sit amet bibendum augue libero at tellus. Nullam vulputate enim nec nibh pulvinar consectetur. Proin aliquet imperdiet dolor ac facilisis. Sed lacinia cursus urna. Maecenas eget justo libero. Aenean at nulla nisi, vitae dictum nulla.<br>
+                                            @Model.QuickOverview
                                         </div>
                                     </div>
 
@@ -408,13 +415,10 @@
                                     <script type="text/javascript">decorateGeneric($$('#product-options-wrapper dl'), ['last']);</script>
                                     <div class="product-options-bottom">
 
-
-
                                         <div class="price-box">
                                             <span class="regular-price" id="product-price-2_clone">
                                                 <span class="price">$399.00</span>
                                             </span>
-
                                         </div>
 
                                         <div class="add-to-cart">
@@ -481,52 +485,14 @@
                     <div class="product-collateral">
                         <ul class="product-tabs">
                             <li id="product_tabs_description" class=" active first"><a href="javascript:void(0)">Product Description</a></li>
-                            <li id="product_tabs_product.tags" class="last"><a href="javascript:void(0)">Product Tags</a></li>
                         </ul>
                         <div class="product-tabs-content" id="product_tabs_description_contents">
                             <h2>Details</h2>
                             <div class="std">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, arcu et dignissim ultrices, tellus nulla semper turpis, quis interdum diam tortor nec risus. Vivamus eu fringilla erat. Curabitur tincidunt, leo ac auctor sodales, odio mauris fermentum justo, sit amet bibendum augue libero at tellus. Nullam vulputate enim nec nibh pulvinar consectetur. Proin aliquet imperdiet dolor ac facilisis. Sed lacinia cursus urna. Maecenas eget justo libero. Aenean at nulla nisi, vitae dictum nulla.
-
-                                Maecenas pellentesque diam ut metus sodales sit amet blandit est vehicula. Phasellus quis turpis id nibh sagittis consectetur vitae facilisis purus. Donec convallis congue lectus, non semper metus dignissim a. Nulla facilisi. Donec blandit bibendum neque, et commodo nisl fermentum id. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer dui urna, ornare vitae sollicitudin ut, facilisis tincidunt lorem. Suspendisse sollicitudin, elit vitae consectetur dictum, nulla lectus tincidunt lorem, id scelerisque massa leo ut massa. Quisque sit amet eros nibh, eget sodales urna. Pellentesque leo tellus, pulvinar a vestibulum id, sollicitudin at justo.
+                                @Html.Raw(Model.Description)
                             </div>
                         </div>
-                        <div class="product-tabs-content" id="product_tabs_product.tags_contents" style="display: none;">
-                            <div class="box-collateral box-tags">
-                                <h2>Product Tags</h2>
-                                <h3>Other people marked this product with these tags:</h3>
-                                <ul id="product-tags_db527bf2102e1f845e48b3ceb3dc96b8" class="product-tags">
-                                    <li class="first last"><a href="http://www.plazathemes.com/demo/ma_carstore_res/tag/product/list/tagId/4/">Audi</a> (1)</li>
-                                </ul>
-                                <script type="text/javascript">
-                                    decorateGeneric($("product-tags_db527bf2102e1f845e48b3ceb3dc96b8").select('li'), ['first', 'last']);
-                                </script>
-                                <form id="addTagForm" action="http://www.plazathemes.com/demo/ma_carstore_res/tag/index/save/product/2/uenc/aHR0cDovL3d3dy5wbGF6YXRoZW1lcy5jb20vZGVtby9tYV9jYXJzdG9yZV9yZXMvbG9yZW0taXBzdW0tZG9sb3IuaHRtbA,,/" method="get">
-                                    <div class="form-add">
-                                        <label for="productTagName">Add Your Tags:</label>
-                                        <div class="input-box">
-                                            <input type="text" class="input-text required-entry" name="productTagName" id="productTagName">
-                                        </div>
-                                        <button type="button" title="Add Tags" class="button" onclick="submitTagForm()">
-                                            <span>
-                                                <span>Add Tags</span>
-                                            </span>
-                                        </button>
-                                    </div>
-                                </form>
-                                <p class="note">Use spaces to separate tags. Use single quotes (') for phrases.</p>
-                                <script type="text/javascript">
-                                    //<![CDATA[
-                                    var addTagFormJs = new VarienForm('addTagForm');
-                                    function submitTagForm() {
-                                        if (addTagFormJs.validator.validate()) {
-                                            addTagFormJs.form.submit();
-                                        }
-                                    }
-                                    //]]>
-                                </script>
-                            </div>
-                        </div>
+                        
                         <script type="text/javascript">
                             //<![CDATA[
                             Varien.Tabs = Class.create();
