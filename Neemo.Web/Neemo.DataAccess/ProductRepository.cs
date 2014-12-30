@@ -12,7 +12,19 @@ namespace Neemo.DataAccess
             return new List<Product>
             {
                 // Featured
-                new Product{ ProductId = 1, ImageId="product-1", IsBestSeller = true, Title = "Cool Light", Price = 399, IsFeatured = true},
+                new Product
+                {
+                    ProductId = 1, 
+                    ImageId="product-1",
+                    Images = new []{"product-1","product-2", "product-3"},
+                    IsBestSeller = true, 
+                    Title = "Cool Light", 
+                    Price = 399, 
+                    IsFeatured = true,
+                    Description = "This should be hooked up to the service, Description!",
+                    Overview = "This should be hooked up to the service!",
+                    Category = "Mercedes"
+                },
                 new Product{ ProductId = 2, ImageId="product-2", IsBestSeller = true, Title = "Mercedes Gearbox", Price = 1499, IsFeatured = true},
                 new Product{ ProductId = 3, ImageId="product-3", IsBestSeller = true, Title = "Alloy Wheels", Price = 499, IsFeatured = true},
                 // New                                         

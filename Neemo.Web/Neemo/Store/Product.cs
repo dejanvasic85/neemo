@@ -12,5 +12,6 @@
         public bool IsFeatured { get; set; }
         public decimal Price { get; set; }
         public bool IsBestSeller { get; set; }
+        public string Category { get; set; }
     }
 }
