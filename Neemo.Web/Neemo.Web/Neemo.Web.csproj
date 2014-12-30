@@ -169,8 +169,21 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\css3.htc" />
-    <Content Include="Content\skin.css" />
+    <Content Include="Content\magento\ajax_cart_super.css" />
+    <Content Include="Content\magento\bootstrap-2.3.2.css" />
+    <Content Include="Content\magento\bootstrap-responsive-2.3.2.css" />
+    <Content Include="Content\magento\css3.htc" />
+    <Content Include="Content\magento\images\i_block-list.gif" />
+    <Content Include="Content\magento\images\i_widget-link.gif" />
+    <Content Include="Content\magento\images\i_widget-new.gif" />
+    <Content Include="Content\magento\jquery-ui.css" />
+    <Content Include="Content\magento\jquery.fancybox.css" />
+    <Content Include="Content\magento\ma.banner7.css" />
+    <Content Include="Content\magento\ma.featuredslider.css" />
+    <Content Include="Content\magento\ma.verticalmenu.css" />
+    <Content Include="Content\magento\print.css" />
+    <Content Include="Content\magento\skin.css" />
+    <Content Include="Content\magento\widgets.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\_references.js" />
