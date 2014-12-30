@@ -184,8 +184,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\UrlExtensions.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ProductDetailView.cs" />
     <Compile Include="Models\ProductSummary.cs" />
     <Compile Include="Models\ProductSummaryView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -526,6 +528,7 @@
     <Content Include="Content\magento\font\Metrophobic.ttf" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Shared\DisplayTemplates\ProductSummaryView.cshtml" />
+    <Content Include="Views\Home\ProductDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Neemo.DataAccess\Neemo.DataAccess.csproj">

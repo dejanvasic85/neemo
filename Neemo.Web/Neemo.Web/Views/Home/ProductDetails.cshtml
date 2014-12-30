@@ -1,0 +1,708 @@
+﻿@using Neemo.Web.Infrastructure
+@model Neemo.Web.Models.ProductDetailView
+
+<div class="ma-main-container col2-right-layout">
+    <div class="main">
+        <div class="breadcrumbs">
+            <ul>
+                <li class="home">
+                    @Html.ActionLink("Home", "Index", "Home")
+                    <span>/ </span>
+                </li>
+                <li class="category3">
+                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes.html" title="">
+                        @Model.Category
+                    </a>
+                    <span>/ </span>
+                </li>
+                <li class="product">
+                    <strong>@Model.Title</strong>
+                </li>
+            </ul>
+        </div>
+        <div class="row-fluid">
+            <div class="col-main span9">
+                <script type="text/javascript">
+                    var optionsPrice = new Product.OptionsPrice({ "productId": "2", "priceFormat": { "pattern": "$%s", "precision": 2, "requiredPrecision": 2, "decimalSymbol": ".", "groupSymbol": ",", "groupLength": 3, "integerRequired": 1 }, "includeTax": "false", "showIncludeTax": false, "showBothPrices": false, "productPrice": 399, "productOldPrice": 399, "priceInclTax": 399, "priceExclTax": 399, "skipCalculate": 1, "defaultTax": 0, "currentTax": 0, "idSuffix": "_clone", "oldPlusDisposition": 0, "plusDisposition": 0, "plusDispositionTax": 0, "oldMinusDisposition": 0, "minusDisposition": 0, "tierPrices": [], "tierPricesInclTax": [] });
+                </script>
+                <div id="messages_product_view"></div>
+                <div class="product-view">
+                    <div class="product-name">
+                        <h1>@Model.Title</h1>
+                    </div>
+                    <div class="product-essential">
+                        <form action="http://www.plazathemes.com/demo/ma_carstore_res/checkout/cart/add/uenc/aHR0cDovL3d3dy5wbGF6YXRoZW1lcy5jb20vZGVtby9tYV9jYXJzdG9yZV9yZXMvbG9yZW0taXBzdW0tZG9sb3IuaHRtbD9fX19TSUQ9VQ,,/product/2/form_key/lafduf85peHNAlvt/" method="post" id="product_addtocart_form" enctype="multipart/form-data">
+                            <div class="no-display">
+                                <input type="hidden" name="product" value="2">
+                                <input type="hidden" name="related_product" id="related-products-field" value="">
+                            </div>
+                            <div class="row-fluid">
+                                <div class="product-img-box span4">
+                                    <p class="product-image">
+                                        <!-- images for lightbox -->
+                                        <a href="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/image/500x500/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-1_1.png" class="ma-a-lighbox" rel="lightbox[rotation]"></a>
+                                        <!--++++++++++++-->
+                                        <div id="wrap" style="top:0px;z-index:99;position:relative;">
+                                            <a href="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/image/1200x1200/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-1_1.png" class="cloud-zoom" id="ma-zoom1" style="position: relative; display: block;" rel="adjustX:10, adjustY:-2, zoomWidth:300, zoomHeight:300">
+                                                <img src="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/image/265x/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-1_1.png" alt="Lorem ipsum dolor" title="Lorem ipsum dolor" style="display: block;">
+                                            </a><div class="mousetrap" style="opacity: 0; z-index: 99; position: absolute; width: 262px; height: 262px; left: 0px; top: 0px; cursor: move; background: rgb(255, 255, 255);"></div>
+                                        </div>
+                                    </p>
+                                    <div class="more-views ma-more-img">
+                                        <h2>More Views</h2>
+                                        <ul>
+                                            <li>
+                                                <a href="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/image/1200x1200/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-1_1.png" class="cloud-zoom-gallery" title="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/image/500x500/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-1_1.png" rel="useZoom: 'ma-zoom1', smallImage: 'http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/image/265x/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-1_1.png'">
+                                                    <img src="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/thumbnail/56x/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-1_1.png" width="56" height="56" alt="">
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <!-- thumbnail for lighbox-->
+                                        <ul class="mt-thumb-light" style="display:none;">
+                                            @foreach (var imageId in Model.Images)
+                                            {
+                                                <li>
+                                                    <a href="@Url.Image(imageId)" rel="lightbox[rotation]" title="Lorem ipsum dolor"></a>
+                                                </li>
+                                            }
+                                        </ul>
+                                        <!--##########-->
+                                    </div>
+                                    <script type="text/javascript">
+                                        //<![CDATA[
+                                        $jz(document).ready(function () {
+                                            $jz('head').append('<style type="text/css"> .cloud-zoom-big { border:4px solid #cdcdcd }</style>');
+                                        });
+                                        //]]>
+                                    </script>
+                                </div>
+                                <div class="product-shop span8">
+
+                                    <p class="email-friend"><a href="http://www.plazathemes.com/demo/ma_carstore_res/sendfriend/product/send/id/2/cat_id/3/">Email to a Friend</a></p>
+
+                                    <p class="no-rating"><a href="http://www.plazathemes.com/demo/ma_carstore_res/review/product/list/id/2/category/3/#review-form">Be the first to review this product</a></p>
+
+                                    <p class="availability in-stock">Availability: <span>In stock</span></p>
+
+
+
+                                    <div class="price-box">
+                                        <span class="regular-price" id="product-price-2">
+                                            <span class="price">$399.00</span>
+                                        </span>
+
+                                    </div>
+
+
+
+
+                                    <div class="short-description">
+                                        <h2>Quick Overview</h2>
+                                        <div class="std">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, arcu et dignissim ultrices, tellus nulla semper turpis, quis interdum diam tortor nec risus. Vivamus eu fringilla erat. Curabitur tincidunt, leo ac auctor sodales, odio mauris fermentum justo, sit amet bibendum augue libero at tellus. Nullam vulputate enim nec nibh pulvinar consectetur. Proin aliquet imperdiet dolor ac facilisis. Sed lacinia cursus urna. Maecenas eget justo libero. Aenean at nulla nisi, vitae dictum nulla.<br>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="product-options" id="product-options-wrapper">
+                                        <script type="text/javascript">
+                                            //<![CDATA[
+                                            var DateOption = Class.create({
+
+                                                getDaysInMonth: function (month, year) {
+                                                    var curDate = new Date();
+                                                    if (!month) {
+                                                        month = curDate.getMonth();
+                                                    }
+                                                    if (2 == month && !year) { // leap year assumption for unknown year
+                                                        return 29;
+                                                    }
+                                                    if (!year) {
+                                                        year = curDate.getFullYear();
+                                                    }
+                                                    return 32 - new Date(year, month - 1, 32).getDate();
+                                                },
+
+                                                reloadMonth: function (event) {
+                                                    var selectEl = event.findElement();
+                                                    var idParts = selectEl.id.split("_");
+                                                    if (idParts.length != 3) {
+                                                        return false;
+                                                    }
+                                                    var optionIdPrefix = idParts[0] + "_" + idParts[1];
+                                                    var month = parseInt($(optionIdPrefix + "_month").value);
+                                                    var year = parseInt($(optionIdPrefix + "_year").value);
+                                                    var dayEl = $(optionIdPrefix + "_day");
+
+                                                    var days = this.getDaysInMonth(month, year);
+
+                                                    //remove days
+                                                    for (var i = dayEl.options.length - 1; i >= 0; i--) {
+                                                        if (dayEl.options[i].value > days) {
+                                                            dayEl.remove(dayEl.options[i].index);
+                                                        }
+                                                    }
+
+                                                    // add days
+                                                    var lastDay = parseInt(dayEl.options[dayEl.options.length - 1].value);
+                                                    for (i = lastDay + 1; i <= days; i++) {
+                                                        this.addOption(dayEl, i, i);
+                                                    }
+                                                },
+
+                                                addOption: function (select, text, value) {
+                                                    var option = document.createElement('OPTION');
+                                                    option.value = value;
+                                                    option.text = text;
+
+                                                    if (select.options.add) {
+                                                        select.options.add(option);
+                                                    } else {
+                                                        select.appendChild(option);
+                                                    }
+                                                }
+                                            });
+                                            dateOption = new DateOption();
+                                            //]]>
+                                        </script>
+
+                                        <script type="text/javascript">
+                                            //<![CDATA[
+                                            var optionFileUpload = {
+                                                productForm: $('product_addtocart_form'),
+                                                formAction: '',
+                                                formElements: {},
+                                                upload: function (element) {
+                                                    this.formElements = this.productForm.select('input', 'select', 'textarea', 'button');
+                                                    this.removeRequire(element.readAttribute('id').sub('option_', ''));
+
+                                                    template = '<iframe id="upload_target" name="upload_target" style="width:0; height:0; border:0;"><\/iframe>';
+
+                                                    Element.insert($('option_' + element.readAttribute('id').sub('option_', '') + '_uploaded_file'), { after: template });
+
+                                                    this.formAction = this.productForm.action;
+
+                                                    var baseUrl = 'http://www.plazathemes.com/demo/ma_carstore_res/catalog/product/upload/';
+                                                    var urlExt = 'option_id/' + element.readAttribute('id').sub('option_', '');
+
+                                                    this.productForm.action = parseSidUrl(baseUrl, urlExt);
+                                                    this.productForm.target = 'upload_target';
+                                                    this.productForm.submit();
+                                                    this.productForm.target = '';
+                                                    this.productForm.action = this.formAction;
+                                                },
+                                                removeRequire: function (skipElementId) {
+                                                    for (var i = 0; i < this.formElements.length; i++) {
+                                                        if (this.formElements[i].readAttribute('id') != 'option_' + skipElementId + '_file' && this.formElements[i].type != 'button') {
+                                                            this.formElements[i].disabled = 'disabled';
+                                                        }
+                                                    }
+                                                },
+                                                addRequire: function (skipElementId) {
+                                                    for (var i = 0; i < this.formElements.length; i++) {
+                                                        if (this.formElements[i].readAttribute('name') != 'options_' + skipElementId + '_file' && this.formElements[i].type != 'button') {
+                                                            this.formElements[i].disabled = '';
+                                                        }
+                                                    }
+                                                },
+                                                uploadCallback: function (data) {
+                                                    this.addRequire(data.optionId);
+                                                    $('upload_target').remove();
+
+                                                    if (data.error) {
+
+                                                    } else {
+                                                        $('option_' + data.optionId + '_uploaded_file').value = data.fileName;
+                                                        $('option_' + data.optionId + '_file').value = '';
+                                                        $('option_' + data.optionId + '_file').hide();
+                                                        $('option_' + data.optionId + '').hide();
+                                                        template = '<div id="option_' + data.optionId + '_file_box"><a href="#"><img src="var/options/' + data.fileName + '" alt=""><\/a><a href="#" onclick="optionFileUpload.removeFile(' + data.optionId + ')" title="Remove file" \/>Remove file<\/a>';
+
+                                                        Element.insert($('option_' + data.optionId + '_uploaded_file'), { after: template });
+                                                    }
+                                                },
+                                                removeFile: function (optionId) {
+                                                    $('option_' + optionId + '_uploaded_file').value = '';
+                                                    $('option_' + optionId + '_file').show();
+                                                    $('option_' + optionId + '').show();
+
+                                                    $('option_' + optionId + '_file_box').remove();
+                                                }
+                                            }
+                                            var optionTextCounter = {
+                                                count: function (field, cntfield, maxlimit) {
+                                                    if (field.value.length > maxlimit) {
+                                                        field.value = field.value.substring(0, maxlimit);
+                                                    } else {
+                                                        cntfield.innerHTML = maxlimit - field.value.length;
+                                                    }
+                                                }
+                                            }
+
+                                            Product.Options = Class.create();
+                                            Product.Options.prototype = {
+                                                initialize: function (config) {
+                                                    this.config = config;
+                                                    this.reloadPrice();
+                                                    document.observe("dom:loaded", this.reloadPrice.bind(this));
+                                                },
+                                                reloadPrice: function () {
+                                                    var config = this.config;
+                                                    var skipIds = [];
+                                                    $$('body .product-custom-option').each(function (element) {
+                                                        var optionId = 0;
+                                                        element.name.sub(/[0-9]+/, function (match) {
+                                                            optionId = parseInt(match[0], 10);
+                                                        });
+                                                        if (config[optionId]) {
+                                                            var configOptions = config[optionId];
+                                                            var curConfig = { price: 0 };
+                                                            if (element.type == 'checkbox' || element.type == 'radio') {
+                                                                if (element.checked) {
+                                                                    if (typeof configOptions[element.getValue()] != 'undefined') {
+                                                                        curConfig = configOptions[element.getValue()];
+                                                                    }
+                                                                }
+                                                            } else if (element.hasClassName('datetime-picker') && !skipIds.include(optionId)) {
+                                                                dateSelected = true;
+                                                                $$('.product-custom-option[id^="options_' + optionId + '"]').each(function (dt) {
+                                                                    if (dt.getValue() == '') {
+                                                                        dateSelected = false;
+                                                                    }
+                                                                });
+                                                                if (dateSelected) {
+                                                                    curConfig = configOptions;
+                                                                    skipIds[optionId] = optionId;
+                                                                }
+                                                            } else if (element.type == 'select-one' || element.type == 'select-multiple') {
+                                                                if ('options' in element) {
+                                                                    $A(element.options).each(function (selectOption) {
+                                                                        if ('selected' in selectOption && selectOption.selected) {
+                                                                            if (typeof (configOptions[selectOption.value]) != 'undefined') {
+                                                                                curConfig = configOptions[selectOption.value];
+                                                                            }
+                                                                        }
+                                                                    });
+                                                                }
+                                                            } else {
+                                                                if (element.getValue().strip() != '') {
+                                                                    curConfig = configOptions;
+                                                                }
+                                                            }
+                                                            if (element.type == 'select-multiple' && ('options' in element)) {
+                                                                $A(element.options).each(function (selectOption) {
+                                                                    if (('selected' in selectOption) && typeof (configOptions[selectOption.value]) != 'undefined') {
+                                                                        if (selectOption.selected) {
+                                                                            curConfig = configOptions[selectOption.value];
+                                                                        } else {
+                                                                            curConfig = { price: 0 };
+                                                                        }
+                                                                        optionsPrice.addCustomPrices(optionId + '-' + selectOption.value, curConfig);
+                                                                        optionsPrice.reload();
+                                                                    }
+                                                                });
+                                                            } else {
+                                                                optionsPrice.addCustomPrices(element.id || optionId, curConfig);
+                                                                optionsPrice.reload();
+                                                            }
+                                                        }
+                                                    });
+                                                }
+                                            }
+                                            function validateOptionsCallback(elmId, result) {
+                                                var container = $(elmId).up('ul.options-list');
+                                                if (result == 'failed') {
+                                                    container.removeClassName('validation-passed');
+                                                    container.addClassName('validation-failed');
+                                                } else {
+                                                    container.removeClassName('validation-failed');
+                                                    container.addClassName('validation-passed');
+                                                }
+                                            }
+                                            var opConfig = new Product.Options({ "2": { "3": { "price": 60, "oldPrice": 60, "priceValue": "60.0000", "type": "fixed", "excludeTax": 60, "includeTax": 60 }, "4": { "price": 65, "oldPrice": 65, "priceValue": "65.0000", "type": "fixed", "excludeTax": 65, "includeTax": 65 } }, "1": { "2": { "price": 65, "oldPrice": 65, "priceValue": "65.0000", "type": "fixed", "excludeTax": 65, "includeTax": 65 }, "1": { "price": 56, "oldPrice": 56, "priceValue": "56.0000", "type": "fixed", "excludeTax": 56, "includeTax": 56 } } });
+                                            //]]>
+                                        </script>
+                                        <dl class="last">
+
+                                            <dt><label class="required"><em>*</em>Color</label></dt>
+                                            <dd>
+                                                <div class="input-box">
+                                                    <select name="options[2]" id="select_2" class=" required-entry product-custom-option" title="" onchange="opConfig.reloadPrice()"><option value="">-- Please Select --</option><option value="3" price="60">Black +$60.00</option><option value="4" price="65">Blue +$65.00</option></select>
+                                                </div>
+                                            </dd>
+
+                                            <dt><label class="required"><em>*</em>Size</label></dt>
+                                            <dd class="last">
+                                                <div class="input-box">
+                                                    <select name="options[1]" id="select_1" class=" required-entry product-custom-option" title="" onchange="opConfig.reloadPrice()"><option value="">-- Please Select --</option><option value="2" price="65">L +$65.00</option><option value="1" price="56">M +$56.00</option></select>
+                                                </div>
+                                            </dd>
+                                        </dl>
+
+                                        <script type="text/javascript">
+                                            //<![CDATA[
+                                            enUS = { "m": { "wide": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], "abbr": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"] } }; // en_US locale reference
+                                            Calendar._DN = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]; // full day names
+                                            Calendar._SDN = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]; // short day names
+                                            Calendar._FD = 0; // First day of the week. "0" means display Sunday first, "1" means display Monday first, etc.
+                                            Calendar._MN = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; // full month names
+                                            Calendar._SMN = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]; // short month names
+                                            Calendar._am = "AM"; // am/pm
+                                            Calendar._pm = "PM";
+
+                                            // tooltips
+                                            Calendar._TT = {};
+                                            Calendar._TT["INFO"] = "About the calendar";
+
+                                            Calendar._TT["ABOUT"] =
+                                            "DHTML Date/Time Selector\n" +
+                                            "(c) dynarch.com 2002-2005 / Author: Mihai Bazon\n" +
+                                            "For latest version visit: http://www.dynarch.com/projects/calendar/\n" +
+                                            "Distributed under GNU LGPL. See http://gnu.org/licenses/lgpl.html for details." +
+                                            "\n\n" +
+                                            "Date selection:\n" +
+                                            "- Use the \xab, \xbb buttons to select year\n" +
+                                            "- Use the " + String.fromCharCode(0x2039) + ", " + String.fromCharCode(0x203a) + " buttons to select month\n" +
+                                            "- Hold mouse button on any of the above buttons for faster selection.";
+                                            Calendar._TT["ABOUT_TIME"] = "\n\n" +
+                                            "Time selection:\n" +
+                                            "- Click on any of the time parts to increase it\n" +
+                                            "- or Shift-click to decrease it\n" +
+                                            "- or click and drag for faster selection.";
+
+                                            Calendar._TT["PREV_YEAR"] = "Prev. year (hold for menu)";
+                                            Calendar._TT["PREV_MONTH"] = "Prev. month (hold for menu)";
+                                            Calendar._TT["GO_TODAY"] = "Go Today";
+                                            Calendar._TT["NEXT_MONTH"] = "Next month (hold for menu)";
+                                            Calendar._TT["NEXT_YEAR"] = "Next year (hold for menu)";
+                                            Calendar._TT["SEL_DATE"] = "Select date";
+                                            Calendar._TT["DRAG_TO_MOVE"] = "Drag to move";
+                                            Calendar._TT["PART_TODAY"] = ' (' + "Today" + ')';
+
+                                            // the following is to inform that "%s" is to be the first day of week
+                                            Calendar._TT["DAY_FIRST"] = "Display %s first";
+
+                                            // This may be locale-dependent. It specifies the week-end days, as an array
+                                            // of comma-separated numbers. The numbers are from 0 to 6: 0 means Sunday, 1
+                                            // means Monday, etc.
+                                            Calendar._TT["WEEKEND"] = "0,6";
+
+                                            Calendar._TT["CLOSE"] = "Close";
+                                            Calendar._TT["TODAY"] = "Today";
+                                            Calendar._TT["TIME_PART"] = "(Shift-)Click or drag to change value";
+
+                                            // date formats
+                                            Calendar._TT["DEF_DATE_FORMAT"] = "%b %e, %Y";
+                                            Calendar._TT["TT_DATE_FORMAT"] = "%B %e, %Y";
+
+                                            Calendar._TT["WK"] = "Week";
+                                            Calendar._TT["TIME"] = "Time:";
+                                            //]]>
+                                        </script>
+                                        <p class="required">* Required Fields</p>
+                                    </div>
+                                    <script type="text/javascript">decorateGeneric($$('#product-options-wrapper dl'), ['last']);</script>
+                                    <div class="product-options-bottom">
+
+
+
+                                        <div class="price-box">
+                                            <span class="regular-price" id="product-price-2_clone">
+                                                <span class="price">$399.00</span>
+                                            </span>
+
+                                        </div>
+
+                                        <div class="add-to-cart">
+                                            <label for="qty">Qty:</label>
+                                            <input type="text" name="qty" id="qty" maxlength="12" value="1" title="Qty" class="input-text qty">
+                                            <button type="button" title="Add to Cart" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span>Add to Cart</span></span></button>
+                                        </div>
+
+
+                                        <ul class="add-to-links">
+                                            <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/wishlist/index/add/product/2/form_key/lafduf85peHNAlvt/" onclick="productAddToCartForm.submitLight(this, 'http://www.plazathemes.com/demo/ma_carstore_res/wishlist/index/add/product/2/form_key/lafduf85peHNAlvt/'); return false;" class="link-wishlist">Add to Wishlist</a></li>
+                                            <li><span class="separator">|</span> <a href="http://www.plazathemes.com/demo/ma_carstore_res/catalog/product_compare/add/product/2/uenc/aHR0cDovL3d3dy5wbGF6YXRoZW1lcy5jb20vZGVtby9tYV9jYXJzdG9yZV9yZXMvbG9yZW0taXBzdW0tZG9sb3IuaHRtbA,,/" class="link-compare">Add to Compare</a></li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="clearer"></div>
+
+                        </form>
+                        <script type="text/javascript">
+                            //<![CDATA[
+                            var productAddToCartForm = new VarienForm('product_addtocart_form');
+                            productAddToCartForm.submit = function (button, url) {
+                                if (this.validator.validate()) {
+                                    var form = this.form;
+                                    var oldUrl = form.action;
+
+                                    if (url) {
+                                        form.action = url;
+                                    }
+                                    var e = null;
+                                    try {
+                                        this.form.submit();
+                                    } catch (e) {
+                                    }
+                                    this.form.action = oldUrl;
+                                    if (e) {
+                                        throw e;
+                                    }
+
+                                    if (button && button != 'undefined') {
+                                        button.disabled = true;
+                                    }
+                                }
+                            }.bind(productAddToCartForm);
+
+                            productAddToCartForm.submitLight = function (button, url) {
+                                if (this.validator) {
+                                    var nv = Validation.methods;
+                                    delete Validation.methods['required-entry'];
+                                    delete Validation.methods['validate-one-required'];
+                                    delete Validation.methods['validate-one-required-by-name'];
+                                    if (this.validator.validate()) {
+                                        if (url) {
+                                            this.form.action = url;
+                                        }
+                                        this.form.submit();
+                                    }
+                                    Object.extend(Validation.methods, nv);
+                                }
+                            }.bind(productAddToCartForm);
+                            //]]>
+                        </script>
+                    </div>
+
+                    <div class="product-collateral">
+                        <ul class="product-tabs">
+                            <li id="product_tabs_description" class=" active first"><a href="javascript:void(0)">Product Description</a></li>
+                            <li id="product_tabs_product.tags" class="last"><a href="javascript:void(0)">Product Tags</a></li>
+                        </ul>
+                        <div class="product-tabs-content" id="product_tabs_description_contents">
+                            <h2>Details</h2>
+                            <div class="std">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, arcu et dignissim ultrices, tellus nulla semper turpis, quis interdum diam tortor nec risus. Vivamus eu fringilla erat. Curabitur tincidunt, leo ac auctor sodales, odio mauris fermentum justo, sit amet bibendum augue libero at tellus. Nullam vulputate enim nec nibh pulvinar consectetur. Proin aliquet imperdiet dolor ac facilisis. Sed lacinia cursus urna. Maecenas eget justo libero. Aenean at nulla nisi, vitae dictum nulla.
+
+                                Maecenas pellentesque diam ut metus sodales sit amet blandit est vehicula. Phasellus quis turpis id nibh sagittis consectetur vitae facilisis purus. Donec convallis congue lectus, non semper metus dignissim a. Nulla facilisi. Donec blandit bibendum neque, et commodo nisl fermentum id. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer dui urna, ornare vitae sollicitudin ut, facilisis tincidunt lorem. Suspendisse sollicitudin, elit vitae consectetur dictum, nulla lectus tincidunt lorem, id scelerisque massa leo ut massa. Quisque sit amet eros nibh, eget sodales urna. Pellentesque leo tellus, pulvinar a vestibulum id, sollicitudin at justo.
+                            </div>
+                        </div>
+                        <div class="product-tabs-content" id="product_tabs_product.tags_contents" style="display: none;">
+                            <div class="box-collateral box-tags">
+                                <h2>Product Tags</h2>
+                                <h3>Other people marked this product with these tags:</h3>
+                                <ul id="product-tags_db527bf2102e1f845e48b3ceb3dc96b8" class="product-tags">
+                                    <li class="first last"><a href="http://www.plazathemes.com/demo/ma_carstore_res/tag/product/list/tagId/4/">Audi</a> (1)</li>
+                                </ul>
+                                <script type="text/javascript">
+                                    decorateGeneric($("product-tags_db527bf2102e1f845e48b3ceb3dc96b8").select('li'), ['first', 'last']);
+                                </script>
+                                <form id="addTagForm" action="http://www.plazathemes.com/demo/ma_carstore_res/tag/index/save/product/2/uenc/aHR0cDovL3d3dy5wbGF6YXRoZW1lcy5jb20vZGVtby9tYV9jYXJzdG9yZV9yZXMvbG9yZW0taXBzdW0tZG9sb3IuaHRtbA,,/" method="get">
+                                    <div class="form-add">
+                                        <label for="productTagName">Add Your Tags:</label>
+                                        <div class="input-box">
+                                            <input type="text" class="input-text required-entry" name="productTagName" id="productTagName">
+                                        </div>
+                                        <button type="button" title="Add Tags" class="button" onclick="submitTagForm()">
+                                            <span>
+                                                <span>Add Tags</span>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </form>
+                                <p class="note">Use spaces to separate tags. Use single quotes (') for phrases.</p>
+                                <script type="text/javascript">
+                                    //<![CDATA[
+                                    var addTagFormJs = new VarienForm('addTagForm');
+                                    function submitTagForm() {
+                                        if (addTagFormJs.validator.validate()) {
+                                            addTagFormJs.form.submit();
+                                        }
+                                    }
+                                    //]]>
+                                </script>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            //<![CDATA[
+                            Varien.Tabs = Class.create();
+                            Varien.Tabs.prototype = {
+                                initialize: function (selector) {
+                                    var self = this;
+                                    $$(selector + ' a').each(this.initTab.bind(this));
+                                },
+
+                                initTab: function (el) {
+                                    el.href = 'javascript:void(0)';
+                                    if ($(el.parentNode).hasClassName('active')) {
+                                        this.showContent(el);
+                                    }
+                                    el.observe('click', this.showContent.bind(this, el));
+                                },
+
+                                showContent: function (a) {
+                                    var li = $(a.parentNode), ul = $(li.parentNode);
+                                    ul.select('li').each(function (el) {
+                                        var contents = $(el.id + '_contents');
+                                        if (el == li) {
+                                            el.addClassName('active');
+                                            contents.show();
+                                        } else {
+                                            el.removeClassName('active');
+                                            contents.hide();
+                                        }
+                                    });
+                                }
+                            }
+                            new Varien.Tabs('.product-tabs');
+                            //]]>
+                        </script>
+                    </div>
+                </div>
+
+                <script type="text/javascript">
+                    var lifetime = 3600;
+                    var expireAt = Mage.Cookies.expires;
+                    if (lifetime > 0) {
+                        expireAt = new Date();
+                        expireAt.setTime(expireAt.getTime() + lifetime * 1000);
+                    }
+                    Mage.Cookies.set('external_no_cache', 1, expireAt);
+                </script>
+            </div>
+            <div class="col-right sidebar span3">
+                <div class="block block-list block-compare">
+                    <div class="block-title">
+                        <strong>
+                            <span>
+                                Compare Products
+                            </span>
+                        </strong>
+                    </div>
+                    <div class="block-content">
+                        <p class="empty">You have no items to compare.</p>
+                    </div>
+                </div>
+
+                <div class="ma-bestseller-products block">
+                    <!-- start mt products list -->
+                    <div class="ma-bestseller-product-title block-title"><strong>Bestseller Products</strong></div>
+                    <div class="bestseller-category block-content">
+                        <ul class="bestseller-product  first">
+                            <li class="item first">
+                                <a href="http://www.plazathemes.com/demo/ma_carstore_res/lorem-ipsum-dolor.html" title="Lorem ipsum dolor" class="product-image"><img src="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/small_image/52x52/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-1_1.png" width="52" height="52" alt="Lorem ipsum dolor"></a>
+                                <h2 class="product-name"><a href="http://www.plazathemes.com/demo/ma_carstore_res/lorem-ipsum-dolor.html" title="Lorem ipsum dolor">Lorem ipsum dolor</a></h2>
+
+
+                                <div class="price-box">
+                                    <span class="regular-price" id="product-price-2">
+                                        <span class="price">$399.00</span>
+                                    </span>
+
+                                </div>
+
+
+
+                            </li>
+                            <!--  -->
+                            <li class="item">
+                                <a href="http://www.plazathemes.com/demo/ma_carstore_res/sed-sodales-dignissim.html" title="Sed sodales dignissim" class="product-image"><img src="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/small_image/52x52/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-3.png" width="52" height="52" alt="Sed sodales dignissim"></a>
+                                <h2 class="product-name"><a href="http://www.plazathemes.com/demo/ma_carstore_res/sed-sodales-dignissim.html" title="Sed sodales dignissim">Sed sodales dignissim</a></h2>
+
+
+
+                                <div class="price-box">
+                                    <span class="regular-price" id="product-price-4">
+                                        <span class="price">$399.00</span>
+                                    </span>
+
+                                </div>
+
+
+
+                            </li>
+                            <!--  -->
+                            <li class="item">
+                                <a href="http://www.plazathemes.com/demo/ma_carstore_res/nunc-facilisis-urna-et.html" title="Nunc facilisis urna et" class="product-image"><img src="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/small_image/52x52/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-7.png" width="52" height="52" alt="Nunc facilisis urna et"></a>
+                                <h2 class="product-name"><a href="http://www.plazathemes.com/demo/ma_carstore_res/nunc-facilisis-urna-et.html" title="Nunc facilisis urna et">Nunc facilisis urna et</a></h2>
+
+
+
+                                <div class="price-box">
+                                    <span class="regular-price" id="product-price-8">
+                                        <span class="price">$399.00</span>
+                                    </span>
+
+                                </div>
+
+
+
+                            </li>
+                            <!--  -->
+                            <li class="item">
+                                <a href="http://www.plazathemes.com/demo/ma_carstore_res/maecenas-pellentesque.html" title="Maecenas sodales" class="product-image"><img src="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/small_image/52x52/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-2.png" width="52" height="52" alt="Maecenas sodales"></a>
+                                <h2 class="product-name"><a href="http://www.plazathemes.com/demo/ma_carstore_res/maecenas-pellentesque.html" title="Maecenas sodales">Maecenas sodales</a></h2>
+
+
+
+                                <div class="price-box">
+                                    <span class="regular-price" id="product-price-3">
+                                        <span class="price">$399.00</span>
+                                    </span>
+
+                                </div>
+
+
+
+                            </li>
+                            <!--  -->
+                            <li class="item">
+                                <a href="http://www.plazathemes.com/demo/ma_carstore_res/etiam-congue-euismod.html" title="Etiam congue euismod" class="product-image"><img src="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/small_image/52x52/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-8.png" width="52" height="52" alt="Etiam congue euismod"></a>
+                                <h2 class="product-name"><a href="http://www.plazathemes.com/demo/ma_carstore_res/etiam-congue-euismod.html" title="Etiam congue euismod">Etiam congue euismod</a></h2>
+
+
+
+                                <div class="price-box">
+                                    <span class="regular-price" id="product-price-9">
+                                        <span class="price">$399.00</span>
+                                    </span>
+
+                                </div>
+
+
+
+                            </li>
+                            <!--  -->
+                            <li class="item last">
+                                <a href="http://www.plazathemes.com/demo/ma_carstore_res/maecenas-ipsum-orci.html" title="Maecenas ipsum orci" class="product-image"><img src="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/small_image/52x52/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-4.png" width="52" height="52" alt="Maecenas ipsum orci"></a>
+                                <h2 class="product-name"><a href="http://www.plazathemes.com/demo/ma_carstore_res/maecenas-ipsum-orci.html" title="Maecenas ipsum orci">Maecenas ipsum orci</a></h2>
+
+
+
+                                <div class="price-box">
+                                    <span class="regular-price" id="product-price-5">
+                                        <span class="price">$399.00</span>
+                                    </span>
+
+                                </div>
+
+
+
+                            </li>
+                        </ul>
+                        <!--  -->
+                        <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd', 'even', 'first', 'last'])</script>
+                    </div>
+                    <!-- end exist product -->
+                </div> <!-- end products list -->
+
+
+            </div>
+        </div>
+    </div>
+</div>

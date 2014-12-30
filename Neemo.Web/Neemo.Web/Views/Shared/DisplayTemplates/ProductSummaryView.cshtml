@@ -6,7 +6,7 @@
         <a href="http://www.plazathemes.com/demo/ma_carstore_res/lorem-ipsum-dolor.html"
            title="@Model.Description"
            class="product-image">
-            <img src="@Url.Action("Download", "Image", new { id = Model.ImageId })" alt="Lorem ipsum dolor">
+            <img src="@Url.Image(Model.ImageId)" alt="Lorem ipsum dolor">
         </a>
 
         <h2 class="product-name">

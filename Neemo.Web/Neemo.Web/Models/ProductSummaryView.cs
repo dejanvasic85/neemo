@@ -1,4 +1,6 @@
-﻿namespace Neemo.Web.Models
+﻿using Microsoft.SqlServer.Server;
+
+namespace Neemo.Web.Models
 {
     public class ProductSummaryView
     {
