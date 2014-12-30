@@ -1,4 +1,7 @@
-﻿@{
+﻿@model Neemo.Web.Models.HomeView
+
+
+@{
     ViewBag.Title = "Home - Featured Products and New Products";
 }
 <div class="ma-main-container col3-layout">
@@ -207,188 +210,39 @@
                                             controlNav: false,
                                             animation: "slide"
                                         });
-                                    </script><div class="flex-viewport" style="overflow: hidden; position: relative;">
+                                    </script>
+                                    <div class="flex-viewport" style="overflow: hidden; position: relative;">
                                         <ul class="slides" style="width: 1800%; -webkit-transition: 0s; transition: 0s; -webkit-transform: translate3d(0px, 0px, 0px);">
-                                            <li class="featuredproductslider-item" style="width: 187px; float: left; display: block;">
-                                                <div class="feadture-inner">
-                                                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/lorem-ipsum-dolor.html" title="Lorem ipsum dolor" class="product-image"><img src="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/small_image/300x300/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-1_1.png" alt="Lorem ipsum dolor"></a>
 
-                                                    <h2 class="product-name"><a href="http://www.plazathemes.com/demo/ma_carstore_res/lorem-ipsum-dolor.html" title="Lorem ipsum dolor">Lorem ipsum dolor</a></h2>
+                                            @foreach (var featuredProduct in Model.FeaturedProducts)
+                                            {
+                                                <li class="featuredproductslider-item" style="width: 187px; float: left; display: block;">
+                                                    <div class="feadture-inner">
+                                                        <a href="http://www.plazathemes.com/demo/ma_carstore_res/lorem-ipsum-dolor.html" 
+                                                           title="@featuredProduct.Description" 
+                                                           class="product-image">
+                                                            <img src="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/small_image/300x300/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-1_1.png" alt="Lorem ipsum dolor">
+                                                        </a>
 
+                                                        <h2 class="product-name">
+                                                            <a href="http://www.plazathemes.com/demo/ma_carstore_res/lorem-ipsum-dolor.html" title="Lorem ipsum dolor">
+                                                                @featuredProduct.Description
+                                                            </a>
+                                                        </h2>
+                                                        
+                                                        <div class="price-box">
+                                                            <span class="regular-price" id="product-price-2">
+                                                                <span class="price">@featuredProduct.Price.ToString("C")</span>
+                                                            </span>
+                                                        </div>
 
-
-                                                    <div class="price-box">
-                                                        <span class="regular-price" id="product-price-2">
-                                                            <span class="price">$399.00</span>
-                                                        </span>
-
+                                                        <div class="actions">
+                                                            <button type="button" title="Add to Cart" class="button btn-cart"><span><span>Add to Cart</span></span></button>
+                                                        </div>
                                                     </div>
+                                                </li>
+                                            }
 
-                                                    <div class="actions">
-                                                        <button type="button" title="Add to Cart" class="button btn-cart"><span><span>Add to Cart</span></span></button>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="featuredproductslider-item" style="width: 187px; float: left; display: block;">
-                                                <div class="feadture-inner">
-                                                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/maecenas-pellentesque.html" title="Maecenas sodales" class="product-image"><img src="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/small_image/300x300/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-2.png" alt="Maecenas sodales"></a>
-
-                                                    <h2 class="product-name"><a href="http://www.plazathemes.com/demo/ma_carstore_res/maecenas-pellentesque.html" title="Maecenas sodales">Maecenas sodales</a></h2>
-
-
-
-                                                    <div class="price-box">
-                                                        <span class="regular-price" id="product-price-3">
-                                                            <span class="price">$399.00</span>
-                                                        </span>
-
-                                                    </div>
-
-                                                    <div class="actions">
-                                                        <button type="button" title="Add to Cart" class="button btn-cart"><span><span>Add to Cart</span></span></button>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="featuredproductslider-item" style="width: 187px; float: left; display: block;">
-                                                <div class="feadture-inner">
-                                                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/sed-sodales-dignissim.html" title="Sed sodales dignissim" class="product-image"><img src="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/small_image/300x300/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-3.png" alt="Sed sodales dignissim"></a>
-
-                                                    <h2 class="product-name"><a href="http://www.plazathemes.com/demo/ma_carstore_res/sed-sodales-dignissim.html" title="Sed sodales dignissim">Sed sodales dignissim</a></h2>
-
-
-
-                                                    <div class="price-box">
-                                                        <span class="regular-price" id="product-price-4">
-                                                            <span class="price">$399.00</span>
-                                                        </span>
-
-                                                    </div>
-
-                                                    <div class="actions">
-                                                        <button type="button" title="Add to Cart" class="button btn-cart"><span><span>Add to Cart</span></span></button>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="featuredproductslider-item" style="width: 187px; float: left; display: block;">
-                                                <div class="feadture-inner">
-                                                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/maecenas-ipsum-orci.html" title="Maecenas ipsum orci" class="product-image"><img src="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/small_image/300x300/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-4.png" alt="Maecenas ipsum orci"></a>
-
-                                                    <h2 class="product-name"><a href="http://www.plazathemes.com/demo/ma_carstore_res/maecenas-ipsum-orci.html" title="Maecenas ipsum orci">Maecenas ipsum orci</a></h2>
-
-
-
-                                                    <div class="price-box">
-                                                        <span class="regular-price" id="product-price-5">
-                                                            <span class="price">$399.00</span>
-                                                        </span>
-
-                                                    </div>
-
-                                                    <div class="actions">
-                                                        <button type="button" title="Add to Cart" class="button btn-cart"><span><span>Add to Cart</span></span></button>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="featuredproductslider-item" style="width: 187px; float: left; display: block;">
-                                                <div class="feadture-inner">
-                                                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/phasellus-quis-turpis.html" title="Phasellus quis turpis" class="product-image"><img src="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/small_image/300x300/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-5.png" alt="Phasellus quis turpis"></a>
-
-                                                    <h2 class="product-name"><a href="http://www.plazathemes.com/demo/ma_carstore_res/phasellus-quis-turpis.html" title="Phasellus quis turpis">Phasellus quis turpis</a></h2>
-
-
-
-                                                    <div class="price-box">
-                                                        <span class="regular-price" id="product-price-6">
-                                                            <span class="price">$399.00</span>
-                                                        </span>
-
-                                                    </div>
-
-                                                    <div class="actions">
-                                                        <button type="button" title="Add to Cart" class="button btn-cart"><span><span>Add to Cart</span></span></button>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="featuredproductslider-item" style="width: 187px; float: left; display: block;">
-                                                <div class="feadture-inner">
-                                                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/vivamus-quis-felis.html" title="Vivamus quis felis" class="product-image"><img src="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/small_image/300x300/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-6.png" alt="Vivamus quis felis"></a>
-
-                                                    <h2 class="product-name"><a href="http://www.plazathemes.com/demo/ma_carstore_res/vivamus-quis-felis.html" title="Vivamus quis felis">Vivamus quis felis</a></h2>
-
-
-
-                                                    <div class="price-box">
-                                                        <span class="regular-price" id="product-price-7">
-                                                            <span class="price">$399.00</span>
-                                                        </span>
-
-                                                    </div>
-
-                                                    <div class="actions">
-                                                        <button type="button" title="Add to Cart" class="button btn-cart"><span><span>Add to Cart</span></span></button>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="featuredproductslider-item" style="width: 187px; float: left; display: block;">
-                                                <div class="feadture-inner">
-                                                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/nunc-facilisis-urna-et.html" title="Nunc facilisis urna et" class="product-image"><img src="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/small_image/300x300/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-7.png" alt="Nunc facilisis urna et"></a>
-
-                                                    <h2 class="product-name"><a href="http://www.plazathemes.com/demo/ma_carstore_res/nunc-facilisis-urna-et.html" title="Nunc facilisis urna et">Nunc facilisis urna et</a></h2>
-
-
-
-                                                    <div class="price-box">
-                                                        <span class="regular-price" id="product-price-8">
-                                                            <span class="price">$399.00</span>
-                                                        </span>
-
-                                                    </div>
-
-                                                    <div class="actions">
-                                                        <button type="button" title="Add to Cart" class="button btn-cart"><span><span>Add to Cart</span></span></button>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="featuredproductslider-item" style="width: 187px; float: left; display: block;">
-                                                <div class="feadture-inner">
-                                                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/etiam-congue-euismod.html" title="Etiam congue euismod" class="product-image"><img src="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/small_image/300x300/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-8.png" alt="Etiam congue euismod"></a>
-
-                                                    <h2 class="product-name"><a href="http://www.plazathemes.com/demo/ma_carstore_res/etiam-congue-euismod.html" title="Etiam congue euismod">Etiam congue euismod</a></h2>
-
-
-
-                                                    <div class="price-box">
-                                                        <span class="regular-price" id="product-price-9">
-                                                            <span class="price">$399.00</span>
-                                                        </span>
-
-                                                    </div>
-
-                                                    <div class="actions">
-                                                        <button type="button" title="Add to Cart" class="button btn-cart"><span><span>Add to Cart</span></span></button>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="featuredproductslider-item" style="width: 187px; float: left; display: block;">
-                                                <div class="feadture-inner">
-                                                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/curabitur-a-lacus-in.html" title="Curabitur a lacus in" class="product-image"><img src="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/small_image/300x300/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-9.png" alt="Curabitur a lacus in"></a>
-
-                                                    <h2 class="product-name"><a href="http://www.plazathemes.com/demo/ma_carstore_res/curabitur-a-lacus-in.html" title="Curabitur a lacus in">Curabitur a lacus in</a></h2>
-
-
-
-                                                    <div class="price-box">
-                                                        <span class="regular-price" id="product-price-10">
-                                                            <span class="price">$399.00</span>
-                                                        </span>
-
-                                                    </div>
-
-                                                    <div class="actions">
-                                                        <button type="button" title="Add to Cart" class="button btn-cart"><span><span>Add to Cart</span></span></button>
-                                                    </div>
-                                                </div>
-                                            </li>
                                         </ul>
                                     </div><ul class="flex-direction-nav"><li><a class="flex-prev" href="#">Previous</a></li><li><a class="flex-next" href="#">Next</a></li></ul>
                                 </div>

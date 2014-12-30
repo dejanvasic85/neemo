@@ -1,5 +1,8 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
+using AutoMapper;
 using Neemo.Store;
+using Neemo.Web.Models;
 
 namespace Neemo.Web.Controllers
 {
@@ -14,11 +17,16 @@ namespace Neemo.Web.Controllers
 
         public ActionResult Index()
         {
-            // Fetch new and featured products
-            var newProducts = _productService.GetNewProducts();
-            var featuredProducts = _productService.GetFeaturedProducts();
+            var newProducts = _productService.GetNewProducts().Select(Mapper.Map<Product, ProductSummaryView>);
+            var featuredProducts = _productService.GetFeaturedProducts().Select(Mapper.Map<Product, ProductSummaryView>);
+            
+            var homeModel = new HomeView
+            {
+                NewProducts = newProducts.ToList(),
+                FeaturedProducts = featuredProducts.ToList()
+            };
 
-            return View();
+            return View(homeModel);
         }
     }
 }

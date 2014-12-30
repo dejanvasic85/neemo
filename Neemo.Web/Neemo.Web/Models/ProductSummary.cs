@@ -1,15 +1,11 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Neemo.Web.Models
 {
-    public class ProductSummary
+    public class HomeView
     {
-        public int ProductId { get; set; }
-        public string Description { get; set; }
-        public decimal Price { get; set; }
-        public string ImageId { get; set; }
+        public List<ProductSummaryView> FeaturedProducts { get; set; }
+        public List<ProductSummaryView> NewProducts { get; set; }
     }
 }
