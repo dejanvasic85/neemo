@@ -92,7 +92,12 @@
                         <div class="header">
                             <div class="row-fluid">
                                 <div class="span4">
-                                    <h1 class="logo"><strong>Magento Commerce</strong><a href="http://www.plazathemes.com/demo/ma_carstore_res/" title="Magento Commerce" class="logo"><img src="http://www.plazathemes.com/demo/ma_carstore_res/skin/frontend/default/ma_carstore/images/logo.png" alt="Magento Commerce"></a></h1>
+                                    <h1 class="logo">
+                                        <strong>Our Car Store</strong>
+                                        <a href="@Url.Action("Index", "Home")" title="Our Car Store" class="logo">
+                                            <img src="@Url.Content("~/Content/magento/images/logo.png")" alt="Our Car Store">
+                                        </a>
+                                    </h1>
                                 </div>
                                 <div class="span8">
                                     <div class="quick-access">
@@ -255,7 +260,9 @@
                         </div>
                         <div class="ma-nav-container visible-desktop">
                             <ul id="nav">
-                                <li class="home" onmouseout="toggleMenu(this,0)" onmouseover="toggleMenu(this,1)"><a href="http://www.plazathemes.com/demo/ma_carstore_res/" title="Home"><span>Home</span></a></li>
+                                <li class="home" onmouseout="toggleMenu(this,0)" onmouseover="toggleMenu(this,1)">
+                                    <a href="@Url.Action("Index", "Home")" title="Home"><span>Home</span></a>
+                                </li>
                                 <li class="level0 nav-1 level-top first parent">
                                     <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes.html" class="level-top">
                                         <span>Mercedes</span>
@@ -470,6 +477,6 @@
             </div>
         </div>
     </div>
-    
+
 </body>
 </html>
