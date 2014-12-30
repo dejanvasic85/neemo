@@ -17,6 +17,7 @@ namespace Neemo.Web.Controllers
 
         public ActionResult Index()
         {
+            // Fetch the featured/new/best-selling products for display
             var newProducts = _productService.GetNewProducts().Take(3).Select(Mapper.Map<Product, ProductSummaryView>);
             var featuredProducts = _productService.GetFeaturedProducts().Take(3).Select(Mapper.Map<Product, ProductSummaryView>);
             var bestSellingProducts = _productService.GetBestSellingProducts().Take(6).Select(Mapper.Map<Product, ProductSummaryView>);

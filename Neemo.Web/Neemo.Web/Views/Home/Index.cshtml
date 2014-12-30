@@ -208,7 +208,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="ma-featuredproductslider-container">
                                 <div class="ma-featured-sldier-title">
                                     <h2>New Products</h2>
@@ -231,7 +231,11 @@
                     <div class="col-right sidebar span4">
                         <div class="block block-list block-compare">
                             <div class="block-title">
-                                <strong><span>Compare Products                    </span></strong>
+                                <strong>
+                                    <span>
+                                        Compare Products
+                                    </span>
+                                </strong>
                             </div>
                             <div class="block-content">
                                 <p class="empty">You have no items to compare.</p>
@@ -246,7 +250,7 @@
                                     @foreach (var bestSeller in Model.BestSellingProducts)
                                     {
                                         <li class="item">
-                                            <a href="http://www.plazathemes.com/demo/ma_carstore_res/lorem-ipsum-dolor.html" 
+                                            <a href="http://www.plazathemes.com/demo/ma_carstore_res/lorem-ipsum-dolor.html"
                                                title="Lorem ipsum dolor" class="product-image">
                                                 <img src="@Url.Image(bestSeller.ImageId)" width="52" height="52" alt="@bestSeller.Title">
                                             </a>

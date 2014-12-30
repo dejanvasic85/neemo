@@ -8,6 +8,7 @@ namespace Neemo.Store
         List<Product> GetFeaturedProducts();
         List<Product> GetNewProducts();
         List<Product> GetBestSellingProducts();
+        Product GetProductById(int id);
     }
 
     public class ProductService : IProductService
@@ -32,6 +33,11 @@ namespace Neemo.Store
         public List<Product> GetBestSellingProducts()
         {
             return _productRepository.GetProducts().Where(p => p.IsBestSeller).ToList();
+        }
+
+        public Product GetProductById(int id)
+        {
+            return _productRepository.GetProducts().FirstOrDefault(p => p.ProductId == id);
         }
     }
 }

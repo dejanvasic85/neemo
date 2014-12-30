@@ -27,7 +27,8 @@ namespace Neemo.Web
                 WithName.Default);
 
             // FileStore image service requires http utility to initialise
-            container.RegisterType<IImageService, FileStoreImageService>(new InjectionConstructor(HttpContext.Current.Server.MapPath("~/")));
+            container.RegisterType<IImageService, FileImageService>(
+                new InjectionConstructor(HttpContext.Current.Server.MapPath("~/"), typeof(ISysConfig)));
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }

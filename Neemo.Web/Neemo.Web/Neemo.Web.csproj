@@ -181,6 +181,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -520,7 +521,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="ImageDatabase\" />
-    <Folder Include="Views\Image\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -528,7 +528,7 @@
     <Content Include="Content\magento\font\Metrophobic.ttf" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Shared\DisplayTemplates\ProductSummaryView.cshtml" />
-    <Content Include="Views\Home\ProductDetails.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Neemo.DataAccess\Neemo.DataAccess.csproj">

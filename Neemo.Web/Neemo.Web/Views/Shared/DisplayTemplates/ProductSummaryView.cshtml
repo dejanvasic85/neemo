@@ -1,16 +1,15 @@
-﻿@model Neemo.Web.Models.ProductSummaryView
-
+﻿@model ProductSummaryView
 
 <li class="Modelslider-item" style="width: 187px; float: left; display: block;">
     <div class="feadture-inner">
-        <a href="http://www.plazathemes.com/demo/ma_carstore_res/lorem-ipsum-dolor.html"
+        <a href="@Url.Product(Model.ProductId)"
            title="@Model.Title"
            class="product-image">
             <img src="@Url.Image(Model.ImageId)" alt="Lorem ipsum dolor">
         </a>
 
         <h2 class="product-name">
-            <a href="http://www.plazathemes.com/demo/ma_carstore_res/lorem-ipsum-dolor.html" title="Lorem ipsum dolor">
+            <a href="@Url.Product(Model.ProductId)" title="Lorem ipsum dolor">
                 @Model.Title
             </a>
         </h2>
@@ -22,7 +21,13 @@
         </div>
 
         <div class="actions">
-            <button type="button" title="Add to Cart" class="button btn-cart"><span><span>Add to Cart</span></span></button>
+            <button type="button" title="Add to Cart" class="button btn-cart">
+                <span>
+                    <span>
+                        Add to Cart
+                    </span>
+                </span>
+            </button>
         </div>
     </div>
 </li>

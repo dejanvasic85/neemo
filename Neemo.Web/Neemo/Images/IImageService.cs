@@ -6,18 +6,18 @@ namespace Neemo.Images
     public interface IImageService
     {
         ItemImage GetImage(string imageId);
-    }
+    }   
 
     /// <summary>
     /// Stores and loads files from the relative directory on the server
     /// </summary>
-    public class FileStoreImageService : IImageService
+    public class FileImageService : IImageService
     {
         private readonly string _baseDirectory;
         
-        public FileStoreImageService(string baseDirectory)
+        public FileImageService(string baseDirectory, ISysConfig config)
         {
-            _baseDirectory = baseDirectory + "ImageDatabase";
+            _baseDirectory = baseDirectory + config.ImageDatabaseFolderName;
         }
 
         public ItemImage GetImage(string imageId)
