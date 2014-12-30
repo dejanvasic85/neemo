@@ -142,7 +142,7 @@
 	padding: 0 10px 0 20px;
 	display: block;
 	cursor: pointer;
-	background: url(../images/arrow-li-category.png) 10px 50% no-repeat;
+	background: url(images/arrow-li-category.png) 10px 50% no-repeat;
 }
 
 
@@ -194,7 +194,7 @@
 	right: 8px;
 }
 .accordion span.head a { 
-	background: url(../images/menu_down.png) no-repeat !important;
+	background: url(images/menu_down.png) no-repeat !important;
 	color:#333333;
 	display:block;
 	height:15px;
@@ -203,13 +203,13 @@
 	border: 0;
 }
 .accordion li span.head a:hover, .accordion li.active>span.head a {
-	background: url(../images/menu_up.png) no-repeat !important;
+	background: url(images/menu_up.png) no-repeat !important;
 }
 .accordion li.selected span.head a {
-	background: url(../images/menu_up.png) no-repeat !important;
+	background: url(images/menu_up.png) no-repeat !important;
 }
 .accordion li.selected span.head a:hover {
-	background: url(../images/menu_down.png) no-repeat !important;
+	background: url(images/menu_down.png) no-repeat !important;
 }
 
 
@@ -351,7 +351,7 @@
 	color:#E26703; 
 }
 #ma-tree ul li a {
-	background: url(../images/bg-li.gif) no-repeat 0 50%;
+	background: url(images/bg-li.gif) no-repeat 0 50%;
 }
 #ma-tree ul li {
 	font-weight: normal;

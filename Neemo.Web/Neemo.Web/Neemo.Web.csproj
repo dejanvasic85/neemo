@@ -173,12 +173,16 @@
     <Content Include="Content\magento\bootstrap-2.3.2.css" />
     <Content Include="Content\magento\bootstrap-responsive-2.3.2.css" />
     <Content Include="Content\magento\css3.htc" />
+    <Content Include="Content\magento\images\arrow-li-category.png" />
+    <Content Include="Content\magento\images\bg-li.gif" />
     <Content Include="Content\magento\images\fancybox_loading.gif" />
     <Content Include="Content\magento\images\fancybox_overlay.png" />
     <Content Include="Content\magento\images\fancybox_sprite.png" />
     <Content Include="Content\magento\images\i_block-list.gif" />
     <Content Include="Content\magento\images\i_widget-link.gif" />
     <Content Include="Content\magento\images\i_widget-new.gif" />
+    <Content Include="Content\magento\images\menu_down.png" />
+    <Content Include="Content\magento\images\menu_up.png" />
     <Content Include="Content\magento\jquery-ui.css" />
     <Content Include="Content\magento\jquery.fancybox.css" />
     <Content Include="Content\magento\ma.banner7.css" />
