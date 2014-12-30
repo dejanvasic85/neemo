@@ -1,5 +1,5 @@
 .ma-nav-container {  }
-#nav { margin:0 auto; padding:0; font-size:15px;  background:url(../images/bg-nav.png) top left repeat-x; }
+#nav { margin:0 auto; padding:0; font-size:15px;  background:url(images/bg-nav.png) top left repeat-x; }
 
 /* All Levels */ /* Style consistent throughout all nav levels */
 #nav li { position:relative; text-align:left; }
@@ -8,11 +8,11 @@
 #nav a:hover { display:block; line-height:1.3em; text-decoration:none; }
 #nav span { display:block; cursor:pointer; white-space:nowrap; }
 #nav li ul span {white-space:normal; }
-#nav ul li.parent a { background:url(../images/bkg_nav2.gif) 100% 100% no-repeat; }
+#nav ul li.parent a { background:url(images/bkg_nav2.gif) 100% 100% no-repeat; }
 #nav ul li.parent li a { background-image:none; }
 
 /* 0 Level */
-#nav li { float:left; background:url(../images/bg-li-nav.png) top right no-repeat; padding-right: 2px; }
+#nav li { float:left; background:url(images/bg-li-nav.png) top right no-repeat; padding-right: 2px; }
 #nav li.last{ background:none; }
 #nav li.active a { color:#FFF;  }
 #nav a { float:left; padding:11px 15px 11px 15px; color:#242424; text-transform:uppercase; }
