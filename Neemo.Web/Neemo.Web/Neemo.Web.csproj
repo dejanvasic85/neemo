@@ -173,6 +173,7 @@
     <Content Include="Content\magento\bootstrap-2.3.2.css" />
     <Content Include="Content\magento\bootstrap-responsive-2.3.2.css" />
     <Content Include="Content\magento\css3.htc" />
+    <Content Include="Content\magento\fish_menu.css" />
     <Content Include="Content\magento\images\ajax-loader.gif" />
     <Content Include="Content\magento\images\arrow-li-category-hover-blue.png" />
     <Content Include="Content\magento\images\arrow-li-category-hover-green.png" />
@@ -429,9 +430,38 @@
     <Content Include="Content\magento\ma.verticalmenu.css" />
     <Content Include="Content\magento\print.css" />
     <Content Include="Content\magento\skin.css" />
+    <Content Include="Content\magento\styles-ie.css" />
+    <Content Include="Content\magento\styles-ie8.css" />
+    <Content Include="Content\magento\styles_black_red.css" />
     <Content Include="Content\magento\widgets.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\magento\ajax_cart_super.js" />
+    <Content Include="Scripts\magento\bootstrap-tooltip.js" />
+    <Content Include="Scripts\magento\bootstrap.min.js" />
+    <Content Include="Scripts\magento\builder.js" />
+    <Content Include="Scripts\magento\ccard.js" />
+    <Content Include="Scripts\magento\controls.js" />
+    <Content Include="Scripts\magento\cookies.js" />
+    <Content Include="Scripts\magento\dragdrop.js" />
+    <Content Include="Scripts\magento\ds-sleight.js" />
+    <Content Include="Scripts\magento\effects.js" />
+    <Content Include="Scripts\magento\form.js" />
+    <Content Include="Scripts\magento\ie6.js" />
+    <Content Include="Scripts\magento\jquery-ui.js" />
+    <Content Include="Scripts\magento\jquery.fancybox.js" />
+    <Content Include="Scripts\magento\js.js" />
+    <Content Include="Scripts\magento\ma.accordion.js" />
+    <Content Include="Scripts\magento\ma.dropdown.js" />
+    <Content Include="Scripts\magento\ma.flexslider.js" />
+    <Content Include="Scripts\magento\ma.jq.slide.js" />
+    <Content Include="Scripts\magento\ma.mobilemenu.js" />
+    <Content Include="Scripts\magento\ma.nivo.js" />
+    <Content Include="Scripts\magento\menu.js" />
+    <Content Include="Scripts\magento\prototype.js" />
+    <Content Include="Scripts\magento\slider.js" />
+    <Content Include="Scripts\magento\translate.js" />
+    <Content Include="Scripts\magento\validation.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -466,7 +496,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\magento\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
