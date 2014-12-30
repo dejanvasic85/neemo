@@ -174,7 +174,7 @@ html[xmlns] .ma-banner7-container .slides {display: block;}
 	height: 32px;
 	position: absolute;
 	z-index: 99;
-	background: url(../images/loading.gif) no-repeat ;
+	background: url(images/loading.gif) no-repeat ;
 	top: 50%;
 	left: 50%;
 	margin: -8px 0 0 -8px;

@@ -181,6 +181,7 @@
     <Content Include="Content\magento\images\i_block-list.gif" />
     <Content Include="Content\magento\images\i_widget-link.gif" />
     <Content Include="Content\magento\images\i_widget-new.gif" />
+    <Content Include="Content\magento\images\loading.gif" />
     <Content Include="Content\magento\images\menu_down.png" />
     <Content Include="Content\magento\images\menu_up.png" />
     <Content Include="Content\magento\jquery-ui.css" />
