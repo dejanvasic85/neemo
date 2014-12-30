@@ -173,6 +173,7 @@
     <Content Include="Content\magento\bootstrap-2.3.2.css" />
     <Content Include="Content\magento\bootstrap-responsive-2.3.2.css" />
     <Content Include="Content\magento\css3.htc" />
+    <Content Include="Content\magento\images\ajax-loader.gif" />
     <Content Include="Content\magento\images\arrow-li-category-hover-blue.png" />
     <Content Include="Content\magento\images\arrow-li-category-hover-green.png" />
     <Content Include="Content\magento\images\arrow-li-category-hover-orange.png" />
@@ -351,6 +352,11 @@
     <Content Include="Content\magento\images\i_type_list.gif" />
     <Content Include="Content\magento\images\i_widget-link.gif" />
     <Content Include="Content\magento\images\i_widget-new.gif" />
+    <Content Include="Content\magento\images\jslider.blue.png" />
+    <Content Include="Content\magento\images\jslider.plastic.png" />
+    <Content Include="Content\magento\images\jslider.png" />
+    <Content Include="Content\magento\images\jslider.round.plastic.png" />
+    <Content Include="Content\magento\images\jslider.round.png" />
     <Content Include="Content\magento\images\list.gif" />
     <Content Include="Content\magento\images\loading.gif" />
     <Content Include="Content\magento\images\logo.gif" />
@@ -409,6 +415,11 @@
     <Content Include="Content\magento\images\slider_btn_zoom_in.gif" />
     <Content Include="Content\magento\images\slider_btn_zoom_out.gif" />
     <Content Include="Content\magento\images\spacer.gif" />
+    <Content Include="Content\magento\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\magento\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\magento\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\magento\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\magento\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
     <Content Include="Content\magento\images\validation_advice_bg.gif" />
     <Content Include="Content\magento\images\wishlist.png" />
     <Content Include="Content\magento\jquery-ui.css" />
@@ -459,6 +470,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="Content\magento\font\Metrophobic.eot" />
+    <Content Include="Content\magento\font\Metrophobic.ttf" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <PropertyGroup>
