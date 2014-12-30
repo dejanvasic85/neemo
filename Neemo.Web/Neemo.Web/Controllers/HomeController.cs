@@ -19,11 +19,13 @@ namespace Neemo.Web.Controllers
         {
             var newProducts = _productService.GetNewProducts().Take(3).Select(Mapper.Map<Product, ProductSummaryView>);
             var featuredProducts = _productService.GetFeaturedProducts().Take(3).Select(Mapper.Map<Product, ProductSummaryView>);
-            
+            var bestSellingProducts = _productService.GetBestSellingProducts().Take(6).Select(Mapper.Map<Product, ProductSummaryView>);
+
             var homeModel = new HomeView
             {
                 NewProducts = newProducts.ToList(),
-                FeaturedProducts = featuredProducts.ToList()
+                FeaturedProducts = featuredProducts.ToList(),
+                BestSellingProducts = bestSellingProducts.ToList()
             };
 
             return View(homeModel);

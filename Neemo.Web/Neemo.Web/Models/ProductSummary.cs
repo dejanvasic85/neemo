@@ -7,5 +7,6 @@ namespace Neemo.Web.Models
     {
         public List<ProductSummaryView> FeaturedProducts { get; set; }
         public List<ProductSummaryView> NewProducts { get; set; }
+        public List<ProductSummaryView> BestSellingProducts { get; set; }
     }
 }

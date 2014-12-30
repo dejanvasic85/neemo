@@ -7,6 +7,7 @@ namespace Neemo.Store
     {
         List<Product> GetFeaturedProducts();
         List<Product> GetNewProducts();
+        List<Product> GetBestSellingProducts();
     }
 
     public class ProductService : IProductService
@@ -26,6 +27,11 @@ namespace Neemo.Store
         public List<Product> GetNewProducts()
         {
             return _productRepository.GetProducts().Where(p => p.IsFeatured).ToList();
+        }
+
+        public List<Product> GetBestSellingProducts()
+        {
+            return _productRepository.GetProducts().Where(p => p.IsBestSeller).ToList();
         }
     }
 }
