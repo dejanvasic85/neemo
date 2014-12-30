@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Images\IImageService.cs" />
+    <Compile Include="Images\ItemImage.cs" />
     <Compile Include="Store\IProductRepository.cs" />
     <Compile Include="Store\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -13,6 +13,9 @@ namespace Neemo.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // images
+            routes.MapRoute("images", url: "img/{id}", defaults: new {controller = "Image", action="Download"});
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
