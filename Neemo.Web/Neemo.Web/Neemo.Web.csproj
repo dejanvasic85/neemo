@@ -462,6 +462,7 @@
     <Content Include="Content\magento\styles-ie.css" />
     <Content Include="Content\magento\styles-ie8.css" />
     <Content Include="Content\magento\styles_black_red.css" />
+    <Content Include="Content\magento\toastr-2.0.1.css" />
     <Content Include="Content\magento\widgets.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -492,6 +493,7 @@
     <Content Include="Scripts\magento\menu.js" />
     <Content Include="Scripts\magento\prototype.js" />
     <Content Include="Scripts\magento\slider.js" />
+    <Content Include="Scripts\magento\toastr.js" />
     <Content Include="Scripts\magento\translate.js" />
     <Content Include="Scripts\magento\validation.js" />
     <Content Include="Scripts\_references.js" />

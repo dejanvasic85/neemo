@@ -15,6 +15,7 @@
                     <span>/ </span>
                 </li>
                 <li class="category3">
+                    @*Todo - Wire up the category search link*@
                     <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes.html" title="">
                         @Model.Category
                     </a>
@@ -83,7 +84,6 @@
                                 </div>
 
                                 <div class="product-options-bottom">
-
                                     <div class="price-box">
                                         <span class="regular-price" id="product-price-2_clone">
                                             <span class="price">@Model.Price.ToString("C")</span>
@@ -93,13 +93,20 @@
                                     <div class="add-to-cart">
                                         <label for="qty">Qty:</label>
                                         <input type="text" name="qty" id="qty" maxlength="12" value="1" title="Qty" data-numbers-only class="input-text qty">
-                                        <button type="button" title="Add to Cart" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span>Add to Cart</span></span></button>
+                                        <button type="button"
+                                                title="Add to Cart"
+                                                class="button btn-cart"
+                                                data-productid="@Model.ProductId"
+                                                data-carturl="@Url.Action("AddOrUpdate", "Cart")">
+                                            <span>
+                                                <span>
+                                                    Add to Cart
+                                                </span>
+                                            </span>
+                                        </button>
                                     </div>
-
                                 </div>
-
                             </div>
-
                         </div>
 
                         <div class="clearer"></div>
@@ -107,8 +114,9 @@
 
                     <div class="product-collateral">
                         <ul class="product-tabs">
-                            <li id="product_tabs_description" class=" active first"><a href="javascript:void(0)">Product Description</a></li>
+                            <li id="product_tabs_description" class=" active first">Product Description</li>
                         </ul>
+
                         @*Description*@
                         <div class="product-tabs-content" id="product_tabs_description_contents">
                             <h2>Details</h2>
