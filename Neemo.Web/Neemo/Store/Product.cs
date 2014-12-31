@@ -14,5 +14,10 @@
         public bool IsBestSeller { get; set; }
         public string Category { get; set; }
         public int AvailableQty { get; set; }
+
+        public bool IsDesiredQuantityAvailable(int qty)
+        {
+            return (AvailableQty - qty) >= 0;
+        }
     }
 }

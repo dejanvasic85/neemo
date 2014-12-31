@@ -25,5 +25,11 @@ namespace Neemo.ShoppingCart
         {
             return this._items.Sum(i => i.CalculatePrice());
         }
+
+        public void Checkout()
+        {
+            // Clear the items
+            this._items.Clear();
+        }
     }
 }

@@ -9,6 +9,7 @@ namespace Neemo.Store
         List<Product> GetNewProducts();
         List<Product> GetBestSellingProducts();
         Product GetProductById(int id);
+        bool CheckAvailability(int productId, int qty);
     }
 
     public class ProductService : IProductService
@@ -38,6 +39,15 @@ namespace Neemo.Store
         public Product GetProductById(int id)
         {
             return _productRepository.GetProducts().FirstOrDefault(p => p.ProductId == id);
+        }
+
+        public bool CheckAvailability(int productId, int qty)
+        {
+            var product = _productRepository.GetProducts().FirstOrDefault(p => p.ProductId == productId);
+            if (product == null)
+                return false;
+
+            return product.IsDesiredQuantityAvailable(qty);
         }
     }
 }
