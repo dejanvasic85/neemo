@@ -39,7 +39,7 @@ neemo.ui = (function ($, toastr, svc) {
 
         svc.addOrUpdate(me.data().productid, qty,
             function () {
-                toastr.success('Item added to cart');
+                toastr.success(qty + ' item(s) added to cart');
             },
             function () {
                 toastr.error('Looks like we are out of stock!');
