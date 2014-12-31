@@ -466,6 +466,7 @@
     <Content Include="Scripts\magento\bootstrap-tooltip.js" />
     <Content Include="Scripts\magento\bootstrap.min.js" />
     <Content Include="Scripts\magento\builder.js" />
+    <Content Include="Scripts\magento\calendar.js" />
     <Content Include="Scripts\magento\ccard.js" />
     <Content Include="Scripts\magento\controls.js" />
     <Content Include="Scripts\magento\cookies.js" />
