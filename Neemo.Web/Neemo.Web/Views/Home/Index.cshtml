@@ -158,36 +158,7 @@
                             <img style="display: none;" src="http://www.plazathemes.com/demo/ma_carstore_res/media/magentothem/banner7/slide-1.png">
                             <div class="nivo-caption"></div><div class="nivo-directionNav"><a class="nivo-prevNav">Prev</a><a class="nivo-nextNav">Next</a></div>
                         </div>
-                        <script type="text/javascript">
-                            $jq(window).load(function () {
-                                $jq('#ma-inivoslider').nivoSlider({
-                                    effect: 'random',
-                                    slices: 15,
-                                    boxCols: 8,
-                                    boxRows: 4,
-                                    animSpeed: 600,
-                                    pauseTime: 500000,
-                                    startSlide: 0,
-                                    controlNav: false,
-                                    controlNavThumbs: false,
-                                    pauseOnHover: true,
-                                    manualAdvance: false,
-                                    prevText: 'Prev',
-                                    nextText: 'Next',
-                                    afterLoad: function () {
-                                        $jq('.ma-loading').css("display", "none");
-                                        //$jq('.banner7-title, .banner7-des, .banner7-readmore').css("left","100px") ;
-                                    },
-                                    beforeChange: function () {
-                                        $jq('.banner7-title, .banner7-des').css("left", "-550px");
-                                        $jq('.banner7-readmore').css("left", "-1500px");
-                                    },
-                                    afterChange: function () {
-                                        $jq('.banner7-title, .banner7-des, .banner7-readmore').css("left", "100px")
-                                    }
-                                });
-                            });
-                        </script>
+
                     </div>
                 </div>
                 <!-- end enable -->				<div class="row-fluid">
@@ -224,8 +195,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
                     <div class="col-right sidebar span4">
@@ -257,7 +226,7 @@
 
                                 </ul>
                                 <!--  -->
-                                <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd', 'even', 'first', 'last'])</script>
+
                             </div>
                             <!-- end exist product -->
                         </div> <!-- end products list -->
@@ -269,3 +238,40 @@
         </div>
     </div>
 </div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $jq(window).load(function () {
+            $jq('#ma-inivoslider').nivoSlider({
+                effect: 'random',
+                slices: 15,
+                boxCols: 8,
+                boxRows: 4,
+                animSpeed: 600,
+                pauseTime: 500000,
+                startSlide: 0,
+                controlNav: false,
+                controlNavThumbs: false,
+                pauseOnHover: true,
+                manualAdvance: false,
+                prevText: 'Prev',
+                nextText: 'Next',
+                afterLoad: function () {
+                    $jq('.ma-loading').css("display", "none");
+                    //$jq('.banner7-title, .banner7-des, .banner7-readmore').css("left","100px") ;
+                },
+                beforeChange: function () {
+                    $jq('.banner7-title, .banner7-des').css("left", "-550px");
+                    $jq('.banner7-readmore').css("left", "-1500px");
+                },
+                afterChange: function () {
+                    $jq('.banner7-title, .banner7-des, .banner7-readmore').css("left", "100px")
+                }
+            });
+        });
+    </script>
+
+    <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd', 'even', 'first', 'last'])</script>
+
+}
