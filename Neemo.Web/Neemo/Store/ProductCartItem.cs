@@ -5,8 +5,11 @@
     public class ProductCartItem : ICartItem
     {
         private readonly Product _product;
+
         public int Quantity { get; private set; }
         public int Id { get; private set; }
+        public string Title { get; private set; }
+        public string ImageId { get; private set; }
 
         public ProductCartItem(Product product, int quantity)
         {
@@ -18,6 +21,9 @@
 
             this.Quantity = quantity;
             this.Id = product.ProductId;
+            this.Title = product.Title;
+            this.ImageId = product.ImageId;
+
             this._product = product;
         }
 

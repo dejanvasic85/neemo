@@ -46,5 +46,10 @@ namespace Neemo.ShoppingCart
         {
             _items.RemoveAll(p => p.Id == id);
         }
+
+        public ICartItem[] GetItems()
+        {
+            return _items.ToArray();
+        }
     }
 }

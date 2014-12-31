@@ -45,4 +45,4 @@ neemo.ui = (function ($, toastr, svc, shoppingcart) {
 
     
 
-})(jQuery, toastr, neemo.svc);
+})(jQuery, toastr, neemo.svc, neemo.cartInstance);

@@ -8,6 +8,7 @@ namespace Neemo.Web
         {
             Mapper.CreateMap<Store.Product, Models.ProductSummaryView>();
             Mapper.CreateMap<Store.Product, Models.ProductDetailView>();
+            Mapper.CreateMap<Store.ProductCartItem, Models.CartItemView>();
         }
     }
 }

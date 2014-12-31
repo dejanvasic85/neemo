@@ -491,19 +491,24 @@
         neemo.endpoints = {
             cart: {
                 addProduct: '@Url.Action("AddProduct", "Cart")',
-                updateProduct: '@Url.Action("UpdateProduct", "Cart")'
+                updateProduct: '@Url.Action("UpdateProduct", "Cart")',
+                removeProduct: '@Url.Action("RemoveProduct", "Cart")',
+                getItems : '@Url.Action("GetCurrentItems", "Cart")'
             }
         };
     </script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/neemo-svc.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/neemo-models.js")"></script>
     <script>
+        
         neemo.cartInstance = new neemo.shoppingCart(null);
+
+        ko.applyBindings(neemo.cartInstance);
+
     </script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/neemo-ui.js")"></script>
 
     @RenderSection("Scripts", false)
 </body>
-
 </html>
 

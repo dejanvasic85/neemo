@@ -1,7 +1,9 @@
 ﻿namespace Neemo.Web.Controllers
 {
+    using AutoMapper;
     using ShoppingCart;
     using Store;
+    using System.Linq;
     using System.Web.Mvc;
 
     public class CartController : Controller
@@ -63,11 +65,22 @@
             var cart = _cartContext.Current();
             if (cart.DoesNotHaveItem(productId))
             {
-                return Json(new {ProductNotInCart = true});
+                return Json(new { ProductNotInCart = true });
             }
 
             cart.RemoveItem(productId);
-            return Json(new {Removed = true});
+            return Json(new { Removed = true });
+        }
+
+        [HttpGet]
+        public ActionResult GetCurrentItems()
+        {
+            var items = _cartContext.Current().GetItems().OfType<ProductCartItem>();
+
+            // Map to view model
+            var viewModel = items.Select(Mapper.Map<ProductCartItem, Models.CartItemView>);
+
+            return Json(viewModel, JsonRequestBehavior.AllowGet);
         }
     }
 }
