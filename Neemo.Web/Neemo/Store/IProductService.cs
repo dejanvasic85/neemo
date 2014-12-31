@@ -10,6 +10,7 @@ namespace Neemo.Store
         List<Product> GetBestSellingProducts();
         Product GetProductById(int id);
         bool CheckAvailability(int productId, int qty);
+        bool IsInStock(int productId);
     }
 
     public class ProductService : IProductService
@@ -48,6 +49,12 @@ namespace Neemo.Store
                 return false;
 
             return product.IsDesiredQuantityAvailable(qty);
+        }
+
+        public bool IsInStock(int productId)
+        {
+            // Should return true if there is at least one in there!
+            return CheckAvailability(productId, 1);
         }
     }
 }
