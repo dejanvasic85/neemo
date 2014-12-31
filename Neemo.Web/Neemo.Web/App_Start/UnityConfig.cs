@@ -1,13 +1,14 @@
-using System;
-using System.Reflection;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.Practices.Unity;
-using Neemo.Images;
-using Unity.Mvc5;
-
 namespace Neemo.Web
 {
+    using Images;
+    using Infrastructure;
+    using Microsoft.Practices.Unity;
+    using ShoppingCart;
+    using System.Reflection;
+    using System.Web;
+    using System.Web.Mvc;
+    using Unity.Mvc5;
+
     public static class UnityConfig
     {
         public static void RegisterComponents()
@@ -29,6 +30,9 @@ namespace Neemo.Web
             // FileStore image service requires http utility to initialise
             container.RegisterType<IImageService, FileImageService>(
                 new InjectionConstructor(HttpContext.Current.Server.MapPath("~/"), typeof(ISysConfig)));
+
+            // ICartContext (session based)
+            container.RegisterType<ICartContext, SessionCartContext>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
