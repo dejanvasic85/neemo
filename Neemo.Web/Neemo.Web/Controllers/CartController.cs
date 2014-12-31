@@ -46,15 +46,28 @@
         {
             // Validate
             var cart = _cartContext.Current();
-            if (cart.DoesNotHaveProduct(productId))
-                return Json(new {ProductNotInCart = true});
+            if (cart.DoesNotHaveItem(productId))
+                return Json(new { ProductNotInCart = true });
 
             var hasEnoughForRequest = _productService.CheckAvailability(productId, qty);
             if (!hasEnoughForRequest)
                 return Json(new { QuantityTooLarge = true });
 
-            cart.UpdateProduct(productId, qty);
+            cart.UpdateItem(productId, qty);
             return Json(new { Updated = true });
+        }
+
+        [HttpPost]
+        public ActionResult RemoveProduct(int productId)
+        {
+            var cart = _cartContext.Current();
+            if (cart.DoesNotHaveItem(productId))
+            {
+                return Json(new {ProductNotInCart = true});
+            }
+
+            cart.RemoveItem(productId);
+            return Json(new {Removed = true});
         }
     }
 }
