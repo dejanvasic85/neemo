@@ -10,6 +10,7 @@
         public int Id { get; private set; }
         public string Title { get; private set; }
         public string ImageId { get; private set; }
+        public decimal Price { get; private set; }
 
         public ProductCartItem(Product product, int quantity)
         {
@@ -23,6 +24,7 @@
             this.Id = product.ProductId;
             this.Title = product.Title;
             this.ImageId = product.ImageId;
+            this.Price = product.Price;
 
             this._product = product;
         }

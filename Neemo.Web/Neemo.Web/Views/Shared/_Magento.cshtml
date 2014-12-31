@@ -500,8 +500,9 @@
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/neemo-svc.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/neemo-models.js")"></script>
     <script>
-        
-        neemo.cartInstance = new neemo.shoppingCart(null{});
+
+        var cartItems = neemo.svc.getItems();
+        neemo.cartInstance = new neemo.shoppingCart(cartItems);
 
         ko.applyBindings(neemo.cartInstance);
 
