@@ -27,9 +27,7 @@
         </div>
         <div class="row-fluid">
             <div class="col-main span9">
-                <script type="text/javascript">
-                    var optionsPrice = new Product.OptionsPrice({ "productId": "2", "priceFormat": { "pattern": "$%s", "precision": 2, "requiredPrecision": 2, "decimalSymbol": ".", "groupSymbol": ",", "groupLength": 3, "integerRequired": 1 }, "includeTax": "false", "showIncludeTax": false, "showBothPrices": false, "productPrice": 399, "productOldPrice": 399, "priceInclTax": 399, "priceExclTax": 399, "skipCalculate": 1, "defaultTax": 0, "currentTax": 0, "idSuffix": "_clone", "oldPlusDisposition": 0, "plusDisposition": 0, "plusDispositionTax": 0, "oldMinusDisposition": 0, "minusDisposition": 0, "tierPrices": [], "tierPricesInclTax": [] });
-                </script>
+
                 <div id="messages_product_view"></div>
                 <div class="product-view">
                     <div class="product-name">
@@ -59,18 +57,18 @@
                                         @foreach (var img in Model.Images)
                                         {
                                             @*<li>
-                                                <a href="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/image/1200x1200/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-1_1.png" class="cloud-zoom-gallery" title="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/image/500x500/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-1_1.png" rel="useZoom: 'ma-zoom1', smallImage: 'http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/image/265x/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-1_1.png'">
-                                                    <img src="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/thumbnail/56x/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-1_1.png" width="56" height="56" alt="">
-                                                </a>
-                                            </li>*@
+                                                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/image/1200x1200/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-1_1.png" class="cloud-zoom-gallery" title="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/image/500x500/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-1_1.png" rel="useZoom: 'ma-zoom1', smallImage: 'http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/image/265x/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-1_1.png'">
+                                                        <img src="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/thumbnail/56x/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-1_1.png" width="56" height="56" alt="">
+                                                    </a>
+                                                </li>*@
                                             <li>
                                                 <a class="cloud-zoom-gallery">
-                                                    <img src="@Url.Image(img)" width="56" height="56" alt="" title=""/>
+                                                    <img src="@Url.Image(img)" width="56" height="56" alt="" title="" />
                                                 </a>
                                             </li>
                                         }
                                     </ul>
-                                   
+
                                 </div>
                             </div>
 
@@ -110,223 +108,7 @@
 
 
                                 <div class="product-options" id="product-options-wrapper">
-                                    <script type="text/javascript">
-                                        //<![CDATA[
-                                        var DateOption = Class.create({
 
-                                            getDaysInMonth: function (month, year) {
-                                                var curDate = new Date();
-                                                if (!month) {
-                                                    month = curDate.getMonth();
-                                                }
-                                                if (2 == month && !year) { // leap year assumption for unknown year
-                                                    return 29;
-                                                }
-                                                if (!year) {
-                                                    year = curDate.getFullYear();
-                                                }
-                                                return 32 - new Date(year, month - 1, 32).getDate();
-                                            },
-
-                                            reloadMonth: function (event) {
-                                                var selectEl = event.findElement();
-                                                var idParts = selectEl.id.split("_");
-                                                if (idParts.length != 3) {
-                                                    return false;
-                                                }
-                                                var optionIdPrefix = idParts[0] + "_" + idParts[1];
-                                                var month = parseInt($(optionIdPrefix + "_month").value);
-                                                var year = parseInt($(optionIdPrefix + "_year").value);
-                                                var dayEl = $(optionIdPrefix + "_day");
-
-                                                var days = this.getDaysInMonth(month, year);
-
-                                                //remove days
-                                                for (var i = dayEl.options.length - 1; i >= 0; i--) {
-                                                    if (dayEl.options[i].value > days) {
-                                                        dayEl.remove(dayEl.options[i].index);
-                                                    }
-                                                }
-
-                                                // add days
-                                                var lastDay = parseInt(dayEl.options[dayEl.options.length - 1].value);
-                                                for (i = lastDay + 1; i <= days; i++) {
-                                                    this.addOption(dayEl, i, i);
-                                                }
-                                            },
-
-                                            addOption: function (select, text, value) {
-                                                var option = document.createElement('OPTION');
-                                                option.value = value;
-                                                option.text = text;
-
-                                                if (select.options.add) {
-                                                    select.options.add(option);
-                                                } else {
-                                                    select.appendChild(option);
-                                                }
-                                            }
-                                        });
-                                        dateOption = new DateOption();
-                                        //]]>
-                                    </script>
-
-                                    <script type="text/javascript">
-                                        //<![CDATA[
-                                        var optionFileUpload = {
-                                            productForm: $('product_addtocart_form'),
-                                            formAction: '',
-                                            formElements: {},
-                                            upload: function (element) {
-                                                this.formElements = this.productForm.select('input', 'select', 'textarea', 'button');
-                                                this.removeRequire(element.readAttribute('id').sub('option_', ''));
-
-                                                template = '<iframe id="upload_target" name="upload_target" style="width:0; height:0; border:0;"><\/iframe>';
-
-                                                Element.insert($('option_' + element.readAttribute('id').sub('option_', '') + '_uploaded_file'), { after: template });
-
-                                                this.formAction = this.productForm.action;
-
-                                                var baseUrl = 'http://www.plazathemes.com/demo/ma_carstore_res/catalog/product/upload/';
-                                                var urlExt = 'option_id/' + element.readAttribute('id').sub('option_', '');
-
-                                                this.productForm.action = parseSidUrl(baseUrl, urlExt);
-                                                this.productForm.target = 'upload_target';
-                                                this.productForm.submit();
-                                                this.productForm.target = '';
-                                                this.productForm.action = this.formAction;
-                                            },
-                                            removeRequire: function (skipElementId) {
-                                                for (var i = 0; i < this.formElements.length; i++) {
-                                                    if (this.formElements[i].readAttribute('id') != 'option_' + skipElementId + '_file' && this.formElements[i].type != 'button') {
-                                                        this.formElements[i].disabled = 'disabled';
-                                                    }
-                                                }
-                                            },
-                                            addRequire: function (skipElementId) {
-                                                for (var i = 0; i < this.formElements.length; i++) {
-                                                    if (this.formElements[i].readAttribute('name') != 'options_' + skipElementId + '_file' && this.formElements[i].type != 'button') {
-                                                        this.formElements[i].disabled = '';
-                                                    }
-                                                }
-                                            },
-                                            uploadCallback: function (data) {
-                                                this.addRequire(data.optionId);
-                                                $('upload_target').remove();
-
-                                                if (data.error) {
-
-                                                } else {
-                                                    $('option_' + data.optionId + '_uploaded_file').value = data.fileName;
-                                                    $('option_' + data.optionId + '_file').value = '';
-                                                    $('option_' + data.optionId + '_file').hide();
-                                                    $('option_' + data.optionId + '').hide();
-                                                    template = '<div id="option_' + data.optionId + '_file_box"><a href="#"><img src="var/options/' + data.fileName + '" alt=""><\/a><a href="#" onclick="optionFileUpload.removeFile(' + data.optionId + ')" title="Remove file" \/>Remove file<\/a>';
-
-                                                    Element.insert($('option_' + data.optionId + '_uploaded_file'), { after: template });
-                                                }
-                                            },
-                                            removeFile: function (optionId) {
-                                                $('option_' + optionId + '_uploaded_file').value = '';
-                                                $('option_' + optionId + '_file').show();
-                                                $('option_' + optionId + '').show();
-
-                                                $('option_' + optionId + '_file_box').remove();
-                                            }
-                                        }
-                                        var optionTextCounter = {
-                                            count: function (field, cntfield, maxlimit) {
-                                                if (field.value.length > maxlimit) {
-                                                    field.value = field.value.substring(0, maxlimit);
-                                                } else {
-                                                    cntfield.innerHTML = maxlimit - field.value.length;
-                                                }
-                                            }
-                                        }
-
-                                        Product.Options = Class.create();
-                                        Product.Options.prototype = {
-                                            initialize: function (config) {
-                                                this.config = config;
-                                                this.reloadPrice();
-                                                document.observe("dom:loaded", this.reloadPrice.bind(this));
-                                            },
-                                            reloadPrice: function () {
-                                                var config = this.config;
-                                                var skipIds = [];
-                                                $$('body .product-custom-option').each(function (element) {
-                                                    var optionId = 0;
-                                                    element.name.sub(/[0-9]+/, function (match) {
-                                                        optionId = parseInt(match[0], 10);
-                                                    });
-                                                    if (config[optionId]) {
-                                                        var configOptions = config[optionId];
-                                                        var curConfig = { price: 0 };
-                                                        if (element.type == 'checkbox' || element.type == 'radio') {
-                                                            if (element.checked) {
-                                                                if (typeof configOptions[element.getValue()] != 'undefined') {
-                                                                    curConfig = configOptions[element.getValue()];
-                                                                }
-                                                            }
-                                                        } else if (element.hasClassName('datetime-picker') && !skipIds.include(optionId)) {
-                                                            dateSelected = true;
-                                                            $$('.product-custom-option[id^="options_' + optionId + '"]').each(function (dt) {
-                                                                if (dt.getValue() == '') {
-                                                                    dateSelected = false;
-                                                                }
-                                                            });
-                                                            if (dateSelected) {
-                                                                curConfig = configOptions;
-                                                                skipIds[optionId] = optionId;
-                                                            }
-                                                        } else if (element.type == 'select-one' || element.type == 'select-multiple') {
-                                                            if ('options' in element) {
-                                                                $A(element.options).each(function (selectOption) {
-                                                                    if ('selected' in selectOption && selectOption.selected) {
-                                                                        if (typeof (configOptions[selectOption.value]) != 'undefined') {
-                                                                            curConfig = configOptions[selectOption.value];
-                                                                        }
-                                                                    }
-                                                                });
-                                                            }
-                                                        } else {
-                                                            if (element.getValue().strip() != '') {
-                                                                curConfig = configOptions;
-                                                            }
-                                                        }
-                                                        if (element.type == 'select-multiple' && ('options' in element)) {
-                                                            $A(element.options).each(function (selectOption) {
-                                                                if (('selected' in selectOption) && typeof (configOptions[selectOption.value]) != 'undefined') {
-                                                                    if (selectOption.selected) {
-                                                                        curConfig = configOptions[selectOption.value];
-                                                                    } else {
-                                                                        curConfig = { price: 0 };
-                                                                    }
-                                                                    optionsPrice.addCustomPrices(optionId + '-' + selectOption.value, curConfig);
-                                                                    optionsPrice.reload();
-                                                                }
-                                                            });
-                                                        } else {
-                                                            optionsPrice.addCustomPrices(element.id || optionId, curConfig);
-                                                            optionsPrice.reload();
-                                                        }
-                                                    }
-                                                });
-                                            }
-                                        }
-                                        function validateOptionsCallback(elmId, result) {
-                                            var container = $(elmId).up('ul.options-list');
-                                            if (result == 'failed') {
-                                                container.removeClassName('validation-passed');
-                                                container.addClassName('validation-failed');
-                                            } else {
-                                                container.removeClassName('validation-failed');
-                                                container.addClassName('validation-passed');
-                                            }
-                                        }
-                                        var opConfig = new Product.Options({ "2": { "3": { "price": 60, "oldPrice": 60, "priceValue": "60.0000", "type": "fixed", "excludeTax": 60, "includeTax": 60 }, "4": { "price": 65, "oldPrice": 65, "priceValue": "65.0000", "type": "fixed", "excludeTax": 65, "includeTax": 65 } }, "1": { "2": { "price": 65, "oldPrice": 65, "priceValue": "65.0000", "type": "fixed", "excludeTax": 65, "includeTax": 65 }, "1": { "price": 56, "oldPrice": 56, "priceValue": "56.0000", "type": "fixed", "excludeTax": 56, "includeTax": 56 } } });
-                                        //]]>
-                                    </script>
                                     <dl class="last">
 
                                         <dt><label class="required"><em>*</em>Color</label></dt>
@@ -344,69 +126,10 @@
                                         </dd>
                                     </dl>
 
-                                    <script type="text/javascript">
-                                        //<![CDATA[
-                                        enUS = { "m": { "wide": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], "abbr": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"] } }; // en_US locale reference
-                                        Calendar._DN = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]; // full day names
-                                        Calendar._SDN = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]; // short day names
-                                        Calendar._FD = 0; // First day of the week. "0" means display Sunday first, "1" means display Monday first, etc.
-                                        Calendar._MN = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; // full month names
-                                        Calendar._SMN = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]; // short month names
-                                        Calendar._am = "AM"; // am/pm
-                                        Calendar._pm = "PM";
 
-                                        // tooltips
-                                        Calendar._TT = {};
-                                        Calendar._TT["INFO"] = "About the calendar";
-
-                                        Calendar._TT["ABOUT"] =
-                                            "DHTML Date/Time Selector\n" +
-                                            "(c) dynarch.com 2002-2005 / Author: Mihai Bazon\n" +
-                                            "For latest version visit: http://www.dynarch.com/projects/calendar/\n" +
-                                            "Distributed under GNU LGPL. See http://gnu.org/licenses/lgpl.html for details." +
-                                            "\n\n" +
-                                            "Date selection:\n" +
-                                            "- Use the \xab, \xbb buttons to select year\n" +
-                                            "- Use the " + String.fromCharCode(0x2039) + ", " + String.fromCharCode(0x203a) + " buttons to select month\n" +
-                                            "- Hold mouse button on any of the above buttons for faster selection.";
-                                        Calendar._TT["ABOUT_TIME"] = "\n\n" +
-                                            "Time selection:\n" +
-                                            "- Click on any of the time parts to increase it\n" +
-                                            "- or Shift-click to decrease it\n" +
-                                            "- or click and drag for faster selection.";
-
-                                        Calendar._TT["PREV_YEAR"] = "Prev. year (hold for menu)";
-                                        Calendar._TT["PREV_MONTH"] = "Prev. month (hold for menu)";
-                                        Calendar._TT["GO_TODAY"] = "Go Today";
-                                        Calendar._TT["NEXT_MONTH"] = "Next month (hold for menu)";
-                                        Calendar._TT["NEXT_YEAR"] = "Next year (hold for menu)";
-                                        Calendar._TT["SEL_DATE"] = "Select date";
-                                        Calendar._TT["DRAG_TO_MOVE"] = "Drag to move";
-                                        Calendar._TT["PART_TODAY"] = ' (' + "Today" + ')';
-
-                                        // the following is to inform that "%s" is to be the first day of week
-                                        Calendar._TT["DAY_FIRST"] = "Display %s first";
-
-                                        // This may be locale-dependent. It specifies the week-end days, as an array
-                                        // of comma-separated numbers. The numbers are from 0 to 6: 0 means Sunday, 1
-                                        // means Monday, etc.
-                                        Calendar._TT["WEEKEND"] = "0,6";
-
-                                        Calendar._TT["CLOSE"] = "Close";
-                                        Calendar._TT["TODAY"] = "Today";
-                                        Calendar._TT["TIME_PART"] = "(Shift-)Click or drag to change value";
-
-                                        // date formats
-                                        Calendar._TT["DEF_DATE_FORMAT"] = "%b %e, %Y";
-                                        Calendar._TT["TT_DATE_FORMAT"] = "%B %e, %Y";
-
-                                        Calendar._TT["WK"] = "Week";
-                                        Calendar._TT["TIME"] = "Time:";
-                                        //]]>
-                                    </script>
                                     <p class="required">* Required Fields</p>
                                 </div>
-                                <script type="text/javascript">decorateGeneric($$('#product-options-wrapper dl'), ['last']);</script>
+                                
                                 <div class="product-options-bottom">
 
                                     <div class="price-box">
@@ -565,7 +288,7 @@
                             </li>
                         </ul>
                         <!--  -->
-                        <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd', 'even', 'first', 'last'])</script>
+
                     </div>
                     <!-- end exist product -->
                 </div> <!-- end products list -->
@@ -575,3 +298,138 @@
         </div>
     </div>
 </div>
+
+@section Scripts{
+
+    @*<script type="text/javascript">
+        var optionsPrice = new Product.OptionsPrice({ "productId": "2", "priceFormat": { "pattern": "$%s", "precision": 2, "requiredPrecision": 2, "decimalSymbol": ".", "groupSymbol": ",", "groupLength": 3, "integerRequired": 1 }, "includeTax": "false", "showIncludeTax": false, "showBothPrices": false, "productPrice": 399, "productOldPrice": 399, "priceInclTax": 399, "priceExclTax": 399, "skipCalculate": 1, "defaultTax": 0, "currentTax": 0, "idSuffix": "_clone", "oldPlusDisposition": 0, "plusDisposition": 0, "plusDispositionTax": 0, "oldMinusDisposition": 0, "minusDisposition": 0, "tierPrices": [], "tierPricesInclTax": [] });
+    </script>*@
+
+    <script type="text/javascript">
+        //<![CDATA[
+        var DateOption = Class.create({
+
+            getDaysInMonth: function (month, year) {
+                var curDate = new Date();
+                if (!month) {
+                    month = curDate.getMonth();
+                }
+                if (2 == month && !year) { // leap year assumption for unknown year
+                    return 29;
+                }
+                if (!year) {
+                    year = curDate.getFullYear();
+                }
+                return 32 - new Date(year, month - 1, 32).getDate();
+            },
+
+            reloadMonth: function (event) {
+                var selectEl = event.findElement();
+                var idParts = selectEl.id.split("_");
+                if (idParts.length != 3) {
+                    return false;
+                }
+                var optionIdPrefix = idParts[0] + "_" + idParts[1];
+                var month = parseInt($(optionIdPrefix + "_month").value);
+                var year = parseInt($(optionIdPrefix + "_year").value);
+                var dayEl = $(optionIdPrefix + "_day");
+
+                var days = this.getDaysInMonth(month, year);
+
+                //remove days
+                for (var i = dayEl.options.length - 1; i >= 0; i--) {
+                    if (dayEl.options[i].value > days) {
+                        dayEl.remove(dayEl.options[i].index);
+                    }
+                }
+
+                // add days
+                var lastDay = parseInt(dayEl.options[dayEl.options.length - 1].value);
+                for (i = lastDay + 1; i <= days; i++) {
+                    this.addOption(dayEl, i, i);
+                }
+            },
+
+            addOption: function (select, text, value) {
+                var option = document.createElement('OPTION');
+                option.value = value;
+                option.text = text;
+
+                if (select.options.add) {
+                    select.options.add(option);
+                } else {
+                    select.appendChild(option);
+                }
+            }
+        });
+        dateOption = new DateOption();
+        //]]>
+    </script>
+
+   
+    <script type="text/javascript">
+        //<![CDATA[
+        enUS = { "m": { "wide": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], "abbr": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"] } }; // en_US locale reference
+        Calendar._DN = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]; // full day names
+        Calendar._SDN = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]; // short day names
+        Calendar._FD = 0; // First day of the week. "0" means display Sunday first, "1" means display Monday first, etc.
+        Calendar._MN = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; // full month names
+        Calendar._SMN = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]; // short month names
+        Calendar._am = "AM"; // am/pm
+        Calendar._pm = "PM";
+
+        // tooltips
+        Calendar._TT = {};
+        Calendar._TT["INFO"] = "About the calendar";
+
+        Calendar._TT["ABOUT"] =
+            "DHTML Date/Time Selector\n" +
+            "(c) dynarch.com 2002-2005 / Author: Mihai Bazon\n" +
+            "For latest version visit: http://www.dynarch.com/projects/calendar/\n" +
+            "Distributed under GNU LGPL. See http://gnu.org/licenses/lgpl.html for details." +
+            "\n\n" +
+            "Date selection:\n" +
+            "- Use the \xab, \xbb buttons to select year\n" +
+            "- Use the " + String.fromCharCode(0x2039) + ", " + String.fromCharCode(0x203a) + " buttons to select month\n" +
+            "- Hold mouse button on any of the above buttons for faster selection.";
+        Calendar._TT["ABOUT_TIME"] = "\n\n" +
+            "Time selection:\n" +
+            "- Click on any of the time parts to increase it\n" +
+            "- or Shift-click to decrease it\n" +
+            "- or click and drag for faster selection.";
+
+        Calendar._TT["PREV_YEAR"] = "Prev. year (hold for menu)";
+        Calendar._TT["PREV_MONTH"] = "Prev. month (hold for menu)";
+        Calendar._TT["GO_TODAY"] = "Go Today";
+        Calendar._TT["NEXT_MONTH"] = "Next month (hold for menu)";
+        Calendar._TT["NEXT_YEAR"] = "Next year (hold for menu)";
+        Calendar._TT["SEL_DATE"] = "Select date";
+        Calendar._TT["DRAG_TO_MOVE"] = "Drag to move";
+        Calendar._TT["PART_TODAY"] = ' (' + "Today" + ')';
+
+        // the following is to inform that "%s" is to be the first day of week
+        Calendar._TT["DAY_FIRST"] = "Display %s first";
+
+        // This may be locale-dependent. It specifies the week-end days, as an array
+        // of comma-separated numbers. The numbers are from 0 to 6: 0 means Sunday, 1
+        // means Monday, etc.
+        Calendar._TT["WEEKEND"] = "0,6";
+
+        Calendar._TT["CLOSE"] = "Close";
+        Calendar._TT["TODAY"] = "Today";
+        Calendar._TT["TIME_PART"] = "(Shift-)Click or drag to change value";
+
+        // date formats
+        Calendar._TT["DEF_DATE_FORMAT"] = "%b %e, %Y";
+        Calendar._TT["TT_DATE_FORMAT"] = "%B %e, %Y";
+
+        Calendar._TT["WK"] = "Week";
+        Calendar._TT["TIME"] = "Time:";
+        //]]>
+    </script>
+
+
+    <script type="text/javascript">decorateGeneric($$('#product-options-wrapper dl'), ['last']);</script>
+
+    <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd', 'even', 'first', 'last'])</script>
+}

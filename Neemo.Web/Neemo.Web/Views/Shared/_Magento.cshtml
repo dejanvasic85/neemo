@@ -1,155 +1,156 @@
 ﻿<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Car Store - @ViewBag.Title</title>
-    <meta name="description" content="Default Description">
-    <meta name="keywords" content="Magento, Varien, E-commerce">
-    <meta name="robots" content="INDEX,FOLLOW">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
-    <link rel="icon" href="@Url.Content("~/favicon.ico")" type="image/x-icon">
-    <link rel="shortcut icon" href="@Url.Content("~/favicon.ico")" type="image/x-icon">
-    <link media="all" href="@Url.Content("~/Content/magento/skin.css")" type="text/css" rel="stylesheet">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Car Store - @ViewBag.Title</title>
+        <meta name="description" content="Default Description">
+        <meta name="keywords" content="Magento, Varien, E-commerce">
+        <meta name="robots" content="INDEX,FOLLOW">
+        <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+        <link rel="icon" href="@Url.Content("~/favicon.ico")" type="image/x-icon">
+        <link rel="shortcut icon" href="@Url.Content("~/favicon.ico")" type="image/x-icon">
+        <link media="all" href="@Url.Content("~/Content/magento/skin.css")" type="text/css" rel="stylesheet">
 
-    <!--[if lt IE 7]>
-    <script type="text/javascript">
-    //<![CDATA[
-        var BLANK_URL = 'http://www.plazathemes.com/demo/ma_carstore_res/js/blank.html';
-        var BLANK_IMG = 'http://www.plazathemes.com/demo/ma_carstore_res/js/spacer.gif';
-    //]]>
-    </script>
-    <![endif]-->
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/bootstrap-2.3.2.css")" media="all">
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/bootstrap-responsive-2.3.2.css")" media="all">
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/widgets.css")" media="all">
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/jquery.fancybox.css")" media="all">
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/ajax_cart_super.css")" media="all">
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/jquery-ui.css")" media="all">
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/ma.verticalmenu.css")" media="all">
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/ma.banner7.css")" media="all">
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/ma.featuredslider.css")" media="all">
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/print.css")" media="print">
+        <!--[if lt IE 7]>
+            <script type="text/javascript">
+                //<![CDATA[
+                var BLANK_URL = 'http://www.plazathemes.com/demo/ma_carstore_res/js/blank.html';
+                var BLANK_IMG = 'http://www.plazathemes.com/demo/ma_carstore_res/js/spacer.gif';
+                //]]>
+            </script>
+        <![endif]-->
+        <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/bootstrap-2.3.2.css")" media="all">
+        <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/bootstrap-responsive-2.3.2.css")" media="all">
+        <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/widgets.css")" media="all">
+        <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/jquery.fancybox.css")" media="all">
+        <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/ajax_cart_super.css")" media="all">
+        <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/jquery-ui.css")" media="all">
+        <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/ma.verticalmenu.css")" media="all">
+        <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/ma.banner7.css")" media="all">
+        <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/ma.featuredslider.css")" media="all">
+        <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/print.css")" media="print">
 
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/prototype.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/ccard.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/validation.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/builder.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/effects.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/dragdrop.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/controls.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/slider.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/js.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/form.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/menu.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/translate.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/cookies.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/ma.jq.slide.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/bootstrap.min.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/bootstrap-tooltip.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/ma.mobilemenu.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/ajax_cart_super.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/jquery.fancybox.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/jquery-ui.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/ma.dropdown.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/ma.accordion.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/ma.flexslider.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/ma.nivo.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/calendar.js")"></script>
-    <!--[if lt IE 9]>
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/styles-ie8.css")" media="all" />
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/styles-ie.css")" media="all" />
-    <![endif]-->
-    <!--[if lt IE 7]>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/ds-sleight.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/ie6.js")"></script>
-    <![endif]-->
+        <script type="text/javascript" src="@Url.Content("~/Scripts/magento/prototype.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/magento/ccard.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/magento/validation.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/magento/builder.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/magento/effects.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/magento/dragdrop.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/magento/controls.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/magento/slider.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/magento/js.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/magento/form.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/magento/menu.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/magento/translate.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/magento/cookies.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/magento/ma.jq.slide.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/magento/bootstrap.min.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/magento/bootstrap-tooltip.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/magento/ma.mobilemenu.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/magento/ajax_cart_super.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/magento/jquery.fancybox.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/magento/jquery-ui.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/magento/ma.dropdown.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/magento/ma.accordion.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/magento/ma.flexslider.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/magento/ma.nivo.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/magento/calendar.js")"></script>
+        <!--[if lt IE 9]>
+            <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/styles-ie8.css")" media="all" />
+        <![endif]-->
+        <!--[if lt IE 8]>
+            <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/styles-ie.css")" media="all" />
+        <![endif]-->
+        <!--[if lt IE 7]>
+            <script type="text/javascript" src="@Url.Content("~/Scripts/magento/ds-sleight.js")"></script>
+            <script type="text/javascript" src="@Url.Content("~/Scripts/magento/ie6.js")"></script>
+        <![endif]-->
 
-    <script type="text/javascript">
-    </script>
-    <script type="text/javascript">
-        var Translator = new Translate([]);
-    </script>
-    <!-- theme color -->
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/styles_black_red.css")" media="screen">
-    <!-- MENU -->
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/fish_menu.css")" media="screen">
-</head>
-<body class=" cms-index-index cms-home" data-feedly-mini="yes">
-    <div class="ma-wrapper">
-        <noscript>
-            &lt;div class="global-site-notice noscript"&gt;
-            &lt;div class="notice-inner"&gt;
-            &lt;p&gt;
-            &lt;strong&gt;JavaScript seems to be disabled in your browser.&lt;/strong&gt;&lt;br /&gt;
-            You must have JavaScript enabled in your browser to utilize the functionality of this website.                &lt;/p&gt;
-            &lt;/div&gt;
-            &lt;/div&gt;
-        </noscript>
-        <div class="ma-page">
-            <div class="container">
-                <div class="container-inner">
-                    <div class="ma-header-container">
-                        <div class="header">
-                            <div class="row-fluid">
-                                <div class="span4">
-                                    <h1 class="logo">
-                                        <strong>Our Car Store</strong>
-                                        <a href="@Url.Action("Index", "Home")" title="Our Car Store" class="logo">
-                                            <img src="@Url.Content("~/Content/magento/images/logo.png")" alt="Our Car Store">
-                                        </a>
-                                    </h1>
-                                </div>
-                                <div class="span8">
-                                    <div class="quick-access">
-                                        <div class="quick-access-left">
-                                            <p class="welcome-msg">Default welcome msg! </p>
-                                            <ul class="links">
-                                                <li class="first"><a href="http://www.plazathemes.com/demo/ma_carstore_res/customer/account/" title="My Account">My Account</a></li>
-                                                <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/wishlist/" title="My Wishlist" class="top_link_wishlist">My Wishlist</a></li>
-                                                <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/checkout/cart/" title="My Cart" class="top-link-cart">My Cart</a></li>
-                                                <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/checkout/onepage" title="Checkout" class="top-link-checkout">Checkout</a></li>
-                                                <li class=" last"><a href="http://www.plazathemes.com/demo/ma_carstore_res/customer/account/login/" title="Log In">Log In</a></li>
-                                            </ul>
-                                            <form id="search_mini_form" action="http://www.plazathemes.com/demo/ma_carstore_res/catalogsearch/result/" method="get">
-                                                <div class="form-search">
-                                                    <label for="search">Search:</label>
-                                                    <input id="search" type="text" name="q" value="" class="input-text" maxlength="128" autocomplete="off">
-                                                    <button type="submit" title="Search" class="button"><span><span>Search</span></span></button>
-                                                    <div id="search_autocomplete" class="search-autocomplete" style="display: none;"></div>
-                                                    <script type="text/javascript">
-                                                        //<![CDATA[
-                                                        var searchForm = new Varien.searchForm('search_mini_form', 'search', 'Search entire store here...');
-                                                        searchForm.initAutocomplete('http://www.plazathemes.com/demo/ma_carstore_res/catalogsearch/ajax/suggest/', 'search_autocomplete');
-                                                        //]]>
-                                                    </script>
-                                                </div>
-                                            </form>
+        <script type="text/javascript">
+        </script>
+        <script type="text/javascript">
+            var Translator = new Translate([]);
+        </script>
+        <!-- theme color -->
+        <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/styles_black_red.css")" media="screen">
+        <!-- MENU -->
+        <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/fish_menu.css")" media="screen">
+    </head>
+    <body class=" cms-index-index cms-home" data-feedly-mini="yes">
+        <div class="ma-wrapper">
+            <noscript>
+                &lt;div class="global-site-notice noscript"&gt;
+                &lt;div class="notice-inner"&gt;
+                &lt;p&gt;
+                &lt;strong&gt;JavaScript seems to be disabled in your browser.&lt;/strong&gt;&lt;br /&gt;
+                You must have JavaScript enabled in your browser to utilize the functionality of this website.                &lt;/p&gt;
+                &lt;/div&gt;
+                &lt;/div&gt;
+            </noscript>
+            <div class="ma-page">
+                <div class="container">
+                    <div class="container-inner">
+                        <div class="ma-header-container">
+                            <div class="header">
+                                <div class="row-fluid">
+                                    <div class="span4">
+                                        <h1 class="logo">
+                                            <strong>Our Car Store</strong>
+                                            <a href="@Url.Action("Index", "Home")" title="Our Car Store" class="logo">
+                                                <img src="@Url.Content("~/Content/magento/images/logo.png")" alt="Our Car Store">
+                                            </a>
+                                        </h1>
+                                    </div>
+                                    <div class="span8">
+                                        <div class="quick-access">
+                                            <div class="quick-access-left">
+                                                <p class="welcome-msg">Default welcome msg! </p>
+                                                <ul class="links">
+                                                    <li class="first"><a href="http://www.plazathemes.com/demo/ma_carstore_res/customer/account/" title="My Account">My Account</a></li>
+                                                    <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/wishlist/" title="My Wishlist" class="top_link_wishlist">My Wishlist</a></li>
+                                                    <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/checkout/cart/" title="My Cart" class="top-link-cart">My Cart</a></li>
+                                                    <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/checkout/onepage" title="Checkout" class="top-link-checkout">Checkout</a></li>
+                                                    <li class=" last"><a href="http://www.plazathemes.com/demo/ma_carstore_res/customer/account/login/" title="Log In">Log In</a></li>
+                                                </ul>
+                                                <form id="search_mini_form" action="http://www.plazathemes.com/demo/ma_carstore_res/catalogsearch/result/" method="get">
+                                                    <div class="form-search">
+                                                        <label for="search">Search:</label>
+                                                        <input id="search" type="text" name="q" value="" class="input-text" maxlength="128" autocomplete="off">
+                                                        <button type="submit" title="Search" class="button"><span><span>Search</span></span></button>
+                                                        <div id="search_autocomplete" class="search-autocomplete" style="display: none;"></div>
+                                                        <script type="text/javascript">
+                                                            //<![CDATA[
+                                                            var searchForm = new Varien.searchForm('search_mini_form', 'search', 'Search entire store here...');
+                                                            searchForm.initAutocomplete('http://www.plazathemes.com/demo/ma_carstore_res/catalogsearch/ajax/suggest/', 'search_autocomplete');
+                                                            //]]>
+                                                        </script>
+                                                    </div>
+                                                </form>
 
 
-                                        </div>
-                                        <div class="quick-access-right">
-                                            <div class="top-cart-wrapper">
-                                                <div class="top-cart-contain">
-                                                    <script type="text/javascript">
-                                                        $jq(document).ready(function () {
-                                                            var enable_module = $jq('#enable_module').val();
-                                                            if (enable_module == 0) return false;
-                                                        })
+                                            </div>
+                                            <div class="quick-access-right">
+                                                <div class="top-cart-wrapper">
+                                                    <div class="top-cart-contain">
+                                                        <script type="text/javascript">
+                                                            $jq(document).ready(function () {
+                                                                var enable_module = $jq('#enable_module').val();
+                                                                if (enable_module == 0) return false;
+                                                            })
 
-                                                    </script>
-                                                    <div id="mini_cart_block">
-                                                        <div class="block-cart mini_cart_ajax">
-                                                            <div class="block-cart">
-                                                                <span class="top-cart-title"></span>
+                                                        </script>
+                                                        <div id="mini_cart_block">
+                                                            <div class="block-cart mini_cart_ajax">
+                                                                <div class="block-cart">
+                                                                    <span class="top-cart-title"></span>
 
-                                                                <span class="top-cart-price">0 - </span><span>Item</span>
-                                                                <div class="top-cart-content">
-                                                                    <p class="empty">You have no items in your shopping cart.</p>
-                                                                    <div class="top-subtotal">Subtotal: <span class="price">$0.00</span></div>
+                                                                    <span class="top-cart-price">0 - </span><span>Item</span>
+                                                                    <div class="top-cart-content">
+                                                                        <p class="empty">You have no items in your shopping cart.</p>
+                                                                        <div class="top-subtotal">Subtotal: <span class="price">$0.00</span></div>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
 
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -158,326 +159,327 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="ma-nav-mobile-container hidden-desktop">
-                            <div class="navbar">
-                                <div id="navbar-inner" class="navbar-inner navbar-inactive">
-                                    <a class="btn btn-navbar">
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                    </a>
-                                    <span class="brand">Category</span>
-                                    <ul id="ma-mobilemenu" class="mobilemenu nav-collapse collapse">
-                                        <li class="level0 nav-1 level-top first parent">
-                                            <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes.html" class="level-top">
-                                                <span>Mercedes</span>
-                                            </a>
-                                            <ul class="level0" style="display: none;">
-                                                <li class="level1 nav-1-1 first">
-                                                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-1.html">
-                                                        <span>Mercedes sub 1</span>
-                                                    </a>
-                                                </li>
-                                                <li class="level1 nav-1-2 parent">
-                                                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-2.html">
-                                                        <span>Mercedes sub 2</span>
-                                                    </a>
-                                                    <ul class="level1" style="display: none;">
-                                                        <li class="level2 nav-1-2-1 first">
-                                                            <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-2/mercedes-sub-2-1.html">
-                                                                <span>Mercedes sub 2-1</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="level2 nav-1-2-2">
-                                                            <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-2/mercedes-sub-2-2.html">
-                                                                <span>Mercedes sub 2-2</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="level2 nav-1-2-3">
-                                                            <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-2/mercedes-sub-2-3.html">
-                                                                <span>Mercedes sub 2-3</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="level2 nav-1-2-4 last">
-                                                            <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-2/mercedes-sub-2-4.html">
-                                                                <span>Mercedes sub 2-4</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                    <span class="head"><a href="javascript:void(0)"></a></span>
-                                                </li>
-                                                <li class="level1 nav-1-3">
-                                                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-3.html">
-                                                        <span>Mercedes sub 3</span>
-                                                    </a>
-                                                </li>
-                                                <li class="level1 nav-1-4">
-                                                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-4.html">
-                                                        <span>Mercedes sub 4</span>
-                                                    </a>
-                                                </li>
-                                                <li class="level1 nav-1-5 last">
-                                                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-5.html">
-                                                        <span>Mercedes sub 5</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                            <span class="head"><a href="javascript:void(0)"></a></span>
-                                        </li>
-                                        <li class="level0 nav-2 level-top">
-                                            <a href="http://www.plazathemes.com/demo/ma_carstore_res/huyndai.html" class="level-top">
-                                                <span>Huyndai</span>
-                                            </a>
-                                        </li>
-                                        <li class="level0 nav-3 level-top">
-                                            <a href="http://www.plazathemes.com/demo/ma_carstore_res/toyota.html" class="level-top">
-                                                <span>Toyota</span>
-                                            </a>
-                                        </li>
-                                        <li class="level0 nav-4 level-top">
-                                            <a href="http://www.plazathemes.com/demo/ma_carstore_res/chervolet.html" class="level-top">
-                                                <span>Chervolet</span>
-                                            </a>
-                                        </li>
-                                        <li class="level0 nav-5 level-top">
-                                            <a href="http://www.plazathemes.com/demo/ma_carstore_res/audi.html" class="level-top">
-                                                <span>Audi</span>
-                                            </a>
-                                        </li>
-                                        <li class="level0 nav-6 level-top">
-                                            <a href="http://www.plazathemes.com/demo/ma_carstore_res/bmw.html" class="level-top">
-                                                <span>BMW</span>
-                                            </a>
-                                        </li>
-                                        <li class="level0 nav-7 level-top last">
-                                            <a href="http://www.plazathemes.com/demo/ma_carstore_res/lexus.html" class="level-top">
-                                                <span>Lexus</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ma-nav-container visible-desktop">
-                            <ul id="nav">
-                                <li class="home" onmouseout="toggleMenu(this,0)" onmouseover="toggleMenu(this,1)">
-                                    <a href="@Url.Action("Index", "Home")" title="Home"><span>Home</span></a>
-                                </li>
-                                <li class="level0 nav-1 level-top first parent">
-                                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes.html" class="level-top">
-                                        <span>Mercedes</span>
-                                    </a>
-                                    <ul class="level0">
-                                        <li class="level1 nav-1-1 first">
-                                            <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-1.html">
-                                                <span>Mercedes sub 1</span>
-                                            </a>
-                                        </li>
-                                        <li class="level1 nav-1-2 parent">
-                                            <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-2.html">
-                                                <span>Mercedes sub 2</span>
-                                            </a>
-                                            <ul class="level1">
-                                                <li class="level2 nav-1-2-1 first">
-                                                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-2/mercedes-sub-2-1.html">
-                                                        <span>Mercedes sub 2-1</span>
-                                                    </a>
-                                                </li>
-                                                <li class="level2 nav-1-2-2">
-                                                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-2/mercedes-sub-2-2.html">
-                                                        <span>Mercedes sub 2-2</span>
-                                                    </a>
-                                                </li>
-                                                <li class="level2 nav-1-2-3">
-                                                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-2/mercedes-sub-2-3.html">
-                                                        <span>Mercedes sub 2-3</span>
-                                                    </a>
-                                                </li>
-                                                <li class="level2 nav-1-2-4 last">
-                                                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-2/mercedes-sub-2-4.html">
-                                                        <span>Mercedes sub 2-4</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="level1 nav-1-3">
-                                            <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-3.html">
-                                                <span>Mercedes sub 3</span>
-                                            </a>
-                                        </li>
-                                        <li class="level1 nav-1-4">
-                                            <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-4.html">
-                                                <span>Mercedes sub 4</span>
-                                            </a>
-                                        </li>
-                                        <li class="level1 nav-1-5 last">
-                                            <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-5.html">
-                                                <span>Mercedes sub 5</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="level0 nav-2 level-top">
-                                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/huyndai.html" class="level-top">
-                                        <span>Huyndai</span>
-                                    </a>
-                                </li>
-                                <li class="level0 nav-3 level-top">
-                                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/toyota.html" class="level-top">
-                                        <span>Toyota</span>
-                                    </a>
-                                </li>
-                                <li class="level0 nav-4 level-top">
-                                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/chervolet.html" class="level-top">
-                                        <span>Chervolet</span>
-                                    </a>
-                                </li>
-                                <li class="level0 nav-5 level-top">
-                                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/audi.html" class="level-top">
-                                        <span>Audi</span>
-                                    </a>
-                                </li>
-                                <li class="level0 nav-6 level-top">
-                                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/bmw.html" class="level-top">
-                                        <span>BMW</span>
-                                    </a>
-                                </li>
-                                <li class="level0 nav-7 level-top last">
-                                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/lexus.html" class="level-top">
-                                        <span>Lexus</span>
-                                    </a>
-                                </li>
-                            </ul>
-
-                        </div>
-
-                        @RenderBody()
-
-                        <div class="ma-footer-static-container">
-                            <div class="ma-footer-static">
-                                <div class="row-fluid">
-                                    <div class="footer-block latest-new span3">
-                                        <div class="title">
-                                            <h2>Latest News</h2>
-                                        </div>
-                                        <div class="content">
-                                            <ul>
-                                                <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/contacts">Careers</a></li>
-                                                <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/about-magento-demo-store">About us</a></li>
-                                                <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/contacts">Store Locations</a></li>
-                                                <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/contacts">Online Store</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="footer-block shipping span3">
-                                        <div class="title">
-                                            <h2>Shipping Info</h2>
-                                        </div>
-                                        <div class="content">
-                                            <ul>
-                                                <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/sales/guest/form">Returns</a></li>
-                                                <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/customer-service">Customer Serivce</a></li>
-                                                <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/contacts">Gift Cards</a></li>
-                                                <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/customer-service">Extended Service Plan</a></li>
-                                                <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/sales/guest/form">Orders &amp; Returns</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="footer-block support-center span3">
-                                        <div class="title">
-                                            <h2>Support Center</h2>
-                                        </div>
-                                        <div class="content">
-                                            <ul>
-                                                <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/catalog/seo_sitemap/category">Site Map</a></li>
-                                                <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/catalogsearch/term/popular">Search Terms</a></li>
-                                                <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/catalogsearch/advanced">Advanced Search</a></li>
-                                                <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/contacts">Contact Us</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="footer-block paypal span3">
-                                        <div class="title">
-                                            <h2>we are accept</h2>
-                                        </div>
-                                        <div class="content">
-                                            <ul>
-                                                <li><a href="#"><img src="http://www.plazathemes.com/demo/ma_carstore_res/media/wysiwyg/paypal.png" alt=""></a></li>
-                                                <li><a href="#"><img src="http://www.plazathemes.com/demo/ma_carstore_res/media/wysiwyg/visa-master.png" alt=""></a></li>
-                                                <li><a href="#"><img src="http://www.plazathemes.com/demo/ma_carstore_res/media/wysiwyg/master-cart.png" alt=""></a></li>
-                                                <li><a href="#"><img src="http://www.plazathemes.com/demo/ma_carstore_res/media/wysiwyg/amex.png" alt=""></a></li>
-                                                <li><a href="#"><img src="http://www.plazathemes.com/demo/ma_carstore_res/media/wysiwyg/visa.png" alt=""></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="block block-subscribe">
-                                            <div class="block-title">
-                                                <strong><span>Newsletter</span></strong>
-                                            </div>
-                                            <form action="http://www.plazathemes.com/demo/ma_carstore_res/newsletter/subscriber/new/" method="post" id="newsletter-validate-detail">
-                                                <div class="block-content">
-                                                    <div class="form-subscribe-header">
-                                                        <label for="newsletter">Sign Up for Our Newsletter:</label>
-                                                    </div>
-                                                    <div class="input-box">
-                                                        <input type="text" name="email" id="newsletter" title="Sign up for our newsletter" class="input-text required-entry validate-email">
-                                                    </div>
-                                                    <div class="actions">
-                                                        <button type="submit" title="Subscribe" class="button"><span><span>Subscribe</span></span></button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                            <script type="text/javascript">
-                                                //<![CDATA[
-                                                var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
-                                                //]]>
-                                            </script>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ma-footer-container">
-                            <div class="footer">
-                                <div class="row-fluid">
-                                    <div class="span6">
-                                        <ul class="links">
-                                            <li class="first"><a href="http://www.plazathemes.com/demo/ma_carstore_res/catalog/seo_sitemap/category/" title="Site Map">Site Map</a></li>
-                                            <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/catalogsearch/term/popular/" title="Search Terms">Search Terms</a></li>
-                                            <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/catalogsearch/advanced/" title="Advanced Search">Advanced Search</a></li>
-                                            <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/sales/guest/form/" title="Orders and Returns">Orders and Returns</a></li>
-                                            <li class=" last"><a href="http://www.plazathemes.com/demo/ma_carstore_res/contacts/" title="Contact Us">Contact Us</a></li>
+                            <div class="ma-nav-mobile-container hidden-desktop">
+                                <div class="navbar">
+                                    <div id="navbar-inner" class="navbar-inner navbar-inactive">
+                                        <a class="btn btn-navbar">
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                        </a>
+                                        <span class="brand">Category</span>
+                                        <ul id="ma-mobilemenu" class="mobilemenu nav-collapse collapse">
+                                            <li class="level0 nav-1 level-top first parent">
+                                                <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes.html" class="level-top">
+                                                    <span>Mercedes</span>
+                                                </a>
+                                                <ul class="level0" style="display: none;">
+                                                    <li class="level1 nav-1-1 first">
+                                                        <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-1.html">
+                                                            <span>Mercedes sub 1</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="level1 nav-1-2 parent">
+                                                        <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-2.html">
+                                                            <span>Mercedes sub 2</span>
+                                                        </a>
+                                                        <ul class="level1" style="display: none;">
+                                                            <li class="level2 nav-1-2-1 first">
+                                                                <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-2/mercedes-sub-2-1.html">
+                                                                    <span>Mercedes sub 2-1</span>
+                                                                </a>
+                                                            </li>
+                                                            <li class="level2 nav-1-2-2">
+                                                                <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-2/mercedes-sub-2-2.html">
+                                                                    <span>Mercedes sub 2-2</span>
+                                                                </a>
+                                                            </li>
+                                                            <li class="level2 nav-1-2-3">
+                                                                <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-2/mercedes-sub-2-3.html">
+                                                                    <span>Mercedes sub 2-3</span>
+                                                                </a>
+                                                            </li>
+                                                            <li class="level2 nav-1-2-4 last">
+                                                                <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-2/mercedes-sub-2-4.html">
+                                                                    <span>Mercedes sub 2-4</span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                        <span class="head"><a href="javascript:void(0)"></a></span>
+                                                    </li>
+                                                    <li class="level1 nav-1-3">
+                                                        <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-3.html">
+                                                            <span>Mercedes sub 3</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="level1 nav-1-4">
+                                                        <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-4.html">
+                                                            <span>Mercedes sub 4</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="level1 nav-1-5 last">
+                                                        <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-5.html">
+                                                            <span>Mercedes sub 5</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <span class="head"><a href="javascript:void(0)"></a></span>
+                                            </li>
+                                            <li class="level0 nav-2 level-top">
+                                                <a href="http://www.plazathemes.com/demo/ma_carstore_res/huyndai.html" class="level-top">
+                                                    <span>Huyndai</span>
+                                                </a>
+                                            </li>
+                                            <li class="level0 nav-3 level-top">
+                                                <a href="http://www.plazathemes.com/demo/ma_carstore_res/toyota.html" class="level-top">
+                                                    <span>Toyota</span>
+                                                </a>
+                                            </li>
+                                            <li class="level0 nav-4 level-top">
+                                                <a href="http://www.plazathemes.com/demo/ma_carstore_res/chervolet.html" class="level-top">
+                                                    <span>Chervolet</span>
+                                                </a>
+                                            </li>
+                                            <li class="level0 nav-5 level-top">
+                                                <a href="http://www.plazathemes.com/demo/ma_carstore_res/audi.html" class="level-top">
+                                                    <span>Audi</span>
+                                                </a>
+                                            </li>
+                                            <li class="level0 nav-6 level-top">
+                                                <a href="http://www.plazathemes.com/demo/ma_carstore_res/bmw.html" class="level-top">
+                                                    <span>BMW</span>
+                                                </a>
+                                            </li>
+                                            <li class="level0 nav-7 level-top last">
+                                                <a href="http://www.plazathemes.com/demo/ma_carstore_res/lexus.html" class="level-top">
+                                                    <span>Lexus</span>
+                                                </a>
+                                            </li>
                                         </ul>
                                     </div>
-                                    <div class="span6">
-                                        <address>Copyright © 2013 <a title="Magento Themes" href="http://www.plazathemes.com">plazathemes.com</a>. All rights reserved.</address>
+                                </div>
+                            </div>
+                            <div class="ma-nav-container visible-desktop">
+                                <ul id="nav">
+                                    <li class="home" onmouseout="toggleMenu(this,0)" onmouseover="toggleMenu(this,1)">
+                                        <a href="@Url.Action("Index", "Home")" title="Home"><span>Home</span></a>
+                                    </li>
+                                    <li class="level0 nav-1 level-top first parent">
+                                        <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes.html" class="level-top">
+                                            <span>Mercedes</span>
+                                        </a>
+                                        <ul class="level0">
+                                            <li class="level1 nav-1-1 first">
+                                                <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-1.html">
+                                                    <span>Mercedes sub 1</span>
+                                                </a>
+                                            </li>
+                                            <li class="level1 nav-1-2 parent">
+                                                <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-2.html">
+                                                    <span>Mercedes sub 2</span>
+                                                </a>
+                                                <ul class="level1">
+                                                    <li class="level2 nav-1-2-1 first">
+                                                        <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-2/mercedes-sub-2-1.html">
+                                                            <span>Mercedes sub 2-1</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="level2 nav-1-2-2">
+                                                        <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-2/mercedes-sub-2-2.html">
+                                                            <span>Mercedes sub 2-2</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="level2 nav-1-2-3">
+                                                        <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-2/mercedes-sub-2-3.html">
+                                                            <span>Mercedes sub 2-3</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="level2 nav-1-2-4 last">
+                                                        <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-2/mercedes-sub-2-4.html">
+                                                            <span>Mercedes sub 2-4</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="level1 nav-1-3">
+                                                <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-3.html">
+                                                    <span>Mercedes sub 3</span>
+                                                </a>
+                                            </li>
+                                            <li class="level1 nav-1-4">
+                                                <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-4.html">
+                                                    <span>Mercedes sub 4</span>
+                                                </a>
+                                            </li>
+                                            <li class="level1 nav-1-5 last">
+                                                <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-5.html">
+                                                    <span>Mercedes sub 5</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="level0 nav-2 level-top">
+                                        <a href="http://www.plazathemes.com/demo/ma_carstore_res/huyndai.html" class="level-top">
+                                            <span>Huyndai</span>
+                                        </a>
+                                    </li>
+                                    <li class="level0 nav-3 level-top">
+                                        <a href="http://www.plazathemes.com/demo/ma_carstore_res/toyota.html" class="level-top">
+                                            <span>Toyota</span>
+                                        </a>
+                                    </li>
+                                    <li class="level0 nav-4 level-top">
+                                        <a href="http://www.plazathemes.com/demo/ma_carstore_res/chervolet.html" class="level-top">
+                                            <span>Chervolet</span>
+                                        </a>
+                                    </li>
+                                    <li class="level0 nav-5 level-top">
+                                        <a href="http://www.plazathemes.com/demo/ma_carstore_res/audi.html" class="level-top">
+                                            <span>Audi</span>
+                                        </a>
+                                    </li>
+                                    <li class="level0 nav-6 level-top">
+                                        <a href="http://www.plazathemes.com/demo/ma_carstore_res/bmw.html" class="level-top">
+                                            <span>BMW</span>
+                                        </a>
+                                    </li>
+                                    <li class="level0 nav-7 level-top last">
+                                        <a href="http://www.plazathemes.com/demo/ma_carstore_res/lexus.html" class="level-top">
+                                            <span>Lexus</span>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </div>
+
+                            @RenderBody()
+
+                            <div class="ma-footer-static-container">
+                                <div class="ma-footer-static">
+                                    <div class="row-fluid">
+                                        <div class="footer-block latest-new span3">
+                                            <div class="title">
+                                                <h2>Latest News</h2>
+                                            </div>
+                                            <div class="content">
+                                                <ul>
+                                                    <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/contacts">Careers</a></li>
+                                                    <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/about-magento-demo-store">About us</a></li>
+                                                    <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/contacts">Store Locations</a></li>
+                                                    <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/contacts">Online Store</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="footer-block shipping span3">
+                                            <div class="title">
+                                                <h2>Shipping Info</h2>
+                                            </div>
+                                            <div class="content">
+                                                <ul>
+                                                    <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/sales/guest/form">Returns</a></li>
+                                                    <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/customer-service">Customer Serivce</a></li>
+                                                    <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/contacts">Gift Cards</a></li>
+                                                    <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/customer-service">Extended Service Plan</a></li>
+                                                    <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/sales/guest/form">Orders &amp; Returns</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="footer-block support-center span3">
+                                            <div class="title">
+                                                <h2>Support Center</h2>
+                                            </div>
+                                            <div class="content">
+                                                <ul>
+                                                    <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/catalog/seo_sitemap/category">Site Map</a></li>
+                                                    <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/catalogsearch/term/popular">Search Terms</a></li>
+                                                    <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/catalogsearch/advanced">Advanced Search</a></li>
+                                                    <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/contacts">Contact Us</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="footer-block paypal span3">
+                                            <div class="title">
+                                                <h2>we are accept</h2>
+                                            </div>
+                                            <div class="content">
+                                                <ul>
+                                                    <li><a href="#"><img src="http://www.plazathemes.com/demo/ma_carstore_res/media/wysiwyg/paypal.png" alt=""></a></li>
+                                                    <li><a href="#"><img src="http://www.plazathemes.com/demo/ma_carstore_res/media/wysiwyg/visa-master.png" alt=""></a></li>
+                                                    <li><a href="#"><img src="http://www.plazathemes.com/demo/ma_carstore_res/media/wysiwyg/master-cart.png" alt=""></a></li>
+                                                    <li><a href="#"><img src="http://www.plazathemes.com/demo/ma_carstore_res/media/wysiwyg/amex.png" alt=""></a></li>
+                                                    <li><a href="#"><img src="http://www.plazathemes.com/demo/ma_carstore_res/media/wysiwyg/visa.png" alt=""></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="block block-subscribe">
+                                                <div class="block-title">
+                                                    <strong><span>Newsletter</span></strong>
+                                                </div>
+                                                <form action="http://www.plazathemes.com/demo/ma_carstore_res/newsletter/subscriber/new/" method="post" id="newsletter-validate-detail">
+                                                    <div class="block-content">
+                                                        <div class="form-subscribe-header">
+                                                            <label for="newsletter">Sign Up for Our Newsletter:</label>
+                                                        </div>
+                                                        <div class="input-box">
+                                                            <input type="text" name="email" id="newsletter" title="Sign up for our newsletter" class="input-text required-entry validate-email">
+                                                        </div>
+                                                        <div class="actions">
+                                                            <button type="submit" title="Subscribe" class="button"><span><span>Subscribe</span></span></button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                <script type="text/javascript">
+                                                    //<![CDATA[
+                                                    var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+                                                    //]]>
+                                                </script>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div id="ajaxconfig_info" style="display:none">
-                                <a href="http://www.plazathemes.com/demo/ma_carstore_res/"></a>
-                                <div><img src="http://www.plazathemes.com/demo/ma_carstore_res/media/theme/default/loader.gif"></div>
-                                <button name="black" value="0.7"></button>
-                                <input type="hidden" value="">
-                                <input type="hidden" id="enable_module" value="1">
-                                <input class="effect_to_cart" type="hidden" value="1">
-                                <input class="title_shopping_cart" type="hidden" value="Go to shopping cart">
-                                <input class="title_shopping_continue" type="hidden" value="Continue Shopping">
-                                <input class="title_shopping_wishlist" type="hidden" value="Go to wishlist">
-                                <input class="title_shopping_compare" type="hidden" value="Go to list Compare">
-                                <input class="confirm_delete_product" type="hidden" value="Are you sure you would like to remove this item ?">
-                                <input class="title_add_to_cart" type="hidden" value="Add product to  Cart sucessfully">
-                                <input class="title_add_to_wishlist" type="hidden" value="Add product to Wishlist sucessfully">
-                                <input class="title_add_to_compare" type="hidden" value="Add product to Compare sucessfully">
+                            <div class="ma-footer-container">
+                                <div class="footer">
+                                    <div class="row-fluid">
+                                        <div class="span6">
+                                            <ul class="links">
+                                                <li class="first"><a href="http://www.plazathemes.com/demo/ma_carstore_res/catalog/seo_sitemap/category/" title="Site Map">Site Map</a></li>
+                                                <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/catalogsearch/term/popular/" title="Search Terms">Search Terms</a></li>
+                                                <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/catalogsearch/advanced/" title="Advanced Search">Advanced Search</a></li>
+                                                <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/sales/guest/form/" title="Orders and Returns">Orders and Returns</a></li>
+                                                <li class=" last"><a href="http://www.plazathemes.com/demo/ma_carstore_res/contacts/" title="Contact Us">Contact Us</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="span6">
+                                            <address>Copyright © 2013 <a title="Magento Themes" href="http://www.plazathemes.com">plazathemes.com</a>. All rights reserved.</address>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="ajaxconfig_info" style="display:none">
+                                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/"></a>
+                                    <div><img src="http://www.plazathemes.com/demo/ma_carstore_res/media/theme/default/loader.gif"></div>
+                                    <button name="black" value="0.7"></button>
+                                    <input type="hidden" value="">
+                                    <input type="hidden" id="enable_module" value="1">
+                                    <input class="effect_to_cart" type="hidden" value="1">
+                                    <input class="title_shopping_cart" type="hidden" value="Go to shopping cart">
+                                    <input class="title_shopping_continue" type="hidden" value="Continue Shopping">
+                                    <input class="title_shopping_wishlist" type="hidden" value="Go to wishlist">
+                                    <input class="title_shopping_compare" type="hidden" value="Go to list Compare">
+                                    <input class="confirm_delete_product" type="hidden" value="Are you sure you would like to remove this item ?">
+                                    <input class="title_add_to_cart" type="hidden" value="Add product to  Cart sucessfully">
+                                    <input class="title_add_to_wishlist" type="hidden" value="Add product to Wishlist sucessfully">
+                                    <input class="title_add_to_compare" type="hidden" value="Add product to Compare sucessfully">
 
+                                </div>
+                                <div id="ajaxcart-checkout-content" style="display:none;"></div>
                             </div>
-                            <div id="ajaxcart-checkout-content" style="display:none;"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-</body>
+        
+        @RenderSection("Scripts", false)
+    </body>
 </html>
+
