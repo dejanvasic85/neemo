@@ -480,7 +480,7 @@
     <Content Include="Scripts\magento\form.js" />
     <Content Include="Scripts\magento\ie6.js" />
     <Content Include="Scripts\magento\jquery-1.11.0.js" />
-    <Content Include="Scripts\magento\jquery-neemo.js" />
+    <Content Include="Scripts\magento\neemo-ui.js" />
     <Content Include="Scripts\magento\jquery-ui.js" />
     <Content Include="Scripts\magento\jquery.fancybox.js" />
     <Content Include="Scripts\magento\js.js" />
@@ -492,6 +492,8 @@
     <Content Include="Scripts\magento\ma.mobilemenu.js" />
     <Content Include="Scripts\magento\ma.nivo.js" />
     <Content Include="Scripts\magento\menu.js" />
+    <Content Include="Scripts\magento\neemo-models.js" />
+    <Content Include="Scripts\magento\neemo-svc.js" />
     <Content Include="Scripts\magento\prototype.js" />
     <Content Include="Scripts\magento\slider.js" />
     <Content Include="Scripts\magento\toastr.js" />

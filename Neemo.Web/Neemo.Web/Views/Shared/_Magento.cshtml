@@ -29,7 +29,7 @@
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/ma.featuredslider.css")" media="all">
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/toastr-2.0.1.css")">
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/print.css")" media="print">
-    
+
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/jquery-1.11.0.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/prototype.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/ccard.js")"></script>
@@ -58,7 +58,7 @@
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/calendar.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/toastr.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/knockout-3.2.0.js")"></script>
-    
+
     <!--[if lt IE 9]>
         <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/styles-ie8.css")" media="all" />
     <![endif]-->
@@ -483,22 +483,27 @@
             </div>
         </div>
     </div>
-    
+
     @*Custom global scripts*@
-    
+
     <script type="text/javascript">
         var neemo = neemo || {};
         neemo.endpoints = {
-            cart : {
+            cart: {
                 addProduct: '@Url.Action("AddProduct", "Cart")',
                 updateProduct: '@Url.Action("UpdateProduct", "Cart")'
             }
         };
     </script>
-    
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/jquery-neemo.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/neemo-svc.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/neemo-models.js")"></script>
+    <script>
+        neemo.cartInstance = new neemo.shoppingCart(null);
+    </script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/neemo-ui.js")"></script>
 
     @RenderSection("Scripts", false)
 </body>
+
 </html>
 
