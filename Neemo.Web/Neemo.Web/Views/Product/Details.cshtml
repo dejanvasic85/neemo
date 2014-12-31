@@ -76,8 +76,6 @@
 
                                 <p class="email-friend"><a href="http://www.plazathemes.com/demo/ma_carstore_res/sendfriend/product/send/id/2/cat_id/3/">Email to a Friend</a></p>
 
-                                <p class="no-rating"><a href="http://www.plazathemes.com/demo/ma_carstore_res/review/product/list/id/2/category/3/#review-form">Be the first to review this product</a></p>
-
                                 <p class="availability in-stock">
                                     Availability:
                                     <span>
@@ -92,13 +90,6 @@
                                     </span>
                                 </p>
 
-                                <div class="price-box">
-                                    <span class="regular-price" id="product-price-2">
-                                        <span class="price">@Model.Price.ToString("C")</span>
-                                    </span>
-
-                                </div>
-
                                 <div class="short-description">
                                     <h2>Quick Overview</h2>
                                     <div class="std">
@@ -106,30 +97,6 @@
                                     </div>
                                 </div>
 
-
-                                <div class="product-options" id="product-options-wrapper">
-
-                                    <dl class="last">
-
-                                        <dt><label class="required"><em>*</em>Color</label></dt>
-                                        <dd>
-                                            <div class="input-box">
-                                                <select name="options[2]" id="select_2" class=" required-entry product-custom-option" title="" onchange="opConfig.reloadPrice()"><option value="">-- Please Select --</option><option value="3" price="60">Black +$60.00</option><option value="4" price="65">Blue +$65.00</option></select>
-                                            </div>
-                                        </dd>
-
-                                        <dt><label class="required"><em>*</em>Size</label></dt>
-                                        <dd class="last">
-                                            <div class="input-box">
-                                                <select name="options[1]" id="select_1" class=" required-entry product-custom-option" title="" onchange="opConfig.reloadPrice()"><option value="">-- Please Select --</option><option value="2" price="65">L +$65.00</option><option value="1" price="56">M +$56.00</option></select>
-                                            </div>
-                                        </dd>
-                                    </dl>
-
-
-                                    <p class="required">* Required Fields</p>
-                                </div>
-                                
                                 <div class="product-options-bottom">
 
                                     <div class="price-box">
@@ -172,7 +139,7 @@
 </div>
 
 @section Scripts{
-    
+
     <script type="text/javascript">
         //<![CDATA[
         var DateOption = Class.create({
@@ -233,7 +200,7 @@
         dateOption = new DateOption();
         //]]>
     </script>
-   
+
     <script type="text/javascript">
         //<![CDATA[
         enUS = { "m": { "wide": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], "abbr": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"] } }; // en_US locale reference
@@ -298,12 +265,12 @@
     <script type="text/javascript">decorateGeneric($$('#product-options-wrapper dl'), ['last']);</script>
 
     <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd', 'even', 'first', 'last'])</script>
-    
+
     <script>
         (function (jQuery) {
             var jq = jQuery;
             jQuery('.more-views a').css({ 'cursor': 'pointer' });
-            jq('.more-views a').on('click', function() {
+            jq('.more-views a').on('click', function () {
                 var newSrc = jq(this).children('img').attr('src');
                 jq('#mainImage').attr('src', newSrc);
             });
