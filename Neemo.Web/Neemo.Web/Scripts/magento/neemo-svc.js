@@ -1,14 +1,21 @@
 ﻿neemo = neemo || {};
 neemo.svc = (function ($, urls) {
+
+    function call(url, data, type) {
+        type = type || 'POST';
+        return $.ajax({
+            url: url,
+            type: type,
+            data: JSON.stringify( data ),
+            dataType: 'json',
+            contentType: 'application/json'
+        });
+    }
+    
     return {
         addProduct: function (productId, qty, successFnc, noStockFnc, qtyTooLargeFnc) {
-            $.ajax({
-                url: urls.addProduct,
-                type: 'POST',
-                data: JSON.stringify({ productId: productId, qty: qty }),
-                dataType: 'json',
-                contentType: 'application/json',
-                success: function (response) {
+            call(urls.addProduct, { productId: productId, qty: qty })
+                .done(function(response) {
                     if (response.Added) {
                         successFnc();
                     }
@@ -18,8 +25,10 @@ neemo.svc = (function ($, urls) {
                     if (response.QuantityTooLarge) {
                         qtyTooLargeFnc();
                     }
-                }
-            });
+                });
+        },
+        getItems : function() {
+            
         }
     }
 })(jQuery, neemo.endpoints.cart);
