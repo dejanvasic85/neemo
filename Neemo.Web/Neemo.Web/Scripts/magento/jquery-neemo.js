@@ -2,9 +2,9 @@
 
 neemo.svc = (function ($, urls) {
     return {
-        addOrUpdate: function (productId, qty, successFnc, noStockFnc, qtyTooLargeFnc) {
+        addProduct: function (productId, qty, successFnc, noStockFnc, qtyTooLargeFnc) {
             $.ajax({
-                url: urls.cart.addOrUpdate,
+                url: urls.cart.addProduct,
                 type: 'POST',
                 data: JSON.stringify({ productId: productId, qty: qty }),
                 dataType: 'json',
@@ -37,7 +37,7 @@ neemo.ui = (function ($, toastr, svc) {
             qty = $qty.val();
         }
 
-        svc.addOrUpdate(me.data().productid, qty,
+        svc.addProduct(me.data().productid, qty,
             function () {
                 toastr.success(qty + ' item(s) added to cart');
             },

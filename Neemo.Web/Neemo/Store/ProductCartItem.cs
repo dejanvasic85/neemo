@@ -26,5 +26,10 @@
             // Consider discounts later
             return _product.Price * Quantity;
         }
+
+        public void UpdateQuantity(int qty)
+        {
+            this.Quantity = qty;
+        }
     }
 }

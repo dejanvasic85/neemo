@@ -22,11 +22,12 @@
         }
 
         [HttpPost]
-        public ActionResult AddOrUpdate(int productId, int qty)
+        public ActionResult AddProduct(int productId, int qty)
         {
+            // Validate stock levels
             var isInStock = _productService.IsInStock(productId);
             if (!isInStock)
-                return Json(new {NotAvailable = true});
+                return Json(new { NotAvailable = true });
 
             var hasEnoughForRequest = _productService.CheckAvailability(productId, qty);
             if (!hasEnoughForRequest)
@@ -38,6 +39,22 @@
                 .AddItem(new ProductCartItem(_productService.GetProductById(productId), qty));
 
             return Json(new { Added = true });
+        }
+
+        [HttpPost]
+        public ActionResult UpdateProduct(int productId, int qty)
+        {
+            // Validate
+            var cart = _cartContext.Current();
+            if (cart.DoesNotHaveProduct(productId))
+                return Json(new {ProductNotInCart = true});
+
+            var hasEnoughForRequest = _productService.CheckAvailability(productId, qty);
+            if (!hasEnoughForRequest)
+                return Json(new { QuantityTooLarge = true });
+
+            cart.UpdateProduct(productId, qty);
+            return Json(new { Updated = true });
         }
     }
 }

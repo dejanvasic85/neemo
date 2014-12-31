@@ -484,6 +484,7 @@
     <Content Include="Scripts\magento\jquery-ui.js" />
     <Content Include="Scripts\magento\jquery.fancybox.js" />
     <Content Include="Scripts\magento\js.js" />
+    <Content Include="Scripts\magento\knockout-3.2.0.js" />
     <Content Include="Scripts\magento\ma.accordion.js" />
     <Content Include="Scripts\magento\ma.dropdown.js" />
     <Content Include="Scripts\magento\ma.flexslider.js" />

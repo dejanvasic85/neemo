@@ -8,7 +8,7 @@ namespace Neemo.ShoppingCart
     public class Cart
     {
         private readonly string _username;
-        private readonly List<ICartItem> _items;
+        private List<ICartItem> _items;
         
         public Cart(string username)
         {
@@ -30,6 +30,16 @@ namespace Neemo.ShoppingCart
         {
             // Clear the items
             this._items.Clear();
+        }
+
+        public bool DoesNotHaveProduct(int productId)
+        {
+            return _items.All(p => p.Id != productId);
+        }
+
+        public void UpdateProduct(int productId, int qty)
+        {
+            _items.First(p => p.Id == productId).UpdateQuantity(qty);
         }
     }
 }

@@ -57,7 +57,7 @@
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/ma.nivo.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/calendar.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/toastr.js")"></script>
-    
+    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/knockout-3.2.0.js")"></script>
     
     <!--[if lt IE 9]>
         <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/styles-ie8.css")" media="all" />
@@ -490,7 +490,8 @@
         var neemo = neemo || {};
         neemo.endpoints = {
             cart : {
-                addOrUpdate : '@Url.Action("AddOrUpdate", "Cart")'
+                addProduct: '@Url.Action("AddProduct", "Cart")',
+                updateProduct: '@Url.Action("UpdateProduct", "Cart")'
             }
         };
     </script>

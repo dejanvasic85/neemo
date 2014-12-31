@@ -5,5 +5,6 @@ namespace Neemo.ShoppingCart
         int Id { get; }
         int Quantity { get; }
         decimal CalculatePrice();
+        void UpdateQuantity(int qty);
     }
 }
