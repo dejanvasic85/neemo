@@ -1,5 +1,5 @@
 ﻿@using Neemo.Web.Infrastructure
-@model Neemo.Web.Models.ProductDetailView
+@model ProductDetailView
 
 @{
     Layout = "~/Views/Shared/_Magento.cshtml";
@@ -48,7 +48,7 @@
                                     @*<a href="@Url.Image(Model.Images.First())" class="ma-a-lighbox" rel="lightbox[rotation]"></a>*@
                                     <!--++++++++++++-->
                                     <a class="cloud-zoom" id="ma-zoom1" style="position: relative; display: block;" rel="adjustX:10, adjustY:-2, zoomWidth:300, zoomHeight:300">
-                                        <img src="@Url.Image(Model.Images.First())" alt="Lorem ipsum dolor" title="Lorem ipsum dolor" />
+                                        <img id="mainImage" src="@Url.Image(Model.Images.First())" alt="@Model.Title" title="@Model.Title" />
                                     </a>
                                 </p>
                                 <div class="more-views ma-more-img">
@@ -300,11 +300,7 @@
 </div>
 
 @section Scripts{
-
-    @*<script type="text/javascript">
-        var optionsPrice = new Product.OptionsPrice({ "productId": "2", "priceFormat": { "pattern": "$%s", "precision": 2, "requiredPrecision": 2, "decimalSymbol": ".", "groupSymbol": ",", "groupLength": 3, "integerRequired": 1 }, "includeTax": "false", "showIncludeTax": false, "showBothPrices": false, "productPrice": 399, "productOldPrice": 399, "priceInclTax": 399, "priceExclTax": 399, "skipCalculate": 1, "defaultTax": 0, "currentTax": 0, "idSuffix": "_clone", "oldPlusDisposition": 0, "plusDisposition": 0, "plusDispositionTax": 0, "oldMinusDisposition": 0, "minusDisposition": 0, "tierPrices": [], "tierPricesInclTax": [] });
-    </script>*@
-
+    
     <script type="text/javascript">
         //<![CDATA[
         var DateOption = Class.create({
@@ -365,7 +361,6 @@
         dateOption = new DateOption();
         //]]>
     </script>
-
    
     <script type="text/javascript">
         //<![CDATA[
@@ -428,8 +423,18 @@
         //]]>
     </script>
 
-
     <script type="text/javascript">decorateGeneric($$('#product-options-wrapper dl'), ['last']);</script>
 
     <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd', 'even', 'first', 'last'])</script>
+    
+    <script>
+        (function (jQuery) {
+            var jq = jQuery;
+            jQuery('.more-views a').css({ 'cursor': 'pointer' });
+            jq('.more-views a').on('click', function() {
+                var newSrc = jq(this).children('img').attr('src');
+                jq('#mainImage').attr('src', newSrc);
+            });
+        })(jQuery);
+    </script>
 }
