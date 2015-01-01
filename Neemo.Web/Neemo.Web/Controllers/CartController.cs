@@ -5,8 +5,9 @@
     using Store;
     using System.Linq;
     using System.Web.Mvc;
+    using Infrastructure;
 
-    public class CartController : Controller
+    public class CartController : MagentoController
     {
         private readonly ICartContext _cartContext;
         private readonly IProductService _productService;
