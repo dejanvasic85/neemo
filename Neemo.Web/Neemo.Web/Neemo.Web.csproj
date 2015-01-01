@@ -193,7 +193,7 @@
     <Compile Include="Models\CartItemView.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ProductDetailView.cs" />
-    <Compile Include="Models\ProductSummary.cs" />
+    <Compile Include="Models\HomeView.cs" />
     <Compile Include="Models\ProductSummaryView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
