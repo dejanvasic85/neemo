@@ -93,25 +93,22 @@
 
                                 @if (Model.AvailableQty > 0)
                                 {
-
-                                    <div class="add-to-box">
-                                        <div class="add-to-cart">
-                                            <label for="qty">Qty:</label>
-                                            <input type="text" name="qty" id="qty" maxlength="12" value="1" title="Qty" data-numbers-only class="input-text qty">
-                                            <button type="button"
-                                                    title="Add to Cart"
-                                                    class="button btn-cart"
-                                                    data-productid="@Model.ProductId"
-                                                    data-carturl="@Url.Action("AddOrUpdate", "Cart")">
-                                                <span>
-                                                    <span>
-                                                        Add to Cart
-                                                    </span>
-                                                </span>
-                                            </button>
+                                    <div class="form-horizontal" style="border:2px solid #CDCDCD; padding-top: 15px;padding-left:15px;">
+                                        <div class="control-group">
+                                            <label class="control-label" for="quantity" style="width: 0">Quantity:</label>
+                                            <div class="controls" style="margin-left: 80px;">
+                                                <div class="input-append">
+                                                    <input class="span3" type="text" value="1" data-numbers-only>
+                                                    <button type="button"
+                                                            title="Add to Cart"
+                                                            class="btn btn-cart"
+                                                            data-productid="@Model.ProductId">
+                                                        <i class="icon-plus icon-white"></i> Add To Cart
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-
                                 }
 
                             </div>

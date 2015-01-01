@@ -12,6 +12,8 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
         var $qty = me.prev('input');
         if ($qty.length > 0) {
             qty = $qty.val();
+            if (qty == '')
+                return false;
         }
 
         svc.addProduct(me.data().productid, qty,
