@@ -10,7 +10,7 @@
         me.LineItemId = ko.observable(cartViewItem.LineItemId);
         me.Title = ko.observable(cartViewItem.Title);
         me.Price = ko.observable(cartViewItem.Price);
-        me.Quantity = ko.observable(cartViewItem.Quantity).extend({numeric: 0});
+        me.Quantity = ko.observable(cartViewItem.Quantity).extend({ numeric: 0 });
         me.ImageId = ko.observable(cartViewItem.ImageId);
 
         me.Total = function () {
@@ -18,9 +18,9 @@
         }
 
         me.Quantity.subscribe(function (newValue) {
-            cartSvc.updateQuantity(me.LineItemId(), me.Id(), newValue, function() {
+            cartSvc.updateQuantity(me.LineItemId(), me.Id(), newValue, function () {
                 broadcaster.success('Your quantity was updated.');
-            }, function() {
+            }, function () {
                 broadcaster.error('Not enough items in stock for your request.');
             });
         });
@@ -47,10 +47,19 @@
 
         me.removeItem = function (item) {
             if (confirm('Are you sure you want to remove the order from the shopping cart?')) {
-                me.items.remove(item);
-                cartSvc.removeProduct(item.LineItemId());
+                cartSvc.removeProduct(item.LineItemId())
+                    .then(me.items.remove(item));
             }
         };
+
+        me.clearAllItems = function () {
+            if (confirm('Are you sure you want to clear all items?')) {
+                $.each(this.items(), function () {
+                    cartSvc.removeProduct(this.LineItemId())
+                        .then(me.items.remove(this));
+                });
+            }
+        }
     };
 
 })(jQuery, accounting, neemo.svc, toastr);

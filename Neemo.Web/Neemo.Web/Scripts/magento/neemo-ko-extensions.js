@@ -9,6 +9,9 @@
                     newValueAsNum = isNaN(newValue) ? 1 : parseFloat(+newValue),
                     valueToWrite = Math.round(newValueAsNum * roundingMultiplier) / roundingMultiplier;
 
+                if (valueToWrite === 0)
+                    valueToWrite = 1;
+
                 //only write if it changed
                 if (valueToWrite !== current) {
                     target(valueToWrite);
