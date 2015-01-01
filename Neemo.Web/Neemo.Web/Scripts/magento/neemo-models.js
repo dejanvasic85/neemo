@@ -9,7 +9,7 @@
         me.LineItemId = ko.observable(cartViewItem.LineItemId);
         me.Title = ko.observable(cartViewItem.Title);
         me.Price = ko.observable(cartViewItem.Price);
-        me.Quantity = ko.observable(cartViewItem.Quantity);
+        me.Quantity = ko.observable(cartViewItem.Quantity).extend({numeric: 0});
         me.ImageId = ko.observable(cartViewItem.ImageId);
 
         me.Total = function () {
