@@ -27,7 +27,7 @@ neemo.svc = (function ($, urls) {
         removeProduct: function(productId) {
             call(urls.removeProduct, { productId: productId });
         },
-        getItems : function() {
+        getItems: function () {
             return call(urls.getItems, null, 'GET');
         }
     }

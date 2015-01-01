@@ -50,9 +50,9 @@
         }
 
         [HttpPost]
-        public ActionResult RemoveProduct(string productId)
+        public ActionResult RemoveProduct(string lineItemId)
         {
-            _cartContext.Current().RemoveItem(productId);
+            _cartContext.Current().RemoveItem(lineItemId);
             return Json(new { Removed = true });
         }
 

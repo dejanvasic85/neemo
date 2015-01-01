@@ -2,7 +2,7 @@ namespace Neemo.ShoppingCart
 {
     public interface ICartItem
     {
-        string OrderId { get; }
+        string LineItemId { get; }
         int Id { get; }
         int Quantity { get; }
         decimal CalculatePrice();

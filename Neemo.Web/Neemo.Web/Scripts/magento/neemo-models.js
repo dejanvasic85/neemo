@@ -21,7 +21,8 @@
         };
         me.removeItem = function(item) {
             me.items.remove(item);
-            neemo.svc.removeProduct(item.OrderId);
+            debugger;
+            neemo.svc.removeProduct(item.LineItemId);
         };
     };
 

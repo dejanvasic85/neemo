@@ -12,9 +12,17 @@
                 <div class="page-title title-buttons">
                     <h1>Shopping Cart</h1>
                 </div>
-                <form action="http://www.plazathemes.com/demo/ma_carstore_res/checkout/cart/updatePost/" method="post">
+                
+                <div data-bind="if: items().length === 0">
+                    <div class="alert">
+                        Your shopping cart is empty. @Html.ActionLink("Continue Shopping", "Index", "Home")
+                    </div>
+                </div>
+
+                <div data-bind="if: items().length > 0">
+
                     <fieldset>
-                        <table id="shopping-cart-table" class="data-table cart-table">
+                        <table class="data-table cart-table">
                             <colgroup>
                                 <col width="1">
                                 <col>
@@ -23,8 +31,8 @@
                                 <col width="1">
                                 <col width="1">
                                 <col width="1">
-
                             </colgroup>
+
                             <thead>
                                 <tr class="first last">
                                     <th rowspan="1" class="hidden-phone">&nbsp;</th>
@@ -44,12 +52,20 @@
                                     </td>
                                 </tr>
                             </tfoot>
-                            <tbody>
+                            <tbody data-bind="foreach: items()">
+
                                 <tr>
-                                    <td class="hidden-phone"><a href="http://www.plazathemes.com/demo/ma_carstore_res/maecenas-pellentesque.html" title="Maecenas sodales" class="product-image"><img src="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/thumbnail/75x/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-2.png" width="75" height="75" alt="Maecenas sodales"></a></td>
+                                    <td class="hidden-phone">
+                                        <a data-bind="attr : { href: neemo.endpoints.product.get(Id)}"
+                                           title="Maecenas sodales" class="product-image">
+                                            <img data-bind="attr : { src: neemo.endpoints.img.get(ImageId), alt : Title }"
+                                                 width="75"
+                                                 height="75">
+                                        </a>
+                                    </td>
                                     <td>
                                         <h2 class="product-name">
-                                            <a href="http://www.plazathemes.com/demo/ma_carstore_res/maecenas-pellentesque.html">Maecenas sodales</a>
+                                            <a data-bind="attr : { href: neemo.endpoints.product.get(Id)}, text: Title"></a>
                                         </h2>
                                     </td>
                                     <td class="a-right">
@@ -66,68 +82,72 @@
                                             <span class="price">$399.00</span>
                                         </span>
                                     </td>
-                                    <td class="a-center last"><a href="http://www.plazathemes.com/demo/ma_carstore_res/checkout/cart/delete/id/3704/uenc/aHR0cDovL3d3dy5wbGF6YXRoZW1lcy5jb20vZGVtby9tYV9jYXJzdG9yZV9yZXMvY2hlY2tvdXQvY2FydC8,/" title="Remove item" class="btn-remove btn-remove2">Remove item</a></td>
-                                </tr>                            
+                                    <td class="a-center last">
+                                        <a data-bind="click: $parent.removeItem" title="Remove item" class="btn-remove btn-remove2">Remove item</a>
+                                    </td>
+                                </tr>
+
                             </tbody>
                         </table>
                     </fieldset>
-                </form>
-                <div class="cart-collaterals row-fluid">
 
-                    <div class="col-1 span4">
-                       @*Placeholder for shipping estimate*@
-                    </div>
-                    <div class="col-1 span4">
-                        <form id="discount-coupon-form" action="http://www.plazathemes.com/demo/ma_carstore_res/checkout/cart/couponPost/" method="post">
-                            <div class="discount">
-                                <h2>Discount Codes</h2>
-                                <div class="discount-form">
-                                    <label for="coupon_code">Enter your coupon code if you have one.</label>
-                                    <input type="hidden" name="remove" id="remove-coupone" value="0">
-                                    <div class="input-box">
-                                        <input class="input-text" id="coupon_code" name="coupon_code" value="">
-                                    </div>
-                                    <div class="buttons-set">
-                                        <button type="button" title="Apply Coupon" class="button" onclick="discountForm.submit(false)" value="Apply Coupon"><span><span>Apply Coupon</span></span></button>
+
+                    <div class="cart-collaterals row-fluid">
+                        <div class="col-1 span4">
+                            @*Placeholder for shipping estimate*@
+                        </div>
+                        <div class="col-1 span4">
+                            <form id="discount-coupon-form" action="http://www.plazathemes.com/demo/ma_carstore_res/checkout/cart/couponPost/" method="post">
+                                <div class="discount">
+                                    <h2>Discount Codes</h2>
+                                    <div class="discount-form">
+                                        <label for="coupon_code">Enter your coupon code if you have one.</label>
+                                        <input type="hidden" name="remove" id="remove-coupone" value="0">
+                                        <div class="input-box">
+                                            <input class="input-text" id="coupon_code" name="coupon_code" value="">
+                                        </div>
+                                        <div class="buttons-set">
+                                            <button type="button" title="Apply Coupon" class="button" onclick="discountForm.submit(false)" value="Apply Coupon"><span><span>Apply Coupon</span></span></button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
-                  
-                      
-                    </div>
-                    <div class="totals span4">
-                        <table id="shopping-cart-totals-table">
-                            <colgroup>
-                                <col>
-                                <col width="1">
-                            </colgroup>
-                            <tfoot>
-                                <tr>
-                                    <td style="" class="a-right" colspan="1">
-                                        <strong>Grand Total</strong>
-                                    </td>
-                                    <td style="" class="a-right">
-                                        <strong><span class="price">$798.00</span></strong>
-                                    </td>
-                                </tr>
-                            </tfoot>
-                            <tbody>
-                                <tr>
-                                    <td style="" class="a-right" colspan="1">
-                                        Subtotal
-                                    </td>
-                                    <td style="" class="a-right">
-                                        <span class="price">$798.00</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <ul class="checkout-types">
-                            <li>
-                                <button type="button" title="Proceed to Checkout" class="button btn-proceed-checkout btn-checkout" onclick="window.location='http://www.plazathemes.com/demo/ma_carstore_res/checkout/onepage/';"><span><span>Proceed to Checkout</span></span></button>
-                            </li>                            
-                        </ul>
+                            </form>
+
+
+                        </div>
+                        <div class="totals span4">
+                            <table id="shopping-cart-totals-table">
+                                <colgroup>
+                                    <col>
+                                    <col width="1">
+                                </colgroup>
+                                <tfoot>
+                                    <tr>
+                                        <td style="" class="a-right" colspan="1">
+                                            <strong>Grand Total</strong>
+                                        </td>
+                                        <td style="" class="a-right">
+                                            <strong><span class="price">$798.00</span></strong>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    <tr>
+                                        <td style="" class="a-right" colspan="1">
+                                            Subtotal
+                                        </td>
+                                        <td style="" class="a-right">
+                                            <span class="price">$798.00</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <ul class="checkout-types">
+                                <li>
+                                    <button type="button" title="Proceed to Checkout" class="button btn-proceed-checkout btn-checkout" onclick="window.location='http://www.plazathemes.com/demo/ma_carstore_res/checkout/onepage/';"><span><span>Proceed to Checkout</span></span></button>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

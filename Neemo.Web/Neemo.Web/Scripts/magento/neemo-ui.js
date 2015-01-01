@@ -46,7 +46,7 @@ neemo.ui = (function ($, toastr, svc, shoppingcart) {
     });
 
     // Initialise the shopping cart
-    svc.getItems().then(function(items) {
+    svc.getItems().then(function (items) {
         var cart = new shoppingcart(items);
         ui.cart = cart;
         ko.applyBindings(cart);

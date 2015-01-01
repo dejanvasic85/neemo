@@ -2,6 +2,7 @@
 {
     public class CartItemView
     {
+        public string LineItemId { get; set; }
         public int Id { get; set; }
         public string ImageId { get; set; }
         public string Title { get; set; }

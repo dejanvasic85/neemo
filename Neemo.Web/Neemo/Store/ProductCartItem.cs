@@ -9,7 +9,7 @@ namespace Neemo.Store
         private readonly Product _product;
 
         public int Quantity { get; private set; }
-        public string OrderId { get; private set; }
+        public string LineItemId { get; private set; }
         public int Id { get; private set; }
         public string Title { get; private set; }
         public string ImageId { get; private set; }
@@ -28,7 +28,7 @@ namespace Neemo.Store
             Title = product.Title;
             ImageId = product.ImageId;
             Price = product.Price;
-            OrderId = Guid.NewGuid().ToString();
+            LineItemId = Guid.NewGuid().ToString();
 
             _product = product;
         }

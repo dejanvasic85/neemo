@@ -32,9 +32,9 @@ namespace Neemo.ShoppingCart
             this._items.Clear();
         }
         
-        public void RemoveItem(string orderId)
+        public void RemoveItem(string lineItemId)
         {
-            _items.RemoveAll(p => p.OrderId == orderId);
+            _items.RemoveAll(p => p.LineItemId == lineItemId);
         }
 
         public ICartItem[] GetItems()
