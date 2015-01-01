@@ -117,7 +117,7 @@
                                                     <a href='@Url.Action("Checkout", "Cart")' title="Checkout" >
                                                         Manage Cart or Checkout 
                                                         <span data-bind="if: items().length > 0">
-                                                            (<span data-bind="text: items().length"></span>)
+                                                            (<span data-bind="text: totalQuantity()"></span>)
                                                         </span>
                                                     </a>
                                                 </li>

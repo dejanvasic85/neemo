@@ -16,7 +16,7 @@ namespace Neemo.Web.Controllers
         public ActionResult Details(int id)
         {
             // Todo - this value should not be hardcoded
-            var productId = 7;
+            var productId = 1;
             //var productId = id;
 
             // Fetch the full product details
