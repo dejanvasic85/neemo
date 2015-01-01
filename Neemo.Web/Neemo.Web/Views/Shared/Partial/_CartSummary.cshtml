@@ -30,5 +30,10 @@
         </ol>
 
         <div class="top-subtotal">Subtotal: <span class="price" data-bind="text: subTotal()"></span></div>
+        <div class="actions" data-bind="if: items().length > 0">
+            <a  title="Checkout" class="button">
+                <span><span>Checkout</span></span>
+            </a>
+        </div>
     </div>
 </div>

@@ -50,8 +50,8 @@
 select { margin-bottom:1px; }
 input.radio { width:13px; height:13px; }
 input.checkbox { width:13px; height:13px; }
-button.button { }
-button.button span { position:relative; }
+.button { }
+.button span { position:relative; }
 button.btn-checkout { height:40px; }
 #opc-review .sp-methods .input-box { float:left; }
 .form-list label { position:relative; z-index:0; }
