@@ -21,13 +21,22 @@
         </div>
 
         <div class="actions">
-            <button type="button" title="Add to Cart" class="button btn-cart" data-productid="@Model.ProductId">
-                <span>
+            @if (Model.OutOfStock)
+            {
+                <div style="padding: 5px; font-weight: bold">Out of stock</div>
+            }
+            else
+            {
+                <button type="button" title="Add to Cart" class="button btn-cart" data-productid="@Model.ProductId">
                     <span>
-                        Add to Cart
+                        <span>
+                            Add to Cart
+                        </span>
                     </span>
-                </span>
-            </button>
+                </button>
+            }
+
+            
         </div>
     </div>
 </li>

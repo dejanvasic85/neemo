@@ -5,7 +5,6 @@ neemo.ui = (function ($, toastr, svc, shoppingcart) {
     var ui = {};
 
     $('.btn-cart').on('click', function () {
-        debugger;
         var me = $(this);
         var qty = 1;
 
