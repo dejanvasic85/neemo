@@ -51,5 +51,10 @@ namespace Neemo.ShoppingCart
         {
             return _items.ToArray();
         }
+
+        public int? GetItemQuantity(int id)
+        {
+            return _items.Sum(i => i.Quantity);
+        }
     }
 }

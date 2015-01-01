@@ -31,34 +31,17 @@
             if (!isInStock)
                 return Json(new { NotAvailable = true });
 
-            var hasEnoughForRequest = _productService.CheckAvailability(productId, qty);
-            if (!hasEnoughForRequest)
+            var cart = _cartContext.Current();
+
+            var isRequestedQuantityTooLarge = !_productService.IsAvailable(productId, qty, cart.GetItemQuantity(productId));
+            if (isRequestedQuantityTooLarge)
                 return Json(new { QuantityTooLarge = true });
 
             // All good - proceed to add to the cart
             var productCartItem = new ProductCartItem(_productService.GetProductById(productId), qty);
-
-            _cartContext
-                .Current()
-                .AddItem(productCartItem);
+            cart.AddItem(productCartItem);
 
             return Json(new { Added = true, Item = productCartItem });
-        }
-
-        [HttpPost]
-        public ActionResult UpdateProduct(int productId, int qty)
-        {
-            // Validate
-            var cart = _cartContext.Current();
-            if (cart.DoesNotHaveItem(productId))
-                return Json(new { ProductNotInCart = true });
-
-            var hasEnoughForRequest = _productService.CheckAvailability(productId, qty);
-            if (!hasEnoughForRequest)
-                return Json(new { QuantityTooLarge = true });
-
-            cart.UpdateItem(productId, qty);
-            return Json(new { Updated = true });
         }
 
         [HttpPost]

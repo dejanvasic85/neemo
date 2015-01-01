@@ -20,10 +20,7 @@ neemo.ui = (function ($, toastr, svc, shoppingcart) {
                 ui.cart.items.push(item);
             },
             function () {
-                toastr.error('Looks like we are out of stock!');
-            },
-            function () {
-                toastr.error('The quantity requested is too large.');
+                toastr.error('Not enough items in stock for your request.');
             });
 
         // In case this is a button we'll return false

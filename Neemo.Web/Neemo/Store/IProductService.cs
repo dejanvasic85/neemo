@@ -9,7 +9,7 @@ namespace Neemo.Store
         List<Product> GetNewProducts();
         List<Product> GetBestSellingProducts();
         Product GetProductById(int id);
-        bool CheckAvailability(int productId, int qty);
+        bool IsAvailable(int productId, int desiredQuantity, int? bookedQuantity);
         bool IsInStock(int productId);
     }
 
@@ -41,20 +41,20 @@ namespace Neemo.Store
         {
             return _productRepository.GetProducts().FirstOrDefault(p => p.ProductId == id);
         }
-
-        public bool CheckAvailability(int productId, int qty)
+        
+        public bool IsAvailable(int productId, int desiredQuantity, int? bookedQuantity)
         {
             var product = _productRepository.GetProducts().FirstOrDefault(p => p.ProductId == productId);
             if (product == null)
                 return false;
 
-            return product.IsDesiredQuantityAvailable(qty);
+            return product.AvailableQty - (desiredQuantity + bookedQuantity.GetValueOrDefault()) >= 0;
         }
 
         public bool IsInStock(int productId)
         {
             // Should return true if there is at least one in there!
-            return CheckAvailability(productId, 1);
+            return IsAvailable(productId, 1, bookedQuantity: null);
         }
     }
 }

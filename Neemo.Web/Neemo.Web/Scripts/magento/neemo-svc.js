@@ -13,14 +13,12 @@ neemo.svc = (function ($, urls) {
     }
     
     return {
-        addProduct: function (productId, qty, successFnc, noStockFnc, qtyTooLargeFnc) {
+        addProduct: function (productId, qty, successFnc, qtyTooLargeFnc) {
             call(urls.addProduct, { productId: productId, qty: qty })
-                .done(function(response) {
+                .done(function (response) {
+                debugger;
                     if (response.Added) {
                         successFnc(response.Item);
-                    }
-                    if (response.NotAvailable) {
-                        noStockFnc();
                     }
                     if (response.QuantityTooLarge) {
                         qtyTooLargeFnc();
