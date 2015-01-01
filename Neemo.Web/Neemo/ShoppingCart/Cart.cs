@@ -46,5 +46,13 @@ namespace Neemo.ShoppingCart
         {
             return _items.Sum(i => i.Quantity);
         }
+
+        public void UpdateQuantity(string lineItemId, int quantity)
+        {
+            var item = _items.FirstOrDefault(i => i.LineItemId == lineItemId);
+            if (item == null)
+                return;
+            item.UpdateQuantity(quantity);
+        }
     }
 }

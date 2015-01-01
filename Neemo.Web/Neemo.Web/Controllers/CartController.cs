@@ -66,5 +66,12 @@
 
             return Json(viewModel, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        public ActionResult UpdateQuantity(string lineItemId, int quantity)
+        {
+            _cartContext.Current().UpdateQuantity(lineItemId, quantity);
+            return Json(new {Updated = true});
+        }
     }
 }

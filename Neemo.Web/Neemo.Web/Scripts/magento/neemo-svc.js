@@ -30,7 +30,8 @@ neemo.svc = (function ($, urls) {
         getItems: function () {
             return call(urls.getItems, null, 'GET');
         },
-        updateQuantity : function(lineItemId, qty) {
+        updateQuantity: function (lineItemId, qty) {
+            call(urls.updateQuantity, {lineItemId : lineItemId, quantity : qty });
         }
     }
 })(jQuery, neemo.endpoints.cart);
