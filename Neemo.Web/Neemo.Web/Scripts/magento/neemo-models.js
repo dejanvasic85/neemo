@@ -46,8 +46,10 @@
         };
 
         me.removeItem = function (item) {
-            me.items.remove(item);
-            cartSvc.removeProduct(item.LineItemId());
+            if (confirm('Are you sure you want to remove the order from the shopping cart?')) {
+                me.items.remove(item);
+                cartSvc.removeProduct(item.LineItemId());
+            }
         };
     };
 
