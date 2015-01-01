@@ -422,6 +422,10 @@
     <Content Include="Content\magento\images\media\laptop_callout_mid3.jpg" />
     <Content Include="Content\magento\images\media\laptop_callout_spot.jpg" />
     <Content Include="Content\magento\images\media\shirts_landing_banner1.jpg" />
+    <Content Include="Content\magento\images\media\slide-1.png" />
+    <Content Include="Content\magento\images\media\slide-2.png" />
+    <Content Include="Content\magento\images\media\slide-3.png" />
+    <Content Include="Content\magento\images\media\slide-4.png" />
     <Content Include="Content\magento\images\menu_bg_li1.gif" />
     <Content Include="Content\magento\images\menu_bg_li2.gif" />
     <Content Include="Content\magento\images\menu_down.gif" />
