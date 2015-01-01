@@ -22,72 +22,7 @@
                 <div data-bind="if: items().length > 0">
 
                     <fieldset>
-                        <table class="data-table cart-table">
-                            <colgroup>
-                                <col width="1">
-                                <col>
-                                <col width="1">
-                                <col width="1">
-                                <col width="1">
-                                <col width="1">
-                                <col width="1">
-                            </colgroup>
-
-                            <thead>
-                                <tr class="first last">
-                                    <th rowspan="1" class="hidden-phone">&nbsp;</th>
-                                    <th rowspan="1"><span class="nobr">Product Name</span></th>
-                                    <th class="a-center" colspan="1"><span class="nobr">Unit Price</span></th>
-                                    <th rowspan="1" class="a-center">Qty</th>
-                                    <th class="a-center" colspan="1">Subtotal</th>
-                                    <th rowspan="1" class="a-center">&nbsp;</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr class="first last">
-                                    <td colspan="50" class="a-right last">
-                                        <button title="Continue Shopping" class="button btn-continue"><span><span>Continue Shopping</span></span></button>
-                                        <button type="submit" name="update_cart_action" value="update_qty" title="Update Shopping Cart" class="button btn-update"><span><span>Update Shopping Cart</span></span></button>
-                                        <button type="submit" name="update_cart_action" value="empty_cart" title="Clear Shopping Cart" class="button btn-empty" id="empty_cart_button"><span><span>Clear Shopping Cart</span></span></button>
-                                    </td>
-                                </tr>
-                            </tfoot>
-                            <tbody data-bind="foreach: items()">
-
-                                <tr>
-                                    <td class="hidden-phone">
-                                        <a data-bind="attr : { href: neemo.endpoints.product.get(Id)}"
-                                           title="Maecenas sodales" class="product-image">
-                                            <img data-bind="attr : { src: neemo.endpoints.img.get(ImageId), alt : Title }"
-                                                 width="75"
-                                                 height="75">
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <h2 class="product-name">
-                                            <a data-bind="attr : { href: neemo.endpoints.product.get(Id)}, text: Title"></a>
-                                        </h2>
-                                    </td>
-                                    <td class="a-right">
-                                        <span class="cart-price">
-                                            <span class="price" data-bind="text: accounting.formatMoney(Price)"></span>
-                                        </span>
-                                    </td>
-                                    <td class="a-center">
-                                        <input data-numbers-only size="4" title="Qty" class="input-text qty" maxlength="12" data-bind="value: Quantity">
-                                    </td>
-                                    <td class="a-right">
-                                        <span class="cart-price">
-                                            <span class="price" data-bind="text: accounting.formatMoney(Price * Quantity)"></span>
-                                        </span>
-                                    </td>
-                                    <td class="a-center last">
-                                        <a data-bind="click: $parent.removeItem" title="Remove item" class="btn-remove btn-remove2">Remove item</a>
-                                    </td>
-                                </tr>
-
-                            </tbody>
-                        </table>
+                        @Html.Partial("~/Views/Shared/Partial/_CartEditor.cshtml")
                     </fieldset>
 
 
