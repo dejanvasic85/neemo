@@ -24,8 +24,8 @@ neemo.svc = (function ($, urls) {
                     }
                 });
         },
-        removeProduct: function(productId) {
-            call(urls.removeProduct, { productId: productId });
+        removeProduct: function(lineItemId) {
+            call(urls.removeProduct, { lineItemId: lineItemId });
         },
         getItems: function () {
             return call(urls.getItems, null, 'GET');

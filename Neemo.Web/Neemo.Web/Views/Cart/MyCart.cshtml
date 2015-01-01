@@ -70,16 +70,15 @@
                                     </td>
                                     <td class="a-right">
                                         <span class="cart-price">
-                                            <span class="price">$399.00</span>
+                                            <span class="price" data-bind="text: accounting.formatMoney(Price)"></span>
                                         </span>
                                     </td>
                                     <td class="a-center">
-                                        <input value="1" data-numbers-only size="4" title="Qty" class="input-text qty" maxlength="12">
+                                        <input data-numbers-only size="4" title="Qty" class="input-text qty" maxlength="12" data-bind="value: Quantity">
                                     </td>
                                     <td class="a-right">
                                         <span class="cart-price">
-
-                                            <span class="price">$399.00</span>
+                                            <span class="price" data-bind="text: accounting.formatMoney(Price * Quantity)"></span>
                                         </span>
                                     </td>
                                     <td class="a-center last">
