@@ -467,6 +467,7 @@
     <Content Include="Content\magento\widgets.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\magento\accounting.js" />
     <Content Include="Scripts\magento\ajax_cart_super.js" />
     <Content Include="Scripts\magento\bootstrap-tooltip.js" />
     <Content Include="Scripts\magento\bootstrap.min.js" />

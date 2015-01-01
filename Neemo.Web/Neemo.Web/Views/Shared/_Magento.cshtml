@@ -58,6 +58,7 @@
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/calendar.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/toastr.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/knockout-3.2.0.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/accounting.js")"></script>
 
     <!--[if lt IE 9]>
         <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/styles-ie8.css")" media="all" />
@@ -113,10 +114,17 @@
                                                 <li class="first"><a href="http://www.plazathemes.com/demo/ma_carstore_res/customer/account/" title="My Account">My Account</a></li>
                                                 <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/wishlist/" title="My Wishlist" class="top_link_wishlist">My Wishlist</a></li>
                                                 <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/checkout/cart/" title="My Cart" class="top-link-cart">My Cart</a></li>
-                                                <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/checkout/onepage" title="Checkout" class="top-link-checkout">Checkout</a></li>
+                                                <li>
+                                                    <a href="" title="Checkout" class="top-link-checkout">
+                                                        Checkout
+                                                        <span data-bind="if: items().length > 0">
+                                                            (<span data-bind="text: items().length"></span>)
+                                                        </span>
+                                                    </a>
+                                                </li>
                                                 <li class=" last"><a href="http://www.plazathemes.com/demo/ma_carstore_res/customer/account/login/" title="Log In">Log In</a></li>
                                             </ul>
-                                            <form id="search_mini_form" action="http://www.plazathemes.com/demo/ma_carstore_res/catalogsearch/result/" method="get">
+                                            <form id="search_mini_form" action="" method="get">
                                                 <div class="form-search">
                                                     <label for="search">Search:</label>
                                                     <input id="search" type="text" name="q" value="" class="input-text" maxlength="128" autocomplete="off">
@@ -133,33 +141,53 @@
 
 
                                         </div>
+
+                                        @*Shopping cart*@
                                         <div class="quick-access-right">
                                             <div class="top-cart-wrapper">
                                                 <div class="top-cart-contain">
-                                                    <script type="text/javascript">
-                                                        $jq(document).ready(function () {
-                                                            var enable_module = $jq('#enable_module').val();
-                                                            if (enable_module == 0) return false;
-                                                        })
-
-                                                    </script>
                                                     <div id="mini_cart_block">
-                                                        <div class="block-cart mini_cart_ajax">
+                                                        
                                                             <div class="block-cart">
                                                                 <span class="top-cart-title"></span>
+                                                                <span class="top-cart-price" data-bind="text: items().length"></span><span> - Item(s)</span>
 
-                                                                <span class="top-cart-price">0 - </span><span>Item</span>
                                                                 <div class="top-cart-content">
-                                                                    <p class="empty">You have no items in your shopping cart.</p>
-                                                                    <div class="top-subtotal">Subtotal: <span class="price">$0.00</span></div>
+
+                                                                    <p data-bind="if: items().length === 0" class="empty">
+                                                                        You have no items in your shopping cart.
+                                                                    </p>
+
+                                                                    <ol id="cart-sidebar" class="mini-products-list" data-bind="foreach: items">
+                                                                        <li class="item">
+                                                                            <a data-bind="attr : {href : neemo.endpoints.product.get(Id)}"
+                                                                               class="product-image">
+                                                                                <img data-bind="attr : { src: neemo.endpoints.img.get(ImageId), alt : Title }"
+                                                                                     width="50"
+                                                                                     height="50">
+                                                                            </a>
+                                                                            <div class="product-details">
+                                                                                <a href="" title="Remove This Item" class="btn-remove">Remove This Item</a>
+                                                                                <p class="product-name">
+                                                                                    <a data-bind="text: Title, attr : {href: neemo.endpoints.product.get(Id)}"></a>
+                                                                                </p>
+                                                                                <strong data-bind="text: Quantity"></strong> x
+                                                                                <span class="price" data-bind="text: accounting.formatMoney(Price)"></span>
+                                                                            </div>
+                                                                        </li>
+                                                                    </ol>
+
+                                                                    <div class="top-subtotal">Subtotal: <span class="price" data-bind="text: subTotal()"></span></div>
                                                                 </div>
                                                             </div>
-
-                                                        </div>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        @*end shopping cart*@
+
+
                                     </div>
                                 </div>
                             </div>
@@ -493,7 +521,19 @@
                 addProduct: '@Url.Action("AddProduct", "Cart")',
                 updateProduct: '@Url.Action("UpdateProduct", "Cart")',
                 removeProduct: '@Url.Action("RemoveProduct", "Cart")',
-                getItems : '@Url.Action("GetCurrentItems", "Cart")'
+                getItems: '@Url.Action("GetCurrentItems", "Cart")',
+            },
+            img: {
+                generic: '@Url.Image("placeholder")',
+                get: function (imageId) {
+                    return neemo.endpoints.img.generic.replace('placeholder', imageId);
+                }
+            },
+            product : {
+                generic: '@Url.Product(-1)',
+                get : function(id) {
+                    return neemo.endpoints.product.generic.replace(-1, id);
+                }
             }
         };
     </script>
