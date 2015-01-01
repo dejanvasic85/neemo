@@ -1,12 +1,12 @@
 ﻿(function(ko){
-    ko.extenders.numeric = function (target, precision, defaultVal) {
+    ko.extenders.numeric = function (target, precision) {
         //create a writable computed observable to intercept writes to our observable
         var result = ko.pureComputed({
             read: target,  //always return the original observables value
             write: function (newValue) {
                 var current = target(),
                     roundingMultiplier = Math.pow(10, precision),
-                    newValueAsNum = isNaN(newValue) ? defaultVal : parseFloat(+newValue),
+                    newValueAsNum = isNaN(newValue) ? 1 : parseFloat(+newValue),
                     valueToWrite = Math.round(newValueAsNum * roundingMultiplier) / roundingMultiplier;
 
                 //only write if it changed

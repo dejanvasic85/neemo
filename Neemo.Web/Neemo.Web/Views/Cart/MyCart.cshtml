@@ -12,7 +12,7 @@
                 <div class="page-title title-buttons">
                     <h1>Shopping Cart</h1>
                 </div>
-                
+
                 <div data-bind="if: items().length === 0">
                     <div class="alert">
                         Your shopping cart is empty. @Html.ActionLink("Continue Shopping", "Index", "Home")
@@ -40,9 +40,9 @@
                                         <div class="input-box">
                                             <input class="input-text" id="coupon_code" name="coupon_code" value="">
                                         </div>
-                                        <div class="buttons-set">
-                                            <button type="button" title="Apply Coupon" class="button" onclick="discountForm.submit(false)" value="Apply Coupon"><span><span>Apply Coupon</span></span></button>
-                                        </div>
+                                        <br/>
+                                        <button title="Apply Coupon" class="btn" value="Apply Coupon"><span><span>Apply Coupon</span></span></button>
+
                                     </div>
                                 </div>
                             </form>
@@ -55,7 +55,7 @@
                                     <col>
                                     <col width="1">
                                 </colgroup>
-                              
+
                                 <tbody>
                                     <tr>
                                         <td style="" class="a-right" colspan="1">
@@ -66,7 +66,7 @@
                                         </td>
                                     </tr>
                                 </tbody>
-                                
+
                                 <tfoot>
                                     <tr>
                                         <td style="" class="a-right" colspan="1">

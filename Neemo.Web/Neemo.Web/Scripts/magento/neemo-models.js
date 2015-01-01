@@ -5,6 +5,7 @@
     neemo.lineItem = function (cartViewItem) {
         var me = this;
 
+        // Todo - make these properties lowercase (like other js conventions)
         me.Id = ko.observable(cartViewItem.Id);
         me.LineItemId = ko.observable(cartViewItem.LineItemId);
         me.Title = ko.observable(cartViewItem.Title);
