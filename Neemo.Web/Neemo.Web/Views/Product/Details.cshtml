@@ -67,7 +67,7 @@
                                     <span>
                                         @if (Model.AvailableQty == 0)
                                         {
-                                            <text>Out of stock</text>
+                                            <span style="color: #c41c1c; font-weight: bold">Out of stock</span>
                                         }
                                         else
                                         {
@@ -85,12 +85,15 @@
 
 
                                 <div class="price-box">
-                                        <span class="regular-price" id="product-price-2_clone">
-                                            <span class="price">@Model.Price.ToString("C")</span>
-                                        </span>
-                                    </div>
+                                    <span class="regular-price" id="product-price-2_clone">
+                                        <span class="price">@Model.Price.ToString("C")</span>
+                                    </span>
+                                </div>
 
-                                    
+
+                                @if (Model.AvailableQty > 0)
+                                {
+
                                     <div class="add-to-box">
                                         <div class="add-to-cart">
                                             <label for="qty">Qty:</label>
@@ -109,6 +112,7 @@
                                         </div>
                                     </div>
 
+                                }
 
                             </div>
                         </div>
