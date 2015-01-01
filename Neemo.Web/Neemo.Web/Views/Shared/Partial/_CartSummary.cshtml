@@ -1,0 +1,34 @@
+﻿@*This is the top cart summary with dropdown of all items*@
+
+<div class="block-cart">
+    <span class="top-cart-title"></span>
+    <span class="top-cart-price" data-bind="text: items().length"></span><span> - Item(s)</span>
+
+    <div class="top-cart-content">
+
+        <p data-bind="if: items().length === 0" class="empty">
+            You have no items in your shopping cart.
+        </p>
+
+        <ol id="cart-sidebar" class="mini-products-list" data-bind="foreach: items">
+            <li class="item">
+                <a data-bind="attr : {href : neemo.endpoints.product.get(Id)}"
+                   class="product-image">
+                    <img data-bind="attr : { src: neemo.endpoints.img.get(ImageId), alt : Title }"
+                         width="50"
+                         height="50">
+                </a>
+                <div class="product-details">
+                    <a href="" title="Remove This Item" class="btn-remove">Remove This Item</a>
+                    <p class="product-name">
+                        <a data-bind="text: Title, attr : {href: neemo.endpoints.product.get(Id)}"></a>
+                    </p>
+                    <strong data-bind="text: Quantity"></strong> x
+                    <span class="price" data-bind="text: accounting.formatMoney(Price)"></span>
+                </div>
+            </li>
+        </ol>
+
+        <div class="top-subtotal">Subtotal: <span class="price" data-bind="text: subTotal()"></span></div>
+    </div>
+</div>

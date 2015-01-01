@@ -16,7 +16,7 @@ neemo.ui = (function ($, toastr, svc, shoppingcart) {
 
         svc.addProduct(me.data().productid, qty,
             function (item) {
-                toastr.success(qty + ' item(s) added to cart');
+                toastr.success('Your order has been added.');
                 ui.cart.items.push(item);
             },
             function () {
