@@ -83,29 +83,33 @@
                                     </div>
                                 </div>
 
-                                <div class="product-options-bottom">
-                                    <div class="price-box">
+
+                                <div class="price-box">
                                         <span class="regular-price" id="product-price-2_clone">
                                             <span class="price">@Model.Price.ToString("C")</span>
                                         </span>
                                     </div>
 
-                                    <div class="add-to-cart">
-                                        <label for="qty">Qty:</label>
-                                        <input type="text" name="qty" id="qty" maxlength="12" value="1" title="Qty" data-numbers-only class="input-text qty">
-                                        <button type="button"
-                                                title="Add to Cart"
-                                                class="button btn-cart"
-                                                data-productid="@Model.ProductId"
-                                                data-carturl="@Url.Action("AddOrUpdate", "Cart")">
-                                            <span>
+                                    
+                                    <div class="add-to-box">
+                                        <div class="add-to-cart">
+                                            <label for="qty">Qty:</label>
+                                            <input type="text" name="qty" id="qty" maxlength="12" value="1" title="Qty" data-numbers-only class="input-text qty">
+                                            <button type="button"
+                                                    title="Add to Cart"
+                                                    class="button btn-cart"
+                                                    data-productid="@Model.ProductId"
+                                                    data-carturl="@Url.Action("AddOrUpdate", "Cart")">
                                                 <span>
-                                                    Add to Cart
+                                                    <span>
+                                                        Add to Cart
+                                                    </span>
                                                 </span>
-                                            </span>
-                                        </button>
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
+
+
                             </div>
                         </div>
 
