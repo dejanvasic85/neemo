@@ -200,12 +200,12 @@
                                     @foreach (var bestSeller in Model.BestSellingProducts)
                                     {
                                         <li class="item">
-                                            <a href="http://www.plazathemes.com/demo/ma_carstore_res/lorem-ipsum-dolor.html"
-                                               title="Lorem ipsum dolor" class="product-image">
+                                            <a href="@Url.Product(bestSeller.ProductId)"
+                                               title="@bestSeller.Title" class="product-image">
                                                 <img src="@Url.Image(bestSeller.ImageId)" width="52" height="52" alt="@bestSeller.Title">
                                             </a>
                                             <h2 class="product-name">
-                                                <a href="http://www.plazathemes.com/demo/ma_carstore_res/lorem-ipsum-dolor.html" title="Lorem ipsum dolor">
+                                                <a href="@Url.Product(bestSeller.ProductId)" title="@bestSeller.Title">
                                                     @bestSeller.Title
                                                 </a>
                                             </h2>
