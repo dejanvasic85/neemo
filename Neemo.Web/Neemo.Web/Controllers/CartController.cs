@@ -36,11 +36,13 @@
                 return Json(new { QuantityTooLarge = true });
 
             // All good - proceed to add to the cart
+            var productCartItem = new ProductCartItem(_productService.GetProductById(productId), qty);
+
             _cartContext
                 .Current()
-                .AddItem(new ProductCartItem(_productService.GetProductById(productId), qty));
+                .AddItem(productCartItem);
 
-            return Json(new { Added = true });
+            return Json(new { Added = true, Item = productCartItem });
         }
 
         [HttpPost]

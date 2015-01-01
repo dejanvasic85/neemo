@@ -17,7 +17,7 @@ neemo.svc = (function ($, urls) {
             call(urls.addProduct, { productId: productId, qty: qty })
                 .done(function(response) {
                     if (response.Added) {
-                        successFnc();
+                        successFnc(response.Item);
                     }
                     if (response.NotAvailable) {
                         noStockFnc();
