@@ -31,20 +31,10 @@ namespace Neemo.ShoppingCart
             // Clear the items
             this._items.Clear();
         }
-
-        public bool DoesNotHaveItem(int id)
+        
+        public void RemoveItem(string orderId)
         {
-            return _items.All(p => p.Id != id);
-        }
-
-        public void UpdateItem(int id, int qty)
-        {
-            _items.First(p => p.Id == id).UpdateQuantity(qty);
-        }
-
-        public void RemoveItem(int id)
-        {
-            _items.RemoveAll(p => p.Id == id);
+            _items.RemoveAll(p => p.OrderId == orderId);
         }
 
         public ICartItem[] GetItems()
@@ -52,7 +42,7 @@ namespace Neemo.ShoppingCart
             return _items.ToArray();
         }
 
-        public int? GetItemQuantity(int id)
+        public int? GetTotalQuantityForItem(int id)
         {
             return _items.Sum(i => i.Quantity);
         }

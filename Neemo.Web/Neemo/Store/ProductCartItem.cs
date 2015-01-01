@@ -1,4 +1,6 @@
-﻿namespace Neemo.Store
+﻿using System;
+
+namespace Neemo.Store
 {
     using ShoppingCart;
 
@@ -7,6 +9,7 @@
         private readonly Product _product;
 
         public int Quantity { get; private set; }
+        public string OrderId { get; private set; }
         public int Id { get; private set; }
         public string Title { get; private set; }
         public string ImageId { get; private set; }
@@ -20,13 +23,14 @@
             if (quantity <= 0)
                 throw new CartException("Quantity must be greater than zero when adding to the shopping cart");
 
-            this.Quantity = quantity;
-            this.Id = product.ProductId;
-            this.Title = product.Title;
-            this.ImageId = product.ImageId;
-            this.Price = product.Price;
+            Quantity = quantity;
+            Id = product.ProductId;
+            Title = product.Title;
+            ImageId = product.ImageId;
+            Price = product.Price;
+            OrderId = Guid.NewGuid().ToString();
 
-            this._product = product;
+            _product = product;
         }
 
         public decimal CalculatePrice()

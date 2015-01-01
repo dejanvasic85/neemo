@@ -33,7 +33,7 @@
 
             var cart = _cartContext.Current();
 
-            var isRequestedQuantityTooLarge = !_productService.IsAvailable(productId, qty, cart.GetItemQuantity(productId));
+            var isRequestedQuantityTooLarge = !_productService.IsAvailable(productId, qty, cart.GetTotalQuantityForItem(productId));
             if (isRequestedQuantityTooLarge)
                 return Json(new { QuantityTooLarge = true });
 
@@ -45,15 +45,9 @@
         }
 
         [HttpPost]
-        public ActionResult RemoveProduct(int productId)
+        public ActionResult RemoveProduct(string productId)
         {
-            var cart = _cartContext.Current();
-            if (cart.DoesNotHaveItem(productId))
-            {
-                return Json(new { ProductNotInCart = true });
-            }
-
-            cart.RemoveItem(productId);
+            _cartContext.Current().RemoveItem(productId);
             return Json(new { Removed = true });
         }
 
