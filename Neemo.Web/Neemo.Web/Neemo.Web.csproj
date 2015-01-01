@@ -544,6 +544,7 @@
     <Content Include="Views\Product\Details.cshtml" />
     <Content Include="Views\Cart\MyCart.cshtml" />
     <Content Include="Views\Shared\Partial\_CartSummary.cshtml" />
+    <Content Include="Views\Cart\Checkout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Neemo.DataAccess\Neemo.DataAccess.csproj">

@@ -114,14 +114,15 @@
                                                 <li class="first"><a href="http://www.plazathemes.com/demo/ma_carstore_res/customer/account/" title="My Account">My Account</a></li>
                                                 <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/wishlist/" title="My Wishlist" class="top_link_wishlist">My Wishlist</a></li>
                                                 <li>
-                                                    <a href='@Url.Action("MyCart", "Cart")' title="Checkout" >
-                                                        Manage Cart or Checkout 
+                                                    <a href='@Url.Action("MyCart", "Cart")' title="Checkout">
+                                                        My Cart
                                                         <span data-bind="if: items().length > 0">
                                                             (<span data-bind="text: totalQuantity()"></span>)
                                                         </span>
                                                     </a>
                                                 </li>
-                                                <li class=" last"><a href="http://www.plazathemes.com/demo/ma_carstore_res/customer/account/login/" title="Log In">Log In</a></li>
+                                                <li>@Html.ActionLink("Checkout", "Checkout", "Cart")</li>
+                                                <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/customer/account/login/" title="Log In">Log In</a></li>
                                             </ul>
                                             <form id="search_mini_form" action="" method="get">
                                                 <div class="form-search">

@@ -23,6 +23,11 @@
             return View();
         }
 
+        public ActionResult Checkout()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult AddProduct(int productId, int qty)
         {
