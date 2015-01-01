@@ -42,9 +42,9 @@ namespace Neemo.ShoppingCart
             return _items.ToArray();
         }
 
-        public int? GetTotalQuantityForItem(int id)
+        public int? GetTotalQuantityForProduct(int id, string excludeLineItemId)
         {
-            return _items.Sum(i => i.Quantity);
+            return _items.Where(i => i.LineItemId != excludeLineItemId).Sum(i => i.Quantity);
         }
 
         public void UpdateQuantity(string lineItemId, int quantity)

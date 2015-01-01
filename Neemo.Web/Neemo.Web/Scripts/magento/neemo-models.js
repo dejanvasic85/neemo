@@ -1,6 +1,6 @@
 ﻿neemo = neemo || {};
 
-(function ($, accounting, cartSvc) {
+(function ($, accounting, cartSvc, broadcaster) {
 
     neemo.lineItem = function (cartViewItem) {
         var me = this;
@@ -16,8 +16,12 @@
             return me.Price() * me.Quantity();
         }
 
-        me.Quantity.subscribe(function(newValue) {
-            cartSvc.updateQuantity(me.LineItemId(), newValue);
+        me.Quantity.subscribe(function (newValue) {
+            cartSvc.updateQuantity(me.LineItemId(), me.Id(), newValue, function() {
+                broadcaster.success('Your quantity was updated.');
+            }, function() {
+                broadcaster.error('Not enough items in stock for your request.');
+            });
         });
     };
 
@@ -46,4 +50,4 @@
         };
     };
 
-})(jQuery, accounting, neemo.svc);
+})(jQuery, accounting, neemo.svc, toastr);

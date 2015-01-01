@@ -1,6 +1,6 @@
 ﻿neemo = neemo || {};
 
-neemo.ui = (function ($, toastr, svc, shoppingcart, lineItem) {
+neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
 
     var ui = {};
 
@@ -16,11 +16,11 @@ neemo.ui = (function ($, toastr, svc, shoppingcart, lineItem) {
 
         svc.addProduct(me.data().productid, qty,
             function (item) {
-                toastr.success('Your order has been added.');
+                broadcaster.success('Your order has been added.');
                 ui.cart.items.push(new lineItem( item ));
             },
             function () {
-                toastr.error('Not enough items in stock for your request.');
+                broadcaster.error('Not enough items in stock for your request.');
             });
 
         // In case this is a button we'll return false
@@ -30,7 +30,7 @@ neemo.ui = (function ($, toastr, svc, shoppingcart, lineItem) {
 
     $.ajaxSetup({
         error: function () {
-            toastr.error('Oh no. Something went wrong on our server or your connection dropped out.');
+            broadcaster.error('Oh no. Something went wrong on our server or your connection dropped out.');
         }
     });
 

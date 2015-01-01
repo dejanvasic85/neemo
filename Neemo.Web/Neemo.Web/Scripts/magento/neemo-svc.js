@@ -30,8 +30,16 @@ neemo.svc = (function ($, urls) {
         getItems: function () {
             return call(urls.getItems, null, 'GET');
         },
-        updateQuantity: function (lineItemId, qty) {
-            call(urls.updateQuantity, {lineItemId : lineItemId, quantity : qty });
+        updateQuantity: function (lineItemId, productId, qty, successFnc, qtyTooLargeFnc) {
+            call(urls.updateQuantity, { lineItemId: lineItemId, productId: productId, newQuantity: qty })
+                .done(function(response) {
+                    if (response.Updated) {
+                        successFnc();
+                    }
+                    if (response.QuantityTooLarge) {
+                        qtyTooLargeFnc();
+                    }
+                });
         }
     }
 })(jQuery, neemo.endpoints.cart);

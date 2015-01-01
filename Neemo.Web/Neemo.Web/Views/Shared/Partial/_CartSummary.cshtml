@@ -21,7 +21,7 @@
                 <div class="product-details">
                     <a title="Remove This Item" class="btn-remove" data-bind="click: $parent.removeItem">Remove This Item</a>
                     <p class="product-name">
-                        <a data-bind="text: Title, attr : {href: neemo.endpoints.product.get(Id)}"></a>
+                        <a data-bind="text: Title, attr : {href: neemo.endpoints.product.get(Id())}"></a>
                     </p>
                     <strong data-bind="text: Quantity"></strong> x
                     <span class="price" data-bind="text: accounting.formatMoney(Price())"></span>

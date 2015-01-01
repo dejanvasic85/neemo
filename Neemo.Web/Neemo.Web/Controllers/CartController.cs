@@ -38,7 +38,7 @@
 
             var cart = _cartContext.Current();
 
-            var isRequestedQuantityTooLarge = !_productService.IsAvailable(productId, qty, cart.GetTotalQuantityForItem(productId));
+            var isRequestedQuantityTooLarge = !_productService.IsAvailable(productId, qty, cart.GetTotalQuantityForProduct(productId, string.Empty));
             if (isRequestedQuantityTooLarge)
                 return Json(new { QuantityTooLarge = true });
 
@@ -68,9 +68,15 @@
         }
 
         [HttpPost]
-        public ActionResult UpdateQuantity(string lineItemId, int quantity)
+        public ActionResult UpdateQuantity(string lineItemId, int productId, int newQuantity)
         {
-            _cartContext.Current().UpdateQuantity(lineItemId, quantity);
+            // Verify the new quantity
+            var cart = _cartContext.Current();
+            var isRequestedQuantityTooLarge = !_productService.IsAvailable(productId, newQuantity, cart.GetTotalQuantityForProduct(productId, lineItemId));
+            if (isRequestedQuantityTooLarge)
+                return Json(new { QuantityTooLarge = true });
+
+            cart.UpdateQuantity(lineItemId, newQuantity);
             return Json(new {Updated = true});
         }
     }
