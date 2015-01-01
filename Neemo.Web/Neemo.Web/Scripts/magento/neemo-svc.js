@@ -28,10 +28,7 @@ neemo.svc = (function ($, urls) {
                 });
         },
         getItems : function() {
-            call(urls.getItems, null, 'GET').done(function (items) {
-                debugger;
-                return items;
-            });
+            return call(urls.getItems, null, 'GET');
         }
     }
 })(jQuery, neemo.endpoints.cart);

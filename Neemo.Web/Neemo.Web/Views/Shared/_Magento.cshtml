@@ -499,14 +499,6 @@
     </script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/neemo-svc.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/neemo-models.js")"></script>
-    <script>
-
-        var cartItems = neemo.svc.getItems();
-        neemo.cartInstance = new neemo.shoppingCart(cartItems);
-
-        ko.applyBindings(neemo.cartInstance);
-
-    </script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/neemo-ui.js")"></script>
 
     @RenderSection("Scripts", false)
