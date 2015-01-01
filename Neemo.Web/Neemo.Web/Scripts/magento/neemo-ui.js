@@ -1,6 +1,6 @@
 ﻿neemo = neemo || {};
 
-neemo.ui = (function ($, toastr, svc, shoppingcart) {
+neemo.ui = (function ($, toastr, svc, shoppingcart, lineItem) {
 
     var ui = {};
 
@@ -17,7 +17,7 @@ neemo.ui = (function ($, toastr, svc, shoppingcart) {
         svc.addProduct(me.data().productid, qty,
             function (item) {
                 toastr.success('Your order has been added.');
-                ui.cart.items.push(item);
+                ui.cart.items.push(new lineItem( item ));
             },
             function () {
                 toastr.error('Not enough items in stock for your request.');
@@ -47,11 +47,15 @@ neemo.ui = (function ($, toastr, svc, shoppingcart) {
 
     // Initialise the shopping cart
     svc.getItems().then(function (items) {
-        var cart = new shoppingcart(items);
+        var viewModels = [];
+        $.each(items, function () {
+            viewModels.push(new lineItem(this));
+        });
+        var cart = new shoppingcart(viewModels);
         ui.cart = cart;
         ko.applyBindings(cart);
     });
 
     return ui;
 
-})(jQuery, toastr, neemo.svc, neemo.shoppingCart);
+})(jQuery, toastr, neemo.svc, neemo.shoppingCart, neemo.lineItem);

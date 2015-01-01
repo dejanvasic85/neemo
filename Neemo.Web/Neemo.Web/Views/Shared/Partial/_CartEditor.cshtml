@@ -32,21 +32,21 @@
 
         <tr>
             <td class="hidden-phone">
-                <a data-bind="attr : { href: neemo.endpoints.product.get(Id)}"
+                <a data-bind="attr : { href: neemo.endpoints.product.get(Id())}"
                    title="Maecenas sodales" class="product-image">
-                    <img data-bind="attr : { src: neemo.endpoints.img.get(ImageId), alt : Title }"
+                    <img data-bind="attr : { src: neemo.endpoints.img.get(ImageId()), alt : Title }"
                          width="75"
                          height="75">
                 </a>
             </td>
             <td>
                 <h2 class="product-name">
-                    <a data-bind="attr : { href: neemo.endpoints.product.get(Id)}, text: Title"></a>
+                    <a data-bind="attr : { href: neemo.endpoints.product.get(Id())}, text: Title"></a>
                 </h2>
             </td>
             <td class="a-right">
                 <span class="cart-price">
-                    <span class="price" data-bind="text: accounting.formatMoney(Price)"></span>
+                    <span class="price" data-bind="text: accounting.formatMoney(Price())"></span>
                 </span>
             </td>
             <td class="a-center">
@@ -54,7 +54,7 @@
             </td>
             <td class="a-right">
                 <span class="cart-price">
-                    <span class="price" data-bind="text: accounting.formatMoney(Price * Quantity)"></span>
+                    <span class="price" data-bind="text: accounting.formatMoney(Total())"></span>
                 </span>
             </td>
             <td class="a-center last">

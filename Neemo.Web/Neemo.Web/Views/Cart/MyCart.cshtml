@@ -55,26 +55,28 @@
                                     <col>
                                     <col width="1">
                                 </colgroup>
-                                <tfoot>
-                                    <tr>
-                                        <td style="" class="a-right" colspan="1">
-                                            <strong>Grand Total</strong>
-                                        </td>
-                                        <td style="" class="a-right">
-                                            <strong><span class="price">$798.00</span></strong>
-                                        </td>
-                                    </tr>
-                                </tfoot>
+                              
                                 <tbody>
                                     <tr>
                                         <td style="" class="a-right" colspan="1">
                                             Subtotal
                                         </td>
                                         <td style="" class="a-right">
-                                            <span class="price">$798.00</span>
+                                            <span class="price" data-bind="text: accounting.formatMoney(subTotal())"></span>
                                         </td>
                                     </tr>
                                 </tbody>
+                                
+                                <tfoot>
+                                    <tr>
+                                        <td style="" class="a-right" colspan="1">
+                                            <strong>Grand Total</strong>
+                                        </td>
+                                        <td style="" class="a-right">
+                                            <strong><span class="price" data-bind="text: accounting.formatMoney(subTotal())"></span></strong>
+                                        </td>
+                                    </tr>
+                                </tfoot>
                             </table>
                             <ul class="checkout-types">
                                 <li>

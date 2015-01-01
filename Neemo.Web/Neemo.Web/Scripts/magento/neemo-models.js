@@ -5,14 +5,15 @@
     neemo.lineItem = function (cartViewItem) {
         var me = this;
 
-        me.productId = ko.observable(cartViewItem.ProductId);
-        me.lineItemId = ko.observable(cartViewItem.LineItemId);
-        me.title = ko.observable(cartViewItem.Title);
-        me.price = ko.observable(cartViewItem.Price);
-        me.qty = ko.observable(cartViewItem.Quantity);
+        me.Id = ko.observable(cartViewItem.Id);
+        me.LineItemId = ko.observable(cartViewItem.LineItemId);
+        me.Title = ko.observable(cartViewItem.Title);
+        me.Price = ko.observable(cartViewItem.Price);
+        me.Quantity = ko.observable(cartViewItem.Quantity);
+        me.ImageId = ko.observable(cartViewItem.ImageId);
 
-        me.subTotal = function () {
-            return me.price() * me.qty;
+        me.Total = function () {
+            return me.Price() * me.Quantity();
         }
     };
 
@@ -22,20 +23,22 @@
         me.subTotal = function () {
             var total = 0;
             $.each(this.items(), function () {
-                total += (this.Price * this.Quantity);
+                total += (this.Price() * this.Quantity());
             });
             return accounting.formatMoney(total);
         };
+
         me.totalQuantity = function () {
             var total = 0;
             $.each(this.items(), function () {
-                total += this.Quantity;
+                total += parseInt( this.Quantity() );
             });
             return total;
         };
+
         me.removeItem = function (item) {
             me.items.remove(item);
-            neemo.svc.removeProduct(item.LineItemId);
+            neemo.svc.removeProduct(item.LineItemId());
         };
     };
 
