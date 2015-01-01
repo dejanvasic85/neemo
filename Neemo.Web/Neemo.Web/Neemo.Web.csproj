@@ -186,11 +186,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\MagentoController.cs" />
     <Compile Include="Infrastructure\SessionCartContext.cs" />
     <Compile Include="Infrastructure\SessionLifetimeManager`T.cs" />
     <Compile Include="Infrastructure\UrlExtensions.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CartItemView.cs" />
+    <Compile Include="Models\CategoryView.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ProductDetailView.cs" />
     <Compile Include="Models\HomeView.cs" />
@@ -541,6 +543,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="ImageDatabase\" />
+    <Folder Include="Views\Magento\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

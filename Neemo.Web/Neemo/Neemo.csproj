@@ -46,6 +46,9 @@
     <Compile Include="ShoppingCart\CartException.cs" />
     <Compile Include="ShoppingCart\ICartContext.cs" />
     <Compile Include="ShoppingCart\ICartItem.cs" />
+    <Compile Include="Store\Category.cs" />
+    <Compile Include="Store\ICategoryRepository.cs" />
+    <Compile Include="Store\ICategoryService.cs" />
     <Compile Include="Store\ProductCartItem.cs" />
     <Compile Include="ShoppingCart\Cart.cs" />
     <Compile Include="Store\IProductRepository.cs" />

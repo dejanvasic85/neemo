@@ -1,8 +1,8 @@
-﻿using Neemo.Store;
-using System.Collections.Generic;
-
-namespace Neemo.DataAccess
+﻿namespace Neemo.DataAccess
 {
+    using System.Collections.Generic;
+    using Store;
+    
     public class ProductRepository : IProductRepository
     {
         // Todo - Wire up the real backend

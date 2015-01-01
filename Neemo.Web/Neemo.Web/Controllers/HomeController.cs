@@ -1,12 +1,13 @@
-﻿using System.Linq;
-using System.Web.Mvc;
-using AutoMapper;
-using Neemo.Store;
-using Neemo.Web.Models;
-
-namespace Neemo.Web.Controllers
+﻿namespace Neemo.Web.Controllers
 {
-    public class HomeController : Controller
+    using AutoMapper;
+    using Store;
+    using Infrastructure;
+    using Models;
+    using System.Linq;
+    using System.Web.Mvc;
+
+    public class HomeController : MagentoController
     {
         private readonly IProductService _productService;
 
