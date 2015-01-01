@@ -5,12 +5,13 @@ neemo.ui = (function ($, toastr, svc, shoppingcart) {
     var ui = {};
 
     $('.btn-cart').on('click', function () {
+        debugger;
         var me = $(this);
         var qty = 1;
 
         // Get the QTY from the UI (if any)
         var $qty = me.prev('input');
-        if ($qty) {
+        if ($qty.length > 0) {
             qty = $qty.val();
         }
 
@@ -25,6 +26,9 @@ neemo.ui = (function ($, toastr, svc, shoppingcart) {
             function () {
                 toastr.error('The quantity requested is too large.');
             });
+
+        // In case this is a button we'll return false
+        return false;
     });
 
 
