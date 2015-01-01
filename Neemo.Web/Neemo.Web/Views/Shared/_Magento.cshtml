@@ -109,10 +109,8 @@
                                 <div class="span8">
                                     <div class="quick-access">
                                         <div class="quick-access-left">
-                                            <p class="welcome-msg">Default welcome msg! </p>
                                             <ul class="links">
-                                                <li class="first"><a href="http://www.plazathemes.com/demo/ma_carstore_res/customer/account/" title="My Account">My Account</a></li>
-                                                <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/wishlist/" title="My Wishlist" class="top_link_wishlist">My Wishlist</a></li>
+                                                <li><a href="#" title="My Account">My Account</a></li>
                                                 <li>
                                                     <a href='@Url.Action("MyCart", "Cart")' title="Checkout">
                                                         My Cart
@@ -122,24 +120,16 @@
                                                     </a>
                                                 </li>
                                                 <li>@Html.ActionLink("Checkout", "Checkout", "Cart")</li>
-                                                <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/customer/account/login/" title="Log In">Log In</a></li>
+                                                <li><a href="#" title="Log In">Log In</a></li>
                                             </ul>
                                             <form id="search_mini_form" action="" method="get">
                                                 <div class="form-search">
                                                     <label for="search">Search:</label>
                                                     <input id="search" type="text" name="q" value="" class="input-text" maxlength="128" autocomplete="off">
                                                     <button type="submit" title="Search" class="button"><span><span>Search</span></span></button>
-                                                    <div id="search_autocomplete" class="search-autocomplete" style="display: none;"></div>
-                                                    <script type="text/javascript">
-                                                        //<![CDATA[
-                                                        var searchForm = new Varien.searchForm('search_mini_form', 'search', 'Search entire store here...');
-                                                        searchForm.initAutocomplete('http://www.plazathemes.com/demo/ma_carstore_res/catalogsearch/ajax/suggest/', 'search_autocomplete');
-                                                        //]]>
-                                                    </script>
+                                                    <div id="search_autocomplete" class="search-autocomplete" style="display: none;"></div>                                              
                                                 </div>
                                             </form>
-
-
                                         </div>
 
                                         @*Shopping cart*@
