@@ -378,7 +378,6 @@ function ajaxToCart(url,data,mine) {
                         if(mine=='view') {
                              if($jq('#ajax_cart_super_product_view').attr('class')=='popup') {
                                  window.parent.insertContentToParent('.sidebar .block-cart',data.sidebar_cart);
-                                 window.parent.deleteCartInSidebar();        
                             }
                         }
                          //window.parent.$jq('.sidebar .block-cart:first').removeAttr('class');
@@ -542,7 +541,6 @@ function insertContentMiniCartToParent(element,data) {
     $jq(element).html('');
     $jq(element).append(data);
     $jq('#mini_cart_block').show();
-    deleteCartInSidebar();
     return false;
 }
 
@@ -681,25 +679,6 @@ function slideEffectAjax() {
         });
 }
 
-function deleteCartInSidebar() {
-    var is_checkout_page = $jq('.checkout-cart-index').length;
-    if(is_checkout_page>0) return false;
-    $jq('#cart-sidebar a.btn-remove, #mini_cart_block a.btn-remove').each(function(){
-        var delUrl = $jq(this).attr('href');
-        $jq(this).attr('href','#');
-        $jq(this).attr('onclick','');
-        if(delUrl.search('checkout/cart/delete')!=-1) {
-            $jq(this).live('click',function(){
-                  var confirm_content = $jq('.confirm_delete_product').attr('value');
-                  if(confirm(confirm_content)){
-                        $jq(this).attr('onclick',ajaxToCart(delUrl,'','view'));
-                 };
-                return false;
-            });              
-        }
-    });
-}  
-
 $jq(document).ready(function(){
     var enable_module = $jq('#enable_module').val();
     if(enable_module==0 || !enable_module) return false;
@@ -712,9 +691,6 @@ $jq(document).ready(function(){
     });
     var checkout_url = $jq('.top-link-checkout').attr('href')+'onepage';
     $jq('.top-link-checkout').attr('href',checkout_url);
-    //delete product out of cart
-    deleteCartInSidebar();
-    //delete product out of cart in checkout page
     deleteCartInCheckoutPage();
     //compare link
     addProductCompare();
@@ -725,16 +701,9 @@ $jq(document).ready(function(){
     addProductWishlist();
     addProductToCartFromWishlist();
     removeWislishProductLink();
-    //hideMiniAjaxCart();
-    //add product to cart on list product 
     AddToCartOnListProduct();
-    //Add to cart in product view page
     AddToCartOnProductView();
-    //hover on link cart 
-//    $jq('.top-link-cart').attr('href','javascript:void(0)')
-//    $jq('.top-link-cart').live('click',function(){
-//        $jq('#mini_cart_block').slideToggle('slowly')
-//    })
+
     $jq('#continue_shopping, #shopping_cart').live('click', function(){
          hideLoadingAnimation();
         $jq('#mini_cart_block').show();
@@ -752,18 +721,16 @@ $jq(document).ready(function(){
     slideEffectAjax();
 });
 
-$jq(document).ajaxComplete(function(){
+$jq(document).ajaxComplete(function() {
     //hide mini cart on popup
     $jq('.ajaxcartsuper-index-productview #mini_cart_block').hide();
     AddToCartOnListProduct();
-    deleteCartInSidebar();
     removeCompareProductLink();
     removeWislishProductLink();
     addProductToCartFromWishlist();
     addProductCompare();
     addProductWishlist();
-    //deleteCartInCheckoutPage();
 
-})
+});
 
 //]]>

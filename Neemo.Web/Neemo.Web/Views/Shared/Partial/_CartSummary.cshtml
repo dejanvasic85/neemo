@@ -19,7 +19,7 @@
                          height="50">
                 </a>
                 <div class="product-details">
-                    <a href="" title="Remove This Item" class="btn-remove">Remove This Item</a>
+                    <a title="Remove This Item" class="btn-remove" data-bind="click: $parent.removeItem">Remove This Item</a>
                     <p class="product-name">
                         <a data-bind="text: Title, attr : {href: neemo.endpoints.product.get(Id)}"></a>
                     </p>
@@ -31,7 +31,7 @@
 
         <div class="top-subtotal">Subtotal: <span class="price" data-bind="text: subTotal()"></span></div>
         <div class="actions" data-bind="if: items().length > 0">
-            <a  title="Checkout" class="button">
+            <a href="@Url.Action("Checkout", "Cart")" title="Checkout" class="button">
                 <span><span>Checkout</span></span>
             </a>
         </div>

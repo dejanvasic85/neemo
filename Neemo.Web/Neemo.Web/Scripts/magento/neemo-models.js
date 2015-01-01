@@ -19,6 +19,10 @@
             });
             return total;
         };
+        me.removeItem = function(item) {
+            me.items.remove(item);
+            neemo.svc.removeProduct(item.Id);
+        };
     };
 
 })(jQuery, accounting);
