@@ -18,7 +18,7 @@
         }
 
         // GET: Cart
-        public ActionResult Checkout()
+        public ActionResult MyCart()
         {
             return View();
         }

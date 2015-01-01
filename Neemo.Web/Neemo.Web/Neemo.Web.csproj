@@ -542,7 +542,7 @@
     <None Include="Project_Readme.html" />
     <Content Include="Views\Shared\DisplayTemplates\ProductSummaryView.cshtml" />
     <Content Include="Views\Product\Details.cshtml" />
-    <Content Include="Views\Cart\Checkout.cshtml" />
+    <Content Include="Views\Cart\MyCart.cshtml" />
     <Content Include="Views\Shared\Partial\_CartSummary.cshtml" />
   </ItemGroup>
   <ItemGroup>
