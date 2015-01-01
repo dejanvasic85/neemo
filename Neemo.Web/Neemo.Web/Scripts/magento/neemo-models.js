@@ -1,6 +1,6 @@
 ﻿neemo = neemo || {};
 
-(function ($, accounting) {
+(function ($, accounting, cartSvc) {
 
     neemo.lineItem = function (cartViewItem) {
         var me = this;
@@ -15,6 +15,10 @@
         me.Total = function () {
             return me.Price() * me.Quantity();
         }
+
+        me.Quantity.subscribe(function(newValue) {
+            cartSvc.updateQuantity(me.LineItemId(), newValue);
+        });
     };
 
     neemo.shoppingCart = function (items) {
@@ -31,15 +35,15 @@
         me.totalQuantity = function () {
             var total = 0;
             $.each(this.items(), function () {
-                total += parseInt( this.Quantity() );
+                total += parseInt(this.Quantity());
             });
             return total;
         };
 
         me.removeItem = function (item) {
             me.items.remove(item);
-            neemo.svc.removeProduct(item.LineItemId());
+            cartSvc.removeProduct(item.LineItemId());
         };
     };
 
-})(jQuery, accounting);
+})(jQuery, accounting, neemo.svc);

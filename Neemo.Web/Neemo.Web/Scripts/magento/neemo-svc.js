@@ -29,6 +29,8 @@ neemo.svc = (function ($, urls) {
         },
         getItems: function () {
             return call(urls.getItems, null, 'GET');
+        },
+        updateQuantity : function(lineItemId, qty) {
         }
     }
 })(jQuery, neemo.endpoints.cart);
