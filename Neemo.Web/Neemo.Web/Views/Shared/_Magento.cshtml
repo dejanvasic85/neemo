@@ -153,20 +153,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="ma-nav-mobile-container hidden-desktop">
-                            <div class="navbar">
-                                <div id="navbar-inner" class="navbar-inner navbar-inactive">
-                                    <a class="btn btn-navbar">
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                    </a>
-                                    <span class="brand">Category</span>
-                                    <ul id="ma-mobilemenu" class="mobilemenu nav-collapse collapse"></ul>
-                                </div>
-                            </div>
-                        </div>
-
+                    
+                        @Html.Partial("~/Views/Shared/Partial/_CategoriesMenuBarMobile.cshtml", @categories)
                         @Html.Partial("~/Views/Shared/Partial/_CategoriesMenuBar.cshtml", @categories)
                         
                         @RenderBody()

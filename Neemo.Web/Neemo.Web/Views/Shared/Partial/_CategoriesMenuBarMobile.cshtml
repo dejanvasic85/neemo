@@ -1,0 +1,142 @@
+﻿@model CategoryListView
+
+@{
+    var categories = Model;
+}
+
+<div class="ma-nav-mobile-container hidden-desktop">
+    <div class="navbar">
+        <div id="navbar-inner" class="navbar-inner navbar-inactive">
+            <a class="btn btn-navbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <span class="brand">Category</span>
+            <ul id="ma-mobilemenu" class="mobilemenu nav-collapse collapse" style="display: none;">
+                
+                @foreach (var category in categories.GetRootCategories())
+                {
+                    <li class="level0 nav-1 level-top @(category.HasChildren(categories) ? "parent" : "")">
+                        <a href=""> <span>@category.Title</span></a>
+                        @if (category.HasChildren(categories))
+                        {
+                            <ul class="level0">
+                                @foreach (var child1 in category.GetChildren(categories))
+                                {
+                                    <li class="level1 nav-1-1 first @(child1.HasChildren(categories) ? "parent": "")">
+                                        <a href="" class="level-top">
+                                            <span>@child1.Title</span>
+                                        </a>
+
+                                        @if (child1.HasChildren(categories))
+                                        {
+                                            <ul class="level0">
+                                                @foreach (var child2 in child1.GetChildren(categories))
+                                                {
+                                                    <li class="level1">
+                                                        <a href="" class="level-top">
+                                                            <span>@child2.Title</span>
+                                                        </a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        }
+                                    </li>
+                                }
+                            </ul>
+                        }
+                    </li>
+                }
+                
+
+                @*<li class="level0 nav-1 level-top first parent">
+                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes.html" class="level-top">
+                        <span>Mercedes</span>
+                    </a>
+                    <ul class="level0" style="display: none;">
+                        <li class="level1 nav-1-1 first">
+                            <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-1.html">
+                                <span>Mercedes sub 1</span>
+                            </a>
+                        </li>
+                        <li class="level1 nav-1-2 parent">
+                            <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-2.html">
+                                <span>Mercedes sub 2</span>
+                            </a>
+                            <ul class="level1" style="display: none;">
+                                <li class="level2 nav-1-2-1 first">
+                                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-2/mercedes-sub-2-1.html">
+                                        <span>Mercedes sub 2-1</span>
+                                    </a>
+                                </li>
+                                <li class="level2 nav-1-2-2">
+                                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-2/mercedes-sub-2-2.html">
+                                        <span>Mercedes sub 2-2</span>
+                                    </a>
+                                </li>
+                                <li class="level2 nav-1-2-3">
+                                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-2/mercedes-sub-2-3.html">
+                                        <span>Mercedes sub 2-3</span>
+                                    </a>
+                                </li>
+                                <li class="level2 nav-1-2-4 last">
+                                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-2/mercedes-sub-2-4.html">
+                                        <span>Mercedes sub 2-4</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <span class="head"><a href="javascript:void(0)"></a></span>
+                        </li>
+                        <li class="level1 nav-1-3">
+                            <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-3.html">
+                                <span>Mercedes sub 3</span>
+                            </a>
+                        </li>
+                        <li class="level1 nav-1-4">
+                            <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-4.html">
+                                <span>Mercedes sub 4</span>
+                            </a>
+                        </li>
+                        <li class="level1 nav-1-5 last">
+                            <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/mercedes-sub-5.html">
+                                <span>Mercedes sub 5</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <span class="head"><a href="javascript:void(0)"></a></span>
+                </li>
+                <li class="level0 nav-2 level-top">
+                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/huyndai.html" class="level-top">
+                        <span>Huyndai</span>
+                    </a>
+                </li>
+                <li class="level0 nav-3 level-top">
+                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/toyota.html" class="level-top">
+                        <span>Toyota</span>
+                    </a>
+                </li>
+                <li class="level0 nav-4 level-top">
+                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/chervolet.html" class="level-top">
+                        <span>Chervolet</span>
+                    </a>
+                </li>
+                <li class="level0 nav-5 level-top">
+                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/audi.html" class="level-top">
+                        <span>Audi</span>
+                    </a>
+                </li>
+                <li class="level0 nav-6 level-top">
+                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/bmw.html" class="level-top">
+                        <span>BMW</span>
+                    </a>
+                </li>
+                <li class="level0 nav-7 level-top last">
+                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/lexus.html" class="level-top">
+                        <span>Lexus</span>
+                    </a>
+                </li>*@
+            </ul>
+        </div>
+    </div>
+</div>

@@ -556,6 +556,7 @@
     <Content Include="Views\Cart\Checkout.cshtml" />
     <Content Include="Views\Shared\Partial\_CartEditor.cshtml" />
     <Content Include="Views\Shared\Partial\_CategoriesMenuBar.cshtml" />
+    <Content Include="Views\Shared\Partial\_CategoriesMenuBarMobile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Neemo.DataAccess\Neemo.DataAccess.csproj">
