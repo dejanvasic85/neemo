@@ -1,0 +1,47 @@
+﻿@model CategoryListView
+
+@{
+    var categories = Model;
+}
+
+<div class="ma-nav-container visible-desktop">
+    <ul id="nav">
+        <li class="home" onmouseout="toggleMenu(this,0)" onmouseover="toggleMenu(this,1)">
+            <a href="@Url.Action("Index", "Home")" title="Home"><span>Home</span></a>
+        </li>
+        @foreach (var category in categories.GetRootCategories())
+        {
+            <li class="level0 nav-1 level-top">
+                <a href=""> <span>@category.Title</span></a>
+                @if (category.HasChildren(categories))
+                {
+                    <ul class="level0">
+                        @foreach (var child1 in category.GetChildren(categories))
+                        {
+                            <li class="level1 nav-1-1 first @(child1.HasChildren(categories) ? "parent": "")">
+                                <a href="" class="level-top">
+                                    <span>@child1.Title</span>
+                                </a>
+
+                                @if (child1.HasChildren(categories))
+                                {
+                                    <ul class="level0">
+                                        @foreach (var child2 in child1.GetChildren(categories))
+                                        {
+                                            <li class="level1">
+                                                <a href="" class="level-top">
+                                                    <span>@child2.Title</span>
+                                                </a>
+                                            </li>
+                                        }
+                                    </ul>
+                                }
+                            </li>
+                        }
+                    </ul>
+                }
+            </li>
+        }
+    </ul>
+
+</div>

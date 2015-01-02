@@ -543,7 +543,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="ImageDatabase\" />
-    <Folder Include="Views\Magento\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -556,6 +555,7 @@
     <Content Include="Views\Shared\Partial\_CartSummary.cshtml" />
     <Content Include="Views\Cart\Checkout.cshtml" />
     <Content Include="Views\Shared\Partial\_CartEditor.cshtml" />
+    <Content Include="Views\Shared\Partial\_CategoriesMenuBar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Neemo.DataAccess\Neemo.DataAccess.csproj">
