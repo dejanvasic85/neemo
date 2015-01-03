@@ -6774,6 +6774,10 @@ tr.summary-details-excluded {
     margin: 0;
 }
 
+.pagination a:hover {
+    cursor: pointer;
+}
+
 .filter-toolbar {
     border-top: 1px solid #ccc;
     margin-top: 0;

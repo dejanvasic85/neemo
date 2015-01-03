@@ -60,43 +60,7 @@
                 <div class="col-wrapper span9">
                     <div class="row-fluid">
                         <div class="col-main span12">
-                            <div class="filter-toolbar">
-                                <div class="row-fluid">
-                                    <div class="span6">
-                                        Search found @Model.TotalResultCount items.
-                                    </div>
-                                    <div class="span3">
-                                        @Html.DropDownListFor(m => m.PageSize, new List<SelectListItem>
-                                        {
-                                            new SelectListItem{ Text = "2",Value="2"},
-                                            new SelectListItem{ Text = "10",Value="10"},
-                                            new SelectListItem{ Text = "25",Value="25"},
-                                            new SelectListItem{ Text = "50",Value="50"},
-                                            new SelectListItem{ Text = "100",Value="100"}
-                                        }, htmlAttributes:new{@style="width: 50px"})
-
-                                        <label>items per page</label>
-                                    </div>
-                                    <div class="span3">
-                                        @if (Model.HasPages)
-                                        {
-                                            <div class="pagination pull-right">
-                                                <ul>
-
-                                                    @for (var p = 1; p <= Model.TotalPageCount; p++)
-                                                    {
-                                                        <li class="@(Model.Page == p ? "disabled" : "")">
-                                                            <a data-page-num>@p</a>
-                                                        </li>
-                                                    }
-
-                                                </ul>
-                                            </div>
-                                        }
-
-                                    </div>
-                                </div>
-                            </div>
+                            @Html.Partial("~/Views/Shared/Partial/_SearchPagingToolbar.cshtml")
                         </div>
                     </div>
                     <div class="row-fluid">
@@ -157,32 +121,7 @@
                     </div>
                     <div class="row-fluid">
                         <div class="col-main span12">
-                            <div class="filter-toolbar">
-                                <div class="row-fluid">
-                                    <div class="span6">
-                                        <select style="width: 50px">
-                                            <option>10</option>
-                                            <option>25</option>
-                                            <option>50</option>
-                                            <option>100</option>
-                                        </select>
-                                        <label>items per page</label>
-                                    </div>
-                                    <div class="span6">
-                                        <div class="pagination pull-right" style="">
-                                            <ul>
-                                                <li><a href="#">Prev</a></li>
-                                                <li><a href="#">1</a></li>
-                                                <li><a href="#">2</a></li>
-                                                <li><a href="#">3</a></li>
-                                                <li><a href="#">4</a></li>
-                                                <li><a href="#">5</a></li>
-                                                <li><a href="#">Next</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @Html.Partial("~/Views/Shared/Partial/_SearchPagingToolbar.cshtml")
                         </div>
                     </div>
                 </div>

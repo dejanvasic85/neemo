@@ -15,21 +15,20 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
 
             // Locate the item and update it
             $.each(q.items, function(idx,val) {
-                if (val.startsWith(addOrUpdate.keyPair.key)) {
+                if (val.startsWith(addOrUpdate.keyPair.key + '=')) {
                     q.items[idx] = addOrUpdate.keyPair.key + '=' + addOrUpdate.keyPair.newVal;
                     addOrUpdate.exists = true;
-                    console.log('exists');
                 }
             });
+
             if (!addOrUpdate.exists) {
-                console.log('new');
                 q.items.push(keyPair.key + '=' + keyPair.newVal);
             }
-            debugger;
+            return '?' + q.items.join('&');
         }
         return{
             withpage : function(pageNum) {
-                q.addOrUpdate({key: 'page', newVal:pageNum});
+                window.location.search = q.addOrUpdate({key:'page', newVal:pageNum});
             }
         };
     })(window.location.search);

@@ -569,6 +569,7 @@
     <Content Include="Views\EmailTemplates\ContactUsTemplate.cshtml" />
     <Content Include="Views\EmailTemplates\_EmailLayout.cshtml" />
     <Content Include="Views\Products\Find.cshtml" />
+    <Content Include="Views\Shared\Partial\_SearchPagingToolbar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Neemo.DataAccess\Neemo.DataAccess.csproj">
