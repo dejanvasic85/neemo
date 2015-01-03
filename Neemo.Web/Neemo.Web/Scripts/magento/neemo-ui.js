@@ -3,38 +3,73 @@
 neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
 
     var ui = {};
-
-    var searchFilter = (function (querystring) {
+    
+    ui.queryManager = (function (querystring) {
         var q = this;
         q.originalQuery = querystring;
+        q.newQuery = querystring;
         q.items = querystring.replace('?', '').split('&');
-        q.addOrUpdate = function (keyPair) {
-            var addOrUpdate = this;
-            addOrUpdate.keyPair = keyPair;
-            addOrUpdate.exists = false;
+
+        function addOrUpdate(keyPair, go) {
+            var self = this;
+            self.keyPair = keyPair;
+            self.exists = false;
 
             // Locate the item and update it
             $.each(q.items, function (idx, val) {
-                if (val.startsWith(addOrUpdate.keyPair.key + '=')) {
-                    q.items[idx] = addOrUpdate.keyPair.key + '=' + addOrUpdate.keyPair.newVal;
-                    addOrUpdate.exists = true;
+                if (val.startsWith(self.keyPair.key + '=')) {
+                    q.items[idx] = self.keyPair.key + '=' + self.keyPair.newVal;
+                    self.exists = true;
                 }
             });
 
-            if (!addOrUpdate.exists) {
+            if (!self.exists) {
                 q.items.push(keyPair.key + '=' + keyPair.newVal);
             }
-            return '?' + q.items.join('&');
-        }
-        return {
-            withPage: function (pageNum) {
-                window.location.search = q.addOrUpdate({ key: 'page', newVal: pageNum });
-            },
-            withPageSize: function (pageSize) {
-                window.location.search = q.addOrUpdate({ key: 'pageSize', newVal: pageSize });
+
+            // Update the query 
+            q.newQuery = '?' + q.items.join('&');
+            if (go) {
+                goWithNewQuery();
             }
-        };
+            return q;
+        }
+
+        function goWithNewQuery() {
+            window.location.href = q.newQuery;
+        }
+
+        function remove(key) {
+            self.key = key;
+            self.index = null;
+            $.each(q.items, function (idx, val) {
+                if (val.startsWith(self.key + '=')) {
+                    self.index = idx;
+                }
+            });
+            if (self.index != null) {
+                q.items.splice(self.index, 1);
+            }
+        }
+
+        return {
+            addOrUpdate: addOrUpdate,
+            goWithNewQuery: goWithNewQuery,
+            remove : remove
+        }
     })(window.location.search);
+
+    var searchFilters = {
+        // Manages the query string parameters for the search page
+        // Note: the key must match the FindModelView properties (filters)
+        setPageNumber: function(pageNumber) {
+            ui.queryManager.addOrUpdate({ key: 'page', newVal: pageNumber }, true);
+        },
+        setPageSize : function(pageSize) {
+            ui.queryManager.remove('page');
+            ui.queryManager.addOrUpdate({ key: 'pageSize', newVal: pageSize }, true);
+        }
+    };
 
     $('.btn-cart').on('click', function () {
         var me = $(this);
@@ -78,11 +113,11 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
     });
 
     $('[data-page-num]').on('click', function () {
-        searchFilter.withPage($(this).text());
+        searchFilters.setPageNumber($(this).text());
     });
 
     $('[data-page-size').on('change', function () {
-        searchFilter.withPageSize($(this).val());
+        searchFilters.setPageSize($(this).val());
     });
 
     // Initialise the shopping cart
@@ -95,7 +130,7 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
         ui.cart = cart;
         ko.applyBindings(cart);
     });
-
+   
     return ui;
 
 })(jQuery, toastr, neemo.svc, neemo.shoppingCart, neemo.lineItem);
