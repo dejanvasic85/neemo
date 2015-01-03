@@ -32,5 +32,10 @@
 
             return View(homeModel);
         }
+
+        public ActionResult ContactUs()
+        {
+            return View();
+        }
     }
 }

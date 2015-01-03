@@ -558,6 +558,7 @@
     <Content Include="Views\Shared\Partial\_CategoriesMenuBar.cshtml" />
     <Content Include="Views\Shared\Partial\_CategoriesMenuBarMobile.cshtml" />
     <Content Include="Views\Shared\Partial\_CategoriesSearchLinks.cshtml" />
+    <Content Include="Views\Home\ContactUs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Neemo.DataAccess\Neemo.DataAccess.csproj">
