@@ -1,19 +1,27 @@
 ﻿namespace Neemo.Web.Controllers
 {
     using AutoMapper;
-    using Store;
+    using CaptchaMvc.Attributes;
     using Infrastructure;
+    using Notifications;
     using Models;
+    using Store;
     using System.Linq;
     using System.Web.Mvc;
 
     public class HomeController : MagentoController
     {
         private readonly IProductService _productService;
+        private readonly ITemplateService _templateService;
+        private readonly INotificationService _notificationService;
+        private readonly ISysConfig _config;
 
-        public HomeController(IProductService productService)
+        public HomeController(IProductService productService, ITemplateService templateService, INotificationService notificationService, ISysConfig config)
         {
             _productService = productService;
+            _templateService = templateService;
+            _notificationService = notificationService;
+            _config = config;
         }
 
         public ActionResult Index()
@@ -39,15 +47,28 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
+        [CaptchaVerify("Captcha is not valid")]
         public ActionResult ContactUs(ContactUsView viewModel)
         {
             if (!ModelState.IsValid)
             {
+
+                if (ModelState.ContainsKey("CaptchaInputText"))
+                {
+                    viewModel.IsCaptchaNotValid = true;
+                }
                 return View(viewModel);
             }
 
-            // Todo - email
+            // Email
+            _notificationService.Email(
+                "Car Store - Contact Us", 
+                _templateService.ViewToString(this, "~/Views/EmailTemplates/ContactUsTemplate.cshtml", viewModel), 
+                _config.NotificationSenderEmail, 
+                _config.NotificationSupportEmail);
 
+            // Set the view to have been submitted
             viewModel.IsSubmitted = true;
 
             return View(viewModel);

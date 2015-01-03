@@ -1,0 +1,15 @@
+﻿@model ContactUsView
+
+@{
+    Layout = "_EmailLayout.cshtml";
+}
+
+User has submitted a contact us form at your car store. Details are below. 
+Please contact them back as soon as possible.
+
+<ul>
+    <li>Name: <strong>@Model.FullName</strong></li> 
+    <li>Email: <strong>@Model.Email</strong></li> 
+    <li>Contact Number: <strong>@Model.ContactNumber</strong></li> 
+    <li>Comments: <strong>@Model.Comments</strong></li> 
+</ul>

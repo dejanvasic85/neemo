@@ -22,5 +22,6 @@ namespace Neemo.Web.Models
         public string Comments { get; set; }
 
         public bool IsSubmitted { get; set; }
+        public bool IsCaptchaNotValid { get; set; }
     }
 }

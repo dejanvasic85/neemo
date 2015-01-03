@@ -189,6 +189,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\ITemplateService.cs" />
     <Compile Include="Infrastructure\MagentoController.cs" />
     <Compile Include="Infrastructure\SessionCartContext.cs" />
     <Compile Include="Infrastructure\SessionLifetimeManager`T.cs" />
@@ -563,6 +564,8 @@
     <Content Include="Views\Shared\Partial\_CategoriesMenuBarMobile.cshtml" />
     <Content Include="Views\Shared\Partial\_CategoriesSearchLinks.cshtml" />
     <Content Include="Views\Home\ContactUs.cshtml" />
+    <Content Include="Views\EmailTemplates\ContactUsTemplate.cshtml" />
+    <Content Include="Views\EmailTemplates\_EmailLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Neemo.DataAccess\Neemo.DataAccess.csproj">

@@ -1,13 +1,10 @@
 ﻿@model ContactUsView
+@using CaptchaMvc.HtmlHelpers
 
 @{
     ViewBag.Title = "Contact Us";
     Layout = "~/Views/Shared/_Magento.cshtml";
 }
-
-<style>
-  
-</style>
 
 <div class="ma-main-container col2-right-layout">
     <div class="main">
@@ -20,11 +17,14 @@
                     
                     @if (Model.IsSubmitted)
                     {
-                        
+                        <div class="alert alert-success">
+                            Thank you for contacting us. We'll get back to you as soon as possible.
+                        </div>
                     }
                     else
                     {  
                         <form class="form-horizontal" action="@Url.ContactUs()" method="POST">
+                            @Html.AntiForgeryToken()
                             <div class="control-group">
                                 @Html.LabelFor(m => m.FullName, new { @class = "control-label" })
                                 <div class="controls">
@@ -52,6 +52,18 @@
                                     @Html.TextAreaFor(m => m.Comments, new { rows = "10" })
                                     @Html.ValidationMessageFor(m => m.Comments)
                                 </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="controls">
+                                    @Html.Captcha("Try Another", "What is the text in the image above?", 5)
+                                    @if (Model.IsCaptchaNotValid)
+                                    {
+                                        <span class="field-validation-error" data-valmsg-for="Email" data-valmsg-replace="true">
+                                            The text you provided for the image does not match.
+                                        </span>
+                                    }
+                                </div>
+                               
                             </div>
                             <div class="control-group">
                                 <div class="controls">

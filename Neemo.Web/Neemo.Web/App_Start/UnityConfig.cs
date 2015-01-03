@@ -34,6 +34,9 @@ namespace Neemo.Web
             // ICartContext (session based)
             container.RegisterType<ICartContext, SessionCartContext>();
 
+            // Web Service
+            container.RegisterType<ITemplateService, TemplateService>();
+
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

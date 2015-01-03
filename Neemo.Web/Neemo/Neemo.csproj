@@ -43,6 +43,7 @@
     <Compile Include="ISysConfig.cs" />
     <Compile Include="Images\IImageService.cs" />
     <Compile Include="Images\ItemImage.cs" />
+    <Compile Include="Notifications\INotificationService.cs" />
     <Compile Include="ShoppingCart\CartException.cs" />
     <Compile Include="ShoppingCart\ICartContext.cs" />
     <Compile Include="ShoppingCart\ICartItem.cs" />
