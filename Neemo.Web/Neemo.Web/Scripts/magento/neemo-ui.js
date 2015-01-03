@@ -3,17 +3,23 @@
 neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
 
     var ui = {};
-    
+
     ui.queryManager = (function (querystring) {
         var q = this;
         q.originalQuery = querystring;
         q.newQuery = querystring;
+        q.targetUrl = window.location.pathname;
         q.items = querystring.replace('?', '').split('&');
 
-        function addOrUpdate(keyPair, go) {
+        function addOrUpdate(keyPair, go, ensureUrl) {
             var self = this;
             self.keyPair = keyPair;
             self.exists = false;
+
+            // Clear if different from ensure url
+            if (q.targetUrl !== ensureUrl && ensureUrl !== undefined) {
+                q.targetUrl = ensureUrl;
+            }
 
             // Locate the item and update it
             $.each(q.items, function (idx, val) {
@@ -35,12 +41,11 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
             q.newQuery = '?' + q.items.join('&');
             if (go) {
                 goWithNewQuery();
-            }
-            return q;
+            } return q;
         }
 
         function goWithNewQuery() {
-            window.location.href = q.newQuery;
+            window.location = q.targetUrl + q.newQuery;
         }
 
         function remove(key) {
@@ -59,19 +64,22 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
         return {
             addOrUpdate: addOrUpdate,
             goWithNewQuery: goWithNewQuery,
-            remove : remove
+            remove: remove
         }
     })(window.location.search);
 
     var searchFilters = {
         // Manages the query string parameters for the search page
         // Note: the key must match the FindModelView properties (filters)
-        setPageNumber: function(pageNumber) {
+        setPageNumber: function (pageNumber) {
             ui.queryManager.addOrUpdate({ key: 'page', newVal: pageNumber }, true);
         },
-        setPageSize : function(pageSize) {
-            ui.queryManager.remove('page');
+        setPageSize: function (pageSize) {
+            ui.queryManager.remove('page'); // When updating size, we need to remove page number
             ui.queryManager.addOrUpdate({ key: 'pageSize', newVal: pageSize }, true);
+        },
+        setCategory: function (categoryId) {
+            ui.queryManager.addOrUpdate({ key: 'categoryId', newVal: categoryId }, true, neemo.endpoints.product.search);
         },
         setKeyword: function (keyword) {
             ui.queryManager.addOrUpdate({ key: 'keyword', newVal: keyword }, false);
@@ -85,7 +93,7 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
             ui.queryManager.addOrUpdate({ key: 'sortBy', newVal: sortBy }, false);
             return searchFilters;
         },
-        setPriceMin: function(priceMin) {
+        setPriceMin: function (priceMin) {
             ui.queryManager.addOrUpdate({ key: 'priceMin', newVal: priceMin }, false);
             return searchFilters;
         },
@@ -93,7 +101,7 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
             ui.queryManager.addOrUpdate({ key: 'priceMax', newVal: priceMax }, false);
             return searchFilters;
         },
-        apply: function() {
+        apply: function () {
             ui.queryManager.goWithNewQuery();
         }
     };
@@ -147,13 +155,17 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
         searchFilters.setPageSize($(this).val());
     });
 
-    $('[data-apply-filters').on('click', function() {
+    $('[data-apply-filters').on('click', function () {
         searchFilters
             .setKeyword($('#Keyword').val())
             .setSortBy($('#SortBy').val())
             .setPriceMin($('#PriceMin').val())
             .setPriceMax($('#PriceMax').val())
             .apply();
+    });
+
+    $('[data-category-filter]').on('click', function() {
+        searchFilters.setCategory($(this).attr('data-category-filter'));
     });
 
     // Initialise the shopping cart
@@ -166,7 +178,7 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
         ui.cart = cart;
         ko.applyBindings(cart);
     });
-   
+
     return ui;
 
 })(jQuery, toastr, neemo.svc, neemo.shoppingCart, neemo.lineItem);
