@@ -17,11 +17,15 @@
             return me.Price() * me.Quantity();
         }
 
-        me.Quantity.subscribe(function (newValue) {
+        me.Quantity.subscribeChanged(function (newValue, oldValue) {
+            var meFnc = this;
+            meFnc.newValue = newValue;
+            meFnc.oldValue = oldValue;
             cartSvc.updateQuantity(me.LineItemId(), me.Id(), newValue, function () {
                 broadcaster.success('Your quantity was updated.');
             }, function () {
                 broadcaster.error('Not enough items in stock for your request.');
+                return false;
             });
         });
     };

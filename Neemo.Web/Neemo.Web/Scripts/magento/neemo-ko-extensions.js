@@ -30,4 +30,15 @@
         //return the new computed observable
         return result;
     };
+
+    ko.subscribable.fn.subscribeChanged = function (callback) {
+        var oldValue;
+        this.subscribe(function (_oldValue) {
+            oldValue = _oldValue;
+        }, this, 'beforeChange');
+
+        this.subscribe(function (newValue) {
+            callback(newValue, oldValue);
+        });
+    };
 })(ko);
