@@ -1,0 +1,42 @@
+﻿@model CategoryListView
+           
+@{
+    var categories = Model;
+}
+
+<ul id="ma-accordion" class="accordion">
+    @foreach (var category in categories.GetRootCategories())
+    {
+        <li class="level0 level-top @(category.HasChildren(categories) ? "parent" : "")">
+            <a href="#" class="level-top">
+                <span>@category.Title</span>
+            </a>
+            @if (category.HasChildren(categories))
+            {
+                <ul class="level0" style="display:none">
+                    @foreach (var child1 in category.GetChildren(categories))
+                    {
+                        <li class="level1 @(child1.HasChildren(categories) ? "parent" : "")">
+                            <a href="#">
+                                <span>@child1.Title</span>
+                            </a>
+                            @if (child1.HasChildren(categories))
+                            {
+                                <ul class="level1 " style="display:none">
+                                    @foreach(var child2 in child1.GetChildren(categories))
+                                    { 
+                                        <li>
+                                            <a href="#">
+                                                <span>@child2.Title</span>
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                        </li>
+                    }
+                </ul>
+            }
+        </li>
+    }
+</ul>
