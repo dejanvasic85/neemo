@@ -303,7 +303,8 @@
                 generic: '@Url.Product(-1)',
                 get: function (id) {
                     return neemo.endpoints.product.generic.replace(-1, id);
-                }
+                },
+                search: '@Url.Action("Find", "Products")'
             }
         };
     </script>

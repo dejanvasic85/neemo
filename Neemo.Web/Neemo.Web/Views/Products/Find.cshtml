@@ -86,7 +86,7 @@
                                                     @for (var p = 1; p <= Model.TotalPageCount; p++)
                                                     {
                                                         <li class="@(Model.Page == p ? "disabled" : "")">
-                                                            <a href="">@p</a>
+                                                            <a data-page-num>@p</a>
                                                         </li>
                                                     }
 
