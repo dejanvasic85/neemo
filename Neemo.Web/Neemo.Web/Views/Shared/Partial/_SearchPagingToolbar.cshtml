@@ -1,39 +1,28 @@
 ﻿@model FindModelView
 
-<div class="filter-toolbar">
-    <div class="row-fluid">
-        <div class="span6">
-            Search found @Model.TotalResultCount items.
-        </div>
-        <div class="span3">
-            @Html.DropDownListFor(m => m.PageSize, new List<SelectListItem>
-                                        {
-                                            new SelectListItem{ Text = "2",Value="2"},
-                                            new SelectListItem{ Text = "10",Value="10"},
-                                            new SelectListItem{ Text = "25",Value="25"},
-                                            new SelectListItem{ Text = "50",Value="50"},
-                                            new SelectListItem{ Text = "100",Value="100"}
-                                        }, htmlAttributes: new { @style = "width: 50px" })
-
-            <label>items per page</label>
-        </div>
-        <div class="span3">
-            @if (Model.HasPages)
-            {
-                <div class="pagination pull-right">
-                    <ul>
-
-                        @for (var p = 1; p <= Model.TotalPageCount; p++)
-                        {
-                            <li class="@(Model.Page == p ? "disabled" : "")">
-                                <a data-page-num>@p</a>
-                            </li>
-                        }
-
-                    </ul>
-                </div>
-            }
-
+    <div class="filter-toolbar">
+        <div class="row-fluid">
+            <div class="span6">
+                Search found @Model.TotalResultCount items.
+            </div>
+            <div class="span3">
+                @Html.DropDownListFor(m => m.PageSize, Model.PageSizeItems, htmlAttributes: new { @style = "width: 50px", data_page_size = "" })
+                <label>items per page</label>
+            </div>
+            <div class="span3">
+                @if (Model.HasPages)
+                {
+                    <div class="pagination pull-right">
+                        <ul>
+                            @for (var p = 1; p <= Model.TotalPageCount; p++)
+                            {
+                                <li class="@(Model.Page == p ? "disabled" : "")">
+                                    <a data-page-num>@p</a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                }
+            </div>
         </div>
     </div>
-</div>

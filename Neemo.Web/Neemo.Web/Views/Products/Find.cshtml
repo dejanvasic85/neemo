@@ -65,58 +65,7 @@
                     </div>
                     <div class="row-fluid">
                         <div class="col-main span12">
-
-                            <ol class="products-list" id="products-list">
-                                @foreach (var product in Model.ProductResults)
-                                {
-                                    <li class="item">
-                                        <a href="@Url.Product(product.ProductId)"
-                                           class="product-image" title="@product.Title">
-                                            <img src="@Url.Image(product.ImageId)"
-                                                 width="135"
-                                                 height="135"
-                                                 alt="@product.Title"
-                                                 class="thumbnail" />
-                                        </a>
-                                        <div class="product-shop">
-                                            <div class="f-fix">
-                                                <h2 class="product-name">
-                                                    <a href="@Url.Product(product.ProductId)" title="@product.Title">@product.Title</a>
-                                                </h2>
-
-                                                <div class="price-box">
-                                                    <span class="regular-price" id="product-price-2">
-                                                        <span class="price">@product.Price.ToString("C")</span>
-                                                    </span>
-                                                </div>
-
-                                                <p>
-                                                    @if (product.OutOfStock)
-                                                    {
-                                                        <div><strong>Out of stock.</strong></div>
-                                                    }
-                                                    else
-                                                    {
-                                                        <button type="button" title="Add to Cart" class="btn btn-cart" data-productid="@product.ProductId">
-                                                            <i class="icon-plus icon-white"></i> Add To Cart
-                                                        </button>
-                                                    }
-                                                </p>
-
-
-                                                <div class="desc std">
-                                                    @product.Description
-                                                    <a href="@Url.Product(product.ProductId)" title="@product.Title" class="link-learn">
-                                                        Learn More
-                                                    </a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </li>
-                                }
-                            </ol>
-
+                            @Html.Partial("~/Views/Shared/Partial/_SearchResults.cshtml", Model.ProductResults)
                         </div>
                     </div>
                     <div class="row-fluid">

@@ -570,6 +570,7 @@
     <Content Include="Views\EmailTemplates\_EmailLayout.cshtml" />
     <Content Include="Views\Products\Find.cshtml" />
     <Content Include="Views\Shared\Partial\_SearchPagingToolbar.cshtml" />
+    <Content Include="Views\Shared\Partial\_SearchResults.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Neemo.DataAccess\Neemo.DataAccess.csproj">

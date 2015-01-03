@@ -14,7 +14,7 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
             addOrUpdate.exists = false;
 
             // Locate the item and update it
-            $.each(q.items, function(idx,val) {
+            $.each(q.items, function (idx, val) {
                 if (val.startsWith(addOrUpdate.keyPair.key + '=')) {
                     q.items[idx] = addOrUpdate.keyPair.key + '=' + addOrUpdate.keyPair.newVal;
                     addOrUpdate.exists = true;
@@ -26,9 +26,12 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
             }
             return '?' + q.items.join('&');
         }
-        return{
-            withpage : function(pageNum) {
-                window.location.search = q.addOrUpdate({key:'page', newVal:pageNum});
+        return {
+            withPage: function (pageNum) {
+                window.location.search = q.addOrUpdate({ key: 'page', newVal: pageNum });
+            },
+            withPageSize: function (pageSize) {
+                window.location.search = q.addOrUpdate({ key: 'pageSize', newVal: pageSize });
             }
         };
     })(window.location.search);
@@ -48,7 +51,7 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
         svc.addProduct(me.data().productid, qty,
             function (item) {
                 broadcaster.success('Your order has been added.');
-                ui.cart.items.push(new lineItem( item ));
+                ui.cart.items.push(new lineItem(item));
             },
             function () {
                 broadcaster.error('Not enough items in stock for your request.');
@@ -75,7 +78,11 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
     });
 
     $('[data-page-num]').on('click', function () {
-        searchFilter.withpage($(this).text());
+        searchFilter.withPage($(this).text());
+    });
+
+    $('[data-page-size').on('change', function () {
+        searchFilter.withPageSize($(this).val());
     });
 
     // Initialise the shopping cart
