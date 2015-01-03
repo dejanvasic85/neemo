@@ -83,7 +83,7 @@
                                             <div class="pagination pull-right">
                                                 <ul>
 
-                                                    @for (var p = 1; p <= Model.ProductResultPageCount; p++)
+                                                    @for (var p = 1; p <= Model.TotalPageCount; p++)
                                                     {
                                                         <li class="@(Model.Page == p ? "disabled" : "")">
                                                             <a href="">@p</a>

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
@@ -47,7 +48,7 @@ namespace Neemo.Web.Models
         
         public bool HasPages
         {
-            get { return this.ProductResultPageCount > 1; }
+            get { return this.TotalPageCount > 1; }
         }
 
         public int SkipAmount
@@ -57,9 +58,9 @@ namespace Neemo.Web.Models
 
         public int TotalResultCount { get; set; }
 
-        public int ProductResultPageCount
+        public int TotalPageCount
         {
-            get { return TotalResultCount/PageSize; }
+            get { return (int)Math.Ceiling((double)TotalResultCount / PageSize); }
         }
     }
 
