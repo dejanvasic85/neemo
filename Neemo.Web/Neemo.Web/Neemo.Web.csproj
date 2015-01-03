@@ -192,6 +192,7 @@
     <Compile Include="Infrastructure\BootstrapExtensions.cs" />
     <Compile Include="Infrastructure\ITemplateService.cs" />
     <Compile Include="Infrastructure\MagentoController.cs" />
+    <Compile Include="Infrastructure\NoCacheAttribute.cs" />
     <Compile Include="Infrastructure\SessionCartContext.cs" />
     <Compile Include="Infrastructure\SessionLifetimeManager`T.cs" />
     <Compile Include="Infrastructure\UrlExtensions.cs" />

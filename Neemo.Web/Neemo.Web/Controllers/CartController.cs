@@ -58,6 +58,7 @@
         }
 
         [HttpGet]
+        [NoCache]
         public ActionResult GetCurrentItems()
         {
             var items = _cartContext.Current().GetItems().OfType<ProductCartItem>();

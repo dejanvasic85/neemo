@@ -6,12 +6,13 @@ neemo.svc = (function ($, urls) {
         return $.ajax({
             url: url,
             type: type,
-            data: JSON.stringify( data ),
+            data: JSON.stringify(data),
             dataType: 'json',
-            contentType: 'application/json'
+            contentType: 'application/json',
+            cache: false
         });
     }
-    
+
     return {
         addProduct: function (productId, qty, successFnc, qtyTooLargeFnc) {
             call(urls.addProduct, { productId: productId, qty: qty })
@@ -24,7 +25,7 @@ neemo.svc = (function ($, urls) {
                     }
                 });
         },
-        removeProduct: function(lineItemId) {
+        removeProduct: function (lineItemId) {
             return call(urls.removeProduct, { lineItemId: lineItemId });
         },
         getItems: function () {
@@ -32,7 +33,7 @@ neemo.svc = (function ($, urls) {
         },
         updateQuantity: function (lineItemId, productId, qty, successFnc, qtyTooLargeFnc) {
             call(urls.updateQuantity, { lineItemId: lineItemId, productId: productId, newQuantity: qty })
-                .done(function(response) {
+                .done(function (response) {
                     if (response.Updated) {
                         successFnc();
                     }

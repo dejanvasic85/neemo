@@ -58,10 +58,10 @@
 
         me.clearAllItems = function () {
             if (confirm('Are you sure you want to clear all items?')) {
-                $.each(this.items(), function () {
-                    cartSvc.removeProduct(this.LineItemId())
-                        .then(me.items.remove(this));
+                $.each(this.items(), function (index, targetItem) {
+                    cartSvc.removeProduct(targetItem.LineItemId());
                 });
+                this.items.removeAll();
             }
         }
     };
