@@ -189,6 +189,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\BootstrapExtensions.cs" />
     <Compile Include="Infrastructure\ITemplateService.cs" />
     <Compile Include="Infrastructure\MagentoController.cs" />
     <Compile Include="Infrastructure\SessionCartContext.cs" />

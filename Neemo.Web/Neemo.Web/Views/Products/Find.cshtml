@@ -1,5 +1,6 @@
 ﻿@model FindModel
 
+
 @{
     ViewBag.Title = "Search Results";
     Layout = "~/Views/Shared/_Magento.cshtml";
@@ -17,13 +18,25 @@
                     <div style="padding:10px">
 
                         <div class="control-group">
-                            <label class="control-label" for="keyword">Keyword</label>
-
+                            @Html.BootstrapLabelFor(m => m.Keyword)
                             <div class="controls">
                                 @Html.TextBoxFor(m => m.Keyword)
                             </div>
                         </div>
 
+                        <div class="control-group">
+                            @Html.BootstrapLabelFor(m => m.PriceMin)
+                            <div class="controls">
+                                @Html.TextBoxFor(m => m.PriceMin, new { data_numbers_only = "" })
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            @Html.BootstrapLabelFor(m => m.PriceMax)
+                            <div class="controls">
+                                @Html.TextBoxFor(m => m.PriceMax, new { data_numbers_only = "" })
+                            </div>
+                        </div>
                         <div class="control-group">
                             <button class="btn">Apply</button>
                         </div>
@@ -68,9 +81,9 @@
                         <ol class="products-list" id="products-list">
                             <li class="item odd">
                                 <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/lorem-ipsum-dolor.html?___SID=U" title="Lorem ipsum dolor" class="product-image">
-                                    <img src="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/small_image/135x/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-1_1.png" 
-                                         width="135" 
-                                         height="135" 
+                                    <img src="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/small_image/135x/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-1_1.png"
+                                         width="135"
+                                         height="135"
                                          alt="Lorem ipsum dolor"
                                          class="thumbnail">
                                 </a>

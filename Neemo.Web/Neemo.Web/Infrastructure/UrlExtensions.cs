@@ -23,5 +23,10 @@ namespace Neemo.Web.Infrastructure
         {
             return urlHelper.Action("ContactUs", "Home");
         }
+
+        public static string Find(this UrlHelper urlHelper)
+        {
+            return urlHelper.Action("Find", "Products");
+        }
     }
 }

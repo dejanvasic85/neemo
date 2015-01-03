@@ -126,12 +126,10 @@
                                                 <li>@Html.ActionLink("Checkout", "Checkout", "Cart")</li>
                                                 <li><a href="#" title="Log In">Log In</a></li>
                                             </ul>
-                                            <form id="search_mini_form" action="" method="get">
-                                                <div class="form-search">
-                                                    <label for="search">Search:</label>
-                                                    <input id="search" type="text" name="q" value="" class="input-text" maxlength="128" autocomplete="off">
-                                                    <button type="submit" title="Search" class="button"><span><span>Search</span></span></button>
-                                                    <div id="search_autocomplete" class="search-autocomplete" style="display: none;"></div>
+                                            <form action="@Url.Find()" method="GET">
+                                                <div class="input-append controls">
+                                                    <input id="keyword" name="keyword" type="text" placeholder="Search Keyword">
+                                                    <button class="btn" type="submit">Search!</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -153,10 +151,10 @@
                                 </div>
                             </div>
                         </div>
-                    
+
                         @Html.Partial("~/Views/Shared/Partial/_CategoriesMenuBarMobile.cshtml", @categories)
                         @Html.Partial("~/Views/Shared/Partial/_CategoriesMenuBar.cshtml", @categories)
-                        
+
                         @RenderBody()
 
                         <div class="ma-footer-static-container">
