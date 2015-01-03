@@ -31,10 +31,15 @@
         [HttpGet]
         public ActionResult Find(FindModelView findModelView)
         {
-            var productResutls = _productService.Search(findModelView.Keyword);
+            var productResults = _productService.Search(findModelView.Keyword);
 
-            findModelView.ProductResults = productResutls.Select(Mapper.Map<Product, ProductSummaryView>).ToList();
+            findModelView.TotalResultCount = productResults.Count;
 
+            findModelView.ProductResults = productResults
+                .Take(findModelView.SkipAmount)
+                .Select(Mapper.Map<Product, ProductSummaryView>)
+                .ToList();
+            
             return View(findModelView);
         }
     }

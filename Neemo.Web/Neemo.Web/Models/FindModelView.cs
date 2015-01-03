@@ -10,7 +10,7 @@ namespace Neemo.Web.Models
         {
             ProductResults = new List<ProductSummaryView>();
             Page = 1;
-            PageSize = 10;
+            PageSize = 2;
             SortByItems = new List<SelectListItem>
             {
                 new SelectListItem{Text = "Newest First", Value = "NewestFirst"},
@@ -40,7 +40,27 @@ namespace Neemo.Web.Models
 
         public List<ProductSummaryView> ProductResults { get; set; }
 
-        public bool HasResults { get { return this.ProductResults.Count > 0; }}
+        public bool HasResults
+        {
+            get { return this.ProductResults.Count > 0; }
+        }
+        
+        public bool HasPages
+        {
+            get { return this.ProductResultPageCount > 1; }
+        }
+
+        public int SkipAmount
+        {
+            get { return PageSize.GetValueOrDefault()*Page.GetValueOrDefault(); }
+        }
+
+        public int TotalResultCount { get; set; }
+
+        public int ProductResultPageCount
+        {
+            get { return TotalResultCount/PageSize.GetValueOrDefault(); }
+        }
     }
 
     public enum FindModelSortByView
