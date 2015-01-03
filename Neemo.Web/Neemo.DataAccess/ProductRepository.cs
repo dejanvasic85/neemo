@@ -34,7 +34,7 @@
                     Description = "This should be hooked up to the service, Description!",
                     QuickOverview = "This should be hooked up to the service!",
                     Category = "Mercedes",
-                    AvailableQty = 10
+                    AvailableQty = 0
                 },
                 new Product
                 {

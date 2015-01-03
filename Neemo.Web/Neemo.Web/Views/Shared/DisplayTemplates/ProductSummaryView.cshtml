@@ -23,7 +23,9 @@
         <div class="actions">
             @if (Model.OutOfStock)
             {
-                <div style="padding: 5px; font-weight: bold">Out of stock</div>
+                <div style="padding: 5px; font-weight: bold">
+                    <span class="label label-warning">Sold Out</span>
+                </div>
             }
             else
             {
