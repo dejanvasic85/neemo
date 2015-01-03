@@ -36,7 +36,8 @@
             findModelView.TotalResultCount = productResults.Count;
 
             findModelView.ProductResults = productResults
-                .Take(findModelView.SkipAmount)
+                .Skip(findModelView.SkipAmount)
+                .Take(findModelView.PageSize)
                 .Select(Mapper.Map<Product, ProductSummaryView>)
                 .ToList();
             

@@ -91,16 +91,12 @@
                     Title = "Product 7",
                     Price = 200,
                     IsFeatured = true,
-                    Description =
-                        "Purpose The foreach binding duplicates a section of markup for each entry in an array, and binds each copy of that markup to the corresponding array item. This is especially useful for rendering lists or tables.",
-                    QuickOverview =
-                        "Of course, you can arbitrarily nest any number of foreach bindings along with other control-flow ",
+                    Description = "Purpose The foreach binding duplicates a section of markup for each entry in an array, and binds each copy of that markup to the corresponding array item. This is especially useful for rendering lists or tables.",
+                    QuickOverview = "Of course, you can arbitrarily nest any number of foreach bindings along with other control-flow ",
                     Category = "Mercedes",
                     AvailableQty = 8
                 }
             };
         }
-
-        
     }
 }

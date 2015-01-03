@@ -34,9 +34,9 @@ namespace Neemo.Web.Models
 
         public IEnumerable<SelectListItem> SortByItems { get; set; }
 
-        public int? PageSize { get; set; }
+        public int PageSize { get; set; }
 
-        public int? Page { get; set; }
+        public int Page { get; set; }
 
         public List<ProductSummaryView> ProductResults { get; set; }
 
@@ -52,14 +52,14 @@ namespace Neemo.Web.Models
 
         public int SkipAmount
         {
-            get { return PageSize.GetValueOrDefault()*Page.GetValueOrDefault(); }
+            get { return PageSize*(Page - 1); }
         }
 
         public int TotalResultCount { get; set; }
 
         public int ProductResultPageCount
         {
-            get { return TotalResultCount/PageSize.GetValueOrDefault(); }
+            get { return TotalResultCount/PageSize; }
         }
     }
 
