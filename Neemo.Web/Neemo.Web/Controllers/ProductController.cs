@@ -1,4 +1,6 @@
-﻿namespace Neemo.Web.Controllers
+﻿using Neemo.Web.Models;
+
+namespace Neemo.Web.Controllers
 {
     using System.Web.Mvc;
     using AutoMapper;
@@ -26,9 +28,10 @@
             return View(productView);
         }
 
-        public ActionResult Find(string keyword = "", int? categoryId = null, string sort = "")
+        [HttpGet]
+        public ActionResult Find(FindModel findModel)
         {
-            return View();
+            return View(findModel);
         }
     }
 }

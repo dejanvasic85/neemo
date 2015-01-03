@@ -198,6 +198,7 @@
     <Compile Include="Models\CartItemView.cs" />
     <Compile Include="Models\CategoryView.cs" />
     <Compile Include="Models\ContactUsView.cs" />
+    <Compile Include="Models\FindModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ProductDetailView.cs" />
     <Compile Include="Models\HomeView.cs" />
