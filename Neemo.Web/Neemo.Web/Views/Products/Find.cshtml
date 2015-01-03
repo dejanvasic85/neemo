@@ -25,6 +25,13 @@
                                 @Html.TextBoxFor(m => m.Keyword)
                             </div>
                         </div>
+                        
+                        <div class="control-group">
+                            @Html.BootstrapLabelFor(m => m.SortBy)
+                            <div class="controls">
+                                @Html.DropDownListFor(m => m.SortBy, Model.SortByItems)
+                            </div>
+                        </div>
 
                         <div class="control-group">
                             @Html.BootstrapLabelFor(m => m.PriceMin)
