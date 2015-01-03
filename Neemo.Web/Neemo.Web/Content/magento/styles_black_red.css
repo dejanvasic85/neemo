@@ -6783,3 +6783,7 @@ tr.summary-details-excluded {
 .filter-toolbar .pagination {
     margin: 0;
 }
+
+.controls input {
+    min-height: 30px;
+}

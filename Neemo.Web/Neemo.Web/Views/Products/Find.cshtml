@@ -1,7 +1,7 @@
 ﻿@model FindModel
 
 @{
-    ViewBag.Title = "Available Products";
+    ViewBag.Title = "Search Results";
     Layout = "~/Views/Shared/_Magento.cshtml";
 }
 
@@ -14,7 +14,20 @@
                     <div class="block-title">
                         <strong><span>Product Filters</span></strong>
                     </div>
+                    <div style="padding:10px">
 
+                        <div class="control-group">
+                            <label class="control-label" for="keyword">Keyword</label>
+
+                            <div class="controls">
+                                @Html.TextBoxFor(m => m.Keyword)
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <button class="btn">Apply</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -30,7 +43,7 @@
                                         <option>50</option>
                                         <option>100</option>
                                     </select>
-                                    items per page
+                                    <label>items per page</label>
                                 </div>
                                 <div class="span6">
                                     <div class="pagination pull-right" style="">
@@ -54,12 +67,18 @@
 
                         <ol class="products-list" id="products-list">
                             <li class="item odd">
-                                <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/lorem-ipsum-dolor.html?___SID=U" title="Lorem ipsum dolor" class="product-image"><img src="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/small_image/135x/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-1_1.png" width="135" height="135" alt="Lorem ipsum dolor"></a>
+                                <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/lorem-ipsum-dolor.html?___SID=U" title="Lorem ipsum dolor" class="product-image">
+                                    <img src="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/small_image/135x/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-1_1.png" 
+                                         width="135" 
+                                         height="135" 
+                                         alt="Lorem ipsum dolor"
+                                         class="thumbnail">
+                                </a>
                                 <div class="product-shop">
                                     <div class="f-fix">
-                                        <h2 class="product-name"><a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/lorem-ipsum-dolor.html?___SID=U" title="Lorem ipsum dolor">Lorem ipsum dolor</a></h2>
-
-
+                                        <h2 class="product-name">
+                                            <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/lorem-ipsum-dolor.html?___SID=U" title="Lorem ipsum dolor">Lorem ipsum dolor</a>
+                                        </h2>
 
                                         <div class="price-box">
                                             <span class="regular-price" id="product-price-2">
@@ -73,10 +92,7 @@
                                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, arcu et dignissim ultrices, tellus nulla semper turpis, quis interdum diam tortor nec risus. Vivamus eu fringilla erat. Curabitur tincidunt, leo ac auctor sodales, odio mauris fermentum justo, sit amet bibendum augue libero at tellus. Nullam vulputate enim nec nibh pulvinar consectetur. Proin aliquet imperdiet dolor ac facilisis. Sed lacinia cursus urna. Maecenas eget justo libero. Aenean at nulla nisi, vitae dictum nulla.
                                             <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/lorem-ipsum-dolor.html?___SID=U" title="Lorem ipsum dolor" class="link-learn">Learn More</a>
                                         </div>
-                                        <ul class="add-to-links">
-                                            <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/wishlist/index/add/product/2/form_key/7oLXPGUUfUyzrVEY/?___SID=U" class="link-wishlist">Add to Wishlist</a></li>
-                                            <li><span class="separator">|</span> <a href="http://www.plazathemes.com/demo/ma_carstore_res/catalog/product_compare/add/product/2/uenc/aHR0cDovL3d3dy5wbGF6YXRoZW1lcy5jb20vZGVtby9tYV9jYXJzdG9yZV9yZXMvbWVyY2VkZXMuaHRtbD9yYXRlPTEmZmlyc3Q9Mzk5Jmxhc3Q9Mzk5Jl9fX1NJRD1VJm1vZGU9bGlzdCZsYXllcl9hY3Rpb249MQ,,/?___SID=U" class="link-compare">Add to Compare</a></li>
-                                        </ul>
+
                                     </div>
                                 </div>
                             </li>
@@ -147,7 +163,7 @@
                                         <option>50</option>
                                         <option>100</option>
                                     </select>
-                                    items per page
+                                    <label>items per page</label>
                                 </div>
                                 <div class="span6">
                                     <div class="pagination pull-right" style="">
