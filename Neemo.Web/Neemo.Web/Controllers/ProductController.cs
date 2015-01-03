@@ -5,11 +5,11 @@
     using Store;
     using Infrastructure;
 
-    public class ProductController : MagentoController
+    public class ProductsController : MagentoController
     {
         private readonly IProductService _productService;
 
-        public ProductController(IProductService productService)
+        public ProductsController(IProductService productService)
         {
             _productService = productService;
         }
@@ -24,6 +24,11 @@
             var productView = Mapper.Map<Store.Product, Models.ProductDetailView>(_productService.GetProductById(productId));
 
             return View(productView);
+        }
+
+        public ActionResult Find(string keyword = "", int? categoryId = null, string sort = "")
+        {
+            return View();
         }
     }
 }

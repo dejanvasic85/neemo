@@ -11,7 +11,7 @@ namespace Neemo.Web.Infrastructure
 
         public static string Product(this UrlHelper urlHelper, int productId)
         {
-            return urlHelper.Action("Details", "Product", new { id = productId });
+            return urlHelper.Action("Details", "Products", new { id = productId });
         }
 
         public static string Home(this UrlHelper urlHelper)

@@ -555,7 +555,7 @@
     <Content Include="Content\magento\font\Metrophobic.ttf" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Shared\DisplayTemplates\ProductSummaryView.cshtml" />
-    <Content Include="Views\Product\Details.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Cart\MyCart.cshtml" />
     <Content Include="Views\Shared\Partial\_CartSummary.cshtml" />
     <Content Include="Views\Cart\Checkout.cshtml" />
@@ -566,6 +566,7 @@
     <Content Include="Views\Home\ContactUs.cshtml" />
     <Content Include="Views\EmailTemplates\ContactUsTemplate.cshtml" />
     <Content Include="Views\EmailTemplates\_EmailLayout.cshtml" />
+    <Content Include="Views\Products\Find.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Neemo.DataAccess\Neemo.DataAccess.csproj">
