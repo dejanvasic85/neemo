@@ -35,7 +35,22 @@
 
         public ActionResult ContactUs()
         {
-            return View();
+            return View(new ContactUsView());
+        }
+
+        [HttpPost]
+        public ActionResult ContactUs(ContactUsView viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+
+            // Todo - email
+
+            viewModel.IsSubmitted = true;
+
+            return View(viewModel);
         }
     }
 }

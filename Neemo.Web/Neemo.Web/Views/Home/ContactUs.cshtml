@@ -1,19 +1,67 @@
-﻿@model dynamic
+﻿@model ContactUsView
 
 @{
     ViewBag.Title = "Contact Us";
     Layout = "~/Views/Shared/_Magento.cshtml";
 }
 
+<style>
+  
+</style>
+
 <div class="ma-main-container col2-right-layout">
     <div class="main">
         <div class="row-fluid">
             <div class="col-main span12">
-                <div id="messages_product_view"></div>
                 <div class="page-title">
                     <h1>Contact Us</h1>
                 </div>
-                
+                <div style="padding-left: 15px;">
+                    
+                    @if (Model.IsSubmitted)
+                    {
+                        
+                    }
+                    else
+                    {  
+                        <form class="form-horizontal" action="@Url.ContactUs()" method="POST">
+                            <div class="control-group">
+                                @Html.LabelFor(m => m.FullName, new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(m => m.FullName, new { @style = "height:30px" })
+                                    @Html.ValidationMessageFor(m => m.FullName)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(m => m.Email, new { @style = "height:30px" })
+                                    @Html.ValidationMessageFor(m => m.Email)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(m => m.ContactNumber, new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextBoxFor(m => m.ContactNumber, new { @style = "height:30px" })
+                                    @Html.ValidationMessageFor(m => m.ContactNumber)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                @Html.LabelFor(m => m.Comments, new { @class = "control-label" })
+                                <div class="controls">
+                                    @Html.TextAreaFor(m => m.Comments, new { rows = "10" })
+                                    @Html.ValidationMessageFor(m => m.Comments)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="controls">
+                                    <button type="submit" class="btn">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    }
+                </div>
             </div>
         </div>
     </div>

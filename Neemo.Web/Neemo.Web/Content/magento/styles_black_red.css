@@ -2267,3 +2267,41 @@ tr.summary-details-excluded { font-style:italic; }
   background-color: #bd362f;
   *background-color: #a9302a;
 }
+
+  .field-validation-error {
+    color: #b94a48;
+    display: inline-block;
+    *display: inline;
+    padding-left: 5px;
+    vertical-align: middle;
+    *zoom: 1;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    /*
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+    */
+    color: #b94a48;
+    border-color: #b94a48;
+}
+
+.input-validation-error:focus {
+  border-color: #953b39;
+  -webkit-box-shadow: 0 0 6px #d59392;
+  -moz-box-shadow: 0 0 6px #d59392;
+  box-shadow: 0 0 6px #d59392;
+}
+
+.validation-summary-errors {
+    /*font-weight: bold;*/
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}

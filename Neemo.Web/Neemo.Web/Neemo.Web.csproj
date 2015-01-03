@@ -45,6 +45,9 @@
     <Reference Include="AutoMapper.Net4">
       <HintPath>..\packages\AutoMapper.3.3.0\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
+    <Reference Include="CaptchaMvc">
+      <HintPath>..\packages\CaptchaMvc.Mvc5.1.5.0\lib\net45-full\CaptchaMvc.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.Unity">
       <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
@@ -193,6 +196,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CartItemView.cs" />
     <Compile Include="Models\CategoryView.cs" />
+    <Compile Include="Models\ContactUsView.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ProductDetailView.cs" />
     <Compile Include="Models\HomeView.cs" />
