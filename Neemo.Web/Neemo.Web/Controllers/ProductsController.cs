@@ -1,4 +1,6 @@
-﻿namespace Neemo.Web.Controllers
+﻿using System.Linq;
+
+namespace Neemo.Web.Controllers
 {
     using System.Web.Mvc;
     using AutoMapper;
@@ -28,9 +30,13 @@
         }
 
         [HttpGet]
-        public ActionResult Find(FindModel findModel)
+        public ActionResult Find(FindModelView findModelView)
         {
-            return View(findModel);
+            var productResutls = _productService.Search(findModelView.Keyword);
+
+            findModelView.ProductResults = productResutls.Select(Mapper.Map<Product, ProductSummaryView>).ToList();
+
+            return View(findModelView);
         }
     }
 }

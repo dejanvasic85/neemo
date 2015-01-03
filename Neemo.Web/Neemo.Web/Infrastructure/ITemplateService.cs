@@ -3,6 +3,9 @@ using System.Web.Mvc;
 
 namespace Neemo.Web.Infrastructure
 {
+    /// <summary>
+    /// Responsible for using the razor view engine to find and render a model and return a string
+    /// </summary>
     public interface ITemplateService
     {
         string ViewToString<T>(ControllerBase controller, string viewName, T model);

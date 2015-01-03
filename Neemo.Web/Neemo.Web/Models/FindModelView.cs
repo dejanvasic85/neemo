@@ -2,8 +2,12 @@
 
 namespace Neemo.Web.Models
 {
-    public class FindModel
+    public class FindModelView
     {
+        public FindModelView()
+        {
+            ProductResults = new List<ProductSummaryView>();
+        }
         public string Keyword { get; set; }
         public int? CategoryId { get; set; }
         public decimal? PriceMin { get; set; }
@@ -13,6 +17,6 @@ namespace Neemo.Web.Models
         public int? Page { get; set; }
 
         public List<ProductSummaryView> ProductResults { get; set; }
-        public bool HasResults { get; set; }
+        public bool HasResults { get { return this.ProductResults.Count > 0; }}
     }
 }

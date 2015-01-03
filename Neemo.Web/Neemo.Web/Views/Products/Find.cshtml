@@ -1,4 +1,4 @@
-﻿@model FindModel
+﻿@model FindModelView
 
 
 @{
@@ -10,6 +10,8 @@
     <div class="main">
 
         <div class="row-fluid">
+
+            @*Product Filters*@
             <div class="col-left sidebar span3">
                 <div class="block block-layered-nav">
                     <div class="block-title">
@@ -44,158 +46,137 @@
                 </div>
             </div>
 
-            <div class="col-wrapper span9">
-                <div class="row-fluid">
-                    <div class="col-main span12">
-                        <div class="filter-toolbar">
-                            <div class="row-fluid">
-                                <div class="span6">
-                                    <select style="width:50px">
-                                        <option>10</option>
-                                        <option>25</option>
-                                        <option>50</option>
-                                        <option>100</option>
-                                    </select>
-                                    <label>items per page</label>
+            @*Search Results*@
+
+            @if (Model.HasResults)
+            {
+                <div class="col-wrapper span9">
+                    <div class="row-fluid">
+                        <div class="col-main span12">
+                            <div class="filter-toolbar">
+                                <div class="row-fluid">
+                                    <div class="span6">
+                                        <select style="width: 50px">
+                                            <option>10</option>
+                                            <option>25</option>
+                                            <option>50</option>
+                                            <option>100</option>
+                                        </select>
+                                        <label>items per page</label>
+                                    </div>
+                                    <div class="span6">
+                                        <div class="pagination pull-right" style="">
+                                            <ul>
+                                                <li><a href="#">Prev</a></li>
+                                                <li><a href="#">1</a></li>
+                                                <li><a href="#">2</a></li>
+                                                <li><a href="#">3</a></li>
+                                                <li><a href="#">4</a></li>
+                                                <li><a href="#">5</a></li>
+                                                <li><a href="#">Next</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="span6">
-                                    <div class="pagination pull-right" style="">
-                                        <ul>
-                                            <li><a href="#">Prev</a></li>
-                                            <li><a href="#">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                            <li><a href="#">4</a></li>
-                                            <li><a href="#">5</a></li>
-                                            <li><a href="#">Next</a></li>
-                                        </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="col-main span12">
+
+                            <ol class="products-list" id="products-list">
+                                @foreach (var product in Model.ProductResults)
+                                {
+                                    <li class="item">
+                                        <a href="@Url.Product(product.ProductId)"
+                                           class="product-image" title="@product.Title">
+                                            <img src="@Url.Image(product.ImageId)"
+                                                 width="135"
+                                                 height="135"
+                                                 alt="@product.Title"
+                                                 class="thumbnail" />
+                                        </a>
+                                        <div class="product-shop">
+                                            <div class="f-fix">
+                                                <h2 class="product-name">
+                                                    <a href="@Url.Product(product.ProductId)" title="@product.Title">@product.Title</a>
+                                                </h2>
+
+                                                <div class="price-box">
+                                                    <span class="regular-price" id="product-price-2">
+                                                        <span class="price">@product.Price.ToString("C")</span>
+                                                    </span>
+                                                </div>
+
+                                                <p>
+                                                    @if (product.OutOfStock)
+                                                    {
+                                                        <div><strong>Out of stock.</strong></div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <button type="button" title="Add to Cart" class="btn btn-cart" data-productid="@product.ProductId">
+                                                            <i class="icon-plus icon-white"></i> Add To Cart
+                                                        </button>
+                                                    }
+                                                </p>
+
+
+                                                <div class="desc std">
+                                                    @product.Description
+                                                    <a href="@Url.Product(product.ProductId)" title="@product.Title" class="link-learn">
+                                                        Learn More
+                                                    </a>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
+                            </ol>
+
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="col-main span12">
+                            <div class="filter-toolbar">
+                                <div class="row-fluid">
+                                    <div class="span6">
+                                        <select style="width: 50px">
+                                            <option>10</option>
+                                            <option>25</option>
+                                            <option>50</option>
+                                            <option>100</option>
+                                        </select>
+                                        <label>items per page</label>
+                                    </div>
+                                    <div class="span6">
+                                        <div class="pagination pull-right" style="">
+                                            <ul>
+                                                <li><a href="#">Prev</a></li>
+                                                <li><a href="#">1</a></li>
+                                                <li><a href="#">2</a></li>
+                                                <li><a href="#">3</a></li>
+                                                <li><a href="#">4</a></li>
+                                                <li><a href="#">5</a></li>
+                                                <li><a href="#">Next</a></li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row-fluid">
-                    <div class="col-main span12">
-
-                        <ol class="products-list" id="products-list">
-                            <li class="item odd">
-                                <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/lorem-ipsum-dolor.html?___SID=U" title="Lorem ipsum dolor" class="product-image">
-                                    <img src="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/small_image/135x/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-1_1.png"
-                                         width="135"
-                                         height="135"
-                                         alt="Lorem ipsum dolor"
-                                         class="thumbnail">
-                                </a>
-                                <div class="product-shop">
-                                    <div class="f-fix">
-                                        <h2 class="product-name">
-                                            <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/lorem-ipsum-dolor.html?___SID=U" title="Lorem ipsum dolor">Lorem ipsum dolor</a>
-                                        </h2>
-
-                                        <div class="price-box">
-                                            <span class="regular-price" id="product-price-2">
-                                                <span class="price">$399.00</span>
-                                            </span>
-
-                                        </div>
-
-                                        <p><button type="button" title="Add to Cart" class="button btn-cart"><span><span>Add to Cart</span></span></button></p>
-                                        <div class="desc std">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, arcu et dignissim ultrices, tellus nulla semper turpis, quis interdum diam tortor nec risus. Vivamus eu fringilla erat. Curabitur tincidunt, leo ac auctor sodales, odio mauris fermentum justo, sit amet bibendum augue libero at tellus. Nullam vulputate enim nec nibh pulvinar consectetur. Proin aliquet imperdiet dolor ac facilisis. Sed lacinia cursus urna. Maecenas eget justo libero. Aenean at nulla nisi, vitae dictum nulla.
-                                            <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/lorem-ipsum-dolor.html?___SID=U" title="Lorem ipsum dolor" class="link-learn">Learn More</a>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="item even">
-                                <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/proin-pretium-adipiscing.html?___SID=U" title="Proin pretium nibh" class="product-image"><img src="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/small_image/135x/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-10_1.png" width="135" height="135" alt="Proin pretium nibh"></a>
-                                <div class="product-shop">
-                                    <div class="f-fix">
-                                        <h2 class="product-name"><a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/proin-pretium-adipiscing.html?___SID=U" title="Proin pretium nibh">Proin pretium nibh</a></h2>
-
-
-
-                                        <div class="price-box">
-                                            <span class="regular-price" id="product-price-11">
-                                                <span class="price">$399.00</span>
-                                            </span>
-
-                                        </div>
-
-                                        <p><button type="button" title="Add to Cart" class="button btn-cart"><span><span>Add to Cart</span></span></button></p>
-                                        <div class="desc std">
-                                            Phasellus quis turpis id nibh sagittis consectetur vitae facilisis purus. Donec convallis congue lectus, non semper metus dignissim a. Nulla facilisi. Donec blandit bibendum neque, et commodo nisl fermentum id. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer dui urna, ornare vitae sollicitudin ut, facilisis tincidunt lorem. Suspendisse sollicitudin, elit vitae consectetur dictum, nulla lectus tincidunt lorem, id scelerisque massa leo ut massa. Quisque sit amet eros nibh, eget sodales urna. Pellentesque leo tellus, pulvinar a vestibulum id, sollicitudin at justo.                         <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/proin-pretium-adipiscing.html?___SID=U" title="Proin pretium nibh" class="link-learn">Learn More</a>
-                                        </div>
-                                        <ul class="add-to-links">
-                                            <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/wishlist/index/add/product/11/form_key/7oLXPGUUfUyzrVEY/?___SID=U" class="link-wishlist">Add to Wishlist</a></li>
-                                            <li><span class="separator">|</span> <a href="http://www.plazathemes.com/demo/ma_carstore_res/catalog/product_compare/add/product/11/uenc/aHR0cDovL3d3dy5wbGF6YXRoZW1lcy5jb20vZGVtby9tYV9jYXJzdG9yZV9yZXMvbWVyY2VkZXMuaHRtbD9yYXRlPTEmZmlyc3Q9Mzk5Jmxhc3Q9Mzk5Jl9fX1NJRD1VJm1vZGU9bGlzdCZsYXllcl9hY3Rpb249MQ,,/?___SID=U" class="link-compare">Add to Compare</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="item last odd">
-                                <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/curabitur-a-lacus-in.html?___SID=U" title="Curabitur a lacus in" class="product-image"><img src="http://www.plazathemes.com/demo/ma_carstore_res/media/catalog/product/cache/1/small_image/135x/9df78eab33525d08d6e5fb8d27136e95/o/t/oto-9.png" width="135" height="135" alt="Curabitur a lacus in"></a>
-                                <div class="product-shop">
-                                    <div class="f-fix">
-                                        <h2 class="product-name"><a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/curabitur-a-lacus-in.html?___SID=U" title="Curabitur a lacus in">Curabitur a lacus in</a></h2>
-
-
-
-                                        <div class="price-box">
-                                            <span class="regular-price" id="product-price-10">
-                                                <span class="price">$399.00</span>
-                                            </span>
-
-                                        </div>
-
-                                        <p><button type="button" title="Add to Cart" class="button btn-cart"><span><span>Add to Cart</span></span></button></p>
-                                        <div class="desc std">
-                                            Vivamus quis felis tempor nisi accumsan iaculis. Maecenas convallis eleifend libero, et volutpat erat tempus at. Cras eget nunc tellus, dignissim lobortis tellus. Nulla blandit leo ac dui pellentesque laoreet. Etiam mattis euismod ante, vitae dignissim urna dignissim nec. Praesent ornare, nisl pharetra mollis tristique, massa ante fermentum mauris, at mollis elit sapien egestas odio. Etiam congue euismod velit, ut placerat ante pulvinar imperdiet. In venenatis, quam a sagittis vehicula, neque massa varius mi, ut auctor velit ipsum quis justo. Donec feugiat tellus ut turpis consectetur faucibus. Phasellus a dolor mauris. Proin semper gravida mauris, quis porta urna venenatis ut. Morbi euismod luctus dictum. Cras non aliquam massa. Donec est ante, auctor sed dignissim sagittis, faucibus et purus. Praesent viverra mauris non mi laoreet ut convallis lorem condimentum.                         <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes/curabitur-a-lacus-in.html?___SID=U" title="Curabitur a lacus in" class="link-learn">Learn More</a>
-                                        </div>
-                                        <ul class="add-to-links">
-                                            <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/wishlist/index/add/product/10/form_key/7oLXPGUUfUyzrVEY/?___SID=U" class="link-wishlist">Add to Wishlist</a></li>
-                                            <li><span class="separator">|</span> <a href="http://www.plazathemes.com/demo/ma_carstore_res/catalog/product_compare/add/product/10/uenc/aHR0cDovL3d3dy5wbGF6YXRoZW1lcy5jb20vZGVtby9tYV9jYXJzdG9yZV9yZXMvbWVyY2VkZXMuaHRtbD9yYXRlPTEmZmlyc3Q9Mzk5Jmxhc3Q9Mzk5Jl9fX1NJRD1VJm1vZGU9bGlzdCZsYXllcl9hY3Rpb249MQ,,/?___SID=U" class="link-compare">Add to Compare</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                        </ol>
-
+            }
+            else
+            {
+                <div class="col-wrapper span9">
+                    <div class="alert">
+                        Sorry. It looks like we don't have any products that match your search.
                     </div>
                 </div>
-                <div class="row-fluid">
-                    <div class="col-main span12">
-                        <div class="filter-toolbar">
-                            <div class="row-fluid">
-                                <div class="span6">
-                                    <select style="width:50px">
-                                        <option>10</option>
-                                        <option>25</option>
-                                        <option>50</option>
-                                        <option>100</option>
-                                    </select>
-                                    <label>items per page</label>
-                                </div>
-                                <div class="span6">
-                                    <div class="pagination pull-right" style="">
-                                        <ul>
-                                            <li><a href="#">Prev</a></li>
-                                            <li><a href="#">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                            <li><a href="#">4</a></li>
-                                            <li><a href="#">5</a></li>
-                                            <li><a href="#">Next</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </div>
