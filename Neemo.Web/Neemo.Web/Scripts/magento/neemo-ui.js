@@ -77,7 +77,11 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
             ui.queryManager.addOrUpdate({ key: 'keyword', newVal: keyword }, false);
             return searchFilters; // Allow chaining
         },
-        setSortBy: function(sortBy) {
+        setSortBy: function (sortBy) {
+            if (sortBy === 'NewestFirst') {
+                ui.queryManager.remove('sortBy');
+                return searchFilters;
+            }
             ui.queryManager.addOrUpdate({ key: 'sortBy', newVal: sortBy }, false);
             return searchFilters;
         },
