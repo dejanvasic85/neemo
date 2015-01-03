@@ -12,6 +12,7 @@ namespace Neemo.Web.Models
         public int? PageSize { get; set; }
         public int? Page { get; set; }
 
-        public List<ProductSummaryView> ProductResults { get; set; } 
+        public List<ProductSummaryView> ProductResults { get; set; }
+        public bool HasResults { get; set; }
     }
 }
