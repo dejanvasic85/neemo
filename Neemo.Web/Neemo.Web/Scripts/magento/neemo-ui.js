@@ -18,12 +18,16 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
             // Locate the item and update it
             $.each(q.items, function (idx, val) {
                 if (val.startsWith(self.keyPair.key + '=')) {
-                    q.items[idx] = self.keyPair.key + '=' + self.keyPair.newVal;
+                    if (self.keyPair.newVal === '') {
+                        remove(self.keyPair.key);
+                    } else {
+                        q.items[idx] = self.keyPair.key + '=' + self.keyPair.newVal;
+                    }
                     self.exists = true;
                 }
             });
 
-            if (!self.exists) {
+            if (!self.exists && keyPair.newVal !== '') {
                 q.items.push(keyPair.key + '=' + keyPair.newVal);
             }
 
@@ -68,6 +72,25 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
         setPageSize : function(pageSize) {
             ui.queryManager.remove('page');
             ui.queryManager.addOrUpdate({ key: 'pageSize', newVal: pageSize }, true);
+        },
+        setKeyword: function (keyword) {
+            ui.queryManager.addOrUpdate({ key: 'keyword', newVal: keyword }, false);
+            return searchFilters; // Allow chaining
+        },
+        setSortBy: function(sortBy) {
+            ui.queryManager.addOrUpdate({ key: 'sortBy', newVal: sortBy }, false);
+            return searchFilters;
+        },
+        setPriceMin: function(priceMin) {
+            ui.queryManager.addOrUpdate({ key: 'priceMin', newVal: priceMin }, false);
+            return searchFilters;
+        },
+        setPriceMax: function (priceMax) {
+            ui.queryManager.addOrUpdate({ key: 'priceMax', newVal: priceMax }, false);
+            return searchFilters;
+        },
+        apply: function() {
+            ui.queryManager.goWithNewQuery();
         }
     };
 
@@ -118,6 +141,15 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
 
     $('[data-page-size').on('change', function () {
         searchFilters.setPageSize($(this).val());
+    });
+
+    $('[data-apply-filters').on('click', function() {
+        searchFilters
+            .setKeyword($('#Keyword').val())
+            .setSortBy($('#SortBy').val())
+            .setPriceMin($('#PriceMin').val())
+            .setPriceMax($('#PriceMax').val())
+            .apply();
     });
 
     // Initialise the shopping cart
