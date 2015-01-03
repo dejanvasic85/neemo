@@ -14,6 +14,14 @@
             @*Product Filters*@
             <div class="col-left sidebar span3">
                 <div class="block block-layered-nav">
+                    <div class="block-title"><strong><span>Categories </span></strong></div>
+                    <div class="block-content">
+                        @Html.Partial("~/Views/Shared/Partial/_CategoriesSearchLinks.cshtml", (CategoryListView)@ViewBag.Categories)
+                    </div>
+                </div>
+
+
+                <div class="block block-layered-nav">
                     <div class="block-title">
                         <strong><span>Product Filters</span></strong>
                     </div>
