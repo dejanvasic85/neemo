@@ -143,4 +143,15 @@
     <script type="text/javascript">decorateGeneric($$('#product-options-wrapper dl'), ['last']);</script>
 
     <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd', 'even', 'first', 'last'])</script>
+
+    <script>
+        (function (jQuery) {
+            var jq = jQuery;
+            jQuery('.more-views a').css({ 'cursor': 'pointer' });
+            jq('.more-views a').on('click', function () {
+                var newSrc = jq(this).children('img').attr('src');
+                jq('#mainImage').attr('src', newSrc);
+            });
+        })(jQuery);
+    </script>
 }
