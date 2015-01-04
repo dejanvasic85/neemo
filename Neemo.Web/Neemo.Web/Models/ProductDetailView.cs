@@ -1,4 +1,6 @@
-﻿namespace Neemo.Web.Models
+﻿using System.Collections.Generic;
+
+namespace Neemo.Web.Models
 {
     public class ProductDetailView
     {
@@ -9,6 +11,6 @@
         public decimal Price { get; set; }
         public string[] Images { get; set; }
         public int AvailableQty { get; set; }
-        public string Category { get; set; }
+        public CategoryView Category { get; set; }
     }
 }

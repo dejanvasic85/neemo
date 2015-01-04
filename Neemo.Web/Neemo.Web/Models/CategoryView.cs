@@ -9,23 +9,38 @@ namespace Neemo.Web.Models
         public int? ParentId { get; set; }
         public string Title { get; set; }
 
+        public CategoryView ParentCategory { get; set; }
+
         public List<CategoryView> GetChildren(CategoryListView list)
         {
-            return list.AllCategories.Where(c=> c.ParentId==CategoryId).ToList();
+            return list.AllCategories.Where(c => c.ParentId == CategoryId).ToList();
         }
         public bool HasChildren(CategoryListView list)
         {
             return list.AllCategories.Any(c => c.ParentId == CategoryId);
-        } 
-    }
+        }
 
-    public class CategoryListView
-    {
-        public List<CategoryView> AllCategories { get; set; }
-
-        public List<CategoryView> GetRootCategories()
+        /// <summary>
+        /// Returns a single tree branch where the parent is at 0 index
+        /// </summary>
+        /// <returns></returns>
+        public List<CategoryView> GetOrderedHeirarchy()
         {
-            return AllCategories.Where(c => c.ParentId == null).ToList();
-        } 
+            var list = new List<CategoryView>();
+            RecurseParent(this, list);
+            return list;
+        }
+
+        private void RecurseParent(CategoryView category, List<CategoryView> list)
+        {
+            if (!category.ParentId.HasValue)
+            {
+                list.Add(category);
+                return;
+            }
+
+            RecurseParent(category.ParentCategory, list);
+            list.Add(category);
+        }
     }
 }

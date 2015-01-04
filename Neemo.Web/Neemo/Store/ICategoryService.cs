@@ -5,6 +5,8 @@ namespace Neemo.Store
     public interface ICategoryService
     {
         List<Category> GetAllCategories();
+
+        Category GetCategory(int categoryId);
     }
 
     public class CategoryService : ICategoryService
@@ -19,6 +21,11 @@ namespace Neemo.Store
         public List<Category> GetAllCategories()
         {
             return _categoryRepository.GetAllCategories();
+        }
+
+        public Category GetCategory(int categoryId)
+        {
+            return _categoryRepository.GetCategory(categoryId);
         }
     }
 }

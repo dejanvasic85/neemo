@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Neemo.Store;
 
 namespace Neemo.DataAccess
@@ -22,6 +23,18 @@ namespace Neemo.DataAccess
                 new Category{CategoryId = 8, ParentId = null, Title = "BMW"},
                 new Category{CategoryId = 9, ParentId = null, Title = "Lexus"},
             };
+        }
+
+        public Category GetCategory(int categoryId)
+        {
+            var category = GetAllCategories().Single(p => p.CategoryId == categoryId);
+
+            if (category.ParentId.HasValue)
+            {
+                category.ParentCategory = GetCategory(category.ParentId.Value);
+            }
+
+            return category;
         }
     }
 }

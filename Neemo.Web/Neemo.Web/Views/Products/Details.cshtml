@@ -10,16 +10,18 @@
     <div class="main">
         <div class="breadcrumbs">
             <ul>
-                <li class="home">
+                <li>
                     @Html.ActionLink("Home", "Index", "Home")
                     <span>/ </span>
                 </li>
-                <li class="category3">
-                    @*Todo - Wire up the category search link*@
-                    <a href="http://www.plazathemes.com/demo/ma_carstore_res/mercedes.html" title="">
-                        @Model.Category
-                    </a>
-                    <span>/ </span>
+                <li>
+                    @foreach (var category in Model.Category.GetOrderedHeirarchy())
+                    {
+                        <a title="@category.Title" data-category-filter="@category.CategoryId">
+                            @category.Title
+                        </a>
+                        <span>/ </span>
+                    }
                 </li>
                 <li class="product">
                     <strong>@Model.Title</strong>

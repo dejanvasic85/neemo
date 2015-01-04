@@ -10,10 +10,12 @@
     public class ProductsController : MagentoController
     {
         private readonly IProductService _productService;
+        private readonly ICategoryService _categoryService;
 
-        public ProductsController(IProductService productService)
+        public ProductsController(IProductService productService, ICategoryService categoryService)
         {
             _productService = productService;
+            _categoryService = categoryService;
         }
 
         public ActionResult Details(int id)
@@ -23,7 +25,9 @@
             //var productId = id;
 
             // Fetch the full product details
-            var productView = Mapper.Map<Store.Product, Models.ProductDetailView>(_productService.GetProductById(productId));
+            var product = _productService.GetProductById(productId);
+            var productView = Mapper.Map<Store.Product, Models.ProductDetailView>(product);
+            productView.Category = Mapper.Map<Store.Category, Models.CategoryView>( _categoryService.GetCategory(product.CategoryId) );
 
             return View(productView);
         }
