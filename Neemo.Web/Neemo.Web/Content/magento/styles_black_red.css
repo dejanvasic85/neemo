@@ -6792,3 +6792,14 @@ tr.summary-details-excluded {
 .controls input {
     min-height: 30px;
 }
+
+.bordered-form {
+    padding: 18px;
+    border: 1px solid #d7d7d7;
+}
+
+.bordered-form h3 {
+    padding: 15px;
+    border-bottom: 1px solid #d7d7d7;
+    margin-bottom: 20px;
+}
