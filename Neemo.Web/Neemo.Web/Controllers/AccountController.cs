@@ -77,6 +77,11 @@ namespace Neemo.Web.Controllers
         [CaptchaVerify("Captcha is not valid")]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            if (ModelState.ContainsKey("CaptchaInputText"))
+            {
+                model.IsCaptchaNotValid = true;
+            }
+
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };

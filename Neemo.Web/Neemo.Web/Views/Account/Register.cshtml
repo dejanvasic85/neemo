@@ -27,7 +27,7 @@
                         <div class="control-group">
                             @Html.BootstrapLabelFor(m => m.Password)
                             <div class="controls">
-                                @Html.TextBoxFor(m => m.Password)
+                                @Html.PasswordFor(m => m.Password)
                                 @Html.ValidationMessageFor(m => m.Password)
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                         <div class="control-group">
                             @Html.BootstrapLabelFor(m => m.ConfirmPassword)
                             <div class="controls">
-                                @Html.TextBoxFor(m => m.ConfirmPassword)
+                                @Html.PasswordFor(m => m.ConfirmPassword)
                                 @Html.ValidationMessageFor(m => m.ConfirmPassword)
                             </div>
                         </div>
