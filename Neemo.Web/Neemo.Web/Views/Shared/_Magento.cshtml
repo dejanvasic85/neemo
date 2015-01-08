@@ -127,12 +127,19 @@
 
                                                 @if (Request.IsAuthenticated)
                                                 {
+                                                    <li><strong>Welcome @User.Identity.Name</strong></li>
                                                     <li>
-                                                        Welcome @User.Identity.Name, 
-                                                        <form method="POST" action="@Url.Logout()" id="logoutForm">
-                                                            @Html.AntiForgeryToken()
-                                                            <a href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
-                                                        </form>
+                                                        <div>
+                                                            <form method="POST" action="@Url.Logout()" id="logoutForm">
+                                                                @Html.AntiForgeryToken()
+                                                                <span>
+                                                                    <a href="javascript:document.getElementById('logoutForm').submit()">
+                                                                        Logout
+                                                                    </a>
+                                                                </span>
+                                                            </form>
+                                                            
+                                                        </div>
                                                     </li>
                                                 }
                                                 else
