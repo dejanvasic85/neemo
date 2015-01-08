@@ -105,7 +105,7 @@
                                 <div class="span4">
                                     <h1 class="logo">
                                         <strong>Our Car Store</strong>
-                                        <a href="@Url.Action("Index", "Home")" title="Our Car Store" class="logo">
+                                        <a href="@Url.Home()" title="Our Car Store" class="logo">
                                             <img src="@Url.Content("~/Content/magento/images/logo.png")" alt="Our Car Store">
                                         </a>
                                     </h1>
@@ -116,15 +116,16 @@
                                             <ul class="links">
                                                 <li><a href="#" title="My Account">My Account</a></li>
                                                 <li>
-                                                    <a href='@Url.Action("MyCart", "Cart")' title="Checkout">
+                                                    <a href='@Url.MyCart()' title="Checkout">
                                                         My Cart
                                                         <span data-bind="if: items().length > 0">
                                                             (<span data-bind="text: totalQuantity()"></span>)
                                                         </span>
                                                     </a>
                                                 </li>
-                                                <li>@Html.ActionLink("Checkout", "Checkout", "Cart")</li>
-                                                <li><a href="#" title="Log In">Log In</a></li>
+                                                <li><a href="@Url.Checkout()">Checkout</a></li>
+                                                <li><a href="@Url.Login()">Login</a></li>
+                                                <li><a href="@Url.Register()">Register</a></li>
                                             </ul>
                                             <form action="@Url.Find()" method="GET">
                                                 <div class="input-append controls">

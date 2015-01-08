@@ -28,5 +28,25 @@ namespace Neemo.Web.Infrastructure
         {
             return urlHelper.Action("Find", "Products");
         }
+
+        public static string Checkout(this UrlHelper urlHelper)
+        {
+            return urlHelper.Action("Checkout", "Cart");
+        }
+
+        public static string Login(this UrlHelper urlHelper)
+        {
+            return urlHelper.Action("Login", "Account");
+        }
+
+        public static string Register(this UrlHelper urlHelper)
+        {
+            return urlHelper.Action("Register", "Account");
+        }
+
+        public static string MyCart(this UrlHelper urlHelper)
+        {
+            return urlHelper.Action("MyCart", "Cart");
+        }
     }
 }

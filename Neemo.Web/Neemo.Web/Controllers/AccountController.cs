@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using Neemo.Web.Infrastructure;
 using Neemo.Web.Models;
 using System.Threading.Tasks;
 using System.Web;
@@ -9,7 +10,7 @@ using System.Web.Mvc;
 namespace Neemo.Web.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : MagentoController
     {
         private ApplicationUserManager _userManager;
 
