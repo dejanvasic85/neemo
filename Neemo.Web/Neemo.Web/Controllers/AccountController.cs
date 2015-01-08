@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using CaptchaMvc.Attributes;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Neemo.Web.Infrastructure;
@@ -65,7 +66,7 @@ namespace Neemo.Web.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            return View(new RegisterViewModel());
         }
 
         //
@@ -73,6 +74,7 @@ namespace Neemo.Web.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
+        [CaptchaVerify("Captcha is not valid")]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)

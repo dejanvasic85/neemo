@@ -38,6 +38,11 @@ namespace Neemo.Web.Infrastructure
         {
             return urlHelper.Action("Login", "Account");
         }
+        
+        public static string Logout(this UrlHelper urlHelper)
+        {
+            return urlHelper.Action("LogOff", "Account");
+        }
 
         public static string Register(this UrlHelper urlHelper)
         {

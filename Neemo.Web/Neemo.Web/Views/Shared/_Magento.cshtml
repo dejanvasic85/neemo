@@ -124,8 +124,23 @@
                                                     </a>
                                                 </li>
                                                 <li><a href="@Url.Checkout()">Checkout</a></li>
-                                                <li><a href="@Url.Login()">Login</a></li>
-                                                <li><a href="@Url.Register()">Register</a></li>
+
+                                                @if (Request.IsAuthenticated)
+                                                {
+                                                    <li>
+                                                        Welcome @User.Identity.Name, 
+                                                        <form method="POST" action="@Url.Logout()" id="logoutForm">
+                                                            @Html.AntiForgeryToken()
+                                                            <a href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
+                                                        </form>
+                                                    </li>
+                                                }
+                                                else
+                                                {
+                                                    <li><a href="@Url.Login()">Login</a></li>
+                                                    <li><a href="@Url.Register()">Register</a></li>
+                                                }
+
                                             </ul>
                                             <form action="@Url.Find()" method="GET">
                                                 <div class="input-append controls">
