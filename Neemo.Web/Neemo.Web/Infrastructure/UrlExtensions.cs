@@ -44,6 +44,11 @@ namespace Neemo.Web.Infrastructure
             return urlHelper.Action("Register", "Account");
         }
 
+        public static string ForgottenPassword(this UrlHelper urlHelper)
+        {
+            return urlHelper.Action("ForgotPassword", "Account");
+        }
+
         public static string MyCart(this UrlHelper urlHelper)
         {
             return urlHelper.Action("MyCart", "Cart");

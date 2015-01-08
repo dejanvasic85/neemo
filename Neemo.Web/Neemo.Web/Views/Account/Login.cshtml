@@ -11,8 +11,12 @@
                 <div class="page-title">
                     <h1>Login or Create an Account</h1>
                 </div>
-                <form action="http://www.plazathemes.com/demo/ma_carstore_res/customer/account/loginPost/" method="post" id="login-form">
+
+                <form action="@Url.Login()" method="post" id="login-form">
+                    @Html.AntiForgeryToken()
                     <div class="col2-set">
+
+
                         <div class="col-1 new-users">
                             <div class="content">
                                 <h2>New Customers</h2>
@@ -23,18 +27,26 @@
                             <div class="content">
                                 <h2>Registered Customers</h2>
                                 <p>If you have an account with us, please log in.</p>
+
+                                @if (Model.WrongUsernameOrPassword)
+                                {
+                                    <div class="alert alert-danger">The username or password is not valid.</div>
+                                }
+
                                 <ul class="form-list">
                                     <li>
-                                        <label for="email" class="required"><em>*</em>Email Address</label>
-                                        <div class="input-box">
-                                            <input type="text" name="login[username]" value="" id="email" class="input-text required-entry validate-email" title="Email Address">
+                                        @Html.BootstrapLabelFor(m => m.Email)
+                                        <div class="input-box controls">
+                                            @Html.TextBoxFor(m => m.Email, new { @class = "input-text", tabindex = "1" })
                                         </div>
+                                        @Html.ValidationMessageFor(m => m.Email)
                                     </li>
                                     <li>
-                                        <label for="pass" class="required"><em>*</em>Password</label>
-                                        <div class="input-box">
-                                            <input type="password" name="login[password]" class="input-text required-entry validate-password" id="pass" title="Password">
+                                        @Html.BootstrapLabelFor(m => m.Password)
+                                        <div class="input-box controls">
+                                            @Html.PasswordFor(m => m.Password, new { @class = "input-text", tabindex = "2" })
                                         </div>
+                                        @Html.ValidationMessageFor(m => m.Password)
                                     </li>
                                 </ul>
                                 <p class="required">* Required Fields</p>
@@ -42,20 +54,21 @@
                         </div>
                     </div>
                     <div class="col2-set">
+
                         <div class="col-1 new-users">
                             <div class="buttons-set">
-                                <button type="button" title="Create an Account" class="button" onclick="window.location='http://www.plazathemes.com/demo/ma_carstore_res/customer/account/create/';"><span><span>Create an Account</span></span></button>
+                                <a class="btn" href="@Url.Register()" title="Create an Account">Create an Account</a>
                             </div>
                         </div>
                         <div class="col-2 registered-users">
                             <div class="buttons-set">
-                                <a href="http://www.plazathemes.com/demo/ma_carstore_res/customer/account/forgotpassword/" class="f-left">Forgot Your Password?</a>
-                                <button type="submit" class="button" title="Login" name="send" id="send2"><span><span>Login</span></span></button>
+                                <a href="" class="f-left">Forgot Your Password?</a>
+                                <button class="btn" title="Login" tabindex="3">Login</button>
                             </div>
                         </div>
                     </div>
                 </form>
-               
+
             </div>
         </div>
     </div>

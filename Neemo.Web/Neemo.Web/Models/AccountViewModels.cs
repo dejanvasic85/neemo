@@ -49,6 +49,8 @@ namespace Neemo.Web.Models
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
+
+        public bool WrongUsernameOrPassword { get; set; }
     }
 
     public class RegisterViewModel
