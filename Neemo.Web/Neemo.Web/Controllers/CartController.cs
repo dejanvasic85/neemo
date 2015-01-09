@@ -88,6 +88,7 @@ namespace Neemo.Web.Controllers
             return Json(new {Updated = true});
         }
 
+        [HttpPost]
         public ActionResult CalculateEstimate(string country, string postcode)
         {
             var cost = _shippingCalculator.Calculate(_cartContext.Current(), country, postcode);
