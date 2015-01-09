@@ -6,65 +6,73 @@
 }
 <div class="ma-main-container col1-layout">
     <div class="main">
-        <div class="col-main">
-            <div class="account-login">
+        <div class="row-fluid">
+            <div class="col-main span12">
                 <div class="page-title">
                     <h1>Login or Create an Account</h1>
                 </div>
-                <form action="@Url.Login()" method="post" id="login-form">
-                    @Html.AntiForgeryToken()
-                    <div class="col2-set">
-                        <div class="col-1 new-users">
-                            <div class="content">
-                                <h2>New Customers</h2>
-                                <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
-                            </div>
+
+                <div style="padding:15px;">
+                    <div class="row-fluid">
+
+                        @*first col*@
+                        <div class="span6">
+                            <form action="@Url.Login()" method="post" id="login-form">
+                                <div class="bordered-form">
+                                    <h3><i class="fa fa-user"></i>&nbsp; Existing Customers</h3>
+
+                                    @Html.AntiForgeryToken()
+
+
+                                    <h2>Registered Customers</h2>
+                                    <p>If you have an account with us, please log in.</p>
+
+                                    @if (Model.WrongUsernameOrPassword)
+                                    {
+                                        <div class="alert alert-danger">The username or password is not valid.</div>
+                                    }
+
+                                    <ul class="form-list">
+                                        <li>
+                                            @Html.BootstrapLabelFor(m => m.Email)
+                                            <div class="input-box controls">
+                                                @Html.TextBoxFor(m => m.Email, new { @class = "input-text", tabindex = "1" })
+                                            </div>
+                                            @Html.ValidationMessageFor(m => m.Email)
+                                        </li>
+                                        <li>
+                                            @Html.BootstrapLabelFor(m => m.Password)
+                                            <div class="input-box controls">
+                                                @Html.PasswordFor(m => m.Password, new { @class = "input-text", tabindex = "2" })
+                                            </div>
+                                            @Html.ValidationMessageFor(m => m.Password)
+                                        </li>
+                                    </ul>
+
+                                </div>
+                                <div class="footer-submit">
+                                    <a href="" class="pull-left">Forgot your password?</a>
+                                    <button class="btn pull-right" title="Login" tabindex="3">Login</button>
+                                </div>
+                            </form>
                         </div>
-                        <div class="col-2 registered-users">
-                            <div class="content">
-                                <h2>Registered Customers</h2>
-                                <p>If you have an account with us, please log in.</p>
-
-                                @if (Model.WrongUsernameOrPassword)
-                                {
-                                    <div class="alert alert-danger">The username or password is not valid.</div>
-                                }
-
-                                <ul class="form-list">
-                                    <li>
-                                        @Html.BootstrapLabelFor(m => m.Email)
-                                        <div class="input-box controls">
-                                            @Html.TextBoxFor(m => m.Email, new { @class = "input-text", tabindex = "1" })
-                                        </div>
-                                        @Html.ValidationMessageFor(m => m.Email)
-                                    </li>
-                                    <li>
-                                        @Html.BootstrapLabelFor(m => m.Password)
-                                        <div class="input-box controls">
-                                            @Html.PasswordFor(m => m.Password, new { @class = "input-text", tabindex = "2" })
-                                        </div>
-                                        @Html.ValidationMessageFor(m => m.Password)
-                                    </li>
-                                </ul>
+                        
+                        @*second col*@
+                        <div class="span6">
+                            <div class="bordered-form">
+                                <h3><i class="fa fa-sign-in"></i> &nbsp; New Customers</h3>
+                                By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.
+                            </div>
+                            <div class="footer-submit">
+                                <div class="pull-right">
+                                    <a class="btn">Create an Account</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col2-set">
-
-                        <div class="col-1 new-users">
-                            <div class="buttons-set">
-                                <a class="btn" href="@Url.Register()" title="Create an Account">Create an Account</a>
-                            </div>
-                        </div>
-                        <div class="col-2 registered-users">
-                            <div class="buttons-set">
-                                <a href="" class="f-left">Forgot Your Password?</a>
-                                <button class="btn" title="Login" tabindex="3">Login</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+                </div>
             </div>
+
         </div>
     </div>
 </div>
