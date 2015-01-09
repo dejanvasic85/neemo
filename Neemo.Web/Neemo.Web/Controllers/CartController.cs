@@ -1,15 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Threading;
-using Neemo.Shipping;
-
-namespace Neemo.Web.Controllers
+﻿namespace Neemo.Web.Controllers
 {
     using AutoMapper;
+    using Infrastructure;
+    using Shipping;
     using ShoppingCart;
     using Store;
     using System.Linq;
     using System.Web.Mvc;
-    using Infrastructure;
 
     public class CartController : MagentoController
     {
