@@ -93,9 +93,7 @@ namespace Neemo.Web.Controllers
             var cost = _shippingCalculator.Calculate(_cartContext.Current(), country, postcode);
 
             var viewModel = cost.Select(Mapper.Map<Shipping.ShippingCost, Models.ShippingCostView>).ToList();
-
-            Thread.Sleep(3000);
-
+            
             return Json(viewModel);
         }
     }

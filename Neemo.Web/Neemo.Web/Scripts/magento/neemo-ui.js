@@ -164,17 +164,24 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
             .apply();
     });
 
-    $('[data-category-filter]').on('click', function() {
+    $('[data-category-filter]').on('click', function () {
         searchFilters.setCategory($(this).attr('data-category-filter'));
     });
 
     $('#getShippingEstimate').button();
+
     $('#getShippingEstimate').on('click', function () {
         var $btn = $(this);
         $btn.button('loading');
-        svc.calculateEstimate($('#country').val(), $('#postcode').val(), function(data) {
-            console.log(data);
+        svc.calculateEstimate($('#country').val(), $('#postcode').val(), function (data) {
+            var $estimates = $('#estimates');
+            var $tbody = $estimates.find('tbody');
+            $tbody.empty();
+            $.each(data, function (index, item) {
+                $tbody.html('<tr><td>' + item.ShippingType + '</td><td>' + accounting.formatMoney( item.Cost ) + '</td></tr>');
+            });
             $btn.button('reset');
+            $estimates.slideDown();
         });
     });
 
