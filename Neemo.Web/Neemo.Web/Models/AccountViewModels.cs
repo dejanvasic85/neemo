@@ -72,6 +72,9 @@ namespace Neemo.Web.Models
         public string ConfirmPassword { get; set; }
 
         public bool IsCaptchaNotValid { get; set; }
+
+        [Display(Name = "Subscribe to our newsletter")]
+        public bool NewsletterSubscription { get; set; }
     }
 
     public class ResetPasswordViewModel

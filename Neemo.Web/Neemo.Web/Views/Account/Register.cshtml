@@ -27,14 +27,15 @@
                                     <div class="span3 hidden-phone"></div>
                                 </div>
                             </div>
-                            
+
                         </div>
 
                         <div class="span6">
+                            <form class="form-horizontal" action="@Url.Register()" method="POST">
 
-                            <div class="bordered-form">
-                                <h3>Create login details with us.</h3>
-                                <form class="form-horizontal" action="@Url.Register()" method="POST">
+                                <div class="bordered-form">
+                                    <h3>Create login details with us.</h3>
+
                                     @Html.AntiForgeryToken()
                                     <div class="control-group">
                                         @Html.BootstrapLabelFor(m => m.Email)
@@ -68,16 +69,22 @@
                                                 <span class="field-validation-error">The text you provided for the image does not match.</span>
                                             }
                                         </div>
-
                                     </div>
-                                    <div class="control-group">
-                                        <div class="controls">
-                                            <button type="submit" class="btn">Submit</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
 
+                                </div>
+                                <div class="footer-submit">
+
+                                    <label class="checkbox">
+                                        <input type="checkbox" id="NewsletterSubscription" checked="checked" style="margin-left:20px" />
+                                        Subscribe to our Newsletter
+                                    </label>
+
+                                    <div class="pull-right">
+                                        <button class="btn pull-right">Register</button>
+                                    </div>
+                                </div>
+
+                            </form>
                         </div>
 
                     </div>

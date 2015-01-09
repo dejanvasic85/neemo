@@ -6803,3 +6803,7 @@ tr.summary-details-excluded {
     border-bottom: 1px solid #d7d7d7;
     margin-bottom: 20px;
 }
+
+.footer-submit {
+    padding:20px; padding-bottom: 25px; background-color: #000; color: #fff
+}
