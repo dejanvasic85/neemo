@@ -215,6 +215,7 @@
     <Content Include="Content\magento\bootstrap-responsive-2.3.2.css" />
     <Content Include="Content\magento\css3.htc" />
     <Content Include="Content\magento\fish_menu.css" />
+    <Content Include="Content\magento\font-awesome-4.2.0.css" />
     <Content Include="Content\magento\font\glyphicons-halflings-white.png" />
     <Content Include="Content\magento\font\glyphicons-halflings.png" />
     <Content Include="Content\magento\images\ajax-loader.gif" />
