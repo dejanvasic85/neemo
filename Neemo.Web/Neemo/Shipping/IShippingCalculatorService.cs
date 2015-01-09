@@ -1,9 +1,10 @@
 ﻿namespace Neemo.Shipping
 {
     using ShoppingCart;
+    using System.Collections.Generic;
 
     public interface IShippingCalculatorService
     {
-        decimal? Calculate(Cart shoppingCart, string countryCode, string postcode);
+        IEnumerable<ShippingCost> Calculate(Cart shoppingCart, string countryCode, string postcode);
     }
 }

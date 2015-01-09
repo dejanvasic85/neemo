@@ -1,4 +1,7 @@
-﻿namespace Neemo.Web.Controllers
+﻿using System.Collections.Generic;
+using Neemo.Shipping;
+
+namespace Neemo.Web.Controllers
 {
     using AutoMapper;
     using ShoppingCart;
@@ -11,11 +14,13 @@
     {
         private readonly ICartContext _cartContext;
         private readonly IProductService _productService;
+        private readonly IShippingCalculatorService _shippingCalculator;
 
-        public CartController(ICartContext cartContext, IProductService productService)
+        public CartController(ICartContext cartContext, IProductService productService, IShippingCalculatorService shippingCalculator)
         {
             _cartContext = cartContext;
             _productService = productService;
+            _shippingCalculator = shippingCalculator;
         }
 
         // GET: Cart
@@ -80,6 +85,12 @@
 
             cart.UpdateQuantity(lineItemId, newQuantity);
             return Json(new {Updated = true});
+        }
+
+        public ActionResult CalculateEstimate(string country, string postcode)
+        {
+            var cost = _shippingCalculator.Calculate(_cartContext.Current(), country, postcode);
+            return Json(cost);
         }
     }
 }

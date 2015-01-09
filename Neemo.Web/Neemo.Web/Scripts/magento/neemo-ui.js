@@ -168,6 +168,10 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
         searchFilters.setCategory($(this).attr('data-category-filter'));
     });
 
+    $('#getShippingEstimate').on('click', function() {
+        
+    });
+
     // Initialise the shopping cart
     svc.getItems().then(function (items) {
         var viewModels = [];

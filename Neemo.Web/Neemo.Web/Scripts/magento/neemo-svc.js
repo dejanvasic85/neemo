@@ -41,6 +41,11 @@ neemo.svc = (function ($, urls) {
                         qtyTooLargeFnc();
                     }
                 });
+        },
+        calculateEstimate : function(country, postcode, onComplete) {
+            call(urls.calculateEstimate, { country: country, postcode: postcode }).done(function(response) {
+                onComplete(response);
+            });
         }
     }
 })(jQuery, neemo.endpoints.cart);
