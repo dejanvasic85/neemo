@@ -1,3 +1,5 @@
+using Neemo.Shipping;
+
 namespace Neemo.Web
 {
     using Images;
@@ -34,8 +36,9 @@ namespace Neemo.Web
             // ICartContext (session based)
             container.RegisterType<ICartContext, SessionCartContext>();
 
-            // Web Service
+            // Services in website/infrastructure
             container.RegisterType<ITemplateService, TemplateService>();
+            container.RegisterType<IShippingCalculatorService, ShippingCalculator>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }

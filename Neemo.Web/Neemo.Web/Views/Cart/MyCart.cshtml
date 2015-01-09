@@ -13,8 +13,8 @@
             </div>
 
             <div class="cart">
-                
-              
+
+
 
                 <div data-bind="if: items().length === 0">
                     <div class="alert">
@@ -34,23 +34,33 @@
                             @*Placeholder for shipping estimate*@
                         </div>
                         <div class="col-1 span4">
-                            <form id="discount-coupon-form" action="http://www.plazathemes.com/demo/ma_carstore_res/checkout/cart/couponPost/" method="post">
-                                <div class="discount">
-                                    <h2>Discount Codes</h2>
-                                    <div class="discount-form">
-                                        <label for="coupon_code">Enter your coupon code if you have one.</label>
-                                        <input type="hidden" name="remove" id="remove-coupone" value="0">
-                                        <div class="input-box">
-                                            <input class="input-text" id="coupon_code" name="coupon_code" value="">
-                                        </div>
-                                        <br/>
-                                        <button title="Apply Coupon" class="btn" value="Apply Coupon"><span><span>Apply Coupon</span></span></button>
+                            <div class="bordered-form">
+                                <h3><i class="fa fa-calculator"></i>&nbsp; Postage Estimate</h3>
 
+                                <div class="control-group">
+                                    <label for="country">Country</label>
+                                    <div class="controls">
+                                        <select id="country" class="control">
+                                            <option value="">Please Select</option>
+                                            <option value="AU" selected="selected">Australia</option>
+                                        </select>
                                     </div>
                                 </div>
-                            </form>
 
+                                <div class="control-group">
+                                    <label for="country">Post Code</label>
+                                    <div class="controls">
+                                        <input class="control" type="text" id="postcode" />
+                                    </div>
+                                </div>
 
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <button id="getShippingEstimate" class="btn" data-loading-text="Calculating...">Get Estimate</button>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                         <div class="totals span4">
                             <table id="shopping-cart-totals-table">
@@ -83,7 +93,7 @@
                             </table>
                             <ul class="checkout-types">
                                 <li>
-                                    <a class="btn btn-large">Proceed to Checkout</a>
+                                    <a class="btn btn-large" href="@Url.Checkout()">Proceed to Checkout</a>
                                 </li>
                             </ul>
                         </div>

@@ -6795,6 +6795,7 @@ tr.summary-details-excluded {
 
 .bordered-form {
     padding: 18px;
+    padding-top: 0;
     border: 1px solid #d7d7d7;
 }
 
