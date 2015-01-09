@@ -11,6 +11,7 @@ namespace Neemo.Web
             Mapper.CreateMap<Store.Product, Models.ProductDetailView>();
             Mapper.CreateMap<Store.ProductCartItem, Models.CartItemView>();
             Mapper.CreateMap<Store.Category, Models.CategoryView>();
+            Mapper.CreateMap<Shipping.ShippingCost, Models.ShippingCostView>();
         }
     }
 }

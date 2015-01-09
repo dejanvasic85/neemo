@@ -13,9 +13,7 @@
             </div>
 
             <div class="cart">
-
-
-
+                
                 <div data-bind="if: items().length === 0">
                     <div class="alert">
                         Your shopping cart is empty. @Html.ActionLink("Continue Shopping", "Index", "Home")
@@ -56,8 +54,12 @@
 
                                 <div class="control-group">
                                     <div class="controls">
-                                        <button id="getShippingEstimate" class="btn" data-loading-text="Calculating...">Get Estimate</button>
+                                        <button type="button" id="getShippingEstimate" class="btn" data-loading-text="Calculating...">Get Estimate</button>
                                     </div>
+                                </div>
+                                
+                                <div class="progress progress-striped active" id="estimateProgress" style="display: none">
+                                    <div class="bar" style="width: 100%;"></div>
                                 </div>
 
                             </div>

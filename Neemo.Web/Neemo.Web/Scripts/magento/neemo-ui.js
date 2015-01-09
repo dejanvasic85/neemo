@@ -168,8 +168,14 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
         searchFilters.setCategory($(this).attr('data-category-filter'));
     });
 
-    $('#getShippingEstimate').on('click', function() {
-        
+    $('#getShippingEstimate').button();
+    $('#getShippingEstimate').on('click', function () {
+        var $btn = $(this);
+        $btn.button('loading');
+        svc.calculateEstimate($('#country').val(), $('#postcode').val(), function(data) {
+            console.log(data);
+            $btn.button('reset');
+        });
     });
 
     // Initialise the shopping cart

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using Neemo.Shipping;
 
 namespace Neemo.Web.Controllers
@@ -90,7 +91,12 @@ namespace Neemo.Web.Controllers
         public ActionResult CalculateEstimate(string country, string postcode)
         {
             var cost = _shippingCalculator.Calculate(_cartContext.Current(), country, postcode);
-            return Json(cost);
+
+            var viewModel = cost.Select(Mapper.Map<Shipping.ShippingCost, Models.ShippingCostView>).ToList();
+
+            Thread.Sleep(3000);
+
+            return Json(viewModel);
         }
     }
 }
