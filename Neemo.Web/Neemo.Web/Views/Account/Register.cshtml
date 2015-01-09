@@ -19,7 +19,7 @@
                         <div class="span6">
 
                             <div class="bordered-form">
-                                <h3>Use one of your social logins</h3>
+                                <h3><i class="fa fa-user"></i>&nbsp; Use one of your social logins</h3>
                                 <div class="row-fluid">
                                     <div class="span3 hidden-phone"></div>
                                     <div class="span3"><i class="fa fa-facebook-square fa-5x"></i></div>
@@ -34,7 +34,9 @@
                             <form class="form-horizontal" action="@Url.Register()" method="POST">
 
                                 <div class="bordered-form">
-                                    <h3>Create login details with us.</h3>
+                                    <h3>
+                                        <i class="fa fa-sign-in"></i> &nbsp; Create login details with us.
+                                    </h3>
 
                                     @Html.AntiForgeryToken()
                                     <div class="control-group">
@@ -80,7 +82,7 @@
                                     </label>
 
                                     <div class="pull-right">
-                                        <button class="btn pull-right">Register</button>
+                                        <button class="btn pull-right" type="submit">Register</button>
                                     </div>
                                 </div>
 
