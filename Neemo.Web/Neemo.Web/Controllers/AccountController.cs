@@ -155,7 +155,7 @@ namespace Neemo.Web.Controllers
         [AllowAnonymous]
         public ActionResult ForgotPassword()
         {
-            return View();
+            return View(new ForgotPasswordViewModel());
         }
 
         //
@@ -170,8 +170,9 @@ namespace Neemo.Web.Controllers
                 var user = await UserManager.FindByNameAsync(model.Email);
                 if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
                 {
-                    ModelState.AddModelError("", "The user either does not exist or is not confirmed.");
-                    return View();
+                    //ModelState.AddModelError("", "The user either does not exist or is not confirmed.");
+                    model.UserDoesNotExist = true;
+                    return View(model);
                 }
 
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771

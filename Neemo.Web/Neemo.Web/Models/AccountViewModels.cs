@@ -104,5 +104,7 @@ namespace Neemo.Web.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        public bool UserDoesNotExist { get; set; }
     }
 }
