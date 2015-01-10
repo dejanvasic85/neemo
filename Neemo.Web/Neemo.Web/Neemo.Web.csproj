@@ -198,9 +198,11 @@
     <Compile Include="Infrastructure\ShippingService.cs" />
     <Compile Include="Infrastructure\UrlExtensions.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AddressView.cs" />
     <Compile Include="Models\CartItemView.cs" />
     <Compile Include="Models\CategoryListView.cs" />
     <Compile Include="Models\CategoryView.cs" />
+    <Compile Include="Models\CheckoutView.cs" />
     <Compile Include="Models\ContactUsView.cs" />
     <Compile Include="Models\CountryView.cs" />
     <Compile Include="Models\FindModelView.cs" />

@@ -44,6 +44,7 @@
     <Compile Include="ISysConfig.cs" />
     <Compile Include="Images\IImageService.cs" />
     <Compile Include="Images\ItemImage.cs" />
+    <Compile Include="Membership\UserProfile.cs" />
     <Compile Include="Notifications\INotificationService.cs" />
     <Compile Include="Shipping\IShippingCalculatorService.cs" />
     <Compile Include="Shipping\IShippingRepository.cs" />

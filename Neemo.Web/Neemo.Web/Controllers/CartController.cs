@@ -36,6 +36,11 @@ namespace Neemo.Web.Controllers
             return View();
         }
 
+        public ActionResult Checkout()
+        {
+            
+        }
+
         [HttpPost]
         public ActionResult AddProduct(int productId, int qty)
         {
