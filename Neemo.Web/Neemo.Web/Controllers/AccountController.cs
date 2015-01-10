@@ -217,7 +217,7 @@ namespace Neemo.Web.Controllers
             {
                 return View("Error");
             }
-            return View();
+            return View(new ResetPasswordViewModel());
         }
 
         //
@@ -232,9 +232,10 @@ namespace Neemo.Web.Controllers
                 var user = await UserManager.FindByNameAsync(model.Email);
                 if (user == null)
                 {
-                    ModelState.AddModelError("", "No user found.");
-                    return View();
+                    model.UserDoesNotExist = true;
+                    return View(model);
                 }
+
                 IdentityResult result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
                 if (result.Succeeded)
                 {

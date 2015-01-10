@@ -57,6 +57,11 @@ namespace Neemo.Web.Infrastructure
         {
             return urlHelper.Action("Register", "Account");
         }
+        
+        public static string ResetPassword(this UrlHelper urlHelper)
+        {
+            return urlHelper.Action("ResetPassword", "Account");
+        }
 
         public static string ForgottenPassword(this UrlHelper urlHelper, bool absoluteUrl = false)
         {
