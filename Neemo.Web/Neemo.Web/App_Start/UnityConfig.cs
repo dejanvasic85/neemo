@@ -38,7 +38,7 @@ namespace Neemo.Web
 
             // Services in website/infrastructure
             container.RegisterType<ITemplateService, TemplateService>();
-            container.RegisterType<IShippingCalculatorService, ShippingCalculator>();
+            container.RegisterType<IShippingCalculatorService, ShippingService>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }

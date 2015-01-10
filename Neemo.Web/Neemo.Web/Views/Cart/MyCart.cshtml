@@ -1,4 +1,5 @@
-﻿@model dynamic
+﻿@using System.Net.Mime
+@model MyCartView
 
 @{
     ViewBag.Title = "My Cart";
@@ -39,8 +40,10 @@
                                     <label for="country">Country</label>
                                     <div class="controls">
                                         <select id="country" class="control">
-                                            <option value="">Please Select</option>
-                                            <option value="AU" selected="selected">Australia</option>
+                                            @foreach (var country in Model.ShippingCountries)
+                                            {
+                                                <option value="@country.CountryCode">@country.Name</option>
+                                            }
                                         </select>
                                     </div>
                                 </div>

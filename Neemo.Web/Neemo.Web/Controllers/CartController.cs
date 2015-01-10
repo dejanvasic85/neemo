@@ -1,4 +1,6 @@
-﻿namespace Neemo.Web.Controllers
+﻿using Neemo.Web.Models;
+
+namespace Neemo.Web.Controllers
 {
     using AutoMapper;
     using Infrastructure;
@@ -12,19 +14,21 @@
     {
         private readonly ICartContext _cartContext;
         private readonly IProductService _productService;
-        private readonly IShippingCalculatorService _shippingCalculator;
+        private readonly IShippingCalculatorService _shippingService;
 
-        public CartController(ICartContext cartContext, IProductService productService, IShippingCalculatorService shippingCalculator)
+        public CartController(ICartContext cartContext, IProductService productService, IShippingCalculatorService shippingService)
         {
             _cartContext = cartContext;
             _productService = productService;
-            _shippingCalculator = shippingCalculator;
+            _shippingService = shippingService;
         }
 
         // GET: Cart
         public ActionResult MyCart()
         {
-            return View();
+            var countries = _shippingService.GetAvailableCountries().Select(Mapper.Map<Country, CountryView>).ToList();
+
+            return View(new MyCartView { ShippingCountries = countries });
         }
 
         public ActionResult Checkout()
@@ -82,16 +86,16 @@
                 return Json(new { QuantityTooLarge = true });
 
             cart.UpdateQuantity(lineItemId, newQuantity);
-            return Json(new {Updated = true});
+            return Json(new { Updated = true });
         }
 
         [HttpPost]
         public ActionResult CalculateEstimate(string country, string postcode)
         {
-            var cost = _shippingCalculator.Calculate(_cartContext.Current(), country, postcode);
+            var cost = _shippingService.Calculate(_cartContext.Current(), country, postcode);
 
             var viewModel = cost.Select(Mapper.Map<Shipping.ShippingCost, Models.ShippingCostView>).ToList();
-            
+
             return Json(viewModel);
         }
     }

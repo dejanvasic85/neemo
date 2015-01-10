@@ -40,11 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Country.cs" />
     <Compile Include="ISysConfig.cs" />
     <Compile Include="Images\IImageService.cs" />
     <Compile Include="Images\ItemImage.cs" />
     <Compile Include="Notifications\INotificationService.cs" />
     <Compile Include="Shipping\IShippingCalculatorService.cs" />
+    <Compile Include="Shipping\IShippingRepository.cs" />
     <Compile Include="Shipping\ShippingCost.cs" />
     <Compile Include="Shipping\ShippingType.cs" />
     <Compile Include="ShoppingCart\CartException.cs" />
