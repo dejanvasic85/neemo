@@ -13,66 +13,84 @@
                 <div class="page-title">
                     <h1>Contact Us</h1>
                 </div>
-                <div style="padding-left: 15px;">
-                    
-                    @if (Model.IsSubmitted)
-                    {
-                        <div class="alert alert-success">
-                            Thank you for contacting us. We'll get back to you as soon as possible.
-                        </div>
-                    }
-                    else
-                    {  
-                        <form class="form-horizontal" action="@Url.ContactUs()" method="POST">
-                            @Html.AntiForgeryToken()
-                            <div class="control-group">
-                                @Html.LabelFor(m => m.FullName, new { @class = "control-label" })
-                                <div class="controls">
-                                    @Html.TextBoxFor(m => m.FullName, new { @style = "height:30px" })
-                                    @Html.ValidationMessageFor(m => m.FullName)
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                @Html.LabelFor(m => m.Email, new { @class = "control-label" })
-                                <div class="controls">
-                                    @Html.TextBoxFor(m => m.Email, new { @style = "height:30px" })
-                                    @Html.ValidationMessageFor(m => m.Email)
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                @Html.LabelFor(m => m.ContactNumber, new { @class = "control-label" })
-                                <div class="controls">
-                                    @Html.TextBoxFor(m => m.ContactNumber, new { @style = "height:30px" })
-                                    @Html.ValidationMessageFor(m => m.ContactNumber)
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                @Html.LabelFor(m => m.Comments, new { @class = "control-label" })
-                                <div class="controls">
-                                    @Html.TextAreaFor(m => m.Comments, new { rows = "10" })
-                                    @Html.ValidationMessageFor(m => m.Comments)
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <div class="controls">
-                                    @Html.Captcha("Try Another", "What is the text in the image above?", 5)
-                                    @if (Model.IsCaptchaNotValid)
-                                    {
-                                        <span class="field-validation-error" data-valmsg-for="Email" data-valmsg-replace="true">
-                                            The text you provided for the image does not match.
-                                        </span>
-                                    }
-                                </div>
-                               
-                            </div>
-                            <div class="control-group">
-                                <div class="controls">
-                                    <button type="submit" class="btn">Submit</button>
-                                </div>
-                            </div>
-                        </form>
 
-                    }
+                <div style="padding-left: 15px;">
+
+                    <div class="row-fluid">
+                        <div class="span6">
+                            <div class="bordered-form">
+                                <h3><i class="fa fa-support"></i> &nbsp; Just few details, and we'll get back to you</h3>
+
+                                @if (Model.IsSubmitted)
+                                {
+                                    <div class="alert alert-success">
+                                        Thank you for contacting us. We'll get back to you as soon as possible.
+                                    </div>
+                                }
+                                else
+                                {
+                                    <form class="form-horizontal" action="@Url.ContactUs()" method="POST">
+                                        @Html.AntiForgeryToken()
+                                        <div class="control-group">
+                                            @Html.LabelFor(m => m.FullName, new { @class = "control-label" })
+                                            <div class="controls">
+                                                @Html.TextBoxFor(m => m.FullName, new { @style = "height:30px" })
+                                                @Html.ValidationMessageFor(m => m.FullName)
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+                                            <div class="controls">
+                                                @Html.TextBoxFor(m => m.Email, new { @style = "height:30px" })
+                                                @Html.ValidationMessageFor(m => m.Email)
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            @Html.LabelFor(m => m.ContactNumber, new { @class = "control-label" })
+                                            <div class="controls">
+                                                @Html.TextBoxFor(m => m.ContactNumber, new { @style = "height:30px" })
+                                                @Html.ValidationMessageFor(m => m.ContactNumber)
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            @Html.LabelFor(m => m.Comments, new { @class = "control-label" })
+                                            <div class="controls">
+                                                @Html.TextAreaFor(m => m.Comments, new { rows = "10" })
+                                                @Html.ValidationMessageFor(m => m.Comments)
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <div class="controls">
+                                                @Html.Captcha("Try Another", "What is the text in the image above?", 5)
+                                                @if (Model.IsCaptchaNotValid)
+                                                {
+                                                    <span class="field-validation-error" data-valmsg-for="Email" data-valmsg-replace="true">
+                                                        The text you provided for the image does not match.
+                                                    </span>
+                                                }
+                                            </div>
+
+                                        </div>
+                                        <div class="control-group">
+                                            <div class="controls">
+                                                <button type="submit" class="btn">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                }
+                            </div>
+
+                        </div>
+                        <div class="span6">
+                            <div class="bordered-form">
+                                <h3><i class="fa fa-map-marker"></i>&nbsp; Find us</h3>
+                                <p>Map goes here</p>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
         </div>

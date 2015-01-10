@@ -48,10 +48,9 @@
                                             @Html.ValidationMessageFor(m => m.Password)
                                         </li>
                                     </ul>
-
                                 </div>
                                 <div class="footer-submit">
-                                    <a href="" class="pull-left">Forgot your password?</a>
+                                    <a href="@Url.ForgottenPassword()" class="pull-left">Forgot your password?</a>
                                     <button class="btn pull-right" title="Login" tabindex="3">Login</button>
                                 </div>
                             </form>
