@@ -6808,10 +6808,15 @@ tr.summary-details-excluded {
 .footer-submit {
     min-height: 20px;
     padding: 15px 10px 20px 10px;
-    background-color: #000; 
-    color: #fff
+    background-color: #000;
+    color: #fff;'
 }
 
 .footer-submit a {
+    color: #fff;
+}
+
+.inverted {
+    background-color: #000;
     color: #fff;
 }

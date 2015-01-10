@@ -1,16 +1,6 @@
-﻿<table class="data-table cart-table">
-    <colgroup>
-        <col width="1">
-        <col>
-        <col width="1">
-        <col width="1">
-        <col width="1">
-        <col width="1">
-        <col width="1">
-    </colgroup>
-
+﻿<table class="table table-bordered">
     <thead>
-        <tr class="first last">
+        <tr class="inverted">
             <th rowspan="1" class="hidden-phone">&nbsp;</th>
             <th rowspan="1"><span class="nobr">Product Name</span></th>
             <th class="a-center" colspan="1"><span class="nobr">Unit Price</span></th>
@@ -20,15 +10,16 @@
         </tr>
     </thead>
     <tfoot>
-        <tr class="first last">
-            <td colspan="50" class="a-right last">
-                <a href="@Url.Home()" class="btn">Continue Shopping</a>
-                <button class="btn" data-bind="click: clearAllItems">Clear Shopping Cart</button>
+        <tr class="inverted">
+            <td colspan="50">
+                <div class="pull-right">
+                    <a href="@Url.Home()" class="btn">Continue Shopping</a>
+                    <button class="btn" data-bind="click: clearAllItems">Clear Shopping Cart</button>
+                </div>
             </td>
         </tr>
     </tfoot>
     <tbody data-bind="foreach: items()">
-
         <tr>
             <td class="hidden-phone">
                 <a data-bind="attr : { href: neemo.endpoints.product.get(Id())}"
@@ -57,7 +48,7 @@
                 </span>
             </td>
             <td class="a-center last">
-                <a data-bind="click: $parent.removeItem" title="Remove item" class="btn-remove btn-remove2">Remove item</a>
+                <a data-bind="click: $parent.removeItem" title="Remove item"><i class="fa fa-trash fa-2x"></i></a>
             </td>
         </tr>
 
