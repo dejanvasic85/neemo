@@ -5,6 +5,7 @@ namespace Neemo
     public interface ISysConfig
     {
         string ImageDatabaseFolderName { get; }
+        string CompanyName { get; }
         string NotificationSenderEmail { get; }
         string[] NotificationSupportEmail { get; }
     }
@@ -14,6 +15,11 @@ namespace Neemo
         public string ImageDatabaseFolderName
         {
             get { return ConfigurationManager.AppSettings["ImageDatabaseFolder"]; }
+        }
+
+        public string CompanyName
+        {
+            get { return ConfigurationManager.AppSettings["CompanyName"]; }
         }
 
         public string NotificationSenderEmail

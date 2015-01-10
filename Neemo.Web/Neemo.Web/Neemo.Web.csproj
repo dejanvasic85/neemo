@@ -204,6 +204,7 @@
     <Compile Include="Models\ContactUsView.cs" />
     <Compile Include="Models\CountryView.cs" />
     <Compile Include="Models\FindModelView.cs" />
+    <Compile Include="Models\ForgotPasswordEmailView.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\MyCartView.cs" />
     <Compile Include="Models\ProductDetailView.cs" />
@@ -578,6 +579,7 @@
     <Content Include="Views\Products\Find.cshtml" />
     <Content Include="Views\Shared\Partial\_SearchPagingToolbar.cshtml" />
     <Content Include="Views\Shared\Partial\_SearchResults.cshtml" />
+    <Content Include="Views\EmailTemplates\ForgotPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Neemo.DataAccess\Neemo.DataAccess.csproj">

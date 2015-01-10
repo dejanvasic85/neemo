@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using Neemo.Notifications;
 using Neemo.Web.Infrastructure;
 using Neemo.Web.Models;
 using System.Threading.Tasks;
@@ -13,6 +14,17 @@ namespace Neemo.Web.Controllers
     [Authorize]
     public class AccountController : MagentoController
     {
+        private readonly ITemplateService _templateService;
+        private readonly INotificationService _notificationService;
+        private readonly ISysConfig _config;
+
+        public AccountController(ITemplateService templateService, INotificationService notificationService, ISysConfig config)
+        {
+            _templateService = templateService;
+            _notificationService = notificationService;
+            _config = config;
+        }
+
         private ApplicationUserManager _userManager;
 
         public ApplicationUserManager UserManager
@@ -89,7 +101,8 @@ namespace Neemo.Web.Controllers
                 {
                     UserName = model.Email,
                     Email = model.Email,
-                    NewsletterSubscription = model.NewsletterSubscription
+                    NewsletterSubscription = model.NewsletterSubscription,
+                    EmailConfirmed = true // No two-factory auth here :)
                 };
 
                 var result = await UserManager.CreateAsync(user, model.Password);
@@ -163,10 +176,23 @@ namespace Neemo.Web.Controllers
 
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
+                string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                var verificationLink = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+
                 // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                var forgotPasswordEmailView = new ForgotPasswordEmailView
+                {
+                    CompanyName = _config.CompanyName,
+                    VerificationLink = verificationLink
+                };
+
+                _notificationService.Email("Password Reset Request", 
+                    _templateService.ViewToString(this, "~/Views/EmailTemplates/ForgotPassword.cshtml", 
+                    forgotPasswordEmailView),
+                    _config.NotificationSenderEmail,
+                    model.Email);
+                
+                return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
             // If we got this far, something failed, redisplay form

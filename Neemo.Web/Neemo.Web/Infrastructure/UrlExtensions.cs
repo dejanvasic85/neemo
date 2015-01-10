@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using Antlr.Runtime.Misc;
 
 namespace Neemo.Web.Infrastructure
 {
@@ -6,7 +7,7 @@ namespace Neemo.Web.Infrastructure
     {
         public static string Image(this UrlHelper urlHelper, string imageId)
         {
-            return urlHelper.Action("Download", "Image", new {id = imageId});
+            return urlHelper.Action("Download", "Image", new { id = imageId });
         }
 
         public static string Product(this UrlHelper urlHelper, int productId)
@@ -19,9 +20,17 @@ namespace Neemo.Web.Infrastructure
             return urlHelper.Action("Index", "Home");
         }
 
-        public static string ContactUs(this UrlHelper urlHelper)
+        public static string ContactUs(this UrlHelper urlHelper, bool absoluteUrl = false)
         {
-            return urlHelper.Action("ContactUs", "Home");
+            const string actionName = "ContactUs";
+            const string controllerName = "Home";
+
+            if (absoluteUrl)
+            {
+                return urlHelper.ActionAbsolute(actionName, controllerName);
+            }
+
+            return urlHelper.Action(actionName, controllerName);
         }
 
         public static string Find(this UrlHelper urlHelper)
@@ -38,7 +47,7 @@ namespace Neemo.Web.Infrastructure
         {
             return urlHelper.Action("Login", "Account");
         }
-        
+
         public static string Logout(this UrlHelper urlHelper)
         {
             return urlHelper.Action("LogOff", "Account");
@@ -49,14 +58,29 @@ namespace Neemo.Web.Infrastructure
             return urlHelper.Action("Register", "Account");
         }
 
-        public static string ForgottenPassword(this UrlHelper urlHelper)
+        public static string ForgottenPassword(this UrlHelper urlHelper, bool absoluteUrl = false)
         {
-            return urlHelper.Action("ForgotPassword", "Account");
+            const string actionName = "ForgotPassword";
+            const string controllerName = "Account";
+
+            if (absoluteUrl)
+            {
+                return urlHelper.ActionAbsolute(actionName, controllerName);
+            }
+
+            return urlHelper.Action(actionName, controllerName);
         }
 
         public static string MyCart(this UrlHelper urlHelper)
         {
             return urlHelper.Action("MyCart", "Cart");
+        }
+
+        private static string ActionAbsolute(this UrlHelper urlHelper, string actionName, string controllerName, object routeValues = null)
+        {
+            string scheme = urlHelper.RequestContext.HttpContext.Request.Url.Scheme;
+
+            return urlHelper.Action(actionName, controllerName, routeValues, scheme);
         }
     }
 }
