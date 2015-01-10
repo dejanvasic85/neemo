@@ -16,7 +16,7 @@
                     <div class="row-fluid">
 
                         @*first col*@
-                        <div class="span6">
+                        <div class="span4">
                             <form action="@Url.Login()" method="post" id="login-form">
                                 <div class="bordered-form">
                                     <h3><i class="fa fa-user"></i>&nbsp; Existing Customers</h3>
@@ -29,7 +29,7 @@
 
                                     @if (Model.WrongUsernameOrPassword)
                                     {
-                                        <div class="alert alert-danger">The username or password is not valid.</div>
+                                    <div class="alert alert-danger">The username or password is not valid.</div>
                                     }
 
                                     <ul class="form-list">
@@ -55,17 +55,33 @@
                                 </div>
                             </form>
                         </div>
-                        
+
                         @*second col*@
-                        <div class="span6">
+                        <div class="span4">
                             <div class="bordered-form">
                                 <h3><i class="fa fa-sign-in"></i> &nbsp; New Customers</h3>
-                                By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.
+                                <p>
+                                    By creating an account with our store, you will be able to move through the checkout process faster,
+                                    store multiple shipping addresses, view and track your orders in your account and more.
+                                </p>
                             </div>
                             <div class="footer-submit">
                                 <div class="pull-right">
                                     <a class="btn" href="@Url.Register()">Create an Account</a>
                                 </div>
+                            </div>
+                        </div>
+
+                        @*third column*@
+                        <div class="span4">
+                            <div class="bordered-form">
+                                <h3><i class="fa fa-users"></i> Guest Only</h3>
+                                <p>
+                                    You can continue to purchase and checkout as a guest, but a lot of features will not be available.
+                                </p>
+                            </div>
+                            <div class="footer-submit">
+                                <div class="pull-right"><a href="@ViewBag.ContinueAsGuestLink" class="btn">Continue as Guest</a></div>
                             </div>
                         </div>
                     </div>

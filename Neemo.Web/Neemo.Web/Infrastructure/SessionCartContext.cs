@@ -20,5 +20,10 @@
             HttpContext.Current.Session[Key] = cart;
             return cart;
         }
+
+        public bool HasItemsInCart()
+        {
+            return Current().GetItems().Length > 0;
+        }
     }
 }

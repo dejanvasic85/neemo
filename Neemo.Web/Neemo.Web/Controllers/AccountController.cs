@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Neemo.Notifications;
+using Neemo.ShoppingCart;
 using Neemo.Web.Infrastructure;
 using Neemo.Web.Models;
 using System.Threading.Tasks;
@@ -17,12 +18,14 @@ namespace Neemo.Web.Controllers
         private readonly ITemplateService _templateService;
         private readonly INotificationService _notificationService;
         private readonly ISysConfig _config;
+        private readonly ICartContext _cartContext;
 
-        public AccountController(ITemplateService templateService, INotificationService notificationService, ISysConfig config)
+        public AccountController(ITemplateService templateService, INotificationService notificationService, ISysConfig config, ICartContext cartContext)
         {
             _templateService = templateService;
             _notificationService = notificationService;
             _config = config;
+            _cartContext = cartContext;
         }
 
         private ApplicationUserManager _userManager;
@@ -45,6 +48,8 @@ namespace Neemo.Web.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
+            ViewBag.ContinueAsGuestLink = _cartContext.HasItemsInCart() ? Url.Checkout() : Url.Home();
+
             return View(new LoginViewModel());
         }
 

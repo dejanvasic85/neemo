@@ -6,5 +6,6 @@ namespace Neemo.ShoppingCart
     public interface ICartContext
     {
         Cart Current();
+        bool HasItemsInCart();
     }
 }
