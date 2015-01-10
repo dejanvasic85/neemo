@@ -13,7 +13,7 @@
             </div>
 
             <div class="cart">
-                
+
                 <div data-bind="if: items().length === 0">
                     <div class="alert">
                         Your shopping cart is empty. @Html.ActionLink("Continue Shopping", "Index", "Home")
@@ -59,7 +59,7 @@
                                         <button type="button" id="getShippingEstimate" class="btn" data-loading-text="Calculating...">Get Estimate</button>
                                     </div>
                                 </div>
-                                
+
                                 <table class="table table-bordered table-hover no-display" id="estimates">
                                     <thead>
                                         <tr>
@@ -67,8 +67,7 @@
                                             <th>Cost</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                    </tbody>
+                                    <tbody></tbody>
                                 </table>
 
                             </div>
@@ -104,9 +103,18 @@
                             </table>
                             <ul class="checkout-types">
                                 <li>
-                                    <a class="btn btn-large" href="@Url.Login()">
-                                        Proceed to Checkout
-                                    </a>
+                                    @if (Request.IsAuthenticated)
+                                    {
+                                        <a class="btn btn-large" href="@Url.Checkout()">
+                                            Proceed to Checkout
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a class="btn btn-large" href="@Url.Login()">
+                                            Proceed to Checkout
+                                        </a>
+                                    }
                                 </li>
                             </ul>
                         </div>

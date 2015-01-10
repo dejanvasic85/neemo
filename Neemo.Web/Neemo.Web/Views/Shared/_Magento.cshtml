@@ -117,14 +117,23 @@
                                             <ul class="links">
                                                 <li><a href="#" title="My Account">My Account</a></li>
                                                 <li>
-                                                    <a href='@Url.MyCart()' title="Checkout">
+                                                    <a href='@Url.MyCart()' title="My Cart">
                                                         My Cart
                                                         <span data-bind="if: items().length > 0">
                                                             (<span data-bind="text: totalQuantity()"></span>)
                                                         </span>
                                                     </a>
                                                 </li>
-                                                <li><a href="@Url.Checkout()">Checkout</a></li>
+                                                <li>
+                                                    @if (Request.IsAuthenticated)
+                                                    {
+                                                        <a href="@Url.Checkout()">Checkout</a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a href="@Url.Login()">Checkout</a>
+                                                    }
+                                                </li>
 
                                                 @if (Request.IsAuthenticated)
                                                 {

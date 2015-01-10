@@ -2,7 +2,7 @@
 
 namespace Neemo.Web.Models
 {
-    public class AddressView
+    public class PersonalDetailsView
     {
         [Display(Name = "First Name")]
         [Required]

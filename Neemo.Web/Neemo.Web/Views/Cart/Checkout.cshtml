@@ -1,4 +1,4 @@
-﻿@model dynamic
+﻿@model CheckoutView
 
 @{
     ViewBag.Title = "Checkout";
@@ -16,11 +16,9 @@
                 <div class="row-fluid">
                     <div class="span4">
                         <div class="bordered-form">
-                            <h3><i class="fa fa-home"></i> &nbsp;Delivery Address</h3>
+                            <h3><i class="fa fa-home"></i> &nbsp;Delivery Details</h3>
 
-                            <div class="control-group">
-                                @Html.LabelFor()
-                            </div>
+                            @Html.Partial("~/Views/Shared/Partial/_PersonalDetailsEditor.cshtml", @Model.BillingDetails)
 
                         </div>
                     </div>
@@ -31,7 +29,16 @@
                     </div>
                     <div class="span4">
                         <div class="bordered-form">
-                            <h3><i class="fa fa-paypal"></i> &nbsp;Payment</h3>
+                            <h3><i class="fa fa-paypal"></i> &nbsp;Payment & Billing Details</h3>
+                            
+                            @Html.Partial("~/Views/Shared/Partial/_PersonalDetailsEditor.cshtml", @Model.ShippingDetails)
+                        </div>
+                        <div class="footer-submit">
+                            @if (Request.IsAuthenticated)
+                            {
+                                <button class="btn">Pay Later</button>
+                            }
+                            <button class="btn pull-right">Pay Now</button>
                         </div>
                     </div>
                 </div>

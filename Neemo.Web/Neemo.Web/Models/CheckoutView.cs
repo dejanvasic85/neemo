@@ -2,7 +2,12 @@
 {
     public class CheckoutView
     {
-        public AddressView ShippingDetails { get; set; }
-        public AddressView BillingDetails { get; set; }
+        public CheckoutView()
+        {
+            ShippingDetails = new PersonalDetailsView();
+            BillingDetails = new PersonalDetailsView();
+        }
+        public PersonalDetailsView ShippingDetails { get; set; }
+        public PersonalDetailsView BillingDetails { get; set; }
     }
 }

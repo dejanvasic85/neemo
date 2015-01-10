@@ -1,11 +1,11 @@
-﻿using Neemo.Web.Models;
-
-namespace Neemo.Web.Controllers
+﻿namespace Neemo.Web.Controllers
 {
     using AutoMapper;
     using Infrastructure;
     using Shipping;
     using ShoppingCart;
+    using Membership;
+    using Models;
     using Store;
     using System.Linq;
     using System.Web.Mvc;
@@ -15,12 +15,14 @@ namespace Neemo.Web.Controllers
         private readonly ICartContext _cartContext;
         private readonly IProductService _productService;
         private readonly IShippingCalculatorService _shippingService;
+        private readonly IProfileService _profileService;
 
-        public CartController(ICartContext cartContext, IProductService productService, IShippingCalculatorService shippingService)
+        public CartController(ICartContext cartContext, IProductService productService, IShippingCalculatorService shippingService, IProfileService profileService)
         {
             _cartContext = cartContext;
             _productService = productService;
             _shippingService = shippingService;
+            _profileService = profileService;
         }
 
         // GET: Cart
@@ -33,12 +35,28 @@ namespace Neemo.Web.Controllers
 
         public ActionResult Checkout()
         {
-            return View();
+            // If there are no items, then get out!
+            if (!_cartContext.HasItemsInCart())
+            {
+                return RedirectToAction("MyCart");
+            }
+
+            // Fetch the user profile for the currently logged in user
+            var viewModel = new CheckoutView();
+            if (Request.IsAuthenticated)
+            {
+                // Map the user details that is already logged in
+                var userProfile = _profileService.GetProfile(User.Identity.Name);
+                viewModel = Mapper.Map<UserProfile, CheckoutView>(userProfile);
+            }
+            return View(viewModel);
         }
 
-        public ActionResult Checkout()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Checkout(CheckoutView viewModel)
         {
-            
+            return View(viewModel);
         }
 
         [HttpPost]
