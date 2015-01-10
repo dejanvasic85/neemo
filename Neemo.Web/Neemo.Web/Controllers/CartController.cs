@@ -49,6 +49,10 @@
                 var userProfile = _profileService.GetProfile(User.Identity.Name);
                 viewModel = Mapper.Map<UserProfile, CheckoutView>(userProfile);
             }
+
+            var cartItems = _cartContext.Current().GetItems().OfType<ProductCartItem>();
+            viewModel.CartItems = cartItems.Select(Mapper.Map<ProductCartItem, Models.CartItemView>).ToList();
+            
             return View(viewModel);
         }
 
