@@ -24,6 +24,7 @@ namespace Neemo.Web.Models
         public ApplicationDbContext()
             : base("MembershipConnection", throwIfV1Schema: false)
         {
+            
         }
 
         public static ApplicationDbContext Create()
@@ -31,4 +32,5 @@ namespace Neemo.Web.Models
             return new ApplicationDbContext();
         }
     }
+
 }

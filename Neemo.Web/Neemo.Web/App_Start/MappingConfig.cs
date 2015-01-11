@@ -14,7 +14,7 @@ namespace Neemo.Web
             Mapper.CreateMap<Store.Category, Models.CategoryView>();
             Mapper.CreateMap<Shipping.ShippingCost, Models.ShippingCostView>();
             Mapper.CreateMap<Neemo.Country, Models.CountryView>();
-            Mapper.CreateMap<Membership.PersonalDetails, Models.PersonalDetailsView>();
+            Mapper.CreateMap<PersonalDetails, Models.PersonalDetailsView>();
             Mapper.CreateMap<Membership.UserProfile, Models.CheckoutView>();
 
         }

@@ -1,6 +1,6 @@
 ﻿namespace Neemo.Store
 {
-    class Order
+    public class Order
     {
         // OrderHeader -> All columns starting with Shipping
         public PersonalDetails ShippingDetails { get; set; }
