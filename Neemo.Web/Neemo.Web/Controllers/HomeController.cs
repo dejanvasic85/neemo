@@ -63,7 +63,7 @@
 
             // Email
             _notificationService.Email(
-                "Car Store - Contact Us", 
+                string.Format("{0} - Contact Us", _config.CompanyName), 
                 _templateService.ViewToString(this, "~/Views/EmailTemplates/ContactUsTemplate.cshtml", viewModel), 
                 _config.NotificationSenderEmail, 
                 _config.NotificationSupportEmail);

@@ -7,6 +7,10 @@ namespace Neemo
         string ImageDatabaseFolderName { get; }
         string CompanyName { get; }
         string NotificationSenderEmail { get; }
+
+        /// <summary>
+        /// Comma delimited list of emails where the support emails will go
+        /// </summary>
         string[] NotificationSupportEmail { get; }
     }
 
