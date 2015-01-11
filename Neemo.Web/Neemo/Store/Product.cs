@@ -14,5 +14,14 @@
         public bool IsBestSeller { get; set; }
         public int AvailableQty { get; set; }
         public int CategoryId { get; set; }
+        public bool IsAvailable { get; set; } // Maps to SoldOut Column
+
+        public bool IsOutOfStock()
+        {
+            if (!IsAvailable)
+                return true;
+
+            return IsAvailable && AvailableQty == 0;
+        }
     }
 }

@@ -8,7 +8,7 @@ namespace Neemo.Web
         {
 
             Mapper.CreateMap<Store.Product, Models.ProductSummaryView>()
-                .ForMember(member => member.OutOfStock, options => options.ResolveUsing(t => t.AvailableQty == 0));
+                .ForMember(member => member.OutOfStock, options => options.ResolveUsing(t =>  t.IsOutOfStock()));
             Mapper.CreateMap<Store.Product, Models.ProductDetailView>();
             Mapper.CreateMap<Store.ProductCartItem, Models.CartItemView>();
             Mapper.CreateMap<Store.Category, Models.CategoryView>();
