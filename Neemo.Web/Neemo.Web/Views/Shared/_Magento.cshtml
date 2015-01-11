@@ -125,14 +125,7 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    @if (Request.IsAuthenticated)
-                                                    {
-                                                        <a href="@Url.Checkout()">Checkout</a>
-                                                    }
-                                                    else
-                                                    {
-                                                        <a href="@Url.Login()">Checkout</a>
-                                                    }
+                                                    <a href="@ViewBag.CheckoutUrl">Checkout</a>
                                                 </li>
 
                                                 @if (Request.IsAuthenticated)
