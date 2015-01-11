@@ -18,7 +18,11 @@
         {
             // Todo - implement the postage calculation logic and return the amount
 
-            yield return new ShippingCost(0, ShippingType.Regular);
+            return new ShippingCost[]
+            {
+                new ShippingCost(10, ShippingType.Express),
+                new ShippingCost(5, ShippingType.Regular),
+            };
         }
 
         public List<Country> GetAvailableCountries()

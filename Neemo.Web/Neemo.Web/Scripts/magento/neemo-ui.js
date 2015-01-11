@@ -178,7 +178,7 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
             var $tbody = $estimates.find('tbody');
             $tbody.empty();
             $.each(data, function (index, item) {
-                $tbody.html('<tr><td>' + item.ShippingType + '</td><td>' + accounting.formatMoney( item.Cost ) + '</td></tr>');
+                $tbody.append('<tr><td>' + item.ShippingType + '</td><td>' + accounting.formatMoney( item.Cost ) + '</td></tr>');
             });
             $btn.button('reset');
             $estimates.slideDown();
