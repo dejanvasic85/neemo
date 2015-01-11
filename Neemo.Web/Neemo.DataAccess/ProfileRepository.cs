@@ -23,7 +23,6 @@ namespace Neemo.DataAccess
                 AddressLine1 = "1 Melbourne Street",
                 City = "Melbourne CBD",
                 Postcode = "3000",
-                Email = "johnny@chase.com",
                 PhoneNumber = "04333000333",
                 State = "VIC"
             };
