@@ -1,4 +1,4 @@
-﻿namespace Neemo.Membership
+﻿namespace Neemo
 {
     public class PersonalDetails
     {

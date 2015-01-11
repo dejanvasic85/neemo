@@ -46,7 +46,7 @@
     <Compile Include="Images\ItemImage.cs" />
     <Compile Include="Membership\IProfileRepository.cs" />
     <Compile Include="Membership\IProfileService.cs" />
-    <Compile Include="Membership\PersonalDetails.cs" />
+    <Compile Include="PersonalDetails.cs" />
     <Compile Include="Membership\UserProfile.cs" />
     <Compile Include="Notifications\INotificationService.cs" />
     <Compile Include="Shipping\IShippingCalculatorService.cs" />
@@ -59,6 +59,7 @@
     <Compile Include="Store\Category.cs" />
     <Compile Include="Store\ICategoryRepository.cs" />
     <Compile Include="Store\ICategoryService.cs" />
+    <Compile Include="Store\Order.cs" />
     <Compile Include="Store\ProductCartItem.cs" />
     <Compile Include="ShoppingCart\Cart.cs" />
     <Compile Include="Store\IProductRepository.cs" />
