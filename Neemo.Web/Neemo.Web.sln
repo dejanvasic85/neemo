@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neemo.Web", "Neemo.Web\Neemo.Web.csproj", "{4F2B3142-92BC-42A9-8614-4DFB1F98D5A9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neemo", "Neemo\Neemo.csproj", "{D118AA0C-9057-440C-97AC-343293F834AA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neemo.DataAccess", "Neemo.DataAccess\Neemo.DataAccess.csproj", "{2E203C6D-EC72-4055-9199-169A36652EBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neemo.CartParts", "Neemo.CartParts\Neemo.CartParts.csproj", "{AC9ABB1F-489B-46C0-A322-F127DB3C6E8A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{2E203C6D-EC72-4055-9199-169A36652EBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E203C6D-EC72-4055-9199-169A36652EBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E203C6D-EC72-4055-9199-169A36652EBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC9ABB1F-489B-46C0-A322-F127DB3C6E8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC9ABB1F-489B-46C0-A322-F127DB3C6E8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC9ABB1F-489B-46C0-A322-F127DB3C6E8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC9ABB1F-489B-46C0-A322-F127DB3C6E8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
