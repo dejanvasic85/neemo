@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoryRepository.cs" />
     <Compile Include="Models\AncapRating.cs" />
     <Compile Include="Models\Badge.cs" />
     <Compile Include="Models\BodyType.cs" />
@@ -167,10 +168,19 @@
     <Compile Include="Models\WheelBase.cs" />
     <Compile Include="Models\Wreck.cs" />
     <Compile Include="Models\Year.cs" />
+    <Compile Include="ProductRepository.cs" />
+    <Compile Include="ProfileRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShippingRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Neemo\Neemo.csproj">
+      <Project>{d118aa0c-9057-440c-97ac-343293f834aa}</Project>
+      <Name>Neemo</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

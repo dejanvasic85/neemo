@@ -587,9 +587,9 @@
     <Content Include="Views\Shared\Partial\_PersonalDetailsEditor.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Neemo.DataAccess\Neemo.DataAccess.csproj">
-      <Project>{2e203c6d-ec72-4055-9199-169a36652ebd}</Project>
-      <Name>Neemo.DataAccess</Name>
+    <ProjectReference Include="..\Neemo.CartParts.EntityFramework\Neemo.CartParts.EntityFramework.csproj">
+      <Project>{2a0a573d-a9d5-4afe-a485-88545b9a855a}</Project>
+      <Name>Neemo.CartParts.EntityFramework</Name>
     </ProjectReference>
     <ProjectReference Include="..\Neemo\Neemo.csproj">
       <Project>{d118aa0c-9057-440c-97ac-343293f834aa}</Project>

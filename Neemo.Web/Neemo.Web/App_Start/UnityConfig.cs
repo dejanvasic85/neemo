@@ -19,7 +19,7 @@ namespace Neemo.Web
 
             // Register all repository classes automatically
             container.RegisterTypes(
-                AllClasses.FromAssemblies(new[] {Assembly.Load("Neemo.DataAccess")}),
+                AllClasses.FromAssemblies(new[] {Assembly.Load("Neemo.CartParts.EntityFramework")}),
                 WithMappings.FromMatchingInterface,
                 WithName.Default);
 
