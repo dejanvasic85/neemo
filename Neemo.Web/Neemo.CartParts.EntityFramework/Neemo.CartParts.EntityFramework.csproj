@@ -30,7 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -39,7 +46,131 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\AncapRating.cs" />
+    <Compile Include="Models\Badge.cs" />
+    <Compile Include="Models\BodyType.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Chassis.cs" />
+    <Compile Include="Models\Colour.cs" />
+    <Compile Include="Models\Condition.cs" />
+    <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\Cylinder.cs" />
+    <Compile Include="Models\DealType.cs" />
+    <Compile Include="Models\Door.cs" />
+    <Compile Include="Models\DriveType.cs" />
+    <Compile Include="Models\Engine.cs" />
+    <Compile Include="Models\EngineSize.cs" />
+    <Compile Include="Models\Feature.cs" />
+    <Compile Include="Models\FuelType.cs" />
+    <Compile Include="Models\GreenRating.cs" />
+    <Compile Include="Models\ImageList.cs" />
+    <Compile Include="Models\Induction.cs" />
+    <Compile Include="Models\KiloMeter.cs" />
+    <Compile Include="Models\ListingHeader.cs" />
+    <Compile Include="Models\ListingType.cs" />
+    <Compile Include="Models\Make.cs" />
+    <Compile Include="Models\Mapping\AncapRatingMap.cs" />
+    <Compile Include="Models\Mapping\BadgeMap.cs" />
+    <Compile Include="Models\Mapping\BodyTypeMap.cs" />
+    <Compile Include="Models\Mapping\CategoryMap.cs" />
+    <Compile Include="Models\Mapping\ChassisMap.cs" />
+    <Compile Include="Models\Mapping\ColourMap.cs" />
+    <Compile Include="Models\Mapping\ConditionMap.cs" />
+    <Compile Include="Models\Mapping\CountryMap.cs" />
+    <Compile Include="Models\Mapping\CylinderMap.cs" />
+    <Compile Include="Models\Mapping\DealTypeMap.cs" />
+    <Compile Include="Models\Mapping\DoorMap.cs" />
+    <Compile Include="Models\Mapping\DriveTypeMap.cs" />
+    <Compile Include="Models\Mapping\EngineMap.cs" />
+    <Compile Include="Models\Mapping\EngineSizeMap.cs" />
+    <Compile Include="Models\Mapping\FeatureMap.cs" />
+    <Compile Include="Models\Mapping\FuelTypeMap.cs" />
+    <Compile Include="Models\Mapping\GreenRatingMap.cs" />
+    <Compile Include="Models\Mapping\ImageListMap.cs" />
+    <Compile Include="Models\Mapping\InductionMap.cs" />
+    <Compile Include="Models\Mapping\KiloMeterMap.cs" />
+    <Compile Include="Models\Mapping\ListingHeaderMap.cs" />
+    <Compile Include="Models\Mapping\ListingTypeMap.cs" />
+    <Compile Include="Models\Mapping\MakeMap.cs" />
+    <Compile Include="Models\Mapping\ModelMap.cs" />
+    <Compile Include="Models\Mapping\OrderDetailMap.cs" />
+    <Compile Include="Models\Mapping\OrderHeaderMap.cs" />
+    <Compile Include="Models\Mapping\OrderStatuMap.cs" />
+    <Compile Include="Models\Mapping\PartFeatureMap.cs" />
+    <Compile Include="Models\Mapping\PartMap.cs" />
+    <Compile Include="Models\Mapping\PartPhotoMap.cs" />
+    <Compile Include="Models\Mapping\PartPriceMap.cs" />
+    <Compile Include="Models\Mapping\PowerMap.cs" />
+    <Compile Include="Models\Mapping\PPlateApproveMap.cs" />
+    <Compile Include="Models\Mapping\PriceMap.cs" />
+    <Compile Include="Models\Mapping\ProductMap.cs" />
+    <Compile Include="Models\Mapping\ProductPriceMap.cs" />
+    <Compile Include="Models\Mapping\RegionMap.cs" />
+    <Compile Include="Models\Mapping\RegistrationMap.cs" />
+    <Compile Include="Models\Mapping\SeatMap.cs" />
+    <Compile Include="Models\Mapping\SeriesMap.cs" />
+    <Compile Include="Models\Mapping\StateMap.cs" />
+    <Compile Include="Models\Mapping\SuburbMap.cs" />
+    <Compile Include="Models\Mapping\sysdiagramMap.cs" />
+    <Compile Include="Models\Mapping\TestimonialMap.cs" />
+    <Compile Include="Models\Mapping\TowingMap.cs" />
+    <Compile Include="Models\Mapping\TransmissionMap.cs" />
+    <Compile Include="Models\Mapping\VehicleListingApprovalMap.cs" />
+    <Compile Include="Models\Mapping\VehicleListingDealTypeMap.cs" />
+    <Compile Include="Models\Mapping\VehicleListingDealType_ArchiveMap.cs" />
+    <Compile Include="Models\Mapping\VehicleListingFeatureMap.cs" />
+    <Compile Include="Models\Mapping\VehicleListingFeature_ArchiveMap.cs" />
+    <Compile Include="Models\Mapping\VehicleListingImageMap.cs" />
+    <Compile Include="Models\Mapping\VehicleListingImage_ArchiveMap.cs" />
+    <Compile Include="Models\Mapping\VehicleListingMap.cs" />
+    <Compile Include="Models\Mapping\VehicleListing_ArchiveMap.cs" />
+    <Compile Include="Models\Mapping\VehicleMap.cs" />
+    <Compile Include="Models\Mapping\Vw_PartDetails_AllMap.cs" />
+    <Compile Include="Models\Mapping\WheelBaseMap.cs" />
+    <Compile Include="Models\Mapping\WreckMap.cs" />
+    <Compile Include="Models\Mapping\YearMap.cs" />
+    <Compile Include="Models\Model.cs" />
+    <Compile Include="Models\NNS_NEEMOContext.cs" />
+    <Compile Include="Models\OrderDetail.cs" />
+    <Compile Include="Models\OrderHeader.cs" />
+    <Compile Include="Models\OrderStatu.cs" />
+    <Compile Include="Models\Part.cs" />
+    <Compile Include="Models\PartFeature.cs" />
+    <Compile Include="Models\PartPhoto.cs" />
+    <Compile Include="Models\PartPrice.cs" />
+    <Compile Include="Models\Power.cs" />
+    <Compile Include="Models\PPlateApprove.cs" />
+    <Compile Include="Models\Price.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductPrice.cs" />
+    <Compile Include="Models\Region.cs" />
+    <Compile Include="Models\Registration.cs" />
+    <Compile Include="Models\Seat.cs" />
+    <Compile Include="Models\Series.cs" />
+    <Compile Include="Models\State.cs" />
+    <Compile Include="Models\Suburb.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
+    <Compile Include="Models\Testimonial.cs" />
+    <Compile Include="Models\Towing.cs" />
+    <Compile Include="Models\Transmission.cs" />
+    <Compile Include="Models\Vehicle.cs" />
+    <Compile Include="Models\VehicleListing.cs" />
+    <Compile Include="Models\VehicleListingApproval.cs" />
+    <Compile Include="Models\VehicleListingDealType.cs" />
+    <Compile Include="Models\VehicleListingDealType_Archive.cs" />
+    <Compile Include="Models\VehicleListingFeature.cs" />
+    <Compile Include="Models\VehicleListingFeature_Archive.cs" />
+    <Compile Include="Models\VehicleListingImage.cs" />
+    <Compile Include="Models\VehicleListingImage_Archive.cs" />
+    <Compile Include="Models\VehicleListing_Archive.cs" />
+    <Compile Include="Models\Vw_PartDetails_All.cs" />
+    <Compile Include="Models\WheelBase.cs" />
+    <Compile Include="Models\Wreck.cs" />
+    <Compile Include="Models\Year.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
