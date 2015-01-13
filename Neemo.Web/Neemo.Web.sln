@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neemo", "Neemo\Neemo.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neemo.DataAccess", "Neemo.DataAccess\Neemo.DataAccess.csproj", "{2E203C6D-EC72-4055-9199-169A36652EBD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neemo.CartParts", "Neemo.CartParts\Neemo.CartParts.csproj", "{AC9ABB1F-489B-46C0-A322-F127DB3C6E8A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neemo.CartParts.EntityFramework", "Neemo.CartParts.EntityFramework\Neemo.CartParts.EntityFramework.csproj", "{2A0A573D-A9D5-4AFE-A485-88545B9A855A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{2E203C6D-EC72-4055-9199-169A36652EBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E203C6D-EC72-4055-9199-169A36652EBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E203C6D-EC72-4055-9199-169A36652EBD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AC9ABB1F-489B-46C0-A322-F127DB3C6E8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AC9ABB1F-489B-46C0-A322-F127DB3C6E8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AC9ABB1F-489B-46C0-A322-F127DB3C6E8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AC9ABB1F-489B-46C0-A322-F127DB3C6E8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A0A573D-A9D5-4AFE-A485-88545B9A855A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A0A573D-A9D5-4AFE-A485-88545B9A855A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A0A573D-A9D5-4AFE-A485-88545B9A855A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A0A573D-A9D5-4AFE-A485-88545B9A855A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
