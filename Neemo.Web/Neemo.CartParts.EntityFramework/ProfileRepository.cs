@@ -1,6 +1,6 @@
 ﻿using Neemo.Membership;
 
-namespace Neemo.DataAccess
+namespace Neemo.CarParts.EntityFramework
 {
     public class ProfileRepository : IProfileRepository
     {

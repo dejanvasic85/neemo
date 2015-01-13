@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neemo.Web", "Neemo.Web\Neem
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neemo", "Neemo\Neemo.csproj", "{D118AA0C-9057-440C-97AC-343293F834AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neemo.CartParts.EntityFramework", "Neemo.CartParts.EntityFramework\Neemo.CartParts.EntityFramework.csproj", "{2A0A573D-A9D5-4AFE-A485-88545B9A855A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neemo.CarParts.EntityFramework", "Neemo.CartParts.EntityFramework\Neemo.CarParts.EntityFramework.csproj", "{2A0A573D-A9D5-4AFE-A485-88545B9A855A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

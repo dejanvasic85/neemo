@@ -1,4 +1,4 @@
-﻿namespace Neemo.DataAccess
+﻿namespace Neemo.CarParts.EntityFramework
 {
     using System.Collections.Generic;
     using Store;

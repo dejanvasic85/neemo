@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Neemo.Shipping;
 
-namespace Neemo.DataAccess
+namespace Neemo.CarParts.EntityFramework
 {
     public class ShippingRepository : IShippingRepository
     {

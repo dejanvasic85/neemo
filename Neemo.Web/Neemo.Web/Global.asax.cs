@@ -9,11 +9,12 @@ namespace Neemo.Web
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-            UnityConfig.RegisterComponents(); 
+            var container =  UnityConfig.RegisterComponents();
+            MappingConfig.RegisterMaps(container);
+            
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
-            MappingConfig.RegisterMaps();
+            BundleConfig.RegisterBundles(BundleTable.Bundles);            
         }
     }
 }

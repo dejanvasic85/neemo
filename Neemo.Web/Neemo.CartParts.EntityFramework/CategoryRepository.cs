@@ -2,7 +2,7 @@
 using System.Linq;
 using Neemo.Store;
 
-namespace Neemo.DataAccess
+namespace Neemo.CarParts.EntityFramework
 {
     public class CategoryRepository : ICategoryRepository
     {

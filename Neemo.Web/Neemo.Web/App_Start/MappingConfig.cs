@@ -1,22 +1,34 @@
-using AutoMapper;
+using System;
+using Microsoft.Practices.Unity;
 
 namespace Neemo.Web
 {
-    public static class MappingConfig
+    public class MappingConfig : IMappingConfig
     {
-        public static void RegisterMaps()
+        public void RegisterConfigs<TMapper>(TMapper mapper)
         {
+            if (typeof(TMapper) != typeof(AutoMapper.IConfiguration))
+            {
+                throw new ArgumentException("TMapper must be of type AutoMapper.Mapper");
+            }
 
-            Mapper.CreateMap<Store.Product, Models.ProductSummaryView>()
-                .ForMember(member => member.OutOfStock, options => options.ResolveUsing(t =>  t.IsOutOfStock()));
-            Mapper.CreateMap<Store.Product, Models.ProductDetailView>();
-            Mapper.CreateMap<Store.ProductCartItem, Models.CartItemView>();
-            Mapper.CreateMap<Store.Category, Models.CategoryView>();
-            Mapper.CreateMap<Shipping.ShippingCost, Models.ShippingCostView>();
-            Mapper.CreateMap<Neemo.Country, Models.CountryView>();
-            Mapper.CreateMap<PersonalDetails, Models.PersonalDetailsView>();
-            Mapper.CreateMap<Membership.UserProfile, Models.CheckoutView>();
+            var config = (AutoMapper.IConfiguration)mapper;
+            
+            config.CreateMap<Store.Product, Models.ProductSummaryView>()
+                .ForMember(member => member.OutOfStock, options => options.ResolveUsing(t => t.IsOutOfStock()));
+            config.CreateMap<Store.Product, Models.ProductDetailView>();
+            config.CreateMap<Store.ProductCartItem, Models.CartItemView>();
+            config.CreateMap<Store.Category, Models.CategoryView>();
+            config.CreateMap<Shipping.ShippingCost, Models.ShippingCostView>();
+            config.CreateMap<Neemo.Country, Models.CountryView>();
+            config.CreateMap<PersonalDetails, Models.PersonalDetailsView>();
+            config.CreateMap<Membership.UserProfile, Models.CheckoutView>();
+        }
 
+        public static void RegisterMaps(IUnityContainer container)
+        {
+            container.ResolveAll<IMappingConfig>()
+                .ForEach(mapper => mapper.RegisterConfigs(AutoMapper.Mapper.Configuration));
         }
     }
 }

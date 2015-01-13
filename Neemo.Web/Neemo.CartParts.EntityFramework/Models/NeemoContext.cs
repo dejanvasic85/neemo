@@ -4,15 +4,15 @@ using Neemo.CarParts.EntityFramework.Models.Mapping;
 
 namespace Neemo.CarParts.EntityFramework.Models
 {
-    public partial class NNS_NEEMOContext : DbContext
+    public partial class NeemoContext : DbContext
     {
-        static NNS_NEEMOContext()
+        static NeemoContext()
         {
-            Database.SetInitializer<NNS_NEEMOContext>(null);
+            Database.SetInitializer<NeemoContext>(null);
         }
 
-        public NNS_NEEMOContext()
-            : base("Name=NNS_NEEMOContext")
+        public NeemoContext()
+            : base("Name=NeemoConnection")
         {
         }
 
