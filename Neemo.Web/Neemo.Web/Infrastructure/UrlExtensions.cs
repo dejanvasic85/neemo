@@ -43,6 +43,11 @@ namespace Neemo.Web.Infrastructure
             return urlHelper.Action("Checkout", "Cart");
         }
 
+        public static string CheckoutAsGuest(this UrlHelper urlHelper)
+        {
+            return urlHelper.Action("CheckoutAsGuest", "Account");
+        }
+
         public static string Login(this UrlHelper urlHelper)
         {
             return urlHelper.Action("Login", "Account");

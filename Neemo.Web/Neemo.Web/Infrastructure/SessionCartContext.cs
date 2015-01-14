@@ -25,5 +25,19 @@
         {
             return Current().GetItems().Length > 0;
         }
+
+        public bool CheckoutAsGuest
+        {
+            get
+            {
+                var isGuest = HttpContext.Current.Session["guest"];
+                if (isGuest == null)
+                {
+                    return false;
+                }
+                return (bool) isGuest;
+            }
+            set { HttpContext.Current.Session["guest"] = value; }
+        }
     }
 }

@@ -27,6 +27,11 @@
 
         public ActionResult MyCart()
         {
+            if (!_cartContext.CheckoutAsGuest && !Request.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            } 
+
             var userShippingDetails = Mapper.Map<PersonalDetails, PersonalDetailsView>(_profileService.GetProfile(User.Identity.Name).ShippingDetails);
             var shippingOptions = _shippingService.Calculate(_cartContext.Current(), userShippingDetails.Postcode).Select(Mapper.Map<Shipping.ShippingCost, Models.ShippingCostView>);
 
@@ -41,6 +46,11 @@
         [ValidateAntiForgeryToken]
         public ActionResult MyCart(PersonalDetailsView shippingDetails, string shippingType)
         {
+            if (string.IsNullOrEmpty(shippingType))
+            {
+                ModelState.AddModelError("shippingType", "Please select type of postage");
+            }
+
             if (!ModelState.IsValid)
             {
                 return View(new MyCartView

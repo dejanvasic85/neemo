@@ -48,7 +48,6 @@ namespace Neemo.Web.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            ViewBag.ContinueAsGuestLink = _cartContext.HasItemsInCart() ? Url.Checkout() : Url.Home();
 
             return View(new LoginViewModel());
         }
@@ -77,6 +76,14 @@ namespace Neemo.Web.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult CheckoutAsGuest()
+        {
+            _cartContext.CheckoutAsGuest = true;
+            return RedirectToAction("MyCart", "Cart");
         }
 
         //

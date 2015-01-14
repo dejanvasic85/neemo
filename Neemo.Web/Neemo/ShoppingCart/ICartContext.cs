@@ -7,5 +7,6 @@ namespace Neemo.ShoppingCart
     {
         Cart Current();
         bool HasItemsInCart();
+        bool CheckoutAsGuest { get; set; }
     }
 }

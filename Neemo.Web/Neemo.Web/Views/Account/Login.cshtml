@@ -81,7 +81,13 @@
                                 </p>
                             </div>
                             <div class="footer-submit">
-                                <div class="pull-right"><a href="@ViewBag.ContinueAsGuestLink" class="btn">Continue as Guest</a></div>
+                                <form method="POST" action="@Url.CheckoutAsGuest()" id="checkoutForm">
+                                    <span>
+                                        <button class="btn pull-right" id="checkoutAsGuest">
+                                            Continue as Guest
+                                        </button>
+                                    </span>
+                                </form>
                             </div>
                         </div>
                     </div>

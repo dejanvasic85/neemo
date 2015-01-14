@@ -151,6 +151,10 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
         searchFilters.setPageNumber($(this).text());
     });
 
+    $('#checkoutAsGuest').on('click', function () {
+        $('#checkoutForm').submit();
+    });
+
     $('[data-page-size').on('change', function () {
         searchFilters.setPageSize($(this).val());
     });
