@@ -27,13 +27,13 @@
 
         public ActionResult MyCart()
         {
-            var countries = _shippingService.GetAvailableCountries().Select(Mapper.Map<Country, CountryView>).ToList();
-            var userShippingDetails = Mapper.Map<PersonalDetails, PersonalDetailsView>( _profileService.GetProfile(User.Identity.Name).ShippingDetails );
+            var userShippingDetails = Mapper.Map<PersonalDetails, PersonalDetailsView>(_profileService.GetProfile(User.Identity.Name).ShippingDetails);
+            var shippingOptions = _shippingService.Calculate(_cartContext.Current(), userShippingDetails.Postcode).Select(Mapper.Map<Shipping.ShippingCost, Models.ShippingCostView>);
 
             return View(new MyCartView
             {
-                ShippingCountries = countries,
                 ShippingDetails = userShippingDetails,
+                ShippingOptions = shippingOptions.ToList()
             });
         }
 
@@ -49,9 +49,9 @@
             var shoppingCart = _cartContext.Current();
 
             var shipping = _shippingService
-                .Calculate(shoppingCart, "AU", cartView.ShippingDetails.Postcode)
+                .Calculate(shoppingCart, cartView.ShippingDetails.Postcode)
                 .FirstOrDefault(s => s.ShippingType == cartView.ShippingType.ToEnum<ShippingType>());
-            
+
             shoppingCart.SetShippingCost(shipping);
 
             return RedirectToAction("Checkout");
@@ -144,7 +144,7 @@
         [HttpPost]
         public ActionResult CalculateShippingEstimate(string country, string postcode)
         {
-            var cost = _shippingService.Calculate(_cartContext.Current(), country, postcode);
+            var cost = _shippingService.Calculate(_cartContext.Current(), postcode);
 
             var viewModel = cost.Select(Mapper.Map<Shipping.ShippingCost, Models.ShippingCostView>).ToList();
 

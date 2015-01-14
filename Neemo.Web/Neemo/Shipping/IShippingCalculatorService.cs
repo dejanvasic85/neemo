@@ -5,7 +5,7 @@
 
     public interface IShippingCalculatorService
     {
-        IEnumerable<ShippingCost> Calculate(Cart shoppingCart, string countryCode, string postcode);
+        IEnumerable<ShippingCost> Calculate(Cart shoppingCart, string postcode);
         List<Country> GetAvailableCountries();
     }
 }

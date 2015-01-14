@@ -14,7 +14,7 @@
             _shippingRepository = shippingRepository;
         }
 
-        public IEnumerable<ShippingCost> Calculate(Cart shoppingCart, string countryCode, string postcode)
+        public IEnumerable<ShippingCost> Calculate(Cart shoppingCart, string postcode)
         {
             // Todo - implement the postage calculation logic and return the amount
 
