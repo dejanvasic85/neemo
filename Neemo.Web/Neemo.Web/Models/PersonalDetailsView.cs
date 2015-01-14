@@ -13,7 +13,6 @@ namespace Neemo.Web.Models
         public string Surname { get; set; }
 
         [Display(Name = "Company")]
-        [Required]
         public string Company { get; set; }
 
         [Display(Name = "Address Line 1")]

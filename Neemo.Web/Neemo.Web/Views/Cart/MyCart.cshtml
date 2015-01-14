@@ -98,18 +98,9 @@
                                     </table>
                                 </div>
                                 <div class="footer-submit">
-                                    @if (Request.IsAuthenticated)
-                                    {
-                                        <button type="submit" class="btn pull-right" href="@Url.Checkout()">
-                                            Proceed to Checkout
-                                        </button>
-                                    }
-                                    else
-                                    {
-                                        <button type="submit" class="btn pull-right" href="@Url.Login()">
-                                            Proceed to Checkout
-                                        </button>
-                                    }
+                                    <button type="submit" class="btn pull-right" href="@Url.Checkout()">
+                                        Proceed to Checkout
+                                    </button>
                                 </div>
                             </div>
                         </form>

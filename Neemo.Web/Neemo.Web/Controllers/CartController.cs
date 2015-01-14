@@ -39,18 +39,23 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult MyCart(MyCartView cartView)
+        public ActionResult MyCart(PersonalDetailsView shippingDetails, string shippingType)
         {
             if (!ModelState.IsValid)
             {
-                return View(cartView);
+                return View(new MyCartView
+                {
+                    ShippingDetails = shippingDetails, 
+                    ShippingType = shippingType,
+                    ShippingOptions = _shippingService.Calculate(_cartContext.Current(), shippingDetails.Postcode).Select(Mapper.Map<Shipping.ShippingCost, Models.ShippingCostView>).ToList()
+                });
             }
 
             var shoppingCart = _cartContext.Current();
 
             var shipping = _shippingService
-                .Calculate(shoppingCart, cartView.ShippingDetails.Postcode)
-                .FirstOrDefault(s => s.ShippingType == cartView.ShippingType.ToEnum<ShippingType>());
+                .Calculate(shoppingCart, shippingDetails.Postcode)
+                .FirstOrDefault(s => s.ShippingType == shippingType.ToEnum<ShippingType>());
 
             shoppingCart.SetShippingCost(shipping);
 
