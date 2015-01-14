@@ -4,6 +4,7 @@
     using Infrastructure;
     using Membership;
     using Models;
+    using Payments;
     using Shipping;
     using ShoppingCart;
     using Store;
@@ -16,13 +17,15 @@
         private readonly IProductService _productService;
         private readonly IShippingCalculatorService _shippingService;
         private readonly IProfileService _profileService;
+        private readonly IPaymentService _paymentService;
 
-        public CartController(ICartContext cartContext, IProductService productService, IShippingCalculatorService shippingService, IProfileService profileService)
+        public CartController(ICartContext cartContext, IProductService productService, IShippingCalculatorService shippingService, IProfileService profileService, IPaymentService paymentService)
         {
             _cartContext = cartContext;
             _productService = productService;
             _shippingService = shippingService;
             _profileService = profileService;
+            _paymentService = paymentService;
         }
 
         public ActionResult MyCart()
@@ -47,7 +50,7 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult MyCart(PersonalDetailsView shippingDetails, string shippingType)
+        public ActionResult MyCart(PersonalDetailsView shippingDetailsView, string shippingType)
         {
             if (string.IsNullOrEmpty(shippingType))
             {
@@ -58,20 +61,20 @@
             {
                 return View(new MyCartView
                 {
-                    ShippingDetails = shippingDetails, 
+                    ShippingDetails = shippingDetailsView, 
                     ShippingType = shippingType,
-                    ShippingOptions = _shippingService.Calculate(_cartContext.Current(), shippingDetails.Postcode).Select(Mapper.Map<Shipping.ShippingCost, Models.ShippingCostView>).ToList()
+                    ShippingOptions = _shippingService.Calculate(_cartContext.Current(), shippingDetailsView.Postcode).Select(Mapper.Map<Shipping.ShippingCost, Models.ShippingCostView>).ToList()
                 });
             }
 
             var shoppingCart = _cartContext.Current();
 
             var shipping = _shippingService
-                .Calculate(shoppingCart, shippingDetails.Postcode)
+                .Calculate(shoppingCart, shippingDetailsView.Postcode)
                 .FirstOrDefault(s => s.ShippingType == shippingType.ToEnum<ShippingType>());
 
             shoppingCart.SetShippingCost(shipping);
-            shoppingCart.SetShippingDetails(Mapper.Map<Models.PersonalDetailsView, Neemo.PersonalDetails>(shippingDetails));
+            shoppingCart.SetShippingDetails(Mapper.Map<PersonalDetailsView, PersonalDetails>(shippingDetailsView));
 
             return RedirectToAction("Checkout");
         }
@@ -101,14 +104,14 @@
 
             // Map the shipping details to billing details ( for those that are not set already )
             viewModel.ShippingDetails.CopyPropertiesIfNotSet(viewModel.BillingDetails);
-            viewModel.OrderSummary = Mapper.Map<ShoppingCart.Cart, OrderSummaryView>(shoppingCart);
+            viewModel.OrderSummary = Mapper.Map<Cart, OrderSummaryView>(shoppingCart);
 
             return View(viewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Checkout(PersonalDetailsView viewModel)
+        public ActionResult Checkout(PersonalDetailsView billingDetailsView)
         {
             var shoppingCart = _cartContext.Current();
 
@@ -117,15 +120,16 @@
                 var checkoutView = new CheckoutView
                 {
                     OrderSummary = Mapper.Map<ShoppingCart.Cart, OrderSummaryView>(shoppingCart),
-                    BillingDetails = viewModel
+                    BillingDetails = billingDetailsView
                 };
                 return View(checkoutView);
             }
             
             // Set the billing details
-            shoppingCart.SetBillingDetails(Mapper.Map<PersonalDetailsView, PersonalDetails>(viewModel));
+            shoppingCart.SetBillingDetails(Mapper.Map<PersonalDetailsView, PersonalDetails>(billingDetailsView));
 
             // Todo - Process the payment
+            // _paymentService.ProcessPaymentForCart(shoppingCart);
 
             return View(new CheckoutView());
         }

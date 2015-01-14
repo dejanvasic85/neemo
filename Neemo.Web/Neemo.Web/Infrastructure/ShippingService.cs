@@ -18,7 +18,7 @@
         {
             // Todo - implement the postage calculation logic and return the amount
 
-            return new ShippingCost[]
+            return new []
             {
                 new ShippingCost(10, ShippingType.Express),
                 new ShippingCost(5, ShippingType.Regular),

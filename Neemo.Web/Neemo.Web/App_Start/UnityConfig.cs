@@ -1,15 +1,11 @@
+using Microsoft.Practices.Unity;
+using System.Reflection;
+using System.Web;
+using System.Web.Mvc;
+using Unity.Mvc5;
+
 namespace Neemo.Web
 {
-    using Images;
-    using Infrastructure;
-    using Microsoft.Practices.Unity;
-    using Shipping;
-    using ShoppingCart;
-    using System.Reflection;
-    using System.Web;
-    using System.Web.Mvc;
-    using Unity.Mvc5;
-    
     public static class UnityConfig
     {
         public static IUnityContainer RegisterComponents()
@@ -17,7 +13,7 @@ namespace Neemo.Web
             var container = new UnityContainer();
 
             
-            // Register all repository classes automatically
+            // Register all repository classes automatically 
             const string carPartsDataLayerName = "Neemo.CarParts.EntityFramework";
             
             container.RegisterTypes(
@@ -28,10 +24,8 @@ namespace Neemo.Web
                 WithMappings.FromMatchingInterface,
                 WithName.Default);
 
-            container.RegisterTypes(new RegisterMappersConvention(carPartsDataLayerName));
-
             
-            // Register all service class automatically
+            // Register all service classes automatically in the business layer
             container.RegisterTypes(
                 AllClasses.FromAssemblies(new[]
                 {
@@ -40,17 +34,25 @@ namespace Neemo.Web
                 WithMappings.FromMatchingInterface,
                 WithName.Default);
 
+            // Register the PayPal payment service
+            container.RegisterType<Payments.IPaymentService, Payments.PayPal.PaymentService>();
+
+
             // FileStore image service requires http utility to initialise
-            container.RegisterType<IImageService, FileImageService>(
+            container.RegisterType<Images.IImageService, Images.FileImageService>(
                 new InjectionConstructor(HttpContext.Current.Server.MapPath("~/"), typeof(ISysConfig)));
 
             // ICartContext (session based)
-            container.RegisterType<ICartContext, SessionCartContext>();
+            container.RegisterType<ShoppingCart.ICartContext, Infrastructure.SessionCartContext>();
 
             // Services in website/infrastructure ( including the local mapping config )
-            container.RegisterType<ITemplateService, TemplateService>();
-            container.RegisterType<IShippingCalculatorService, ShippingService>();
-            container.RegisterType<IMappingConfig, Neemo.Web.MappingConfig>("WebConfig");
+            container.RegisterType<Infrastructure.ITemplateService, Infrastructure.TemplateService>();
+            container.RegisterType<Shipping.IShippingCalculatorService, Infrastructure.ShippingService>();
+
+            // Register all the assemblies that use the IMapping Config
+            container.RegisterType<IMappingConfig, MappingConfig>("WebConfig");
+            container.RegisterTypes(new RegisterMappersConvention(carPartsDataLayerName));
+
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
             

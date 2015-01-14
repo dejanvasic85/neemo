@@ -595,6 +595,10 @@
       <Project>{2a0a573d-a9d5-4afe-a485-88545b9a855a}</Project>
       <Name>Neemo.CarParts.EntityFramework</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Neemo.Payments.PayPal\Neemo.Payments.PayPal.csproj">
+      <Project>{53bc4c97-bab3-4213-844b-cee3da38090f}</Project>
+      <Name>Neemo.Payments.PayPal</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Neemo\Neemo.csproj">
       <Project>{d118aa0c-9057-440c-97ac-343293f834aa}</Project>
       <Name>Neemo</Name>

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neemo", "Neemo\Neemo.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neemo.CarParts.EntityFramework", "Neemo.CartParts.EntityFramework\Neemo.CarParts.EntityFramework.csproj", "{2A0A573D-A9D5-4AFE-A485-88545B9A855A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neemo.Payments.PayPal", "Neemo.Payments.PayPal\Neemo.Payments.PayPal.csproj", "{53BC4C97-BAB3-4213-844B-CEE3DA38090F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{2A0A573D-A9D5-4AFE-A485-88545B9A855A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A0A573D-A9D5-4AFE-A485-88545B9A855A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A0A573D-A9D5-4AFE-A485-88545B9A855A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53BC4C97-BAB3-4213-844B-CEE3DA38090F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53BC4C97-BAB3-4213-844B-CEE3DA38090F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53BC4C97-BAB3-4213-844B-CEE3DA38090F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53BC4C97-BAB3-4213-844B-CEE3DA38090F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
