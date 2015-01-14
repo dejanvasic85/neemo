@@ -15,11 +15,11 @@ namespace Neemo.Web.Models
         [Display(Name = "Company")]
         public string Company { get; set; }
 
-        [Display(Name = "Address Line 1")]
+        [Display(Name = "Address")]
         [Required]
         public string AddressLine1 { get; set; }
 
-        [Display(Name = "City")]
+        [Display(Name = "Suburb")]
         [Required]
         public string City { get; set; }
 

@@ -24,11 +24,6 @@ namespace Neemo.ShoppingCart
             this._items.Add(cartItem);
         }
 
-        public decimal CalculateItemTotal()
-        {
-            return this._items.Sum(i => i.CalculatePrice());
-        }
-
         public void Checkout()
         {
             // Clear the items
@@ -58,21 +53,35 @@ namespace Neemo.ShoppingCart
             item.UpdateQuantity(quantity);
         }
 
+        /// <summary>
+        /// Sets the shipping cost for the shopping cart
+        /// </summary>
         public void SetShippingCost(ShippingCost shipping)
         {
             this.ShippingCost = shipping;
         }
 
+        /// <summary>
+        /// Returns the tax cost summary
+        /// </summary>
         public TaxCost CalculateTax()
         {
             var taxCalculator = new GstTaxCalculator();
-            return taxCalculator.CalculateTax(CalculateItemTotal() + ShippingCost);
+            return taxCalculator.CalculateTax(CalculateItemTotal());
         }
+
+        /// <summary>
+        /// Returns the sum of all items excluding shipping and tax
+        /// </summary>
+        public decimal CalculateItemTotal()
+        {
+            return this._items.Sum(i => i.CalculatePrice());
+        }
+
 
         /// <summary>
         /// Returns the sub total for the entire order including tax and shipping
         /// </summary>
-        /// <returns></returns>
         public decimal CalculateSubTotal()
         {
             // Add all the product items
