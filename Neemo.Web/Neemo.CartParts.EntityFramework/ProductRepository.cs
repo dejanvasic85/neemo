@@ -34,7 +34,8 @@
                     Description = "This should be hooked up to the service, Description!",
                     QuickOverview = "This should be hooked up to the service!",
                     AvailableQty = 8,
-                    CategoryId = 3
+                    CategoryId = 3,
+                    IsAvailable = true
                 },
                 new Product
                 {
@@ -44,7 +45,8 @@
                     Title = "Mercedes Gearbox",
                     Price = 1499,
                     IsFeatured = true,
-                    CategoryId = 3
+                    CategoryId = 3,
+                    IsAvailable = true
                 },
                 new Product
                 {
@@ -54,7 +56,8 @@
                     Title = "Alloy Wheels",
                     Price = 499,
                     IsFeatured = true,
-                    CategoryId = 7
+                    CategoryId = 7,
+                    IsAvailable = true
                 },
                 // New                                         
                 new Product
@@ -65,7 +68,8 @@
                     Title = "Another Allow",
                     Price = 999,
                     IsNew = true,
-                    CategoryId = 11
+                    CategoryId = 11,
+                    IsAvailable = true
                 },
                 new Product
                 {
@@ -75,7 +79,8 @@
                     Title = "8 Spoke Allow",
                     Price = 899,
                     IsNew = true,
-                    CategoryId = 3
+                    CategoryId = 3,
+                    IsAvailable = true
                 },
                 new Product
                 {
@@ -85,7 +90,8 @@
                     Title = "More Wheels man",
                     Price = 499,
                     IsNew = true,
-                    CategoryId = 4
+                    CategoryId = 4,
+                    IsAvailable = true
                 },
                 new Product
                 {
@@ -98,7 +104,8 @@
                     IsFeatured = true,
                     Description = "Purpose The foreach binding duplicates a section of markup for each entry in an array, and binds each copy of that markup to the corresponding array item. This is especially useful for rendering lists or tables.",
                     QuickOverview = "Of course, you can arbitrarily nest any number of foreach bindings along with other control-flow ",
-                    AvailableQty = 12
+                    AvailableQty = 12,
+                    IsAvailable = true
                 }
             };
         }

@@ -49,16 +49,40 @@
                     <div class="span4">
                         <div class="bordered-form">
                             <h3><i class="fa fa-paypal"></i> &nbsp;Payment & Billing Details</h3>
-                            
+
                             @Html.Partial("~/Views/Shared/Partial/_PersonalDetailsEditor.cshtml", @Model.ShippingDetails)
                         </div>
-                        <div class="footer-submit">
-                            @if (Request.IsAuthenticated)
-                            {
-                                <button class="btn">Pay Later</button>
-                            }
-                            <button class="btn pull-right">Pay Now</button>
+
+                        @if (Request.IsAuthenticated)
+                        {
+                            <div class="bordered-form">
+                                <h3>Place Order <i class="fa fa-arrow-right"></i> Pay Later</h3>
+                                <p>
+                                    Members only have an option to place the order only and pay later.
+                                    One of our staff will be in touch with you shortly about the next step.
+                                </p>
+                            </div>
+                            <div class="footer-submit">
+                                <button class="btn pull-right">
+                                    Proceed with Order Only <i class="fa fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        }
+
+                        <div class="bordered-form">
+                            <h3>Pay Now</h3>
+                            <p>
+                                By paying immediately using PayPal or Credit Card,
+                                the order will be processed as soon as
+                                possible and shipped directly.
+                            </p>
                         </div>
+                        <div class="footer-submit">
+                            <button class="btn pull-right">
+                                Proceed to Payment <i class="fa fa-arrow-right"></i>
+                            </button>
+                        </div>
+
                     </div>
                 </div>
             </form>
