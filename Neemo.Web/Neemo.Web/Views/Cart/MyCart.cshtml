@@ -30,6 +30,7 @@
                     <div class="row-fluid">
                         <form method="POST" action="@Url.MyCart()">
                             <div class="span4">
+                                @Html.AntiForgeryToken()
                                 <div class="bordered-form">
                                     <h3><i class="fa fa-home"></i> &nbsp;Delivery Details</h3>
 
@@ -97,9 +98,18 @@
                                     </table>
                                 </div>
                                 <div class="footer-submit">
-                                    <button type="submit" class="btn pull-right" href="@Url.Checkout()">
-                                        Proceed to Checkout
-                                    </button>
+                                    @if (Request.IsAuthenticated)
+                                    {
+                                        <button type="submit" class="btn pull-right" href="@Url.Checkout()">
+                                            Proceed to Checkout
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button type="submit" class="btn pull-right" href="@Url.Login()">
+                                            Proceed to Checkout
+                                        </button>
+                                    }
                                 </div>
                             </div>
                         </form>
