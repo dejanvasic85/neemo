@@ -45,13 +45,22 @@
 <div class="control-group">
     @Html.LabelFor(m => m.State)
     <div class="controls">
-        @Html.TextBoxFor(m => m.State)
+        @Html.DropDownListFor(m => m.State, new List<SelectListItem>
+        {
+            new SelectListItem(){Text = "VIC", Value = "VIC"},
+            new SelectListItem(){Text = "NSW", Value = "NSW"},
+            new SelectListItem(){Text = "QLD", Value = "QLD"},
+            new SelectListItem(){Text = "WA", Value = "WA"},
+            new SelectListItem(){Text = "SA", Value = "SA"},
+            new SelectListItem(){Text = "ACT", Value = "ACT"},
+            new SelectListItem(){Text = "TAS", Value = "TAS"},
+        }, optionLabel:" -- Select  --")
     </div>
 </div>
 
 <div class="control-group">
     @Html.LabelFor(m => m.Postcode)
     <div class="controls">
-        @Html.TextBoxFor(m => m.Postcode)
+        @Html.TextBoxFor(m => m.Postcode, htmlAttributes: new { data_numbers_only = true, maxlength = 4 })
     </div>
 </div>

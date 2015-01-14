@@ -42,6 +42,14 @@
                                             <td>@item.Price.ToString("C")</td>
                                         </tr>
                                     }
+                                    <tr>
+                                        <td colspan="2" class="text-right">@Model.OrderSummary.Tax.TaxType</td>
+                                        <td>@Model.OrderSummary.Tax.TaxAmount.ToString("C")</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" class="text-right">@Model.OrderSummary.ShippingCost.ShippingType</td>
+                                        <td>@Model.OrderSummary.ShippingCost.Cost.ToString("C")</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

@@ -41,11 +41,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Country.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="IMappingConfig.cs" />
     <Compile Include="ISysConfig.cs" />
     <Compile Include="Images\IImageService.cs" />
     <Compile Include="Images\ItemImage.cs" />
-    <Compile Include="LinqExtensions\EnumerableExtensions.cs" />
+    <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Membership\IProfileRepository.cs" />
     <Compile Include="Membership\IProfileService.cs" />
     <Compile Include="PersonalDetails.cs" />

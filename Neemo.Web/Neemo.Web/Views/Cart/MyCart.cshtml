@@ -27,11 +27,16 @@
                     </fieldset>
 
 
-                    <div class="cart-collaterals row-fluid">
-                        <div class="col-1 span4">
-                            @*Placeholder for shipping estimate*@
+                    <div class="row-fluid">
+                        <div class="span4">
+                            <div class="bordered-form">
+                                <h3><i class="fa fa-home"></i> &nbsp;Delivery Details</h3>
+
+                                @Html.Partial("~/Views/Shared/Partial/_PersonalDetailsEditor.cshtml", @Model.ShippingDetails)
+
+                            </div>
                         </div>
-                        <div class="col-1 span4">
+                        <div class="span4">
                             <div class="bordered-form">
                                 <h3><i class="fa fa-calculator"></i>&nbsp; Postage Estimate</h3>
 
@@ -72,7 +77,7 @@
 
                             </div>
                         </div>
-                        <div class="totals span4">
+                        <div class="span4">
                             <table id="shopping-cart-totals-table">
                                 <colgroup>
                                     <col>

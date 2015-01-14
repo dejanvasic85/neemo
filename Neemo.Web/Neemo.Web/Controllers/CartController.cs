@@ -28,14 +28,41 @@
         public ActionResult MyCart()
         {
             var countries = _shippingService.GetAvailableCountries().Select(Mapper.Map<Country, CountryView>).ToList();
+            var userShippingDetails = Mapper.Map<PersonalDetails, PersonalDetailsView>( _profileService.GetProfile(User.Identity.Name).ShippingDetails );
 
-            return View(new MyCartView { ShippingCountries = countries });
+            return View(new MyCartView
+            {
+                ShippingCountries = countries,
+                ShippingDetails = userShippingDetails,
+            });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult MyCart(MyCartView cartView)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(cartView);
+            }
+
+            var shoppingCart = _cartContext.Current();
+
+            var shipping = _shippingService
+                .Calculate(shoppingCart, "AU", cartView.ShippingDetails.Postcode)
+                .FirstOrDefault(s => s.ShippingType == cartView.ShippingType.ToEnum<ShippingType>());
+            
+            shoppingCart.SetShippingCost(shipping);
+
+            return RedirectToAction("Checkout");
         }
 
         public ActionResult Checkout()
         {
-            // If there are no items, then get out!
-            if (!_cartContext.HasItemsInCart())
+            // If there are no items or shipping was not set then go back to MyCart view!
+            var shoppingCart = _cartContext.Current();
+
+            if (!_cartContext.HasItemsInCart() || shoppingCart.ShippingCost == null)
             {
                 return RedirectToAction("MyCart");
             }
@@ -49,8 +76,8 @@
                 viewModel = Mapper.Map<UserProfile, CheckoutView>(userProfile);
             }
 
-            viewModel.OrderSummary = Mapper.Map<ShoppingCart.Cart, OrderSummaryView>(_cartContext.Current());
-            
+            viewModel.OrderSummary = Mapper.Map<ShoppingCart.Cart, OrderSummaryView>(shoppingCart);
+
             return View(viewModel);
         }
 
