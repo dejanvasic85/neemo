@@ -14,6 +14,7 @@ namespace Neemo.Web
 
             var config = (AutoMapper.IConfiguration)mapper;
             
+            // To view model
             config.CreateMap<Store.Product, Models.ProductSummaryView>()
                 .ForMember(member => member.OutOfStock, options => options.ResolveUsing(t => t.IsOutOfStock()));
             config.CreateMap<Store.Product, Models.ProductDetailView>();
@@ -25,6 +26,9 @@ namespace Neemo.Web
             config.CreateMap<Membership.UserProfile, Models.CheckoutView>();
             config.CreateMap<Tax.TaxCost, Models.TaxCostView>();
             config.CreateMap<ShoppingCart.Cart, Models.OrderSummaryView>().ConvertUsing<Models.OrderSummaryConverter>();
+
+            // From view model
+            config.CreateMap<Models.PersonalDetailsView, PersonalDetails>();
         }
 
         public static void RegisterMaps(IUnityContainer container)

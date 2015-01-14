@@ -12,6 +12,8 @@ namespace Neemo.ShoppingCart
         private readonly string _username;
         private readonly List<ICartItem> _items;
         public ShippingCost ShippingCost { get; private set; }
+        public PersonalDetails ShippingDetails { get; private set; }
+        public PersonalDetails BillingDetails { get; private set; }
 
         public Cart(string username)
         {
@@ -62,6 +64,23 @@ namespace Neemo.ShoppingCart
         }
 
         /// <summary>
+        /// Sets the billing details for the shopping cart
+        /// </summary>
+        public void SetBillingDetails(PersonalDetails billingDetails)
+        {
+            this.BillingDetails = billingDetails;
+        }
+
+        /// <summary>
+        /// Sets the shipping details for the shopping cart
+        /// </summary>
+        /// <param name="shippingDetails"></param>
+        public void SetShippingDetails(PersonalDetails shippingDetails)
+        {
+            this.ShippingDetails = shippingDetails;
+        }
+
+        /// <summary>
         /// Returns the tax cost summary
         /// </summary>
         public TaxCost CalculateTax()
@@ -77,7 +96,6 @@ namespace Neemo.ShoppingCart
         {
             return this._items.Sum(i => i.CalculatePrice());
         }
-
 
         /// <summary>
         /// Returns the sub total for the entire order including tax and shipping

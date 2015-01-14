@@ -5,6 +5,7 @@
     <div class="controls">
         @Html.TextBoxFor(m => m.Firstname)
     </div>
+    @Html.ValidationMessageFor(m => m.Firstname)
 </div>
 
 <div class="control-group">
@@ -12,13 +13,15 @@
     <div class="controls">
         @Html.TextBoxFor(m => m.Surname)
     </div>
+    @Html.ValidationMessageFor(m => m.Surname)
 </div>
 
 <div class="control-group">
     @Html.LabelFor(m => m.PhoneNumber)
     <div class="controls">
-        @Html.TextBoxFor(m => m.PhoneNumber)
+        @Html.TextBoxFor(m => m.PhoneNumber, new {data_numbers_only=true, maxlength=12})
     </div>
+    @Html.ValidationMessageFor(m => m.PhoneNumber)
 </div>
 
 <div class="control-group">

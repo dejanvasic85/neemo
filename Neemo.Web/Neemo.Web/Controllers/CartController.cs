@@ -32,7 +32,10 @@
                 return RedirectToAction("Login", "Account");
             } 
 
-            var userShippingDetails = Mapper.Map<PersonalDetails, PersonalDetailsView>(_profileService.GetProfile(User.Identity.Name).ShippingDetails);
+            var userShippingDetails = Request.IsAuthenticated 
+                ? Mapper.Map<PersonalDetails, PersonalDetailsView>(_profileService.GetProfile(User.Identity.Name).ShippingDetails)
+                : new PersonalDetailsView();
+
             var shippingOptions = _shippingService.Calculate(_cartContext.Current(), userShippingDetails.Postcode).Select(Mapper.Map<Shipping.ShippingCost, Models.ShippingCostView>);
 
             return View(new MyCartView
@@ -68,6 +71,7 @@
                 .FirstOrDefault(s => s.ShippingType == shippingType.ToEnum<ShippingType>());
 
             shoppingCart.SetShippingCost(shipping);
+            shoppingCart.SetShippingDetails(Mapper.Map<Models.PersonalDetailsView, Neemo.PersonalDetails>(shippingDetails));
 
             return RedirectToAction("Checkout");
         }
@@ -82,18 +86,21 @@
                 return RedirectToAction("MyCart");
             }
 
-            // Fetch the user profile for the currently logged in user
             var viewModel = new CheckoutView();
             if (Request.IsAuthenticated)
             {
-                // Map the user details that is already logged in
+                // Fetch the user profile for the currently logged in user
                 var userProfile = _profileService.GetProfile(User.Identity.Name);
                 viewModel = Mapper.Map<UserProfile, CheckoutView>(userProfile);
+            }
+            else
+            {
+                // Map the shipping details from the shopping cart for the guest user
+                viewModel.ShippingDetails = Mapper.Map<PersonalDetails, PersonalDetailsView>(shoppingCart.ShippingDetails);
             }
 
             // Map the shipping details to billing details ( for those that are not set already )
             viewModel.ShippingDetails.CopyPropertiesIfNotSet(viewModel.BillingDetails);
-
             viewModel.OrderSummary = Mapper.Map<ShoppingCart.Cart, OrderSummaryView>(shoppingCart);
 
             return View(viewModel);
@@ -103,6 +110,8 @@
         [ValidateAntiForgeryToken]
         public ActionResult Checkout(CheckoutView viewModel)
         {
+            var shoppingCart = _cartContext.Current();
+
             return View(viewModel);
         }
 
