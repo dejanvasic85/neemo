@@ -28,87 +28,81 @@
 
 
                     <div class="row-fluid">
-                        <div class="span4">
-                            <div class="bordered-form">
-                                <h3><i class="fa fa-home"></i> &nbsp;Delivery Details</h3>
+                        <form method="POST" action="@Url.MyCart()">
+                            <div class="span4">
+                                <div class="bordered-form">
+                                    <h3><i class="fa fa-home"></i> &nbsp;Delivery Details</h3>
 
-                                @Html.Partial("~/Views/Shared/Partial/_PersonalDetailsEditor.cshtml", @Model.ShippingDetails)
+                                    @Html.Partial("~/Views/Shared/Partial/_PersonalDetailsEditor.cshtml", @Model.ShippingDetails)
 
+                                </div>
                             </div>
-                        </div>
-                        <div class="span4">
-                            <div class="bordered-form">
-                                <h3><i class="fa fa-calculator"></i>&nbsp; Postage Estimate</h3>
-                                <p>Select your postage preference.</p>
-                                <table class="table table-bordered table-hover" id="estimates">
-                                    <thead>
-                                        <tr>
-                                            <th></th>
-                                            <th>Type</th>
-                                            <th>Cost</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var shipping in Model.ShippingOptions)
-                                        {
+                            <div class="span4">
+                                <div class="bordered-form">
+                                    <h3><i class="fa fa-calculator"></i>&nbsp; Postage Estimate</h3>
+                                    <p>Select your postage preference.</p>
+                                    @Html.ValidationMessageFor(s => s.ShippingType)
+                                    <table class="table table-bordered table-hover" id="estimates">
+                                        <thead>
                                             <tr>
-                                                <td><input type="radio" name="shippingType" id="shippingType" value="@shipping.ShippingType" /></td>
-                                                <td>@shipping.ShippingType</td>
-                                                <td>@shipping.Cost.ToString("C")</td>
+                                                <th></th>
+                                                <th>Type</th>
+                                                <th>Cost</th>
                                             </tr>
-                                        }
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var shipping in Model.ShippingOptions)
+                                            {
+                                                <tr>
+                                                    <td><input type="radio" name="shippingType" id="shippingType" value="@shipping.ShippingType" /></td>
+                                                    <td>@shipping.ShippingType</td>
+                                                    <td>@shipping.Cost.ToString("C")</td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
 
+                                </div>
                             </div>
-                        </div>
-                        <div class="span4">
-                            <div class="bordered-form">
-                                <h3>Totals</h3>
-                                <table class="table table-bordered">
-                                    <colgroup>
-                                        <col>
-                                        <col width="1">
-                                    </colgroup>
+                            <div class="span4">
+                                <div class="bordered-form">
+                                    <h3>Totals</h3>
+                                    <table class="table table-bordered">
+                                        <colgroup>
+                                            <col>
+                                            <col width="1">
+                                        </colgroup>
 
-                                    <tbody>
-                                        <tr>
-                                            <td style="" class="a-right" colspan="1">
-                                                Subtotal
-                                            </td>
-                                            <td style="" class="a-right">
-                                                <span class="price" data-bind="text: accounting.formatMoney(subTotal())"></span>
-                                            </td>
-                                        </tr>
-                                    </tbody>
+                                        <tbody>
+                                            <tr>
+                                                <td style="" class="a-right" colspan="1">
+                                                    Subtotal
+                                                </td>
+                                                <td style="" class="a-right">
+                                                    <span class="price" data-bind="text: accounting.formatMoney(subTotal())"></span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
 
-                                    <tfoot>
-                                        <tr>
-                                            <td style="" class="a-right" colspan="1">
-                                                <strong>Grand Total</strong>
-                                            </td>
-                                            <td style="" class="a-right">
-                                                <strong><span class="price" data-bind="text: accounting.formatMoney(subTotal())"></span></strong>
-                                            </td>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
-                            <div class="footer-submit">
-                                @if (Request.IsAuthenticated)
-                                {
-                                    <a class="btn pull-right" href="@Url.Checkout()">
+                                        <tfoot>
+                                            <tr>
+                                                <td style="" class="a-right" colspan="1">
+                                                    <strong>Grand Total</strong>
+                                                </td>
+                                                <td style="" class="a-right">
+                                                    <strong><span class="price" data-bind="text: accounting.formatMoney(subTotal())"></span></strong>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                <div class="footer-submit">
+                                    <button type="submit" class="btn pull-right" href="@Url.Checkout()">
                                         Proceed to Checkout
-                                    </a>
-                                }
-                                else
-                                {
-                                    <a class="btn pull-right" href="@Url.Login()">
-                                        Proceed to Checkout
-                                    </a>
-                                }
+                                    </button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
