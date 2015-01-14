@@ -12,6 +12,8 @@ namespace Neemo
         /// Comma delimited list of emails where the support emails will go
         /// </summary>
         string[] NotificationSupportEmail { get; }
+
+        decimal Gst { get; }
     }
 
     public class SysConfig : ISysConfig
@@ -34,6 +36,11 @@ namespace Neemo
         public string[] NotificationSupportEmail
         {
             get { return ConfigurationManager.AppSettings["NotificationSupportEmail"].Split(','); }
+        }
+
+        public decimal Gst
+        {
+            get { return decimal.Parse(ConfigurationManager.AppSettings["Gst"]); }
         }
     }
 }

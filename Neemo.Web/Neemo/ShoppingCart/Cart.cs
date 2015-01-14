@@ -2,22 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using Neemo.Shipping;
-using Neemo.Tax;
 
 namespace Neemo.ShoppingCart
 {
     [Serializable]
     public class Cart
     {
-        private readonly string _username;
         private readonly List<ICartItem> _items;
         public ShippingCost ShippingCost { get; private set; }
         public PersonalDetails ShippingDetails { get; private set; }
         public PersonalDetails BillingDetails { get; private set; }
 
-        public Cart(string username)
+        public Cart()
         {
-            _username = username;
             _items = new List<ICartItem>();
         }
 
@@ -79,16 +76,7 @@ namespace Neemo.ShoppingCart
         {
             this.ShippingDetails = shippingDetails;
         }
-
-        /// <summary>
-        /// Returns the tax cost summary
-        /// </summary>
-        public TaxCost CalculateTax()
-        {
-            var taxCalculator = new GstTaxCalculator();
-            return taxCalculator.CalculateTax(CalculateItemTotal());
-        }
-
+        
         /// <summary>
         /// Returns the sum of all items excluding shipping and tax
         /// </summary>
@@ -102,10 +90,9 @@ namespace Neemo.ShoppingCart
         /// </summary>
         public decimal CalculateSubTotal()
         {
-            // Add all the product items
-            // Add the taxes
+            // Add all the product items (taxes included)
             // Add the shipping
-            return CalculateItemTotal() + CalculateTax().TaxAmount + ShippingCost;
+            return CalculateItemTotal() + ShippingCost;
         }
     }
 }

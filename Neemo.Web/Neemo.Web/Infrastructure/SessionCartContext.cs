@@ -15,7 +15,7 @@
                 return cart;
 
             // Create new
-            cart = new Cart(HttpContext.Current.User.Identity.Name);
+            cart = new Cart();
 
             HttpContext.Current.Session[Key] = cart;
             return cart;
