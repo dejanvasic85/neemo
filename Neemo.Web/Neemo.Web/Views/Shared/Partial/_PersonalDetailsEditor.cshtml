@@ -29,6 +29,7 @@
     <div class="controls">
         @Html.TextBoxFor(m => m.Company)
     </div>
+    @Html.ValidationMessageFor(m => m.Company)
 </div>
 
 <div class="control-group">
@@ -36,6 +37,7 @@
     <div class="controls">
         @Html.TextBoxFor(m => m.AddressLine1)
     </div>
+    @Html.ValidationMessageFor(m => m.AddressLine1)
 </div>
 
 <div class="control-group">
@@ -43,6 +45,7 @@
     <div class="controls">
         @Html.TextBoxFor(m => m.City)
     </div>
+    @Html.ValidationMessageFor(m => m.City)
 </div>
 
 <div class="control-group">
@@ -59,6 +62,7 @@
             new SelectListItem(){Text = "TAS", Value = "TAS"},
         }, optionLabel:" -- Select  --")
     </div>
+    @Html.ValidationMessageFor(m => m.State)
 </div>
 
 <div class="control-group">
@@ -66,4 +70,5 @@
     <div class="controls">
         @Html.TextBoxFor(m => m.Postcode, htmlAttributes: new { data_numbers_only = true, maxlength = 4 })
     </div>
+    @Html.ValidationMessageFor(m => m.Postcode)
 </div>

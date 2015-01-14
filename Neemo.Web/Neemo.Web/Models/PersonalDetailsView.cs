@@ -28,10 +28,12 @@ namespace Neemo.Web.Models
         public string State { get; set; }
 
         [Display(Name = "Post Code")]
+        [MaxLength(4)]
         [Required]
         public string Postcode { get; set; }
 
         [Display(Name = "Phone Number")]
+        [MaxLength(12)]
         [Required]
         public string PhoneNumber { get; set; }
 

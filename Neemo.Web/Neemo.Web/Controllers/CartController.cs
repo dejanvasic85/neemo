@@ -108,11 +108,26 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Checkout(CheckoutView viewModel)
+        public ActionResult Checkout(PersonalDetailsView viewModel)
         {
             var shoppingCart = _cartContext.Current();
 
-            return View(viewModel);
+            if (!ModelState.IsValid)
+            {
+                var checkoutView = new CheckoutView
+                {
+                    OrderSummary = Mapper.Map<ShoppingCart.Cart, OrderSummaryView>(shoppingCart),
+                    BillingDetails = viewModel
+                };
+                return View(checkoutView);
+            }
+            
+            // Set the billing details
+            shoppingCart.SetBillingDetails(Mapper.Map<PersonalDetailsView, PersonalDetails>(viewModel));
+
+            // Todo - Process the payment
+
+            return View(new CheckoutView());
         }
 
         [HttpPost]

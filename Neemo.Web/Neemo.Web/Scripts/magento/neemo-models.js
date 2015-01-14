@@ -13,10 +13,10 @@
         me.Quantity = ko.observable(cartViewItem.Quantity).extend({ numeric: 0 });
         me.ImageId = ko.observable(cartViewItem.ImageId);
 
-        me.Total = function () {
+        me.Total = function() {
             return me.Price() * me.Quantity();
-        }
-
+        };
+        
         me.Quantity.subscribeChanged(function (newValue, oldValue) {
             var meFnc = this;
             meFnc.newValue = newValue;
@@ -38,7 +38,7 @@
             $.each(this.items(), function () {
                 total += (this.Price() * this.Quantity());
             });
-            return accounting.formatMoney(total);
+            return total;
         };
 
         me.totalQuantity = function () {
@@ -48,6 +48,14 @@
             });
             return total;
         };
+        
+        me.tax = ko.computed(function() {
+            return me.subTotal() * 0.1;
+        });
+
+        me.grandTotal = ko.computed(function () {
+            return me.subTotal() + me.tax();
+        });
 
         me.removeItem = function (item) {
             if (confirm('Are you sure you want to remove the order from the shopping cart?')) {

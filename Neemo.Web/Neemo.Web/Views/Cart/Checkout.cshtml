@@ -34,11 +34,11 @@
                                             <td>@item.Price.ToString("C")</td>
                                         </tr>
                                     }
-
-                                    @*Postage*@
+                                    
+                                    @*Sub Total*@
                                     <tr>
-                                        <td colspan="2" style="text-align:right;"> <strong>Post</strong>: @Model.OrderSummary.ShippingCost.ShippingType</td>
-                                        <td>@Model.OrderSummary.ShippingCost.Cost.ToString("C")</td>
+                                        <td colspan="2" style="text-align:right;"> <strong>Sub Total</strong></td>
+                                        <td>@Model.OrderSummary.ItemTotal.ToString("C")</td>
                                     </tr>
 
                                     @*Tax*@
@@ -46,10 +46,16 @@
                                         <td colspan="2" style="text-align:right;"> <strong>Tax</strong> : @Model.OrderSummary.Tax.TaxType</td>
                                         <td>@Model.OrderSummary.Tax.TaxAmount.ToString("C")</td>
                                     </tr>
+
+                                    @*Postage*@
+                                    <tr>
+                                        <td colspan="2" style="text-align:right;"> <strong>Post</strong>: @Model.OrderSummary.ShippingCost.ShippingType</td>
+                                        <td>@Model.OrderSummary.ShippingCost.Cost.ToString("C")</td>
+                                    </tr>
                                     
                                     @*Total*@
                                     <tr class="info">
-                                        <td colspan="2" style="text-align:right;"><strong>Total</strong></td>
+                                        <td colspan="2" style="text-align:right;"><strong>Grand Total</strong></td>
                                         <td><strong>@Model.OrderSummary.SubTotal.ToString("C")</strong></td>
                                     </tr>
 
@@ -64,6 +70,23 @@
                             @Html.Partial("~/Views/Shared/Partial/_PersonalDetailsEditor.cshtml", @Model.ShippingDetails)
                         </div>
 
+                       
+                        @*Pay Now (All users)*@
+                        <div class="bordered-form">
+                            <h3>Pay Now</h3>
+                            <p>
+                                By paying immediately using PayPal or Credit Card,
+                                the order will be processed as soon as
+                                possible and shipped directly.
+                            </p>
+                        </div>
+                        <div class="footer-submit">
+                            <button class="btn pull-right">
+                                Proceed to Payment <i class="fa fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        
+                        @*Pay later option*@
                         @if (Request.IsAuthenticated)
                         {
                             <div class="bordered-form">
@@ -79,21 +102,7 @@
                                 </button>
                             </div>
                         }
-
-                        <div class="bordered-form">
-                            <h3>Pay Now</h3>
-                            <p>
-                                By paying immediately using PayPal or Credit Card,
-                                the order will be processed as soon as
-                                possible and shipped directly.
-                            </p>
-                        </div>
-                        <div class="footer-submit">
-                            <button class="btn pull-right">
-                                Proceed to Payment <i class="fa fa-arrow-right"></i>
-                            </button>
-                        </div>
-
+                        
                     </div>
                 </div>
             </form>

@@ -77,10 +77,18 @@
                                         <tbody>
                                             <tr>
                                                 <td style="" class="a-right" colspan="1">
-                                                    Subtotal
+                                                    Items Total
                                                 </td>
                                                 <td style="" class="a-right">
                                                     <span class="price" data-bind="text: accounting.formatMoney(subTotal())"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="" class="a-right" colspan="1">
+                                                    Tax
+                                                </td>
+                                                <td style="" class="a-right">
+                                                    <span class="price" data-bind="text: accounting.formatMoney(tax())"></span>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -88,10 +96,10 @@
                                         <tfoot>
                                             <tr>
                                                 <td style="" class="a-right" colspan="1">
-                                                    <strong>Grand Total</strong>
+                                                    <strong>Sub Total (ex Postage)</strong>
                                                 </td>
                                                 <td style="" class="a-right">
-                                                    <strong><span class="price" data-bind="text: accounting.formatMoney(subTotal())"></span></strong>
+                                                    <strong><span class="price" data-bind="text: accounting.formatMoney(grandTotal())"></span></strong>
                                                 </td>
                                             </tr>
                                         </tfoot>
