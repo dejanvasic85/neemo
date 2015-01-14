@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace Neemo
 {
@@ -10,6 +11,23 @@ namespace Neemo
             foreach (var i in items)
             {
                 action(i);
+            }
+        }
+    }
+
+    public static class SystemExtensions
+    {
+        public static void CopyPropertiesIfNotSet(this object source, object target)
+        {
+            var propertiesToSet = source.GetType().GetProperties();
+
+            foreach (var propertyInfo in propertiesToSet)
+            {
+                var value = propertyInfo.GetValue(target);
+                if (value == null)
+                {
+                    propertyInfo.SetValue(target, propertyInfo.GetValue(source));
+                }
             }
         }
     }

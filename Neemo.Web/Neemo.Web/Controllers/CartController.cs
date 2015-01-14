@@ -91,6 +91,9 @@
                 viewModel = Mapper.Map<UserProfile, CheckoutView>(userProfile);
             }
 
+            // Map the shipping details to billing details ( for those that are not set already )
+            viewModel.ShippingDetails.CopyPropertiesIfNotSet(viewModel.BillingDetails);
+
             viewModel.OrderSummary = Mapper.Map<ShoppingCart.Cart, OrderSummaryView>(shoppingCart);
 
             return View(viewModel);
