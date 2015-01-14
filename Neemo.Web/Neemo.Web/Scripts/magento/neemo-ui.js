@@ -166,6 +166,8 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
             .setPriceMin($('#PriceMin').val())
             .setPriceMax($('#PriceMax').val())
             .apply();
+
+        $(this).button('loading');
     });
 
     $('[data-category-filter]').on('click', function () {
@@ -182,11 +184,17 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
             var $tbody = $estimates.find('tbody');
             $tbody.empty();
             $.each(data, function (index, item) {
-                $tbody.append('<tr><td>' + item.ShippingType + '</td><td>' + accounting.formatMoney( item.Cost ) + '</td></tr>');
+                $tbody.append('<tr><td>' + item.ShippingType + '</td><td>' + accounting.formatMoney(item.Cost) + '</td></tr>');
             });
             $btn.button('reset');
             $estimates.slideDown();
         });
+    });
+
+    // Button - please wait
+    $('form').find('button[type=submit]').attr('data-loading-text', 'Please wait...');
+    $('form').submit(function () {
+        $(this).find('button[type=submit]').button('loading');
     });
 
     // Initialise the shopping cart
