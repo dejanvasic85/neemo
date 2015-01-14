@@ -2,10 +2,10 @@
 {
     using AutoMapper;
     using Infrastructure;
-    using Shipping;
-    using ShoppingCart;
     using Membership;
     using Models;
+    using Shipping;
+    using ShoppingCart;
     using Store;
     using System.Linq;
     using System.Web.Mvc;
@@ -25,7 +25,6 @@
             _profileService = profileService;
         }
 
-        // GET: Cart
         public ActionResult MyCart()
         {
             var countries = _shippingService.GetAvailableCountries().Select(Mapper.Map<Country, CountryView>).ToList();
@@ -50,8 +49,7 @@
                 viewModel = Mapper.Map<UserProfile, CheckoutView>(userProfile);
             }
 
-            var cartItems = _cartContext.Current().GetItems().OfType<ProductCartItem>();
-            viewModel.CartItems = cartItems.Select(Mapper.Map<ProductCartItem, Models.CartItemView>).ToList();
+            viewModel.OrderSummary = Mapper.Map<ShoppingCart.Cart, OrderSummaryView>(_cartContext.Current());
             
             return View(viewModel);
         }
@@ -117,7 +115,7 @@
         }
 
         [HttpPost]
-        public ActionResult CalculateEstimate(string country, string postcode)
+        public ActionResult CalculateShippingEstimate(string country, string postcode)
         {
             var cost = _shippingService.Calculate(_cartContext.Current(), country, postcode);
 

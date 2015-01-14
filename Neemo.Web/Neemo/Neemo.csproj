@@ -56,6 +56,10 @@
     <Compile Include="Shipping\ShippingCost.cs" />
     <Compile Include="Shipping\ShippingType.cs" />
     <Compile Include="ShoppingCart\CartException.cs" />
+    <Compile Include="Tax\TaxCost.cs" />
+    <Compile Include="Tax\TaxType.cs" />
+    <Compile Include="Tax\ITaxCalculator.cs" />
+    <Compile Include="Tax\GstTaxCalculator.cs" />
     <Compile Include="ShoppingCart\ICartContext.cs" />
     <Compile Include="ShoppingCart\ICartItem.cs" />
     <Compile Include="Store\Category.cs" />

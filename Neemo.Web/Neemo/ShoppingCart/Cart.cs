@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Neemo.Shipping;
+using Neemo.Tax;
 
 namespace Neemo.ShoppingCart
 {
@@ -9,7 +11,8 @@ namespace Neemo.ShoppingCart
     {
         private readonly string _username;
         private readonly List<ICartItem> _items;
-        
+        public ShippingCost ShippingCost { get; private set; }
+
         public Cart(string username)
         {
             _username = username;
@@ -21,7 +24,7 @@ namespace Neemo.ShoppingCart
             this._items.Add(cartItem);
         }
 
-        public decimal CalculateSubTotal()
+        public decimal CalculateItemTotal()
         {
             return this._items.Sum(i => i.CalculatePrice());
         }
@@ -31,7 +34,7 @@ namespace Neemo.ShoppingCart
             // Clear the items
             this._items.Clear();
         }
-        
+
         public void RemoveItem(string lineItemId)
         {
             _items.RemoveAll(p => p.LineItemId == lineItemId);
@@ -53,6 +56,29 @@ namespace Neemo.ShoppingCart
             if (item == null)
                 return;
             item.UpdateQuantity(quantity);
+        }
+
+        public void SetShippingCost(ShippingCost shipping)
+        {
+            this.ShippingCost = shipping;
+        }
+
+        public TaxCost CalculateTax()
+        {
+            var taxCalculator = new GstTaxCalculator();
+            return taxCalculator.CalculateTax(CalculateItemTotal() + ShippingCost);
+        }
+
+        /// <summary>
+        /// Returns the sub total for the entire order including tax and shipping
+        /// </summary>
+        /// <returns></returns>
+        public decimal CalculateSubTotal()
+        {
+            // Add all the product items
+            // Add the taxes
+            // Add the shipping
+            return CalculateItemTotal() + CalculateTax().TaxAmount + ShippingCost;
         }
     }
 }

@@ -43,7 +43,7 @@ neemo.svc = (function ($, urls) {
                 });
         },
         calculateEstimate : function(country, postcode, onComplete) {
-            call(urls.calculateEstimate, { country: country, postcode: postcode }).done(function(response) {
+            call(urls.calculateShippingEstimate, { country: country, postcode: postcode }).done(function(response) {
                 onComplete(response);
             });
         }

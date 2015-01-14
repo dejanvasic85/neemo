@@ -23,6 +23,8 @@ namespace Neemo.Web
             config.CreateMap<Neemo.Country, Models.CountryView>();
             config.CreateMap<PersonalDetails, Models.PersonalDetailsView>();
             config.CreateMap<Membership.UserProfile, Models.CheckoutView>();
+            config.CreateMap<Tax.TaxCost, Models.TaxCostView>();
+            config.CreateMap<ShoppingCart.Cart, Models.OrderSummaryView>().ConvertUsing<Models.OrderSummaryConverter>();
         }
 
         public static void RegisterMaps(IUnityContainer container)
