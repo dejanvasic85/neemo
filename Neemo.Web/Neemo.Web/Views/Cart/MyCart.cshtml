@@ -80,7 +80,7 @@
                                                     Items Total
                                                 </td>
                                                 <td style="" class="a-right">
-                                                    <span class="price" data-bind="text: accounting.formatMoney(subTotal())"></span>
+                                                    <span class="price" data-bind="text: accounting.formatMoney(subTotalWithoutTax())"></span>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -99,7 +99,7 @@
                                                     <strong>Sub Total (ex Postage)</strong>
                                                 </td>
                                                 <td style="" class="a-right">
-                                                    <strong><span class="price" data-bind="text: accounting.formatMoney(grandTotal())"></span></strong>
+                                                    <strong><span class="price" data-bind="text: accounting.formatMoney(grandTotalWithoutTax())"></span></strong>
                                                 </td>
                                             </tr>
                                         </tfoot>
