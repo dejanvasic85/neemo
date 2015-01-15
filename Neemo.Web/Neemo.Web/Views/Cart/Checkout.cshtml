@@ -31,7 +31,7 @@
                                         <tr>
                                             <td>@item.Title</td>
                                             <td>@item.Quantity</td>
-                                            <td>@item.Price.ToString("C")</td>
+                                            <td>@item.PriceWithoutTax.ToString("C")</td>
                                         </tr>
                                     }
                                     
@@ -56,7 +56,7 @@
                                     @*Total*@
                                     <tr class="info">
                                         <td colspan="2" style="text-align:right;"><strong>Grand Total</strong></td>
-                                        <td><strong>@Model.OrderSummary.SubTotal.ToString("C")</strong></td>
+                                        <td><strong>@Model.OrderSummary.GrandTotal.ToString("C")</strong></td>
                                     </tr>
 
                                 </tbody>

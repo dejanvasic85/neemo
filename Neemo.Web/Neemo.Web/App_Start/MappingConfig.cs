@@ -13,7 +13,7 @@ namespace Neemo.Web
             }
 
             var config = (AutoMapper.IConfiguration)mapper;
-            
+
             // To view model
             config.CreateMap<Store.Product, Models.ProductSummaryView>()
                 .ForMember(member => member.OutOfStock, options => options.ResolveUsing(t => t.IsOutOfStock()));

@@ -1,8 +1,8 @@
-﻿using System;
-
-namespace Neemo.Store
+﻿namespace Neemo.Store
 {
+    using System;
     using ShoppingCart;
+    using Tax;
 
     public class ProductCartItem : ICartItem
     {
@@ -15,9 +15,14 @@ namespace Neemo.Store
         public string ImageId { get; private set; }
         public decimal Price { get; private set; }
 
+        public decimal PriceWithoutTax
+        {
+            get { return Price - CalculateTaxPerItem(); }
+        }
+
         public ProductCartItem(Product product, int quantity)
         {
-            if(product==null)
+            if (product == null)
                 throw new CartException("Product cannot be null when adding to the shopping cart");
 
             if (quantity <= 0)
@@ -33,10 +38,25 @@ namespace Neemo.Store
             _product = product;
         }
 
-        public decimal CalculatePrice()
+        public TaxCost CalculateTaxPerItem()
         {
-            // Consider discounts later
+            var taxService = new GstTaxCalculator(new SysConfig());
+            return taxService.CalculateForAmountIncludingTax(this.Price);
+        }
+
+        public decimal CalculateSubTotal()
+        {
             return _product.Price * Quantity;
+        }
+
+        public decimal CalculateSubTotalWithoutTax()
+        {
+            return PriceWithoutTax * Quantity;
+        }
+
+        public TaxCost CalculateTotalTax()
+        {
+            return CalculateTaxPerItem() * Quantity;
         }
 
         public void UpdateQuantity(int qty)

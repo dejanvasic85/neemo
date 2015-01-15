@@ -14,12 +14,11 @@ namespace Neemo.Web.Models
 
             return new OrderSummaryView
             {
-                SubTotal = cart.CalculateSubTotal(),
-                ItemTotal = cart.CalculateItemTotal(),
+                GrandTotal = cart.CalculateGrandTotal(),
+                ItemTotal = cart.CalculateSubTotalWithoutTax(),
                 CartItems = cart.GetItems().OfType<ProductCartItem>().Select(Mapper.Map<ProductCartItem, CartItemView>).ToList(),
                 ShippingCost = Mapper.Map<ShippingCost, ShippingCostView>(cart.ShippingCost),
-                // todo Tax = Mapper.Map<Tax.TaxCost, TaxCostView>(cart.CalculateTax())
-                Tax = new TaxCostView { TaxType = "GST", TaxAmount = 0}
+                Tax = Mapper.Map<Tax.TaxCost, TaxCostView>(cart.CalculateTotalTax())
             };
         }
     }

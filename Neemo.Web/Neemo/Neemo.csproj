@@ -61,6 +61,8 @@
     <Compile Include="Shipping\ShippingType.cs" />
     <Compile Include="ShoppingCart\CartException.cs" />
     <Compile Include="Tax\TaxCost.cs" />
+    <Compile Include="Tax\TaxCostExtensions.cs" />
+    <Compile Include="Tax\TaxNotTheSameException.cs" />
     <Compile Include="Tax\TaxType.cs" />
     <Compile Include="Tax\ITaxCalculator.cs" />
     <Compile Include="Tax\GstTaxCalculator.cs" />

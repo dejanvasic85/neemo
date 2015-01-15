@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Neemo.Shipping;
+using Neemo.Tax;
 
 namespace Neemo.ShoppingCart
 {
@@ -39,6 +40,9 @@ namespace Neemo.ShoppingCart
             return _items.ToArray();
         }
 
+        /// <summary>
+        /// Gets the number of items ordered by excluding the particular line item
+        /// </summary>
         public int? GetTotalQuantityForProduct(int id, string excludeLineItemId)
         {
             return _items.Where(i => i.LineItemId != excludeLineItemId).Sum(i => i.Quantity);
@@ -76,23 +80,28 @@ namespace Neemo.ShoppingCart
         {
             this.ShippingDetails = shippingDetails;
         }
-        
+
         /// <summary>
-        /// Returns the sum of all items excluding shipping and tax
+        /// Returns the total tax for all items (including quantity)
         /// </summary>
-        public decimal CalculateItemTotal()
+        public TaxCost CalculateTotalTax()
         {
-            return this._items.Sum(i => i.CalculatePrice());
+            return this._items.Select(t => t.CalculateTotalTax()).TaxCostSum();
+        }
+
+        public decimal CalculateSubTotalWithoutTax()
+        {
+            return this._items.Sum(i => i.CalculateSubTotalWithoutTax());
         }
 
         /// <summary>
         /// Returns the sub total for the entire order including tax and shipping
         /// </summary>
-        public decimal CalculateSubTotal()
+        public decimal CalculateGrandTotal()
         {
             // Add all the product items (taxes included)
             // Add the shipping
-            return CalculateItemTotal() + ShippingCost;
+            return _items.Sum(i => i.CalculateSubTotal()) + ShippingCost;
         }
     }
 }

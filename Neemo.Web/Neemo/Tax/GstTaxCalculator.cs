@@ -12,12 +12,19 @@
             _config = config;
         }
 
-        public TaxCost CalculateTax(decimal amount)
+        public TaxCost CalculateForAmountExcludingTax(decimal beforeTaxAmount)
         {
-            var taxAmount = amount*_config.Gst;
-            var amountAfterTax = amount + taxAmount;
+            var taxAmount = beforeTaxAmount * _config.Gst;
+            var amountAfterTax = beforeTaxAmount + taxAmount;
 
-            return new TaxCost(amount, taxAmount, amountAfterTax, TaxType.GST);
+            return new TaxCost(beforeTaxAmount, taxAmount, amountAfterTax, TaxType.GST);
+        }
+
+        public TaxCost CalculateForAmountIncludingTax(decimal afterTaxAmount)
+        {
+            var beforeTaxAmount = (1 - _config.Gst) * afterTaxAmount;
+            var taxAmount = afterTaxAmount - beforeTaxAmount;
+            return new TaxCost(beforeTaxAmount, taxAmount, afterTaxAmount, TaxType.GST);
         }
     }
 }

@@ -8,6 +8,8 @@ namespace Neemo.Web.Models
         public ShippingCostView ShippingCost { get; set; }
         public TaxCostView Tax { get; set; }
         public decimal ItemTotal { get; set; }
-        public decimal SubTotal { get; set; }
+        public decimal ItemTotalWithoutTax { get; set; }
+        public decimal GrandTotal { get; set; }
+        public decimal SubTotalWithoutTax { get; set; }
     }
 }
