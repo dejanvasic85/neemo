@@ -14,12 +14,12 @@ namespace Neemo.Web
 
             
             // Register all repository classes automatically 
-            const string carPartsDataLayerName = "Neemo.CarParts.EntityFramework";
+            const string carPartsAssemblyName = "Neemo.CarParts.EntityFramework";
             
             container.RegisterTypes(
                 AllClasses.FromAssemblies(new[]
                 {
-                    Assembly.Load(carPartsDataLayerName)
+                    Assembly.Load(carPartsAssemblyName)
                 }),
                 WithMappings.FromMatchingInterface,
                 WithName.Default);
@@ -51,9 +51,9 @@ namespace Neemo.Web
 
             // Register all the assemblies that use the IMapping Config
             container.RegisterType<IMappingConfig, MappingConfig>("WebConfig");
-            container.RegisterTypes(new RegisterMappersConvention(carPartsDataLayerName));
-
-
+            container.RegisterTypes(new RegisterMappersConvention(carPartsAssemblyName, "Neemo.Payments.PayPal"));
+            
+            // Set the MVC dependency resolver to use Unity!
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
             
             return container;

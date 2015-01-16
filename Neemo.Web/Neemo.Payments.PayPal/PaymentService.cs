@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using PayPal.Api.Payments;
-
-namespace Neemo.Payments.pp
+﻿namespace Neemo.Payments.pp
 {
     using ShoppingCart;
 

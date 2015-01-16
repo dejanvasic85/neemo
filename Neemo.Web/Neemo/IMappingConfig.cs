@@ -5,6 +5,6 @@
     /// </summary>
     public interface IMappingConfig
     {
-        void RegisterConfigs<TMapper>(TMapper mapper);
+        void RegisterMapping<TMapper>(TMapper mapper);
     }
 }

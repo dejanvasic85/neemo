@@ -5,7 +5,7 @@ namespace Neemo.CarParts.EntityFramework
 {
     public class EntityFrameworkMappingConfig : IMappingConfig
     {
-        public void RegisterConfigs<TMapper>(TMapper mapper) 
+        public void RegisterMapping<TMapper>(TMapper mapper) 
         {
             if (typeof (TMapper) != typeof (AutoMapper.IConfiguration))
             {

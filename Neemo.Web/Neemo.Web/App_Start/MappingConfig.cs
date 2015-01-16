@@ -5,7 +5,7 @@ namespace Neemo.Web
 {
     public class MappingConfig : IMappingConfig
     {
-        public void RegisterConfigs<TMapper>(TMapper mapper)
+        public void RegisterMapping<TMapper>(TMapper mapper)
         {
             if (typeof(TMapper) != typeof(AutoMapper.IConfiguration))
             {
@@ -34,7 +34,7 @@ namespace Neemo.Web
         public static void RegisterMaps(IUnityContainer container)
         {
             container.ResolveAll<IMappingConfig>()
-                .ForEach(mapper => mapper.RegisterConfigs(AutoMapper.Mapper.Configuration));
+                .ForEach(mapper => mapper.RegisterMapping(AutoMapper.Mapper.Configuration));
         }
     }
 }
