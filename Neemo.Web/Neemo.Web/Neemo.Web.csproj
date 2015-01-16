@@ -229,6 +229,7 @@
     <Content Include="Content\magento\css3.htc" />
     <Content Include="Content\magento\fish_menu.css" />
     <Content Include="Content\magento\font-awesome-4.2.0.css" />
+    <Content Include="Content\magento\font\glyphicons-halflings-regular.svg" />
     <Content Include="Content\magento\font\glyphicons-halflings-white.png" />
     <Content Include="Content\magento\font\glyphicons-halflings.png" />
     <Content Include="Content\magento\images\ajax-loader.gif" />
@@ -571,6 +572,10 @@
     <Content Include="packages.config" />
     <Content Include="Content\magento\font\Metrophobic.eot" />
     <Content Include="Content\magento\font\Metrophobic.ttf" />
+    <Content Include="Content\magento\font\fontawesome-webfont.woff" />
+    <Content Include="Content\magento\font\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\magento\font\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\magento\font\glyphicons-halflings-regular.woff" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Shared\DisplayTemplates\ProductSummaryView.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />

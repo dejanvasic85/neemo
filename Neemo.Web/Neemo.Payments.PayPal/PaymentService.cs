@@ -1,4 +1,5 @@
-﻿namespace Neemo.Payments.PayPal
+﻿
+namespace Neemo.Payments.PayPal
 {
     using ShoppingCart;
 
