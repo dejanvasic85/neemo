@@ -34,8 +34,8 @@ namespace Neemo.Web
                 WithMappings.FromMatchingInterface,
                 WithName.Default);
 
-            // Register the PayPal payment service
-            container.RegisterType<Payments.IPaymentService, Payments.PayPal.PaymentService>();
+            // Register the PayPal payment service ( later we may have a few more :)
+            container.RegisterType<Payments.IPaymentService, Payments.pp.PaymentService>();
 
 
             // FileStore image service requires http utility to initialise
