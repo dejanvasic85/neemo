@@ -101,10 +101,10 @@ namespace Neemo.Payments.pp
             return PaymentResponse.Completed(approvalUrl.href, myResponse.id);
         }
 
-        public void CompletePayment(string payReference, string payerId)
+        public void CompletePayment(string paymentTransactionId, string payerId)
         {
             var apiContext = ApiContextFactory.Create();
-            var payment = new Payment { id = payReference };
+            var payment = new Payment { id = paymentTransactionId };
             var paymentExecution = new PaymentExecution { payer_id = payerId };
 
 

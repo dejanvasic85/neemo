@@ -139,7 +139,7 @@
 
             // Set the billing details
             shoppingCart.SetBillingDetails(Mapper.Map<PersonalDetailsView, PersonalDetails>(billingDetailsView));
-            
+
             // Todo - Process the payment
             var paymentResponse = _paymentService.ProcessPaymentForCart(shoppingCart,
                 Url.ActionAbsolute("CancelPayment", "Cart"),
@@ -147,11 +147,11 @@
 
             return Redirect(paymentResponse.PaymentUrl);
         }
-        
+
         public ActionResult AuthorisePayment(string payerId)
         {
             var shoppingCart = _cartContext.Current();
-            _paymentService.CompletePayment(payerId, shoppingCart.PaymentTransactionId);
+            _paymentService.CompletePayment(shoppingCart.PaymentTransactionId, payerId);
 
             return RedirectToAction("SuccessPayment");
         }
@@ -174,27 +174,27 @@
             // Validate stock levels
             var isInStock = _productService.IsInStock(productId);
             if (!isInStock)
-                return Json(new {NotAvailable = true});
+                return Json(new { NotAvailable = true });
 
             var cart = _cartContext.Current();
 
             var isRequestedQuantityTooLarge =
                 !_productService.IsAvailable(productId, qty, cart.GetTotalQuantityForProduct(productId, string.Empty));
             if (isRequestedQuantityTooLarge)
-                return Json(new {QuantityTooLarge = true});
+                return Json(new { QuantityTooLarge = true });
 
             // All good - proceed to add to the cart
             var productCartItem = new ProductCartItem(_productService.GetProductById(productId), qty);
             cart.AddItem(productCartItem);
 
-            return Json(new {Added = true, Item = productCartItem});
+            return Json(new { Added = true, Item = productCartItem });
         }
 
         [HttpPost]
         public ActionResult RemoveProduct(string lineItemId)
         {
             _cartContext.Current().RemoveItem(lineItemId);
-            return Json(new {Removed = true});
+            return Json(new { Removed = true });
         }
 
         [HttpGet]
@@ -218,10 +218,10 @@
                 !_productService.IsAvailable(productId, newQuantity,
                     cart.GetTotalQuantityForProduct(productId, lineItemId));
             if (isRequestedQuantityTooLarge)
-                return Json(new {QuantityTooLarge = true});
+                return Json(new { QuantityTooLarge = true });
 
             cart.UpdateQuantity(lineItemId, newQuantity);
-            return Json(new {Updated = true});
+            return Json(new { Updated = true });
         }
 
         [HttpPost]
