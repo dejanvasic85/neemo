@@ -131,7 +131,7 @@
             {
                 var checkoutView = new CheckoutView
                 {
-                    OrderSummary = Mapper.Map<ShoppingCart.Cart, OrderSummaryView>(shoppingCart),
+                    OrderSummary = Mapper.Map<Cart, OrderSummaryView>(shoppingCart),
                     BillingDetails = billingDetailsView
                 };
                 return View(checkoutView);
@@ -139,13 +139,13 @@
 
             // Set the billing details
             shoppingCart.SetBillingDetails(Mapper.Map<PersonalDetailsView, PersonalDetails>(billingDetailsView));
-
+            
             // Todo - Process the payment
-            _paymentService.ProcessPaymentForCart(shoppingCart, 
-                Url.ActionAbsolute("Cancel", "Cart"),
+            var paymentResponse = _paymentService.ProcessPaymentForCart(shoppingCart,
+                Url.ActionAbsolute("CancelPayment", "Cart"),
                 Url.ActionAbsolute("AuthorisePayment", "Cart"));
 
-            return View(new CheckoutView());
+            return Redirect(paymentResponse.PaymentUrl);
         }
         
         public ActionResult AuthorisePayment(string payerId)

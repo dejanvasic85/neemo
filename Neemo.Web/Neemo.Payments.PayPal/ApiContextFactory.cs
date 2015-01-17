@@ -1,4 +1,5 @@
 ﻿using PayPal;
+using PayPal.Manager;
 
 namespace Neemo.Payments.pp
 {
@@ -6,7 +7,7 @@ namespace Neemo.Payments.pp
     {
         public static APIContext Create()
         {
-            var config = PayPal.Manager.ConfigManager.Instance.GetProperties();
+            var config = ConfigManager.Instance.GetProperties();
 
             var credentials = new OAuthTokenCredential(
                 config[BaseConstants.ClientId],
@@ -21,7 +22,7 @@ namespace Neemo.Payments.pp
             // a request id if you do not pass one explicitly. 
             var apiContext = new APIContext(credentials.GetAccessToken())
             {
-                Config = PayPal.Manager.ConfigManager.Instance.GetProperties()
+                Config = config
             };
 
             // Use this variant if you want to pass in a request id  

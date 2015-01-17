@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Country.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
+    <Compile Include="Extensions\SystemExtensions.cs" />
     <Compile Include="IMappingConfig.cs" />
     <Compile Include="ISysConfig.cs" />
     <Compile Include="Images\IImageService.cs" />

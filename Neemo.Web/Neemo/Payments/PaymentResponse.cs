@@ -2,15 +2,18 @@
 {
     public class PaymentResponse
     {
-        public PaymentResponse(PaymentStatus status, string transactionId, object paymentDetails = null)
+        public static PaymentResponse Failed()
         {
-            Status = status;
-            TransactionId = transactionId;
-            PaymentDetails = paymentDetails;
+            return new PaymentResponse { Status = PaymentStatus.Failed };
         }
 
-        public PaymentStatus Status { get; set; }
-        public string TransactionId { get; set; }
-        public object PaymentDetails { get; set; }
+        public static PaymentResponse Completed(string paymentUrl, string transactionId)
+        {
+            return new PaymentResponse { Status = PaymentStatus.Complete, PaymentUrl = paymentUrl, TransactionId = transactionId};
+        }
+
+        public PaymentStatus Status { get; private set; }
+        public string TransactionId { get; private set; }
+        public string PaymentUrl { get; private set; }
     }
 }

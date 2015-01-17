@@ -18,7 +18,7 @@ namespace Neemo.Payments.pp
                 items = cart.GetItems().OfType<ProductCartItem>().Select(li => new Item
                 {
                     name = li.Title,
-                    price = li.Price.ToString("N"),
+                    price = li.PriceWithoutTax.ToString("N"),
                     currency = "AUD",
                     quantity = li.Quantity.ToString(),
                     sku = li.LineItemId
@@ -89,17 +89,16 @@ namespace Neemo.Payments.pp
 
             if (myResponse == null || myResponse.links == null)
             {
-                return new PaymentResponse(PaymentStatus.Complete, string.Empty);
+                return PaymentResponse.Failed();
             }
 
             var approvalUrl = myResponse.links.FirstOrDefault(lnk => lnk.rel.Equals("approval_url", StringComparison.OrdinalIgnoreCase));
             if (approvalUrl == null)
-                return new PaymentResponse(PaymentStatus.Failed, string.Empty);
+                return PaymentResponse.Failed();
 
             cart.SetPaymentTransaction(myResponse.id);
 
-            return new PaymentResponse(PaymentStatus.Complete, myResponse.id, new {ApprovalUrl = approvalUrl.href});
-
+            return PaymentResponse.Completed(approvalUrl.href, myResponse.id);
         }
 
         public void CompletePayment(string payReference, string payerId)
