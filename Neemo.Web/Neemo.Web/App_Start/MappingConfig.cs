@@ -18,7 +18,8 @@ namespace Neemo.Web
             config.CreateMap<Store.Product, Models.ProductSummaryView>()
                 .ForMember(member => member.OutOfStock, options => options.ResolveUsing(t => t.IsOutOfStock()));
             config.CreateMap<Store.Product, Models.ProductDetailView>();
-            config.CreateMap<Store.ProductCartItem, Models.CartItemView>();
+            config.CreateMap<Store.ProductCartItem, Models.CartItemView>()
+                .ForMember(member => member.ItemSubTotal, options => options.MapFrom(source => source.CalculateSubTotalWithoutTax()));
             config.CreateMap<Store.Category, Models.CategoryView>();
             config.CreateMap<Shipping.ShippingCost, Models.ShippingCostView>();
             config.CreateMap<Neemo.Country, Models.CountryView>();

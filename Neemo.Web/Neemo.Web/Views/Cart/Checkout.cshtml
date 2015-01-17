@@ -21,8 +21,8 @@
                                 <thead>
                                     <tr>
                                         <th>Item</th>
-                                        <th>Quantity</th>
                                         <th>Price</th>
+                                        <th>Quantity</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -30,26 +30,27 @@
                                     {
                                         <tr>
                                             <td>@item.Title</td>
-                                            <td>@item.Quantity</td>
                                             <td>@item.PriceWithoutTax.ToString("C")</td>
+                                            <td>@item.Quantity</td>
+                                            <td>@item.ItemSubTotal.ToString("C")</td>
                                         </tr>
                                     }
                                     
                                     @*Sub Total*@
                                     <tr>
-                                        <td colspan="2" style="text-align:right;"> <strong>Sub Total</strong></td>
+                                        <td colspan="3" style="text-align:right;"> <strong>Sub Total</strong></td>
                                         <td>@Model.OrderSummary.ItemTotal.ToString("C")</td>
                                     </tr>
 
                                     @*Tax*@
                                     <tr>
-                                        <td colspan="2" style="text-align:right;"> <strong>Tax</strong> : @Model.OrderSummary.Tax.TaxType</td>
+                                        <td colspan="3" style="text-align:right;"> <strong>Tax</strong> : @Model.OrderSummary.Tax.TaxType</td>
                                         <td>@Model.OrderSummary.Tax.TaxAmount.ToString("C")</td>
                                     </tr>
 
                                     @*Postage*@
                                     <tr>
-                                        <td colspan="2" style="text-align:right;"> <strong>Post</strong>: @Model.OrderSummary.ShippingCost.ShippingType</td>
+                                        <td colspan="3" style="text-align:right;"> <strong>Post</strong>: @Model.OrderSummary.ShippingCost.ShippingType</td>
                                         <td>@Model.OrderSummary.ShippingCost.Cost.ToString("C")</td>
                                     </tr>
                                     

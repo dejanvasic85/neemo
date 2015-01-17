@@ -18,7 +18,7 @@ namespace Neemo.Web.Models
                 ItemTotal = cart.CalculateSubTotalWithoutTax(),
                 CartItems = cart.GetItems().OfType<ProductCartItem>().Select(Mapper.Map<ProductCartItem, CartItemView>).ToList(),
                 ShippingCost = Mapper.Map<ShippingCost, ShippingCostView>(cart.ShippingCost),
-                Tax = Mapper.Map<Tax.TaxCost, TaxCostView>(cart.CalculateTotalTax())
+                Tax = Mapper.Map<Tax.TaxCost, TaxCostView>(cart.CalculateTotalTax()),
             };
         }
     }

@@ -9,5 +9,6 @@
         public decimal Price { get; set; }
         public int Quantity { get; set; }
         public decimal PriceWithoutTax { get; set; }
+        public decimal ItemSubTotal { get; set; }
     }
 }
