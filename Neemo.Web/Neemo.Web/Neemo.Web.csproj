@@ -602,8 +602,9 @@
     <Content Include="Views\Shared\Partial\_SearchResults.cshtml" />
     <Content Include="Views\EmailTemplates\ForgotPassword.cshtml" />
     <Content Include="Views\Shared\Partial\_PersonalDetailsEditor.cshtml" />
-    <Content Include="Views\Cart\CancelPayment.cshtml" />
-    <Content Include="Views\Cart\SuccessPayment.cshtml" />
+    <Content Include="Views\Cart\Cancel.cshtml" />
+    <Content Include="Views\Cart\Done.cshtml" />
+    <Content Include="Views\Invoice\_Invoice.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Neemo.CartParts.EntityFramework\Neemo.CarParts.EntityFramework.csproj">

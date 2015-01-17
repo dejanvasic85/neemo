@@ -141,8 +141,8 @@
 
             // Todo - Process the payment
             var paymentResponse = _paymentService.ProcessPaymentForCart(shoppingCart,
-                Url.ActionAbsolute("CancelPayment", "Cart"),
-                Url.ActionAbsolute("AuthorisePayment", "Cart"));
+                cancelUrl: Url.ActionAbsolute("Cancel", "Cart"),
+                returnUrl: Url.ActionAbsolute("Done", "Cart"));
 
             return Redirect(paymentResponse.PaymentUrl);
         }
@@ -152,15 +152,15 @@
             var shoppingCart = _cartContext.Current();
             _paymentService.CompletePayment(shoppingCart.PaymentTransactionId, payerId);
 
-            return RedirectToAction("SuccessPayment");
+            return RedirectToAction("Done");
         }
 
-        public ActionResult CancelPayment()
+        public ActionResult Cancel()
         {
             return View();
         }
 
-        public ActionResult SuccessPayment()
+        public ActionResult Done()
         {
             _cartContext.Clear();
 
