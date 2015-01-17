@@ -21,7 +21,7 @@ namespace Neemo.Payments.pp
                     price = li.PriceWithoutTax.ToString("N"),
                     currency = "AUD",
                     quantity = li.Quantity.ToString(),
-                    sku = li.LineItemId
+                    sku = li.Id.ToString()
                 }).ToList()
             };
 

@@ -8,7 +8,6 @@
     using Shipping;
     using ShoppingCart;
     using Store;
-    using System;
     using System.Linq;
     using System.Web.Mvc;
 
@@ -163,6 +162,8 @@
 
         public ActionResult SuccessPayment()
         {
+            _cartContext.Clear();
+
             return View();
         }
 

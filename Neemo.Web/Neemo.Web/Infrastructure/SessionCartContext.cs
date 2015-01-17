@@ -39,5 +39,10 @@
             }
             set { HttpContext.Current.Session["guest"] = value; }
         }
+
+        public void Clear()
+        {
+            HttpContext.Current.Session[Key] = null;
+        }
     }
 }
