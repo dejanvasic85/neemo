@@ -86,7 +86,7 @@ namespace Neemo.Web.Infrastructure
             return urlHelper.Action("MyCart", "Cart");
         }
 
-        private static string ActionAbsolute(this UrlHelper urlHelper, string actionName, string controllerName, object routeValues = null)
+        public static string ActionAbsolute(this UrlHelper urlHelper, string actionName, string controllerName, object routeValues = null)
         {
             string scheme = urlHelper.RequestContext.HttpContext.Request.Url.Scheme;
 

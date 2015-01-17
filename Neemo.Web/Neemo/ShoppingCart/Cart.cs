@@ -13,6 +13,7 @@ namespace Neemo.ShoppingCart
         public ShippingCost ShippingCost { get; private set; }
         public PersonalDetails ShippingDetails { get; private set; }
         public PersonalDetails BillingDetails { get; private set; }
+        public string PaymentTransactionId { get; private set; }
 
         public Cart()
         {
@@ -102,6 +103,11 @@ namespace Neemo.ShoppingCart
             // Add all the product items (taxes included)
             // Add the shipping
             return _items.Sum(i => i.CalculateSubTotal()) + ShippingCost;
+        }
+
+        public void SetPaymentTransaction(string id)
+        {
+            this.PaymentTransactionId = id;
         }
     }
 }

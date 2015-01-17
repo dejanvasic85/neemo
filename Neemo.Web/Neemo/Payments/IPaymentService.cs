@@ -2,6 +2,7 @@
 {
     public interface IPaymentService
     {
-        PaymentResponse ProcessPaymentForCart(ShoppingCart.Cart cart);
+        PaymentResponse ProcessPaymentForCart(ShoppingCart.Cart cart, string cancelUrl, string returnUrl);
+        void CompletePayment(string payerId, string paymentTransactionId);
     }
 }

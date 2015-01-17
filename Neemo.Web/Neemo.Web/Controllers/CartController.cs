@@ -8,6 +8,7 @@
     using Shipping;
     using ShoppingCart;
     using Store;
+    using System;
     using System.Linq;
     using System.Web.Mvc;
 
@@ -19,7 +20,11 @@
         private readonly IProfileService _profileService;
         private readonly IPaymentService _paymentService;
 
-        public CartController(ICartContext cartContext, IProductService productService, IShippingCalculatorService shippingService, IProfileService profileService, IPaymentService paymentService)
+        public CartController(ICartContext cartContext,
+            IProductService productService,
+            IShippingCalculatorService shippingService,
+            IProfileService profileService,
+            IPaymentService paymentService)
         {
             _cartContext = cartContext;
             _productService = productService;
@@ -33,13 +38,16 @@
             if (!_cartContext.CheckoutAsGuest && !Request.IsAuthenticated)
             {
                 return RedirectToAction("Login", "Account");
-            } 
+            }
 
-            var userShippingDetails = Request.IsAuthenticated 
-                ? Mapper.Map<PersonalDetails, PersonalDetailsView>(_profileService.GetProfile(User.Identity.Name).ShippingDetails)
+            var userShippingDetails = Request.IsAuthenticated
+                ? Mapper.Map<PersonalDetails, PersonalDetailsView>(
+                    _profileService.GetProfile(User.Identity.Name).ShippingDetails)
                 : new PersonalDetailsView();
 
-            var shippingOptions = _shippingService.Calculate(_cartContext.Current(), userShippingDetails.Postcode).Select(Mapper.Map<Shipping.ShippingCost, Models.ShippingCostView>);
+            var shippingOptions =
+                _shippingService.Calculate(_cartContext.Current(), userShippingDetails.Postcode)
+                    .Select(Mapper.Map<Shipping.ShippingCost, Models.ShippingCostView>);
 
             return View(new MyCartView
             {
@@ -61,9 +69,12 @@
             {
                 return View(new MyCartView
                 {
-                    ShippingDetails = shippingDetailsView, 
+                    ShippingDetails = shippingDetailsView,
                     ShippingType = shippingType,
-                    ShippingOptions = _shippingService.Calculate(_cartContext.Current(), shippingDetailsView.Postcode).Select(Mapper.Map<Shipping.ShippingCost, Models.ShippingCostView>).ToList()
+                    ShippingOptions =
+                        _shippingService.Calculate(_cartContext.Current(), shippingDetailsView.Postcode)
+                            .Select(Mapper.Map<Shipping.ShippingCost, Models.ShippingCostView>)
+                            .ToList()
                 });
             }
 
@@ -99,7 +110,8 @@
             else
             {
                 // Map the shipping details from the shopping cart for the guest user
-                viewModel.ShippingDetails = Mapper.Map<PersonalDetails, PersonalDetailsView>(shoppingCart.ShippingDetails);
+                viewModel.ShippingDetails =
+                    Mapper.Map<PersonalDetails, PersonalDetailsView>(shoppingCart.ShippingDetails);
             }
 
             // Map the shipping details to billing details ( for those that are not set already )
@@ -124,15 +136,37 @@
                 };
                 return View(checkoutView);
             }
-            
+
             // Set the billing details
             shoppingCart.SetBillingDetails(Mapper.Map<PersonalDetailsView, PersonalDetails>(billingDetailsView));
 
             // Todo - Process the payment
-            // _paymentService.ProcessPaymentForCart(shoppingCart);
+            _paymentService.ProcessPaymentForCart(shoppingCart, 
+                Url.ActionAbsolute("Cancel", "Cart"),
+                Url.ActionAbsolute("AuthorisePayment", "Cart"));
 
             return View(new CheckoutView());
         }
+        
+        public ActionResult AuthorisePayment(string payerId)
+        {
+            var shoppingCart = _cartContext.Current();
+            _paymentService.CompletePayment(payerId, shoppingCart.PaymentTransactionId);
+
+            return RedirectToAction("SuccessPayment");
+        }
+
+        public ActionResult CancelPayment()
+        {
+            return View();
+        }
+
+        public ActionResult SuccessPayment()
+        {
+            return View();
+        }
+
+        #region json requests
 
         [HttpPost]
         public ActionResult AddProduct(int productId, int qty)
@@ -140,26 +174,27 @@
             // Validate stock levels
             var isInStock = _productService.IsInStock(productId);
             if (!isInStock)
-                return Json(new { NotAvailable = true });
+                return Json(new {NotAvailable = true});
 
             var cart = _cartContext.Current();
 
-            var isRequestedQuantityTooLarge = !_productService.IsAvailable(productId, qty, cart.GetTotalQuantityForProduct(productId, string.Empty));
+            var isRequestedQuantityTooLarge =
+                !_productService.IsAvailable(productId, qty, cart.GetTotalQuantityForProduct(productId, string.Empty));
             if (isRequestedQuantityTooLarge)
-                return Json(new { QuantityTooLarge = true });
+                return Json(new {QuantityTooLarge = true});
 
             // All good - proceed to add to the cart
             var productCartItem = new ProductCartItem(_productService.GetProductById(productId), qty);
             cart.AddItem(productCartItem);
 
-            return Json(new { Added = true, Item = productCartItem });
+            return Json(new {Added = true, Item = productCartItem});
         }
 
         [HttpPost]
         public ActionResult RemoveProduct(string lineItemId)
         {
             _cartContext.Current().RemoveItem(lineItemId);
-            return Json(new { Removed = true });
+            return Json(new {Removed = true});
         }
 
         [HttpGet]
@@ -179,12 +214,14 @@
         {
             // Verify the new quantity
             var cart = _cartContext.Current();
-            var isRequestedQuantityTooLarge = !_productService.IsAvailable(productId, newQuantity, cart.GetTotalQuantityForProduct(productId, lineItemId));
+            var isRequestedQuantityTooLarge =
+                !_productService.IsAvailable(productId, newQuantity,
+                    cart.GetTotalQuantityForProduct(productId, lineItemId));
             if (isRequestedQuantityTooLarge)
-                return Json(new { QuantityTooLarge = true });
+                return Json(new {QuantityTooLarge = true});
 
             cart.UpdateQuantity(lineItemId, newQuantity);
-            return Json(new { Updated = true });
+            return Json(new {Updated = true});
         }
 
         [HttpPost]
@@ -196,5 +233,7 @@
 
             return Json(viewModel);
         }
+
+        #endregion
     }
 }
