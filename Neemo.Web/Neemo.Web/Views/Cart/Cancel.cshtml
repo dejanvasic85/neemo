@@ -5,5 +5,20 @@
     Layout = "~/Views/Shared/_Magento.cshtml";
 }
 
-<h2>Payment cancelled</h2>
-
+<div class="ma-main-container col1-layout">
+    <div class="main">
+        <div class="col-main">
+            <div class="page-title">
+                <h2>Payment Cancelled</h2>
+            </div>
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="alert">
+                        The payment was cancelled successfully.
+                        <a href="@Url.MyCart()">Your shopping cart should still available</a>.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
