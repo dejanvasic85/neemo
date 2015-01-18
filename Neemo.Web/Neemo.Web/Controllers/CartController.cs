@@ -42,14 +42,11 @@
                 return RedirectToAction("Login", "Account");
             }
 
-            var userShippingDetails = Request.IsAuthenticated
-                ? Mapper.Map<PersonalDetails, PersonalDetailsView>(
-                    _profileService.GetProfile(User.Identity.Name).ShippingDetails)
+            var userShippingDetails = Request.IsAuthenticated 
+                ? Mapper.Map<PersonalDetails, PersonalDetailsView>(_profileService.GetProfile(User.Identity.Name).ShippingDetails)
                 : new PersonalDetailsView();
 
-            var shippingOptions =
-                _shippingService.Calculate(_cartContext.Current(), userShippingDetails.Postcode)
-                    .Select(Mapper.Map<Shipping.ShippingCost, Models.ShippingCostView>);
+            var shippingOptions = _shippingService.Calculate(_cartContext.Current(), userShippingDetails.Postcode).Select(Mapper.Map<Shipping.ShippingCost, Models.ShippingCostView>);
 
             return View(new MyCartView
             {
