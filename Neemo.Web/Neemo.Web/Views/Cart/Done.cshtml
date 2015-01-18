@@ -16,11 +16,11 @@
                 <div class="row-fluid">
                     <div class="span12">
                         <div class="pull-right">
-                            <button class="btn">Print Version</button>
+                            <a href="@Url.Invoice(Model.InvoiceNumber)" class="btn" target="_blank">Print Version</a>
                         </div>
                     </div>
                 </div>
-                @Html.Partial("~/Views/Invoice/_Invoice.cshtml")
+                @Html.Partial("~/Views/Account/_Invoice.cshtml")
             </div>
         </div>
     </div>

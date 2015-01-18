@@ -1,17 +1,17 @@
-﻿using CaptchaMvc.Attributes;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using Neemo.Notifications;
-using Neemo.ShoppingCart;
-using Neemo.Web.Infrastructure;
-using Neemo.Web.Models;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-
-namespace Neemo.Web.Controllers
+﻿namespace Neemo.Web.Controllers
 {
+    using CaptchaMvc.Attributes;
+    using Infrastructure;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.Owin;
+    using Microsoft.Owin.Security;
+    using Models;
+    using Notifications;
+    using ShoppingCart;
+    using System.Threading.Tasks;
+    using System.Web;
+    using System.Web.Mvc;
+    
     [Authorize]
     public class AccountController : MagentoController
     {
@@ -500,6 +500,13 @@ namespace Neemo.Web.Controllers
             var linkedAccounts = UserManager.GetLogins(User.Identity.GetUserId());
             ViewBag.ShowRemoveButton = HasPassword() || linkedAccounts.Count > 1;
             return (ActionResult)PartialView("_RemoveAccountPartial", linkedAccounts);
+        }
+
+        public ActionResult Invoice(string transactionId)
+        {
+            // Todo - Fetch the transaction and the invoice detail and map the invoice details
+
+            return View();
         }
 
         protected override void Dispose(bool disposing)
