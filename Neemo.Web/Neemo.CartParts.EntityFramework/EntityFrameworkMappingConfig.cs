@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using AutoMapper;
 
 namespace Neemo.CarParts.EntityFramework
@@ -30,6 +31,8 @@ namespace Neemo.CarParts.EntityFramework
                 .ForMember(m => m.IsBestSeller, options => options.MapFrom(src => src.TopSeller))
                 .ForMember(m => m.AvailableQty, options => options.MapFrom(src => src.Qty))
                 .ForMember(m => m.Features, options => options.Ignore())
+                .ForMember(m => m.IsAvailable, options => options.MapFrom(s => !s.Soldout))
+                .ForMember(m => m.Price, options => options.MapFrom(source => source.ProducePrices.First().Price))
                 ;
 
             // To Database

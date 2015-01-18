@@ -18,7 +18,7 @@ namespace Neemo.CarParts.EntityFramework.Models
         public decimal CostPrice { get; set; }
         public bool Active { get; set; }
         public Nullable<bool> onSpecial { get; set; }
-        public string Soldout { get; set; }
+        public bool Soldout { get; set; }
         public Nullable<int> Discount { get; set; }
         public string SpecialsNote { get; set; }
         public Nullable<System.DateTime> CreatedDateTime { get; set; }
@@ -30,5 +30,6 @@ namespace Neemo.CarParts.EntityFramework.Models
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
         public virtual Part Part { get; set; }
         public virtual Wreck Wreck { get; set; }
+        public virtual ICollection<ProductPrice> ProducePrices { get; set; } 
     }
 }

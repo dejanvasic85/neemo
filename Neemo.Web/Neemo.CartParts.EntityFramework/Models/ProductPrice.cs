@@ -18,5 +18,7 @@ namespace Neemo.CarParts.EntityFramework.Models
         public string DeletedByUser { get; set; }
         public Nullable<System.DateTime> EffectiveDateFrom { get; set; }
         public Nullable<System.DateTime> EffectiveDateTo { get; set; }
+
+        public Product Product { get; set; }
     }
 }

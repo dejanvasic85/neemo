@@ -9,11 +9,7 @@ namespace Neemo.CarParts.EntityFramework.Models.Mapping
         {
             // Primary Key
             this.HasKey(t => t.ProductId);
-
-            // Properties
-            this.Property(t => t.Soldout)
-                .HasMaxLength(10);
-
+            
             // Table & Column Mappings
             this.ToTable("Product");
             this.Property(t => t.ProductId).HasColumnName("ProductId");

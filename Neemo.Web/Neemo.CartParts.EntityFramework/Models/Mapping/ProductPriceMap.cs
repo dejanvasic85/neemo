@@ -35,6 +35,10 @@ namespace Neemo.CarParts.EntityFramework.Models.Mapping
             this.Property(t => t.DeletedByUser).HasColumnName("DeletedByUser");
             this.Property(t => t.EffectiveDateFrom).HasColumnName("EffectiveDateFrom");
             this.Property(t => t.EffectiveDateTo).HasColumnName("EffectiveDateTo");
+
+            this.HasRequired(t => t.Product)
+                .WithMany(t => t.ProducePrices)
+                .HasForeignKey(t => t.ProductID);
         }
     }
 }

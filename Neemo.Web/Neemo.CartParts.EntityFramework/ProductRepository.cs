@@ -23,9 +23,14 @@ namespace Neemo.CarParts.EntityFramework
         {
             using (var context = DbContextFactory.Create())
             {
-                var featuredProducts = context.Products
+                var productModels = context.Products
                     .Where(p => p.Featured == true)
                     .Include(t => t.Part)
+                    .Include(t => t.ProducePrices)
+                    .ToList();
+
+
+                var featuredProducts = productModels
                     .Select(Mapper.Map<Models.Product, Store.Product>)
                     .ToList();
 
