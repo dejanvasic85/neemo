@@ -5,16 +5,24 @@ namespace Neemo.CarParts.EntityFramework
 {
     public class EntityFrameworkMappingConfig : IMappingConfig
     {
-        public void RegisterMapping<TMapper>(TMapper mapper) 
+        public void RegisterMapping<TMapper>(TMapper mapper)
         {
-            if (typeof (TMapper) != typeof (AutoMapper.IConfiguration))
+            if (typeof(TMapper) != typeof(AutoMapper.IConfiguration))
             {
                 throw new ArgumentException("TMapper must be of type AutoMapper.Mapper");
             }
 
 
             var config = (IConfiguration)mapper;
-            
+
+
+            // From Database
+            config.CreateMap<Models.Category, Neemo.Store.Category>()
+                .ForMember(member => member.ParentId, options => options.Ignore());
+
+
+
+            // To Database
         }
     }
 }
