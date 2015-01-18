@@ -14,7 +14,7 @@ neemo.svc = (function ($, urls) {
     }
 
     return {
-        addProduct: function (productId, qty, successFnc, qtyTooLargeFnc) {
+        addProduct: function (productId, qty, successFnc, qtyTooLargeFnc, noLongerAvailableFnc) {
             call(urls.addProduct, { productId: productId, qty: qty })
                 .done(function (response) {
                     if (response.Added) {
@@ -22,6 +22,9 @@ neemo.svc = (function ($, urls) {
                     }
                     if (response.QuantityTooLarge) {
                         qtyTooLargeFnc();
+                    }
+                    if (response.NotAvailable) {
+                        noLongerAvailableFnc();
                     }
                 });
         },

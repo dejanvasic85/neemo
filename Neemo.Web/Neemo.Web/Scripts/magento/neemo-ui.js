@@ -125,6 +125,9 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
             },
             function () {
                 broadcaster.error('Not enough items in stock for your request.');
+            },
+            function() {
+                broadcaster.error('Item is no longer available.');
             });
 
         // In case this is a button we'll return false

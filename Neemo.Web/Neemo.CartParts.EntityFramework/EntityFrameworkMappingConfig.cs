@@ -33,6 +33,9 @@ namespace Neemo.CarParts.EntityFramework
                 .ForMember(m => m.Features, options => options.Ignore())
                 .ForMember(m => m.IsAvailable, options => options.MapFrom(s => !s.Soldout))
                 .ForMember(m => m.Price, options => options.MapFrom(source => source.ProducePrices.First().Price))
+                .ForMember(m => m.Title, options => options.MapFrom(source => source.Part.Part1))
+                .ForMember(m => m.QuickOverview, options => options.MapFrom(source => source.Part.ShortDescription))
+                .ForMember(m => m.Description, options => options.MapFrom(source => source.Part.Description))
                 ;
 
             // To Database
