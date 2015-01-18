@@ -17,9 +17,15 @@ namespace Neemo.Web
             // To view model
             config.CreateMap<Store.Product, Models.ProductSummaryView>()
                 .ForMember(member => member.OutOfStock, options => options.ResolveUsing(t => t.IsOutOfStock()));
+            
             config.CreateMap<Store.Product, Models.ProductDetailView>();
+            
             config.CreateMap<Store.ProductCartItem, Models.CartItemView>()
                 .ForMember(member => member.ItemSubTotal, options => options.MapFrom(source => source.CalculateSubTotalWithoutTax()));
+            
+            config.CreateMap<Store.ProductCartItem, Models.InvoiceItemView>()
+                .ForMember(member => member.ItemSubTotalWithoutTax, options => options.MapFrom(source => source.CalculateSubTotalWithoutTax()));
+
             config.CreateMap<Store.Category, Models.CategoryView>();
             config.CreateMap<Shipping.ShippingCost, Models.ShippingCostView>();
             config.CreateMap<Neemo.Country, Models.CountryView>();
@@ -27,15 +33,15 @@ namespace Neemo.Web
             config.CreateMap<Membership.UserProfile, Models.CheckoutView>();
             config.CreateMap<Tax.TaxCost, Models.TaxCostView>();
             config.CreateMap<ShoppingCart.Cart, Models.OrderSummaryView>().ConvertUsing<Models.OrderSummaryConverter>();
-
+            config.CreateMap<ShoppingCart.Cart, Models.InvoiceDetailView>().ConvertUsing<Models.CartToInvoiceConverter>();
+            
             // From view model
             config.CreateMap<Models.PersonalDetailsView, PersonalDetails>();
         }
 
         public static void RegisterMaps(IUnityContainer container)
         {
-            container.ResolveAll<IMappingConfig>()
-                .ForEach(mapper => mapper.RegisterMapping(AutoMapper.Mapper.Configuration));
+            container.ResolveAll<IMappingConfig>().ForEach(mapper => mapper.RegisterMapping(AutoMapper.Mapper.Configuration));
         }
     }
 }

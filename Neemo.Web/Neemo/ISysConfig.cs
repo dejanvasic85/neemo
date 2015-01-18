@@ -14,6 +14,8 @@ namespace Neemo
         string[] NotificationSupportEmail { get; }
 
         decimal Gst { get; }
+        string CompanyAddress { get; }
+        string CompanyPhone { get; }
     }
 
     public class SysConfig : ISysConfig
@@ -41,6 +43,16 @@ namespace Neemo
         public decimal Gst
         {
             get { return decimal.Parse(ConfigurationManager.AppSettings["Gst"]); }
+        }
+
+        public string CompanyAddress
+        {
+            get { return ConfigurationManager.AppSettings["CompanyAddress"]; }
+        }
+
+        public string CompanyPhone
+        {
+            get { return ConfigurationManager.AppSettings["CompanyPhone"]; }
         }
     }
 }

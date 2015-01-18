@@ -1,4 +1,4 @@
-﻿@model dynamic
+﻿@model InvoiceDetailView
 
 @{
     ViewBag.Title = "Payment Successful";
@@ -12,9 +12,14 @@
             <div class="page-title">
                 <h2>Payment Completed Successfully</h2>
             </div>
-            <p>View your invoice below. See a printable version?</p>
-
             <div style="padding: 20px; margin: 15px;">
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="pull-right">
+                            <button class="btn">Print Version</button>
+                        </div>
+                    </div>
+                </div>
                 @Html.Partial("~/Views/Invoice/_Invoice.cshtml")
             </div>
         </div>

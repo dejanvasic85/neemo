@@ -188,6 +188,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\MappingConfig.cs" />
+    <Compile Include="Models\Converters\CartToInvoiceConverter.cs" />
     <Compile Include="Models\Converters\OrderSummaryConverter.cs" />
     <Compile Include="App_Start\RegisterMappersConvention.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -210,6 +211,8 @@
     <Compile Include="Infrastructure\ShippingService.cs" />
     <Compile Include="Infrastructure\UrlExtensions.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\InvoiceDetailView.cs" />
+    <Compile Include="Models\InvoiceItemView.cs" />
     <Compile Include="Models\OrderSummaryView.cs" />
     <Compile Include="Models\PersonalDetailsView.cs" />
     <Compile Include="Models\CartItemView.cs" />

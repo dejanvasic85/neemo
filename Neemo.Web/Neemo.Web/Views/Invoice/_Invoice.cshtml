@@ -1,46 +1,46 @@
-﻿<div class="row">
-    <div class="span5">
-        <h1><small>Invoice #001</small></h1>
+﻿@model InvoiceDetailView
+
+<div class="row-fluid">
+    <div class="span12">
+        <h1><small>Invoice @Model.InvoiceNumber</small></h1>
     </div>
 </div>
-<div class="row">
-    <div class="span5">
+<div class="row-fluid">
+    <div class="span6">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h4>From: <a href="#">Your Name</a></h4>
+                <h4>From: <a href="#">@Model.CompanyName</a></h4>
             </div>
             <div class="panel-body">
                 <p>
-                    Address <br>
-                    details <br>
-                    more <br>
+                    A: @Model.CompanyAddress <br>
+                    P: @Model.CompanyPhone <br>
                 </p>
             </div>
         </div>
     </div>
-    <div class="span5 text-right">
+    <div class="span6 text-right">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h4>To : <a href="#">Client Name</a></h4>
+                <h4>To : <a href="#">@Model.BillingDetailsView.Firstname @Model.BillingDetailsView.Surname</a></h4>
             </div>
             <div class="panel-body">
                 <p>
-                    Address <br>
-                    details <br>
-                    more <br>
+                    A: @Model.BillingDetailsView.AddressLine1 <br>
+                    P: @Model.BillingDetailsView.PhoneNumber <br>
                 </p>
             </div>
         </div>
     </div>
 </div>
 <!-- / end client details section -->
-<div class="row">
-    <div class="span10">
-        <table class="table table-bordered">
+<div class="row-fluid">
+    <div class="span12">
+        <table class="table table-bordered table-hover">
             <thead>
                 <tr>
                     <th>
-                        <h4>Service</h4>
+                        <h4>Item</h4>
                     </th>
                     <th>
                         <h4>Quantity</h4>
@@ -54,48 +54,39 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Article</td>
-                    <td class="text-right">-</td>
-                    <td class="text-right">$200.00</td>
-                    <td class="text-right">$200.00</td>
-                </tr>
-                <tr>
-                    <td>Template Design</td>
-                    <td class="text-right">10</td>
-                    <td class="text-right">75.00</td>
-                    <td class="text-right">$750.00</td>
-                </tr>
-                <tr>
-                    <td>Development</td>
-                    <td class="text-right">5</td>
-                    <td class="text-right">50.00</td>
-                    <td class="text-right">$250.00</td>
-                </tr>
+                @foreach (var item in Model.InvoiceLineItems)
+                {
+                    <tr>
+                        <td>@item.Title</td>
+                        <td class="text-right">@item.Quantity</td>
+                        <td class="text-right">@item.PriceWithoutTax.ToString("C")</td>
+                        <td class="text-right">@item.ItemSubTotalWithoutTax.ToString("C")</td>
+                    </tr>
+                }
             </tbody>
             <tfoot>
                 <tr>
                     <td colspan="3" style="text-align: right">Sub Total</td>
-                    <td colspan="3">$1,200.00</td>
+                    <td colspan="3">@Model.SubTotal.ToString("C")</td>
                 </tr>
                 <tr>
                     <td colspan="3" style="text-align: right">Tax</td>
-                    <td colspan="3">$1,200.00</td>
+                    <td colspan="3">@Model.Tax.ToString("C")</td>
                 </tr>
                 <tr>
                     <td colspan="3" style="text-align: right">Postage / Shipping</td>
-                    <td colspan="3">$1,200.00</td>
+                    <td colspan="3">@Model.Shipping.ToString("C")</td>
                 </tr>
                 <tr>
                     <td colspan="3" style="text-align: right">Grand Total</td>
-                    <td colspan="3">$1,200.00</td>
+                    <td colspan="3">@Model.GrandTotal.ToString("C")</td>
                 </tr>
             </tfoot>
         </table>
     </div>
 </div>
-<div class="row">
-    <div class="span10">
+<div class="row-fluid">
+    <div class="span12">
         <div class="alert alert-info">
             Payment completed using PayPal
         </div>

@@ -18,18 +18,21 @@
         private readonly IShippingCalculatorService _shippingService;
         private readonly IProfileService _profileService;
         private readonly IPaymentService _paymentService;
+        private readonly ISysConfig _sysConfig;
 
         public CartController(ICartContext cartContext,
             IProductService productService,
             IShippingCalculatorService shippingService,
             IProfileService profileService,
-            IPaymentService paymentService)
+            IPaymentService paymentService, 
+            ISysConfig sysConfig)
         {
             _cartContext = cartContext;
             _productService = productService;
             _shippingService = shippingService;
             _profileService = profileService;
             _paymentService = paymentService;
+            _sysConfig = sysConfig;
         }
 
         public ActionResult MyCart()
@@ -162,9 +165,16 @@
 
         public ActionResult Done()
         {
+            // Generate the invoice view from the cart
+            var shoppingCart = _cartContext.Current();
+            var invoice = Mapper.Map<Cart, InvoiceDetailView>(shoppingCart);
+            invoice.CompanyName = _sysConfig.CompanyName;
+            invoice.CompanyAddress = _sysConfig.CompanyAddress;
+            invoice.CompanyPhone = _sysConfig.CompanyPhone;
+
             _cartContext.Clear();
 
-            return View();
+            return View(invoice);
         }
 
         #region json requests
