@@ -32,10 +32,13 @@ namespace Neemo.CarParts.EntityFramework
                 .ForMember(m => m.AvailableQty, options => options.MapFrom(src => src.Qty))
                 .ForMember(m => m.Features, options => options.Ignore())
                 .ForMember(m => m.IsAvailable, options => options.MapFrom(s => !s.Soldout))
-                .ForMember(m => m.Price, options => options.MapFrom(source => source.ProducePrices.First().Price))
-                .ForMember(m => m.Title, options => options.MapFrom(source => source.Part.Part1))
-                .ForMember(m => m.QuickOverview, options => options.MapFrom(source => source.Part.ShortDescription))
-                .ForMember(m => m.Description, options => options.MapFrom(source => source.Part.Description))
+                .ForMember(m => m.Price, options => options.MapFrom(src => src.ProducePrices.First().Price))
+                .ForMember(m => m.Title, options => options.MapFrom(src => src.Part.Part1))
+                .ForMember(m => m.QuickOverview, options => options.MapFrom(src => src.Part.ShortDescription))
+                .ForMember(m => m.Description, options => options.MapFrom(src => src.Part.Description))
+                .ForMember(m => m.Images, options => options.MapFrom(src => src.Part.PartPhotoes.Select(p => p.PhotoName).ToArray()))
+                .ForMember(m => m.ImageId, options => options.MapFrom(src => src.Part.PartPhoto.PhotoName))
+                .ForMember(m => m.CategoryId, options => options.MapFrom(src => src.Part.CategoryID))
                 ;
 
             // To Database

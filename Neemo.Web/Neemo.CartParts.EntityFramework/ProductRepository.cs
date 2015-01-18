@@ -26,6 +26,8 @@ namespace Neemo.CarParts.EntityFramework
                 var productModels = context.Products
                     .Where(p => p.Featured == true)
                     .Include(t => t.Part)
+                    .Include(t => t.Part.PartPhoto)
+                    .Include(t => t.Part.PartPhotoes)
                     .Include(t => t.ProducePrices)
                     .ToList();
 
