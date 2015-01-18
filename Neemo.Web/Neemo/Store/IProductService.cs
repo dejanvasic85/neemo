@@ -30,12 +30,12 @@ namespace Neemo.Store
 
         public List<Product> GetNewProducts()
         {
-            return _productRepository.GetProducts().Where(p => p.IsNew).ToList();
+            return _productRepository.GetNewProducts();
         }
 
         public List<Product> GetBestSellingProducts()
         {
-            return _productRepository.GetProducts().Where(p => p.IsBestSeller).ToList();
+            return _productRepository.GetBestSellingProducts();
         }
 
         public List<Product> Search(string keyword)
@@ -45,12 +45,12 @@ namespace Neemo.Store
 
         public Product GetProductById(int id)
         {
-            return _productRepository.GetProducts().FirstOrDefault(p => p.ProductId == id);
+            return _productRepository.GetProduct(id);
         }
 
         public bool IsAvailable(int productId, int desiredQuantity, int? bookedQuantity)
         {
-            var product = _productRepository.GetProducts().FirstOrDefault(p => p.ProductId == productId);
+            var product = GetProductById(productId);
             if (product == null)
                 return false;
 

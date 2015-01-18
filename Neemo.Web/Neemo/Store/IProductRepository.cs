@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Neemo.Store
 {
@@ -8,5 +7,8 @@ namespace Neemo.Store
         List<Product> GetProducts();
         List<Product> SearchProducts(string keyword);
         List<Product> GetFeaturedProducts();
+        List<Product> GetNewProducts();
+        List<Product> GetBestSellingProducts();
+        Product GetProduct(int id);
     }
 }
