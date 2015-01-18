@@ -18,9 +18,19 @@ namespace Neemo.CarParts.EntityFramework
 
             // From Database
             config.CreateMap<Models.Category, Neemo.Store.Category>()
-                .ForMember(member => member.ParentId, options => options.Ignore());
+                .ForMember(m => m.ParentId, options => options.Ignore())
+                .ForMember(m => m.CategoryId, options => options.MapFrom(src => src.CategoryID))
+                .ForMember(m => m.Title, options => options.MapFrom(src => src.Category1))
+                ;
 
-
+            config.CreateMap<Models.Product, Neemo.Store.Product>()
+                .ForMember(m => m.ProductId, options => options.MapFrom(src => src.ProductId))
+                .ForMember(m => m.IsNew, options => options.MapFrom(src => src.New))
+                .ForMember(m => m.Features, options => options.MapFrom(src => src.Featured))
+                .ForMember(m => m.IsBestSeller, options => options.MapFrom(src => src.TopSeller))
+                .ForMember(m => m.AvailableQty, options => options.MapFrom(src => src.Qty))
+                .ForMember(m => m.Features, options => options.Ignore())
+                ;
 
             // To Database
         }

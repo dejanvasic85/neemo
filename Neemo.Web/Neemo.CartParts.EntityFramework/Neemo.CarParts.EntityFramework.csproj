@@ -120,7 +120,6 @@
     <Compile Include="Models\Mapping\SeriesMap.cs" />
     <Compile Include="Models\Mapping\StateMap.cs" />
     <Compile Include="Models\Mapping\SuburbMap.cs" />
-    <Compile Include="Models\Mapping\sysdiagramMap.cs" />
     <Compile Include="Models\Mapping\TestimonialMap.cs" />
     <Compile Include="Models\Mapping\TowingMap.cs" />
     <Compile Include="Models\Mapping\TransmissionMap.cs" />
@@ -158,7 +157,6 @@
     <Compile Include="Models\Series.cs" />
     <Compile Include="Models\State.cs" />
     <Compile Include="Models\Suburb.cs" />
-    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\Testimonial.cs" />
     <Compile Include="Models\Towing.cs" />
     <Compile Include="Models\Transmission.cs" />

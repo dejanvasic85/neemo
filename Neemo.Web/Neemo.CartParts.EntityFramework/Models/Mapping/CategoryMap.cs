@@ -8,10 +8,10 @@ namespace Neemo.CarParts.EntityFramework.Models.Mapping
         public CategoryMap()
         {
             // Primary Key
-            this.HasKey(t => t.CategoryId);
+            this.HasKey(t => t.CategoryID);
 
             // Properties
-            this.Property(t => t.Title)
+            this.Property(t => t.Category1)
                 .HasMaxLength(100);
 
             this.Property(t => t.Image)
@@ -28,8 +28,8 @@ namespace Neemo.CarParts.EntityFramework.Models.Mapping
 
             // Table & Column Mappings
             this.ToTable("Category");
-            this.Property(t => t.CategoryId).HasColumnName("CategoryID");
-            this.Property(t => t.Title).HasColumnName("Category");
+            this.Property(t => t.CategoryID).HasColumnName("CategoryID");
+            this.Property(t => t.Category1).HasColumnName("Category");
             this.Property(t => t.Image).HasColumnName("Image");
             this.Property(t => t.Active).HasColumnName("Active");
             this.Property(t => t.CreatedDateTime).HasColumnName("CreatedDateTime");

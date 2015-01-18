@@ -5,7 +5,7 @@ namespace Neemo.Images
 {
     public interface IImageService
     {
-        ItemImage GetImage(string imageId);
+        ItemImage GetImage(string imageId, bool usePlaceholder);
     }   
 
     /// <summary>
@@ -20,13 +20,20 @@ namespace Neemo.Images
             _baseDirectory = baseDirectory + config.ImageDatabaseFolderName;
         }
 
-        public ItemImage GetImage(string imageId)
+        public ItemImage GetImage(string imageId, bool usePlaceholder)
         {
             // Get the file with any file extension
             var target = Directory.GetFiles(_baseDirectory, imageId + ".*").FirstOrDefault();
 
             if (target == null)
-                return null;
+            {
+                if (!usePlaceholder)
+                {
+                    return null;
+                }
+
+                target = Directory.GetFiles(_baseDirectory + "\\Placeholder", "placeholder.png", SearchOption.TopDirectoryOnly).Single();
+            }
 
             return new ItemImage
             {

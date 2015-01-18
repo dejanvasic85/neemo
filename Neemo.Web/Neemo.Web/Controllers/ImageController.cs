@@ -13,9 +13,9 @@ namespace Neemo.Web.Controllers
             _imageService = imageService;
         }
 
-        public ActionResult Download(string id)
+        public ActionResult Download(string id, bool usePlaceholder = true)
         {
-            var img = _imageService.GetImage(id);
+            var img = _imageService.GetImage(id, usePlaceholder);
 
             // Implictly cast the image and use MimeMapping to return proper content type
             return File(img, MimeMapping.GetMimeMapping(img.FileName));

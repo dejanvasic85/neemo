@@ -7,5 +7,6 @@ namespace Neemo.Store
     {
         List<Product> GetProducts();
         List<Product> SearchProducts(string keyword);
+        List<Product> GetFeaturedProducts();
     }
 }

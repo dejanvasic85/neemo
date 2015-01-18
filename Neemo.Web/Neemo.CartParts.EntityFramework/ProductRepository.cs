@@ -1,12 +1,14 @@
-﻿namespace Neemo.CarParts.EntityFramework
+﻿using System.Data.Entity;
+using System.Linq;
+using AutoMapper;
+
+namespace Neemo.CarParts.EntityFramework
 {
     using System.Collections.Generic;
     using Store;
-    
+
     public class ProductRepository : IProductRepository
     {
-        // Todo - Wire up the real backend
-
         public List<Product> GetProducts()
         {
             return ProductDatabaseList();
@@ -15,6 +17,20 @@
         public List<Product> SearchProducts(string keyword)
         {
             return ProductDatabaseList();
+        }
+
+        public List<Product> GetFeaturedProducts()
+        {
+            using (var context = DbContextFactory.Create())
+            {
+                var featuredProducts = context.Products
+                    .Where(p => p.Featured == true)
+                    .Include(t => t.Part)
+                    .Select(Mapper.Map<Models.Product, Store.Product>)
+                    .ToList();
+
+                return featuredProducts;
+            }
         }
 
         private static List<Product> ProductDatabaseList()

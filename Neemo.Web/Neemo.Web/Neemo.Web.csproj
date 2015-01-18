@@ -510,6 +510,7 @@
     <Content Include="Content\magento\widgets.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="ImageDatabase\Placeholder\placeholder.png" />
     <Content Include="Scripts\magento\accounting.js" />
     <Content Include="Scripts\magento\ajax_cart_super.js" />
     <Content Include="Scripts\magento\bootstrap-tooltip.js" />
@@ -577,7 +578,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="ImageDatabase\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

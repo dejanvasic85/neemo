@@ -10,8 +10,8 @@ namespace Neemo.CarParts.EntityFramework.Models
             this.Parts = new List<Part>();
         }
 
-        public int CategoryId { get; set; }
-        public string Title { get; set; }
+        public int CategoryID { get; set; }
+        public string Category1 { get; set; }
         public string Image { get; set; }
         public Nullable<bool> Active { get; set; }
         public Nullable<System.DateTime> CreatedDateTime { get; set; }

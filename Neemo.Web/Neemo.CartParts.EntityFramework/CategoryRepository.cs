@@ -20,7 +20,7 @@ namespace Neemo.CarParts.EntityFramework
         {
             using (var context = DbContextFactory.Create())
             {
-                var category = context.Categories.Single(p => p.CategoryId == categoryId);
+                var category = context.Categories.Single(p => p.CategoryID == categoryId);
 
                 return Mapper.Map<Models.Category, Store.Category>(category);
 

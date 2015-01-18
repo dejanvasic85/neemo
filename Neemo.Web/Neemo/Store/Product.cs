@@ -36,6 +36,7 @@ namespace Neemo.Store
 
         // PartTable -> CategoryId
         public int CategoryId { get; set; }
+
         public bool IsAvailable { get; set; } // Maps to SoldOut Column
         
         // ProductPrice -> Price (grab first one with Qty == 1)
@@ -49,7 +50,7 @@ namespace Neemo.Store
             return IsAvailable && AvailableQty == 0;
         }
 
-        // Todo - WreckTable - Get all foreign keys
+        // Todo - WreckTable - Get all foreign keys to display the Part/Wreck specific shite!
         
         // PartFeaturesTable - 
         public Dictionary<string, string> Features { get; set; }

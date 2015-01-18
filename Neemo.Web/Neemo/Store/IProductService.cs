@@ -25,12 +25,12 @@ namespace Neemo.Store
 
         public List<Product> GetFeaturedProducts()
         {
-            return _productRepository.GetProducts().Where(p => p.IsNew).ToList();
+            return _productRepository.GetFeaturedProducts();
         }
 
         public List<Product> GetNewProducts()
         {
-            return _productRepository.GetProducts().Where(p => p.IsFeatured).ToList();
+            return _productRepository.GetProducts().Where(p => p.IsNew).ToList();
         }
 
         public List<Product> GetBestSellingProducts()

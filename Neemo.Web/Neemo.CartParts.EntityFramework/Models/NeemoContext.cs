@@ -58,7 +58,6 @@ namespace Neemo.CarParts.EntityFramework.Models
         public DbSet<Series> Series { get; set; }
         public DbSet<State> States { get; set; }
         public DbSet<Suburb> Suburbs { get; set; }
-        public DbSet<sysdiagram> sysdiagrams { get; set; }
         public DbSet<Testimonial> Testimonials { get; set; }
         public DbSet<Towing> Towings { get; set; }
         public DbSet<Transmission> Transmissions { get; set; }
@@ -121,7 +120,6 @@ namespace Neemo.CarParts.EntityFramework.Models
             modelBuilder.Configurations.Add(new SeriesMap());
             modelBuilder.Configurations.Add(new StateMap());
             modelBuilder.Configurations.Add(new SuburbMap());
-            modelBuilder.Configurations.Add(new sysdiagramMap());
             modelBuilder.Configurations.Add(new TestimonialMap());
             modelBuilder.Configurations.Add(new TowingMap());
             modelBuilder.Configurations.Add(new TransmissionMap());
