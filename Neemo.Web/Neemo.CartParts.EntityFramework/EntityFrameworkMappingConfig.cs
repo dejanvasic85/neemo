@@ -27,54 +27,11 @@ namespace Neemo.CarParts.EntityFramework
         private static void MapRegistration(IConfiguration config)
         {
             // To database
-            config.CreateMap<Neemo.Membership.UserProfile, Models.Registration>()
-                .ForMember(m => m.Active, options => options.UseValue(true))
-                .ForMember(m => m.Address, options => options.MapFrom(src => src.BillingDetails.AddressLine1))
-                .ForMember(m => m.AdminUser, options => options.UseValue(false))
-                .ForMember(m => m.CarDealerShip, options => options.UseValue(false))
-                .ForMember(m => m.City, options => options.MapFrom(src => src.BillingDetails.City))
-                .ForMember(m => m.CompanyName, options => options.MapFrom(src => src.BillingDetails.Company))
-                .ForMember(m => m.CountryCode, options => options.MapFrom(src => src.BillingDetails.Country))
-                .ForMember(m => m.CreatedByUser, options => options.MapFrom(src => src.UserName))
-                .ForMember(m => m.EmailAddress, options => options.MapFrom(src => src.Email))
-                .ForMember(m => m.FirstName, options => options.MapFrom(src => src.BillingDetails.FirstName))
-                .ForMember(m => m.Image, options => options.Ignore())
-                .ForMember(m => m.Fax, options => options.Ignore())
-                .ForMember(m => m.IsSubscribedToNewsletter, options => options.MapFrom(src => src.IsSubscribedToNewsletter))
-                .ForMember(m => m.LastModifiedByUser, options => options.MapFrom(src => src.UserName))
-                .ForMember(m => m.UserPassword, options => options.MapFrom(src => src.UserPassword))
-                .ForMember(m => m.TermsAccepted, options => options.UseValue(true))
-                .ForMember(m => m.LastName, options => options.MapFrom(src => src.BillingDetails.Surname))
-                .ForMember(m => m.Mobile, options => options.MapFrom(src => src.BillingDetails.PhoneNumber))
-                .ForMember(m => m.Phone, options => options.MapFrom(src => src.BillingDetails.PhoneNumber))
-                .ForMember(m => m.PostCode, options => options.MapFrom(src => src.BillingDetails.Postcode))
-                .ForMember(m => m.OriginIP, options => options.MapFrom(src => src.RegistrationIpAddress))
-                .ForMember(m => m.Shipping_Address, options => options.MapFrom(src => src.ShippingDetails.AddressLine1))
-                .ForMember(m => m.Shipping_City, options => options.MapFrom(src => src.ShippingDetails.City))
-                .ForMember(m => m.Shipping_CompanyName, options => options.MapFrom(src => src.ShippingDetails.Company))
-                .ForMember(m => m.Shipping_CountryID, options => options.MapFrom(src => src.ShippingDetails.Country))
-                .ForMember(m => m.Shipping_EmailAddress, options => options.MapFrom(src => src.Email))
-                .ForMember(m => m.Shipping_Fax, options => options.Ignore())
-                .ForMember(m => m.Shipping_FirstName, options => options.MapFrom(src=> src.ShippingDetails.FirstName))
-                .ForMember(m => m.Shipping_LastName, options => options.MapFrom(src=> src.ShippingDetails.Surname))
-                .ForMember(m => m.Shipping_Mobile, options => options.MapFrom(src=> src.ShippingDetails.PhoneNumber))
-                .ForMember(m => m.Shipping_Phone, options => options.MapFrom(src=> src.ShippingDetails.PhoneNumber))
-                .ForMember(m => m.Shipping_PostCode, options => options.MapFrom(src=> src.ShippingDetails.Postcode))
-                .ForMember(m => m.Shipping_State, options => options.MapFrom(src=> src.ShippingDetails.State))
-                ;
-
-
+            config.CreateMap<Neemo.Membership.UserProfile, Models.Registration>().ConvertUsing<UserProfileToRegistrationConverter>();
+            
 
             // From Database
-            config.CreateMap<Models.Registration, Membership.UserProfile>()
-                .ForMember(m => m.Email, options=> options.MapFrom(src => src.EmailAddress))
-                .ForMember(m => m.UserName, options=> options.MapFrom(src => src.UserName))
-                .ForMember(m => m.IsSubscribedToNewsletter, options=> options.MapFrom(src => src.IsSubscribedToNewsletter))
-                .ForMember(m => m.RegistrationIpAddress, options=> options.MapFrom(src => src.OriginIP))
-                .ForMember(m => m.ShippingDetails, options=> options.Ignore())
-                .ForMember(m => m.BillingDetails, options=> options.Ignore())
-                .ForMember(m => m.UserPassword, options=> options.Ignore())
-                ;
+            config.CreateMap<Models.Registration, Membership.UserProfile>().ConvertUsing<RegistrationToUserProfileConverter>();
         }
 
         private static void MapProduct(IConfiguration config)

@@ -3,7 +3,8 @@
 
     public class UserProfile
     {
-        public static UserProfile NewRegistration(string username, string password, string email, bool newsletterSubscription, string registrationIpAddress)
+        public static UserProfile Create(string username, string password, string email, bool newsletterSubscription, string registrationIpAddress,
+            PersonalDetails billingDetails = null, PersonalDetails shippingDetails = null)
         {
             return new UserProfile
             {
@@ -14,10 +15,11 @@
                 IsSubscribedToNewsletter = newsletterSubscription,
 
                 // Initialise these but they will provide them later
-                BillingDetails = new PersonalDetails(),
-                ShippingDetails = new PersonalDetails()
+                BillingDetails = billingDetails,
+                ShippingDetails = shippingDetails
             };
         }
+
 
         public string Email { get; private set; }
         public PersonalDetails BillingDetails { get; private set; }
@@ -26,5 +28,6 @@
         public string UserPassword { get; private set; }
         public bool IsSubscribedToNewsletter { get; private set; }
         public string RegistrationIpAddress { get; private set; }
+
     }
 }

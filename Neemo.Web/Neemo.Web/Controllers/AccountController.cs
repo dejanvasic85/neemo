@@ -125,10 +125,12 @@ namespace Neemo.Web.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    // Create the profile for the user
+                    
                     try
                     {
-                        var userProfile = UserProfile.NewRegistration(model.Email, model.Password, model.Email,
+                        // Create the profile for the user
+                        // But no need to create the billing and shipping details
+                        var userProfile = UserProfile.Create(model.Email, model.Password, model.Email,
                             model.NewsletterSubscription, Request.UserHostAddress);
 
                         _profileService.CreateUser(userProfile);
