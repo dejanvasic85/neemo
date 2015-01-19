@@ -1,4 +1,7 @@
-﻿using Neemo.Membership;
+﻿using System;
+using System.Linq;
+using AutoMapper;
+using Neemo.Membership;
 
 namespace Neemo.CarParts.EntityFramework
 {
@@ -6,26 +9,26 @@ namespace Neemo.CarParts.EntityFramework
     {
         public UserProfile GetProfile(string email)
         {
-            return new UserProfile
+            using (var context = DbContextFactory.Create())
             {
-                BillingDetails = MockPersonalDetails(),
-                ShippingDetails = MockPersonalDetails()
-            };
+                var registration = context.Registrations.FirstOrDefault(
+                    u => u.EmailAddress.Equals(email, StringComparison.OrdinalIgnoreCase));
+
+                var user = Mapper.Map<Models.Registration, UserProfile>(registration);
+
+                return user;
+            }
         }
 
-        private PersonalDetails MockPersonalDetails()
+        public void CreateUser(UserProfile userProfile)
         {
-            return new PersonalDetails
+            using (var context = DbContextFactory.Create())
             {
-                FirstName = "Johnny",
-                Surname = "Chase",
-                IsDefault = true,
-                AddressLine1 = "1 Melbourne Street",
-                City = "Melbourne CBD",
-                Postcode = "3000",
-                PhoneNumber = "04333000333",
-                State = "VIC"
-            };
+                var registration = Mapper.Map<UserProfile, Models.Registration>(userProfile);
+
+                context.Registrations.Add(registration);
+                context.SaveChanges();
+            }
         }
     }
 }

@@ -151,10 +151,6 @@ namespace Neemo.CarParts.EntityFramework.Models.Mapping
             this.Property(t => t.EffectiveDateTo).HasColumnName("EffectiveDateTo");
             this.Property(t => t.IsSubscribedToNewsletter).HasColumnName("IsSubscribedToNewsletter");
 
-            // Relationships
-            this.HasRequired(t => t.Registration2)
-                .WithOptional(t => t.Registration1);
-
         }
     }
 }

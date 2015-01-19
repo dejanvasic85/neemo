@@ -1,4 +1,7 @@
-﻿namespace Neemo.Web.Controllers
+﻿using System;
+using Neemo.Membership;
+
+namespace Neemo.Web.Controllers
 {
     using CaptchaMvc.Attributes;
     using Infrastructure;
@@ -19,13 +22,15 @@
         private readonly INotificationService _notificationService;
         private readonly ISysConfig _config;
         private readonly ICartContext _cartContext;
+        private readonly IProfileService _profileService;
 
-        public AccountController(ITemplateService templateService, INotificationService notificationService, ISysConfig config, ICartContext cartContext)
+        public AccountController(ITemplateService templateService, INotificationService notificationService, ISysConfig config, ICartContext cartContext, IProfileService profileService)
         {
             _templateService = templateService;
             _notificationService = notificationService;
             _config = config;
             _cartContext = cartContext;
+            _profileService = profileService;
         }
 
         private ApplicationUserManager _userManager;
@@ -120,6 +125,21 @@
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    // Create the profile for the user
+                    try
+                    {
+                        var userProfile = UserProfile.NewRegistration(model.Email, model.Password, model.Email,
+                            model.NewsletterSubscription, Request.UserHostAddress);
+
+                        _profileService.CreateUser(userProfile);
+                    }
+                    catch (Exception)
+                    {
+                        UserManager.Delete(user); // Delete the user so that we don't end up with bad data
+                        throw;
+                    }
+
+
                     await SignInAsync(user, isPersistent: false);
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771

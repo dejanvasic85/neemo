@@ -56,7 +56,5 @@ namespace Neemo.CarParts.EntityFramework.Models
         public Nullable<System.DateTime> EffectiveDateTo { get; set; }
         public Nullable<bool> IsSubscribedToNewsletter { get; set; }
         public virtual ICollection<OrderHeader> OrderHeaders { get; set; }
-        public virtual Registration Registration1 { get; set; }
-        public virtual Registration Registration2 { get; set; }
     }
 }

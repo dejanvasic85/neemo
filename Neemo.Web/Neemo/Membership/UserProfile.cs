@@ -3,19 +3,28 @@
 
     public class UserProfile
     {
-        // RegistrationTable -> EmailAddress
-        public string Email { get; set; }
+        public static UserProfile NewRegistration(string username, string password, string email, bool newsletterSubscription, string registrationIpAddress)
+        {
+            return new UserProfile
+            {
+                UserName = username,
+                UserPassword = password,
+                Email = email,
+                RegistrationIpAddress = registrationIpAddress,
+                IsSubscribedToNewsletter = newsletterSubscription,
 
-        public PersonalDetails BillingDetails { get; set; }
-        public PersonalDetails ShippingDetails { get; set; }
+                // Initialise these but they will provide them later
+                BillingDetails = new PersonalDetails(),
+                ShippingDetails = new PersonalDetails()
+            };
+        }
 
-        public bool TermsAccepted { get; set; }
-
-        public string UserName { get; set; }
-        public string UserPassword { get; set; }
-        public string OriginIP { get; set; }
-        public bool AdminUser { get; set; }
-        public bool Active { get; set; } // Always true
-        public bool IsSubscribedToNewsletter { get; set; }
+        public string Email { get; private set; }
+        public PersonalDetails BillingDetails { get; private set; }
+        public PersonalDetails ShippingDetails { get; private set; }
+        public string UserName { get; private set; }
+        public string UserPassword { get; private set; }
+        public bool IsSubscribedToNewsletter { get; private set; }
+        public string RegistrationIpAddress { get; private set; }
     }
 }

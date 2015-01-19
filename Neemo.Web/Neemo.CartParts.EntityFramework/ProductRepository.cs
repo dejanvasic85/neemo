@@ -1,13 +1,12 @@
-﻿using System;
-using System.Data.Entity;
-using System.Linq;
-using System.Linq.Expressions;
-using AutoMapper;
-
-namespace Neemo.CarParts.EntityFramework
+﻿namespace Neemo.CarParts.EntityFramework
 {
-    using System.Collections.Generic;
+    using AutoMapper;
     using Store;
+    using System;
+    using System.Collections.Generic;
+    using System.Data.Entity;
+    using System.Linq;
+    using System.Linq.Expressions;
 
     public class ProductRepository : IProductRepository
     {
