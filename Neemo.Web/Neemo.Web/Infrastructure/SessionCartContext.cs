@@ -14,8 +14,8 @@
             if (cart != null)
                 return cart;
 
-            // Create new
-            cart = new Cart();
+            // Create new with an Ip Address
+            cart = new Cart(HttpContext.Current.Request.UserHostAddress);
 
             HttpContext.Current.Session[Key] = cart;
             return cart;

@@ -14,10 +14,12 @@ namespace Neemo.ShoppingCart
         public PersonalDetails ShippingDetails { get; private set; }
         public PersonalDetails BillingDetails { get; private set; }
         public string PaymentTransactionId { get; private set; }
+        public string SourceIpAddress { get; private set; }
 
-        public Cart()
+        public Cart(string sourceIpAddress)
         {
             _items = new List<ICartItem>();
+            SourceIpAddress = sourceIpAddress;
         }
 
         public void AddItem(ICartItem cartItem)

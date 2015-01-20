@@ -1,21 +1,35 @@
-﻿namespace Neemo.Store
+﻿using Neemo.ShoppingCart;
+
+namespace Neemo.Store
 {
     public class OrderLineItem
     {
+        public static OrderLineItem FromShoppingCartItem(ICartItem cartItem)
+        {
+            return new OrderLineItem
+            {
+                ProductId = cartItem.Id,
+                Quantity = cartItem.Quantity,
+                TaxTotal = cartItem.CalculateTotalTax(),
+                TotalValue = cartItem.CalculateSubTotalWithoutTax(),
+                UnitPrice = cartItem.PriceWithoutTax
+            };
+        }
+
         // OrderDetail -> ProductID
-        public int ProductId { get; set; }
+        public int ProductId { get; private set; }
 
         // OrderDetail -> Quantity
-        public int Quantity { get; set; }
+        public int Quantity { get; private set; }
 
         // OrderDetail -> UnitPrice
-        public decimal UnitPrice { get; set; }
-  
+        public decimal UnitPrice { get; private set; }
+
         // OrderDetail -> TotalValue
-        public decimal TotalValue { get; set; }
+        public decimal TotalValue { get; private set; }
 
         // OrderDetail -> TaxTotal
-        public decimal TaxTotal { get; set; }
+        public decimal TaxTotal { get; private set; }
 
     }
 }

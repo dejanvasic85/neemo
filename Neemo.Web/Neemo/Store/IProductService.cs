@@ -73,6 +73,7 @@ namespace Neemo.Store
         {
             // Create the order records
 
+
             // Each product should have their stock adjusted
             shoppingCart.GetItems().ForEach(soldProduct =>
             {
