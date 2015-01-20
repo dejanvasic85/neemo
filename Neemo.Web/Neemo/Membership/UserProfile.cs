@@ -1,4 +1,6 @@
-﻿namespace Neemo.Membership
+﻿using System;
+
+namespace Neemo.Membership
 {
 
     public class UserProfile
@@ -29,9 +31,16 @@
         public bool IsSubscribedToNewsletter { get; private set; }
         public string RegistrationIpAddress { get; private set; }
 
-        public void UpdateShipping(PersonalDetails shippingDetails)
+        public UserProfile UpdateShipping(PersonalDetails shippingDetails)
         {
             this.ShippingDetails = shippingDetails;
+            return this;
+        }
+
+        public UserProfile UpdateBilling(PersonalDetails billingDetails)
+        {
+            this.BillingDetails = billingDetails;
+            return this;
         }
     }
 }

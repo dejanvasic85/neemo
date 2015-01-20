@@ -22,6 +22,7 @@ namespace Neemo.CarParts.EntityFramework
                 registration.LastName = src.BillingDetails.Surname;
                 registration.Mobile = src.BillingDetails.PhoneNumber;
                 registration.Phone = src.BillingDetails.PhoneNumber;
+                registration.State = src.BillingDetails.State;
                 registration.PostCode = string.IsNullOrEmpty(src.BillingDetails.Postcode) ? (int?)null : int.Parse(src.BillingDetails.Postcode);
             }
 

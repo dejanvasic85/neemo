@@ -144,7 +144,11 @@
             // Set the billing details
             shoppingCart.SetBillingDetails(Mapper.Map<PersonalDetailsView, PersonalDetails>(billingDetailsView));
 
-            // Todo - Process the payment
+            if (Request.IsAuthenticated)
+            {
+                _profileService.UpdateBillingDetails(User.Identity.Name, shoppingCart.BillingDetails);
+            }
+            
             var paymentResponse = _paymentService.ProcessPaymentForCart(shoppingCart,
                 cancelUrl: Url.ActionAbsolute("Cancel", "Cart"),
                 returnUrl: Url.ActionAbsolute("Done", "Cart"));
