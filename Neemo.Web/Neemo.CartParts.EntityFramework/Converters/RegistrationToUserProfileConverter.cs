@@ -17,7 +17,7 @@ namespace Neemo.CarParts.EntityFramework
                 FirstName = source.FirstName,
                 IsDefault = true,
                 PhoneNumber = source.Mobile,
-                Postcode = source.PostCode.ToString(),
+                Postcode = source.PostCode.HasValue ? source.PostCode.ToString() : null,
                 State = source.State,
                 Surname = source.LastName
             };

@@ -1,14 +1,16 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using Neemo.CarParts.EntityFramework.Models;
 using Neemo.Membership;
 
 namespace Neemo.CarParts.EntityFramework
 {
-    public class UserProfileToRegistrationConverter : TypeConverter<UserProfile, Models.Registration>
+    public class UserProfileToRegistrationConverter : ITypeConverter<UserProfile, Models.Registration>
     {
-        protected override Registration ConvertCore(UserProfile src)
+        public Registration Convert(ResolutionContext context)
         {
-            var registration = new Registration();
+            var src = context.SourceValue as UserProfile;
+            var registration = context.DestinationValue as Registration ?? new Registration();
 
             if (src.BillingDetails != null)
             {
@@ -20,7 +22,7 @@ namespace Neemo.CarParts.EntityFramework
                 registration.LastName = src.BillingDetails.Surname;
                 registration.Mobile = src.BillingDetails.PhoneNumber;
                 registration.Phone = src.BillingDetails.PhoneNumber;
-                registration.PostCode = int.Parse(src.BillingDetails.Postcode);
+                registration.PostCode = string.IsNullOrEmpty(src.BillingDetails.Postcode) ? (int?)null : int.Parse(src.BillingDetails.Postcode);
             }
 
             if (src.ShippingDetails != null)
@@ -44,10 +46,12 @@ namespace Neemo.CarParts.EntityFramework
             registration.EmailAddress = src.Email;
             registration.IsSubscribedToNewsletter = src.IsSubscribedToNewsletter;
             registration.LastModifiedByUser = src.UserName;
+            registration.UserName = src.UserName;
             registration.UserPassword = src.UserPassword;
             registration.TermsAccepted = true;
             registration.OriginIP = src.RegistrationIpAddress;
             registration.Shipping_EmailAddress = src.Email;
+            registration.LastModifiedDateTime = DateTime.Now;
 
             return registration;
         }

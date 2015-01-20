@@ -30,5 +30,20 @@ namespace Neemo.CarParts.EntityFramework
                 context.SaveChanges();
             }
         }
+
+        public void UpdateUser(UserProfile userProfile)
+        {
+            using (var context = DbContextFactory.Create())
+            {
+                // Fetch the existing registration record
+                var registration = context.Registrations.Single(r => r.EmailAddress.Equals(userProfile.Email, StringComparison.OrdinalIgnoreCase));
+
+                // Map the new details
+                Mapper.Map(userProfile, registration);
+
+                // Save to database
+                context.SaveChanges();
+            }
+        }
     }
 }

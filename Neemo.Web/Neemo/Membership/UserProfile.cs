@@ -29,5 +29,9 @@
         public bool IsSubscribedToNewsletter { get; private set; }
         public string RegistrationIpAddress { get; private set; }
 
+        public void UpdateShipping(PersonalDetails shippingDetails)
+        {
+            this.ShippingDetails = shippingDetails;
+        }
     }
 }

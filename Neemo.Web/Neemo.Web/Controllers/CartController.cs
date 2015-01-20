@@ -70,8 +70,7 @@
                 {
                     ShippingDetails = shippingDetailsView,
                     ShippingType = shippingType,
-                    ShippingOptions =
-                        _shippingService.Calculate(_cartContext.Current(), shippingDetailsView.Postcode)
+                    ShippingOptions = _shippingService.Calculate(_cartContext.Current(), shippingDetailsView.Postcode)
                             .Select(Mapper.Map<Shipping.ShippingCost, Models.ShippingCostView>)
                             .ToList()
                 });
@@ -85,6 +84,12 @@
 
             shoppingCart.SetShippingCost(shipping);
             shoppingCart.SetShippingDetails(Mapper.Map<PersonalDetailsView, PersonalDetails>(shippingDetailsView));
+
+            // Update the user shipping details
+            if (Request.IsAuthenticated)
+            {
+               _profileService.UpdateProfileShippingDetails(User.Identity.Name, shoppingCart.ShippingDetails);
+            }
 
             return RedirectToAction("Checkout");
         }
