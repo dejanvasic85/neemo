@@ -50,6 +50,7 @@
     <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Membership\IProfileRepository.cs" />
     <Compile Include="Membership\IProfileService.cs" />
+    <Compile Include="Orders\IOrderService.cs" />
     <Compile Include="Payments\IPaymentService.cs" />
     <Compile Include="Payments\PaymentResponse.cs" />
     <Compile Include="Payments\PaymentStatus.cs" />
@@ -61,7 +62,7 @@
     <Compile Include="Shipping\ShippingCost.cs" />
     <Compile Include="Shipping\ShippingType.cs" />
     <Compile Include="ShoppingCart\CartException.cs" />
-    <Compile Include="Store\OrderLineItem.cs" />
+    <Compile Include="Orders\OrderLineItem.cs" />
     <Compile Include="Store\Status.cs" />
     <Compile Include="Tax\TaxCost.cs" />
     <Compile Include="Tax\TaxCostExtensions.cs" />
@@ -74,7 +75,7 @@
     <Compile Include="Store\Category.cs" />
     <Compile Include="Store\ICategoryRepository.cs" />
     <Compile Include="Store\ICategoryService.cs" />
-    <Compile Include="Store\Order.cs" />
+    <Compile Include="Orders\Order.cs" />
     <Compile Include="Store\ProductCartItem.cs" />
     <Compile Include="ShoppingCart\Cart.cs" />
     <Compile Include="Store\IProductRepository.cs" />

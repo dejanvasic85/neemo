@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Neemo.ShoppingCart;
 
-namespace Neemo.Store
+namespace Neemo.Orders
 {
     public class Order
     {

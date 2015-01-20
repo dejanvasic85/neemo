@@ -1,6 +1,6 @@
 ﻿using Neemo.ShoppingCart;
 
-namespace Neemo.Store
+namespace Neemo.Orders
 {
     public class OrderLineItem
     {
