@@ -36,6 +36,31 @@ namespace Neemo.CarParts.EntityFramework
 
         private static void MapProduct(IConfiguration config)
         {
+            // To database ( ignore everything except the fields that we are updating )
+            config.CreateMap<Store.Product, Models.Product>()
+                .ForMember(m => m.ProductId, options=> options.MapFrom( src => src.ProductId))
+                .ForMember(m => m.Qty, options=> options.MapFrom( src => src.AvailableQty))
+
+                .ForMember(m => m.New, options => options.Ignore())
+                .ForMember(m => m.Featured, options => options.Ignore())
+                .ForMember(m => m.TopSeller, options => options.Ignore())
+                .ForMember(m => m.Active, options=> options.Ignore())
+                .ForMember(m => m.BalanceQty, options=> options.Ignore())
+                .ForMember(m => m.Comment, options=> options.Ignore())
+                .ForMember(m => m.CostPrice, options=> options.Ignore())
+                .ForMember(m => m.CreatedDateTime, options=> options.Ignore())
+                .ForMember(m => m.Discount, options=> options.Ignore())
+                .ForMember(m => m.DisplayonHomePage, options=> options.Ignore())
+                .ForMember(m => m.Part, options=> options.Ignore())
+                .ForMember(m => m.ProducePrices, options=> options.Ignore())
+                .ForMember(m => m.Soldout, options=> options.Ignore())
+                .ForMember(m => m.SpecialsNote, options=> options.Ignore())
+                .ForMember(m => m.Wreck, options=> options.Ignore())
+                .ForMember(m => m.WreckID, options=> options.Ignore())
+                .ForMember(m => m.onSpecial, options=> options.Ignore())
+                ;
+
+            // From Database
             config.CreateMap<Models.Product, Neemo.Store.Product>()
                 .ForMember(m => m.ProductId, options => options.MapFrom(src => src.ProductId))
                 .ForMember(m => m.IsNew, options => options.MapFrom(src => src.New))

@@ -40,6 +40,16 @@
             return ProductDatabaseList(p => p.ProductId == id).FirstOrDefault();
         }
 
+        public void UpdateProduct(Product product)
+        {
+            using (var context = DbContextFactory.Create())
+            {
+                var dbProduct = context.Products.Single(p => p.ProductId == product.ProductId);
+                Mapper.Map(product, dbProduct);
+                context.SaveChanges();
+            }
+        }
+
         private static List<Product> ProductDatabaseList(Expression<Func<Models.Product, bool>> filter)
         {
             using (var context = DbContextFactory.Create())

@@ -10,5 +10,6 @@ namespace Neemo.Store
         List<Product> GetNewProducts();
         List<Product> GetBestSellingProducts();
         Product GetProduct(int id);
+        void UpdateProduct(Product product);
     }
 }

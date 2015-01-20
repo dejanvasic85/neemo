@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Neemo.ShoppingCart;
 
 namespace Neemo.Store
 {
@@ -12,6 +13,11 @@ namespace Neemo.Store
         Product GetProductById(int id);
         bool IsAvailable(int productId, int desiredQuantity, int? bookedQuantity);
         bool IsInStock(int productId);
+
+        /// <summary>
+        /// The shopping cart is 'processed' by adjusting the stock levels for each item
+        /// </summary>
+        void ProcessAndAdjustStockLevels(Cart shoppingCart);
     }
 
     public class ProductService : IProductService
@@ -63,5 +69,19 @@ namespace Neemo.Store
             return IsAvailable(productId, 1, bookedQuantity: null);
         }
 
+        public void ProcessAndAdjustStockLevels(Cart shoppingCart)
+        {
+            // Create the order records
+
+            // Each product should have their stock adjusted
+            shoppingCart.GetItems().ForEach(soldProduct =>
+            {
+                var product = _productRepository.GetProduct(soldProduct.Id);
+
+                product.ReduceQuantity(soldProduct.Quantity);
+
+                _productRepository.UpdateProduct(product);
+            });
+        }
     }
 }

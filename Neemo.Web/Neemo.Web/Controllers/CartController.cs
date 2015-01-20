@@ -24,7 +24,7 @@
             IProductService productService,
             IShippingCalculatorService shippingService,
             IProfileService profileService,
-            IPaymentService paymentService, 
+            IPaymentService paymentService,
             ISysConfig sysConfig)
         {
             _cartContext = cartContext;
@@ -42,7 +42,7 @@
                 return RedirectToAction("Login", "Account");
             }
 
-            var userShippingDetails = Request.IsAuthenticated 
+            var userShippingDetails = Request.IsAuthenticated
                 ? Mapper.Map<PersonalDetails, PersonalDetailsView>(_profileService.GetProfile(User.Identity.Name).ShippingDetails)
                 : new PersonalDetailsView();
 
@@ -88,7 +88,7 @@
             // Update the user shipping details
             if (Request.IsAuthenticated)
             {
-               _profileService.UpdateProfileShippingDetails(User.Identity.Name, shoppingCart.ShippingDetails);
+                _profileService.UpdateProfileShippingDetails(User.Identity.Name, shoppingCart.ShippingDetails);
             }
 
             return RedirectToAction("Checkout");
@@ -148,7 +148,7 @@
             {
                 _profileService.UpdateBillingDetails(User.Identity.Name, shoppingCart.BillingDetails);
             }
-            
+
             var paymentResponse = _paymentService.ProcessPaymentForCart(shoppingCart,
                 cancelUrl: Url.ActionAbsolute("Cancel", "Cart"),
                 returnUrl: Url.ActionAbsolute("Done", "Cart"));
@@ -173,6 +173,9 @@
         {
             // Generate the invoice view from the cart
             var shoppingCart = _cartContext.Current();
+
+            _productService.ProcessAndAdjustStockLevels(shoppingCart);
+
             var invoice = Mapper.Map<Cart, InvoiceDetailView>(shoppingCart);
             invoice.CompanyName = _sysConfig.CompanyName;
             invoice.CompanyAddress = _sysConfig.CompanyAddress;

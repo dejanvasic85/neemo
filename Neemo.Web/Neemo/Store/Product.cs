@@ -54,5 +54,10 @@ namespace Neemo.Store
         
         // PartFeaturesTable - 
         public Dictionary<string, string> Features { get; set; }
+
+        public void ReduceQuantity(int quantity)
+        {
+            this.AvailableQty = this.AvailableQty - quantity;
+        }
     }
 }

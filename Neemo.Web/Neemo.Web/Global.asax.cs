@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
@@ -14,7 +15,13 @@ namespace Neemo.Web
             
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);            
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            var formViewEngine = ViewEngines.Engines.OfType<WebFormViewEngine>().FirstOrDefault();
+            if (formViewEngine != null)
+            {
+                ViewEngines.Engines.Remove(formViewEngine);
+            }
         }
     }
 }
