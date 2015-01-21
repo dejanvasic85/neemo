@@ -49,5 +49,6 @@ namespace Neemo.CarParts.EntityFramework.Models
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
         public virtual Registration Registration { get; set; }
         public virtual OrderStatu OrderStatu { get; set; }
+        public virtual string UserName { get; set; }
     }
 }

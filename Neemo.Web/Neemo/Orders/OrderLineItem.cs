@@ -1,4 +1,5 @@
-﻿using Neemo.ShoppingCart;
+﻿using System;
+using Neemo.ShoppingCart;
 
 namespace Neemo.Orders
 {
@@ -6,15 +7,20 @@ namespace Neemo.Orders
     {
         public static OrderLineItem FromShoppingCartItem(ICartItem cartItem)
         {
+            // Creates a new one ( ready for the db )
             return new OrderLineItem
             {
                 ProductId = cartItem.Id,
                 Quantity = cartItem.Quantity,
                 TaxTotal = cartItem.CalculateTotalTax(),
                 TotalValue = cartItem.CalculateSubTotalWithoutTax(),
-                UnitPrice = cartItem.PriceWithoutTax
+                UnitPrice = cartItem.PriceWithoutTax,
+                CreatedDateTime = DateTime.Now
             };
         }
+        public int? OrderLineItemId { get; private set; }
+
+        public int? OrderId { get; private set; }
 
         // OrderDetail -> ProductID
         public int ProductId { get; private set; }
@@ -30,6 +36,8 @@ namespace Neemo.Orders
 
         // OrderDetail -> TaxTotal
         public decimal TaxTotal { get; private set; }
+
+        public DateTime CreatedDateTime { get; set; }
 
     }
 }

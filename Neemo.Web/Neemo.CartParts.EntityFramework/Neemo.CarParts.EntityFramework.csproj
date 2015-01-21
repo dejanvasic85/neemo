@@ -176,6 +176,7 @@
     <Compile Include="Models\WheelBase.cs" />
     <Compile Include="Models\Wreck.cs" />
     <Compile Include="Models\Year.cs" />
+    <Compile Include="OrderRepository.cs" />
     <Compile Include="ProductRepository.cs" />
     <Compile Include="ProfileRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

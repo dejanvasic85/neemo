@@ -50,6 +50,7 @@
     <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Membership\IProfileRepository.cs" />
     <Compile Include="Membership\IProfileService.cs" />
+    <Compile Include="Orders\IOrderRepository.cs" />
     <Compile Include="Orders\IOrderService.cs" />
     <Compile Include="Payments\IPaymentService.cs" />
     <Compile Include="Payments\PaymentResponse.cs" />

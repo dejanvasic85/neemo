@@ -71,6 +71,7 @@ namespace Neemo.Web.Controllers
                 if (user != null)
                 {
                     await SignInAsync(user, model.RememberMe);
+                    _cartContext.SetUser(user.UserName);
                     return RedirectToLocal(returnUrl);
                 }
                 else
@@ -141,6 +142,8 @@ namespace Neemo.Web.Controllers
                         throw;
                     }
 
+                    // Add the user to the context if available
+                    _cartContext.SetUser(model.Email);
 
                     await SignInAsync(user, isPersistent: false);
 

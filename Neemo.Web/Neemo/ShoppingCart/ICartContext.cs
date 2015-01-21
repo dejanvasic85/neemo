@@ -9,5 +9,6 @@ namespace Neemo.ShoppingCart
         bool HasItemsInCart();
         bool CheckoutAsGuest { get; set; }
         void Clear();
+        void SetUser(string email);
     }
 }

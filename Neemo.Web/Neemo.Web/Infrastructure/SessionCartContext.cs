@@ -15,7 +15,8 @@
                 return cart;
 
             // Create new with an Ip Address
-            cart = new Cart(HttpContext.Current.Request.UserHostAddress);
+            cart = new Cart(HttpContext.Current.Request.UserHostAddress, 
+                HttpContext.Current.User.Identity.Name);
 
             HttpContext.Current.Session[Key] = cart;
             return cart;
@@ -43,6 +44,11 @@
         public void Clear()
         {
             HttpContext.Current.Session[Key] = null;
+        }
+
+        public void SetUser(string email)
+        {
+            Current().SetUser(email);
         }
     }
 }

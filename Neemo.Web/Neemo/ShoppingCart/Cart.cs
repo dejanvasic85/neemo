@@ -15,11 +15,13 @@ namespace Neemo.ShoppingCart
         public PersonalDetails BillingDetails { get; private set; }
         public string PaymentTransactionId { get; private set; }
         public string SourceIpAddress { get; private set; }
+        public string UserName { get; private set; }
 
-        public Cart(string sourceIpAddress)
+        public Cart(string sourceIpAddress, string userName)
         {
             _items = new List<ICartItem>();
             SourceIpAddress = sourceIpAddress;
+            UserName = userName;
         }
 
         public void AddItem(ICartItem cartItem)
@@ -110,6 +112,11 @@ namespace Neemo.ShoppingCart
         public void SetPaymentTransaction(string id)
         {
             this.PaymentTransactionId = id;
+        }
+
+        public void SetUser(string username)
+        {
+            this.UserName = username;
         }
     }
 }

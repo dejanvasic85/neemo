@@ -1,4 +1,6 @@
-﻿namespace Neemo.Web.Controllers
+﻿using Neemo.Orders;
+
+namespace Neemo.Web.Controllers
 {
     using AutoMapper;
     using Infrastructure;
@@ -19,13 +21,15 @@
         private readonly IProfileService _profileService;
         private readonly IPaymentService _paymentService;
         private readonly ISysConfig _sysConfig;
+        private readonly IOrderService _orderService;
 
         public CartController(ICartContext cartContext,
             IProductService productService,
             IShippingCalculatorService shippingService,
             IProfileService profileService,
             IPaymentService paymentService,
-            ISysConfig sysConfig)
+            ISysConfig sysConfig,
+            IOrderService orderService)
         {
             _cartContext = cartContext;
             _productService = productService;
@@ -33,6 +37,7 @@
             _profileService = profileService;
             _paymentService = paymentService;
             _sysConfig = sysConfig;
+            _orderService = orderService;
         }
 
         public ActionResult MyCart()
@@ -174,7 +179,13 @@
             // Generate the invoice view from the cart
             var shoppingCart = _cartContext.Current();
 
-            _productService.ProcessAndAdjustStockLevels(shoppingCart);
+            // Creates the order from the shopping cart and saves to database
+            _orderService.CreateOrder(shoppingCart);
+
+
+            // Adjusts the stock levels
+            _productService.AdjustStockLevels(shoppingCart);
+
 
             var invoice = Mapper.Map<Cart, InvoiceDetailView>(shoppingCart);
             invoice.CompanyName = _sysConfig.CompanyName;
@@ -234,9 +245,8 @@
         {
             // Verify the new quantity
             var cart = _cartContext.Current();
-            var isRequestedQuantityTooLarge =
-                !_productService.IsAvailable(productId, newQuantity,
-                    cart.GetTotalQuantityForProduct(productId, lineItemId));
+            var isRequestedQuantityTooLarge = !_productService.IsAvailable(productId, newQuantity, cart.GetTotalQuantityForProduct(productId, lineItemId));
+        
             if (isRequestedQuantityTooLarge)
                 return Json(new { QuantityTooLarge = true });
 

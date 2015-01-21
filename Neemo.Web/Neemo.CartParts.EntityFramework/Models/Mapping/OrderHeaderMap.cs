@@ -89,6 +89,9 @@ namespace Neemo.CarParts.EntityFramework.Models.Mapping
             this.Property(t => t.GUID)
                 .HasMaxLength(100);
 
+            this.Property(t => t.UserName)
+                .HasMaxLength(100);
+
             // Table & Column Mappings
             this.ToTable("OrderHeader");
             this.Property(t => t.OrderHeaderID).HasColumnName("OrderHeaderID");
@@ -127,6 +130,7 @@ namespace Neemo.CarParts.EntityFramework.Models.Mapping
             this.Property(t => t.DateCreated).HasColumnName("DateCreated");
             this.Property(t => t.DateDeleted).HasColumnName("DateDeleted");
             this.Property(t => t.GUID).HasColumnName("GUID");
+            this.Property(t => t.UserName).HasColumnName("UserName");
 
             // Relationships
             this.HasRequired(t => t.Registration)
