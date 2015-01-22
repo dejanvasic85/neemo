@@ -145,6 +145,7 @@ namespace Neemo.CarParts.EntityFramework
                 .ForMember(m => m.TaxTotal, options => options.MapFrom(src => src.TaxTotal))
                 .ForMember(m => m.TotalValue, options => options.MapFrom(src => src.TotalValue))
                 .ForMember(m => m.UnitPrice, options => options.MapFrom(src => src.UnitPrice))
+                .ForMember(m => m.Active, options => options.UseValue(true)) // Default to true
                 ;
         }
     }
