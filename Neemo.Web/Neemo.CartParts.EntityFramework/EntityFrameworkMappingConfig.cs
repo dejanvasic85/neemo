@@ -124,11 +124,12 @@ namespace Neemo.CarParts.EntityFramework
                 .ForMember(m => m.DateDeleted, options => options.Ignore())
                 .ForMember(m => m.GUID, options => options.MapFrom(src => src.GUID))
                 .ForMember(m => m.Handlingcharges, options => options.Ignore())
-                .ForMember(m => m.OrderHeaderID, options => options.Ignore())
+                .ForMember(m => m.OrderHeaderID, options => options.MapFrom(src => src.OrderId))
                 .ForMember(m => m.OrderStatu, options => options.Ignore())
                 .ForMember(m => m.RecordSourceIP, options => options.MapFrom(src => src.SourceIpAddress))
                 .ForMember(m => m.RegistrationID, options => options.Ignore())
                 .ForMember(m => m.UserName, options => options.MapFrom(src => src.UserName))
+                .ForMember(m => m.OrderDetails, options => options.MapFrom(src => src.OrderLineItems))
                 ;
 
             // Line item
@@ -137,7 +138,7 @@ namespace Neemo.CarParts.EntityFramework
                 .ForMember(m => m.OrderHeader, options => options.Ignore())
                 .ForMember(m => m.DateCreated, options => options.MapFrom(src => src.CreatedDateTime))
                 .ForMember(m => m.DateDeleted, options => options.Ignore())
-                .ForMember(m => m.OrderHeaderID, options => options.MapFrom(src => src.OrderLineItemId))
+                .ForMember(m => m.OrderHeaderID, options => options.MapFrom(src => src.OrderId))
                 .ForMember(m => m.Product, options => options.Ignore())
                 .ForMember(m => m.ProductID, options => options.MapFrom(src => src.ProductId))
                 .ForMember(m => m.Quantity, options => options.MapFrom(src => src.Quantity))
