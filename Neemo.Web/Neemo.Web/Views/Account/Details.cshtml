@@ -2,7 +2,44 @@
 
 @{
     ViewBag.Title = "Manage your details";
-    Layout = "~/Views/Shared/_Magento.cshtml";
+    Layout = "~/Views/Shared/_MagentoAccountLayout.cshtml";
 }
 
-<h2>Manage your details</h2>
+<div class="col-main span9">
+    <div class="my-account">
+        <div class="dashboard">
+            <div class="page-title">
+                <h1>My Dashboard</h1>
+            </div>
+
+            <form action="@Url.Action("Details", "Account")" method="POST">
+                @Html.AntiForgeryToken()
+                <div class="row-fluid">
+
+                    <div class="span6">
+                        <div class="bordered-form">
+                            <h3>Personal Details</h3>
+                            @Html.Partial("~/Views/Shared/Partial/_PersonalDetailsEditor.cshtml", @Model.BillingDetails)
+                        </div>
+                    </div>
+                    <div class="span6">
+                        <div class="bordered-form">
+                            <h3>Shipping Details</h3>
+                            @Html.Partial("~/Views/Shared/Partial/_PersonalDetailsEditor.cshtml", @Model.ShippingDetails)
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="footer-submit">
+                            <button class="btn pull-right">Update</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+</div>

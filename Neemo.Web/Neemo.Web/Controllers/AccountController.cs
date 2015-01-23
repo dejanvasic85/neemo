@@ -546,6 +546,20 @@ namespace Neemo.Web.Controllers
             return View(memberDetailsView);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Details(MemberDetailsView viewModel)
+        {
+            // Fetch the original profile
+            var profile = _profileService.GetProfile(User.Identity.Name);
+            profile.UpdateShipping( Mapper.Map<PersonalDetailsView, PersonalDetails>(viewModel.ShippingDetails) );
+            profile.UpdateBilling( Mapper.Map<PersonalDetailsView, PersonalDetails>(viewModel.BillingDetails) );
+
+            ViewBag.DetailsUpdated = true;
+
+            return View(viewModel);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing && UserManager != null)

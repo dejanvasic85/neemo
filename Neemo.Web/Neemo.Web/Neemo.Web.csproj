@@ -610,6 +610,7 @@
     <Content Include="Views\Account\_Invoice.cshtml" />
     <Content Include="Views\Account\Invoice.cshtml" />
     <Content Include="Views\Account\Details.cshtml" />
+    <Content Include="Views\Shared\_MagentoAccountLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Neemo.CartParts.EntityFramework\Neemo.CarParts.EntityFramework.csproj">
