@@ -10,34 +10,29 @@
 
     public class ProductRepository : IProductRepository
     {
-        public List<Product> GetProducts()
-        {
-            return ProductDatabaseList(p => p != null);
-        }
-
         public List<Product> SearchProducts(string keyword)
         {
-            return ProductDatabaseList(p => p.Part.Part1.Contains(keyword));
+            return FindProduct(p => p.Part.Part1.Contains(keyword));
         }
 
         public List<Product> GetFeaturedProducts()
         {
-            return ProductDatabaseList(p => p.Featured == true);
+            return FindProduct(p => p.Featured == true);
         }
 
         public List<Product> GetNewProducts()
         {
-            return ProductDatabaseList(p => p.New == true).ToList();
+            return FindProduct(p => p.New == true).ToList();
         }
 
         public List<Product> GetBestSellingProducts()
         {
-            return ProductDatabaseList(p => p.TopSeller == true).ToList();
+            return FindProduct(p => p.TopSeller == true).ToList();
         }
 
         public Product GetProduct(int id)
         {
-            return ProductDatabaseList(p => p.ProductId == id).FirstOrDefault();
+            return FindProduct(p => p.ProductId == id).FirstOrDefault();
         }
 
         public void UpdateProduct(Product product)
@@ -50,7 +45,7 @@
             }
         }
 
-        private static List<Product> ProductDatabaseList(Expression<Func<Models.Product, bool>> filter)
+        private static List<Product> FindProduct(Expression<Func<Models.Product, bool>> filter)
         {
             using (var context = DbContextFactory.Create())
             {

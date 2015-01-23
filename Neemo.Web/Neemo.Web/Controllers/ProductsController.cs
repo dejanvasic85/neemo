@@ -20,12 +20,14 @@
 
         public ActionResult Details(int id)
         {
-            // Todo - this value should not be hardcoded
-            var productId = 1;
-            //var productId = id;
+            var productId = id;
 
             // Fetch the full product details
             var product = _productService.GetProductById(productId);
+
+            if (product == null)
+                return HttpNotFound();
+
             var productView = Mapper.Map<Store.Product, Models.ProductDetailView>(product);
             productView.Category = Mapper.Map<Store.Category, Models.CategoryView>( _categoryService.GetCategory(product.CategoryId) );
 
