@@ -108,4 +108,10 @@ namespace Neemo.Web.Models
 
         public bool UserDoesNotExist { get; set; }
     }
+
+    public class MemberDetailsView
+    {
+        public PersonalDetailsView ShippingDetails { get; set; }
+        public PersonalDetailsView BillingDetails { get; set; }
+    }
 }

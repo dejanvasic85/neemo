@@ -609,6 +609,7 @@
     <Content Include="Views\Cart\Done.cshtml" />
     <Content Include="Views\Account\_Invoice.cshtml" />
     <Content Include="Views\Account\Invoice.cshtml" />
+    <Content Include="Views\Account\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Neemo.CartParts.EntityFramework\Neemo.CarParts.EntityFramework.csproj">

@@ -1,4 +1,5 @@
 ﻿using System;
+using AutoMapper;
 using Neemo.Membership;
 
 namespace Neemo.Web.Controllers
@@ -14,7 +15,7 @@ namespace Neemo.Web.Controllers
     using System.Threading.Tasks;
     using System.Web;
     using System.Web.Mvc;
-    
+
     [Authorize]
     public class AccountController : MagentoController
     {
@@ -126,7 +127,7 @@ namespace Neemo.Web.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    
+
                     try
                     {
                         // Create the profile for the user
@@ -229,12 +230,12 @@ namespace Neemo.Web.Controllers
                     VerificationLink = verificationLink
                 };
 
-                _notificationService.Email("Password Reset Request", 
-                    _templateService.ViewToString(this, "~/Views/EmailTemplates/ForgotPassword.cshtml", 
+                _notificationService.Email("Password Reset Request",
+                    _templateService.ViewToString(this, "~/Views/EmailTemplates/ForgotPassword.cshtml",
                     forgotPasswordEmailView),
                     _config.NotificationSenderEmail,
                     model.Email);
-                
+
                 return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
@@ -532,6 +533,17 @@ namespace Neemo.Web.Controllers
             // Todo - Fetch the transaction and the invoice detail and map the invoice details
 
             return View();
+        }
+
+        public ActionResult Details()
+        {
+            var username = User.Identity.Name;
+
+            var profile = _profileService.GetProfile(username);
+
+            var memberDetailsView = Mapper.Map<UserProfile, MemberDetailsView>(profile);
+
+            return View(memberDetailsView);
         }
 
         protected override void Dispose(bool disposing)
