@@ -9,13 +9,21 @@
     <div class="my-account">
         <div class="dashboard">
             <div class="page-title">
-                <h1>My Dashboard</h1>
+                <h1>Account Information</h1>
             </div>
 
             <form action="@Url.Action("Details", "Account")" method="POST">
                 @Html.AntiForgeryToken()
                 <div class="row-fluid">
-
+                    @if (ViewBag.DetailsUpdated != null && (bool) ViewBag.DetailsUpdated)
+                    {
+                        <div class="alert alert-success">
+                            Your details have been updated successfully.
+                        </div>
+                    }
+                </div>
+                <div class="row-fluid">
+                    
                     <div class="span6">
                         <div class="bordered-form">
                             <h3>Personal Details</h3>

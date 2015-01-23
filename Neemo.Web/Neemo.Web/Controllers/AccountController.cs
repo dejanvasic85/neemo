@@ -560,6 +560,11 @@ namespace Neemo.Web.Controllers
             return View(viewModel);
         }
 
+        public ActionResult Orders()
+        {
+            return View();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing && UserManager != null)

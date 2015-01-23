@@ -90,6 +90,10 @@ namespace Neemo.Web.Infrastructure
         {
             return urlHelper.Action("Details", "Account");
         }
+        public static string MyOrders(this UrlHelper urlHelper)
+        {
+            return urlHelper.Action("Orders", "Account");
+        }
 
         public static string Invoice(this UrlHelper urlHelper, string transactionId)
         {

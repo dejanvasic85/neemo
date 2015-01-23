@@ -1,0 +1,27 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "My Orders";
+    Layout = "~/Views/Shared/_MagentoAccountLayout.cshtml";
+}
+
+
+<div class="col-main span9">
+    <div class="my-account">
+        <div class="dashboard">
+            <div class="page-title">
+                <h1>My Orders</h1>
+            </div>
+
+            <form action="@Url.Action("Details", "Account")" method="POST">
+                @Html.AntiForgeryToken()
+                <div class="row-fluid">
+                    
+                    <div class="span12">
+                        Coming soon
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
