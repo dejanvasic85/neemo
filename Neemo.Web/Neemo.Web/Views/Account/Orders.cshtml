@@ -13,54 +13,52 @@
                 <h1>My Orders</h1>
             </div>
 
-            <form action="@Url.Action("Details", "Account")" method="POST">
-                @Html.AntiForgeryToken()
-                <div class="row-fluid">
-                    
-                    <div class="span12">
-                        <table class="table">
-                            <thead>
+            <div class="row-fluid">
+                <div class="span12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Order Total</th>
+                                <th>Invoice</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var order in Model.Orders)
+                            {
                                 <tr>
-                                    <th>Order ID</th>
-                                    <th>Order Total</th>
-                                    <th></th>
+                                    <td>@order.OrderId</td>
+                                    <td>@order.TotalAmount.ToString("C")</td>
+                                    <td><i class="fa fa-file-text fa-2x"></i></td>
+                                    <td><button class="btn" data-show-orders>View <i class="fa fa-chevron-down"></i></button></td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var order in Model.Orders)
-                                {
-                                    <tr>
-                                        <td>@order.OrderId</td>
-                                        <td>@order.TotalAmount.ToString("C")</td>
-                                        <td><i class="fa fa-file-text fa-2x"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="3">
-                                            <table class="table table-hover">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Product ID</th>
-                                                        <th>Price</th>
-                                                        <th>Quantity</th>
-                                                    </tr>
-                                                </thead>
-                                                @foreach (var lineItem in order.OrderLineItems)
-                                                {
-                                                    <tr>
-                                                        <td>@lineItem.ProductId</td>
-                                                        <td>@lineItem.UnitPrice.ToString("C")</td>
-                                                        <td>@lineItem.Quantity</td>
-                                                    </tr>
-                                                }
-                                            </table>
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </div>
+                                <tr style="display:none;">
+                                    <td colspan="4">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Product ID</th>
+                                                    <th>Price</th>
+                                                    <th>Quantity</th>
+                                                </tr>
+                                            </thead>
+                                            @foreach (var lineItem in order.OrderLineItems)
+                                            {
+                                                <tr>
+                                                    <td>@lineItem.ProductId</td>
+                                                    <td>@lineItem.UnitPrice.ToString("C")</td>
+                                                    <td>@lineItem.Quantity</td>
+                                                </tr>
+                                            }
+                                        </table>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>

@@ -209,6 +209,11 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
         });
     });
 
+    $('[data-show-orders]').on('click', function() {
+        $(this).closest('tr').next().slideDown(2000);
+        return false;
+    });
+
     // Button - please wait
     $('form').find('button[type=submit]').attr('data-loading-text', 'Please wait...');
     $('form').submit(function () {
