@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoryRepository.cs" />
+    <Compile Include="Converters\OrderHeaderToOrderConverter.cs" />
     <Compile Include="Converters\RegistrationToUserProfileConverter.cs" />
     <Compile Include="Converters\UserProfileToRegistrationConverter.cs" />
     <Compile Include="DbContextFactory.cs" />

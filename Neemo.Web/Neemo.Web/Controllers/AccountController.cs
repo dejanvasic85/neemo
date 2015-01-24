@@ -1,20 +1,21 @@
-﻿using System;
-using AutoMapper;
-using Neemo.Membership;
-
-namespace Neemo.Web.Controllers
+﻿namespace Neemo.Web.Controllers
 {
+    using AutoMapper;
     using CaptchaMvc.Attributes;
     using Infrastructure;
+    using Membership;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
     using Models;
     using Notifications;
+    using Orders;
     using ShoppingCart;
+    using System;
     using System.Threading.Tasks;
     using System.Web;
     using System.Web.Mvc;
+
 
     [Authorize]
     public class AccountController : MagentoController
@@ -24,14 +25,16 @@ namespace Neemo.Web.Controllers
         private readonly ISysConfig _config;
         private readonly ICartContext _cartContext;
         private readonly IProfileService _profileService;
+        private readonly IOrderService _orderService;
 
-        public AccountController(ITemplateService templateService, INotificationService notificationService, ISysConfig config, ICartContext cartContext, IProfileService profileService)
+        public AccountController(ITemplateService templateService, INotificationService notificationService, ISysConfig config, ICartContext cartContext, IProfileService profileService, IOrderService orderService)
         {
             _templateService = templateService;
             _notificationService = notificationService;
             _config = config;
             _cartContext = cartContext;
             _profileService = profileService;
+            _orderService = orderService;
         }
 
         private ApplicationUserManager _userManager;
@@ -585,6 +588,12 @@ namespace Neemo.Web.Controllers
 
         public ActionResult Orders()
         {
+            // Fetch all orders per user
+            var orders = _orderService.GetOrdersForUser(User.Identity.Name);
+
+            // Map to view model
+
+
             return View();
         }
 

@@ -23,6 +23,7 @@ namespace Neemo.CarParts.EntityFramework
 
             MapOrder(config);
 
+            MapOrderItems(config);
         }
 
         private static void MapRegistration(IConfiguration config)
@@ -92,6 +93,7 @@ namespace Neemo.CarParts.EntityFramework
 
         private static void MapOrder(IConfiguration config)
         {
+            // To Database
             config.CreateMap<Orders.Order, Models.OrderHeader>()
                 .ForMember(m => m.Active, options => options.UseValue(true))
                 .ForMember(m => m.Billing_Address, options => options.MapFrom(src => src.BillingDetails.AddressLine1))
@@ -132,7 +134,15 @@ namespace Neemo.CarParts.EntityFramework
                 .ForMember(m => m.OrderDetails, options => options.MapFrom(src => src.OrderLineItems))
                 ;
 
-            // Line item
+            // From Database
+            config.CreateMap<Models.OrderHeader, Orders.Order>()
+                .ConvertUsing<OrderHeaderToOrderConverter>()
+                ;
+        }
+
+        private static void MapOrderItems(IConfiguration config)
+        {
+            // To Database
             config.CreateMap<Orders.OrderLineItem, Models.OrderDetail>()
                 .ForMember(m => m.OrderDetailID, options => options.MapFrom(src => src.OrderLineItemId))
                 .ForMember(m => m.OrderHeader, options => options.Ignore())
@@ -147,6 +157,19 @@ namespace Neemo.CarParts.EntityFramework
                 .ForMember(m => m.UnitPrice, options => options.MapFrom(src => src.UnitPrice))
                 .ForMember(m => m.Active, options => options.UseValue(true)) // Default to true
                 ;
+
+            // From Database
+            config.CreateMap<Models.OrderDetail, Orders.OrderLineItem>()
+                .ForMember(m => m.OrderId, options => options.MapFrom(src => src.OrderHeaderID))
+                .ForMember(m => m.OrderLineItemId, options => options.MapFrom(src => src.OrderDetailID))
+                .ForMember(m=> m.CreatedDateTime, options => options.MapFrom(src => src.DateCreated))
+                .ForMember(m=> m.ProductId, options => options.MapFrom(src => src.ProductID))
+                .ForMember(m=> m.Quantity, options => options.MapFrom(src => src.Quantity))
+                .ForMember(m=> m.TaxTotal, options => options.MapFrom(src => src.TaxTotal))
+                .ForMember(m=> m.TotalValue, options => options.MapFrom(src => src.TotalValue))
+                .ForMember(m=> m.UnitPrice, options => options.MapFrom(src => src.UnitPrice))
+                ;
         }
+
     }
 }

@@ -25,6 +25,25 @@ namespace Neemo.Orders
             };
         }
 
+        public static Order Create(PersonalDetails billingDetails, PersonalDetails shippingDetails, DateTime createdDateTime, Guid guid, decimal handlingTotal, int? orderId, decimal shippingTotal, string sourceIpAddress, decimal taxTotal, decimal totalAmount, string userName, OrderLineItem[] orderLineItems)
+        {
+            return new Order
+            {
+                BillingDetails = billingDetails,
+                ShippingDetails = shippingDetails,
+                CreatedDateTime = createdDateTime,
+                GUID = guid,
+                HandlingTotal = handlingTotal,
+                OrderId = orderId,
+                ShippingTotal = shippingTotal,
+                SourceIpAddress = sourceIpAddress,
+                TaxTotal = taxTotal,
+                TotalAmount = totalAmount,
+                UserName = userName,
+                OrderLineItems = orderLineItems
+            };
+        }
+
         public int? OrderId { get; private set; }
 
         public Guid GUID { get; private set; }

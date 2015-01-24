@@ -1,10 +1,13 @@
-﻿using Neemo.ShoppingCart;
+﻿using System.Collections;
+using System.Collections.Generic;
+using Neemo.ShoppingCart;
 
 namespace Neemo.Orders
 {
     public interface IOrderService
     {
         Order CreateOrder(ShoppingCart.Cart cart);
+        IEnumerable<Order> GetOrdersForUser(string username);
     }
 
     public class OrderService : IOrderService
@@ -24,6 +27,11 @@ namespace Neemo.Orders
             _orderRepository.CreateOrder(order);
 
             return order;
+        }
+
+        public IEnumerable<Order> GetOrdersForUser(string username)
+        {
+            return _orderRepository.GetOrdersForUser(username);
         }
     }
 }

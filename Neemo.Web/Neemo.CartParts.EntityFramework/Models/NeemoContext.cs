@@ -14,6 +14,8 @@ namespace Neemo.CarParts.EntityFramework.Models
         public NeemoContext()
             : base("Name=NeemoConnection")
         {
+            this.Configuration.ProxyCreationEnabled = false;
+            this.Configuration.LazyLoadingEnabled = false;
         }
 
         public DbSet<AncapRating> AncapRatings { get; set; }
