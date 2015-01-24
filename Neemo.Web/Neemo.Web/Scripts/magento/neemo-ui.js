@@ -126,7 +126,7 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
             function () {
                 broadcaster.error('Not enough items in stock for your request.');
             },
-            function() {
+            function () {
                 broadcaster.error('Item is no longer available.');
             });
 
@@ -209,8 +209,15 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
         });
     });
 
-    $('[data-show-orders]').on('click', function() {
-        $(this).closest('tr').next().slideDown(2000);
+    $('[data-show-orders]').on('click', function () {
+        var $btn = $(this);
+        if ($btn.text().indexOf('Hide') > -1) {
+            $btn.closest('tr').next().hide();
+            $btn.html('View <i class="fa fa-chevron-down"></i>');
+        } else {
+            $btn.closest('tr').next().show();
+            $btn.html('Hide <i class="fa fa-chevron-up"></i>');
+        }
         return false;
     });
 
