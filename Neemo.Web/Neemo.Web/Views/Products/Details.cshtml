@@ -125,17 +125,19 @@
                     </div>
 
                     <div class="product-collateral">
-                        <ul class="product-tabs">
-                            <li id="product_tabs_description" style="padding: 10px; color: #fff">Product Description</li>
+                        
+                        <ul class="nav nav-tabs" id="myTab">
+                            <li class="active"><a href="#description" data-toggle="tab">Description</a></li>
+                            <li><a href="#shippingEstimate" data-toggle="tab">Shipping Details</a></li>
                         </ul>
 
-                        @*Description*@
-                        <div class="product-tabs-content" id="product_tabs_description_contents">
-                            <h2>Details</h2>
-                            <div class="std">
-                                @Html.Raw(Model.Description)
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="description">@Html.Raw(Model.Description)</div>
+                            <div class="tab-pane" id="shippingEstimate">
+                                lkjsdflkjsdf
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             </div>
@@ -150,13 +152,13 @@
     <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd', 'even', 'first', 'last'])</script>
 
     <script>
-        (function (jQuery) {
-            var jq = jQuery;
+        (function (jq) {
             jQuery('.more-views a').css({ 'cursor': 'pointer' });
             jq('.more-views a').on('click', function () {
                 var newSrc = jq(this).children('img').attr('src');
                 jq('#mainImage').attr('src', newSrc);
             });
+
         })(jQuery);
     </script>
 }
