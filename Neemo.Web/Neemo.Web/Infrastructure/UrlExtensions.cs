@@ -86,10 +86,15 @@ namespace Neemo.Web.Infrastructure
             return urlHelper.Action("MyCart", "Cart");
         }
 
-        public static string MyAccount(this UrlHelper urlHelper)
+        public static string MyAccountDetails(this UrlHelper urlHelper)
         {
             return urlHelper.Action("Details", "Account");
         }
+        public static string MyShippingDetails(this UrlHelper urlHelper)
+        {
+            return urlHelper.Action("ShippingDetails", "Account");
+        }
+
         public static string MyOrders(this UrlHelper urlHelper)
         {
             return urlHelper.Action("Orders", "Account");

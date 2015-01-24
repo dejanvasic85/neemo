@@ -559,6 +559,30 @@ namespace Neemo.Web.Controllers
             return View(viewModel);
         }
 
+        public ActionResult ShippingDetails()
+        {
+            var username = User.Identity.Name;
+
+            var profile = _profileService.GetProfile(username);
+
+            var memberDetailsView = Mapper.Map<PersonalDetails, PersonalDetailsView>(profile.ShippingDetails);
+
+            return View(memberDetailsView);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ShippingDetails(PersonalDetailsView viewModel)
+        {
+            // Fetch the original profile
+            var personalDetails = Mapper.Map<PersonalDetailsView, PersonalDetails>(viewModel);
+            _profileService.UpdateProfileShippingDetails(User.Identity.Name, personalDetails);
+
+            ViewBag.DetailsUpdated = true;
+
+            return View(viewModel);
+        }
+
         public ActionResult Orders()
         {
             return View();

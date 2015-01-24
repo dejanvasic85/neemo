@@ -1,21 +1,22 @@
 ﻿@model PersonalDetailsView
 
 @{
-    ViewBag.Title = "Manage your details";
+    ViewBag.Title = "My Shipping Details";
     Layout = "~/Views/Shared/_MagentoAccountLayout.cshtml";
 }
+
 
 <div class="col-main span9">
     <div class="my-account">
         <div class="dashboard">
             <div class="page-title">
-                <h1>My Account - Personal Details</h1>
+                <h1>My Account - Shipping Details</h1>
             </div>
 
-            <form action="@Url.Action("Details", "Account")" method="POST">
+            <form action="@Url.Action("ShippingDetails", "Account")" method="POST">
                 @Html.AntiForgeryToken()
                 <div class="row-fluid">
-                    @if (ViewBag.DetailsUpdated != null && (bool) ViewBag.DetailsUpdated)
+                    @if (ViewBag.DetailsUpdated != null && (bool)ViewBag.DetailsUpdated)
                     {
                         <div class="alert alert-success">
                             Your details have been updated successfully.
@@ -25,7 +26,7 @@
                 <div class="row-fluid">
                     <div class="span12">
                         <div class="bordered-form">
-                            <h3>Update your personal / billing details</h3>
+                            <h3>Update you billing details</h3>
                             @Html.Partial("~/Views/Shared/Partial/_PersonalDetailsEditor.cshtml", @Model)
                         </div>
                         <div class="footer-submit">
