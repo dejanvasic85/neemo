@@ -45,9 +45,14 @@ neemo.svc = (function ($, urls) {
                     }
                 });
         },
-        calculateEstimate : function(country, postcode, onComplete) {
-            call(urls.calculateShippingEstimate, { country: country, postcode: postcode }).done(function(response) {
+        calculateEstimate : function(postcode, onComplete) {
+            call(urls.calculateShippingEstimate, { country: null, postcode: postcode }).done(function(response) {
                 onComplete(response);
+            });
+        },
+        calculateEstimateForProduct: function (productId, postcode, onComplete) {
+            call(urls.getShippingEstimate, { productId: productId, postcode: postcode }).done(function(response) {
+                return onComplete(response);
             });
         }
     }

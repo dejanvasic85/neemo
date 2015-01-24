@@ -16,9 +16,19 @@
 
         public IEnumerable<ShippingCost> Calculate(Cart shoppingCart, string postcode)
         {
+            return GetDefaultShippingCosts();
+        }
+
+        public IEnumerable<ShippingCost> GetAll(int productId, string postcode)
+        {
+            return GetDefaultShippingCosts();
+        }
+
+        private static IEnumerable<ShippingCost> GetDefaultShippingCosts()
+        {
             // Todo - implement the postage calculation logic and return the amount
 
-            return new []
+            return new[]
             {
                 new ShippingCost(10, ShippingType.Express),
                 new ShippingCost(5, ShippingType.Regular),

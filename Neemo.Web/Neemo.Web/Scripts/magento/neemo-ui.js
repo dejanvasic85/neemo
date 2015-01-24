@@ -182,7 +182,22 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
     $('#getShippingEstimate').on('click', function () {
         var $btn = $(this);
         $btn.button('loading');
-        svc.calculateEstimate($('#country').val(), $('#postcode').val(), function (data) {
+        svc.calculateEstimate($('#postcode').val(), function (data) {
+            var $estimates = $('#estimates');
+            var $tbody = $estimates.find('tbody');
+            $tbody.empty();
+            $.each(data, function (index, item) {
+                $tbody.append('<tr><td>' + item.ShippingType + '</td><td>' + accounting.formatMoney(item.Cost) + '</td></tr>');
+            });
+            $btn.button('reset');
+            $estimates.slideDown();
+        });
+    });
+
+    $('#getShippingEstimateForProduct').on('click', function () {
+        var $btn = $(this);
+        $btn.button('loading');
+        svc.calculateEstimateForProduct($btn.data().productid, $('#postcode').val(), function (data) {
             var $estimates = $('#estimates');
             var $tbody = $estimates.find('tbody');
             $tbody.empty();

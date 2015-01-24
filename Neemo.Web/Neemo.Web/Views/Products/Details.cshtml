@@ -125,19 +125,34 @@
                     </div>
 
                     <div class="product-collateral">
-                        
+
                         <ul class="nav nav-tabs" id="myTab">
                             <li class="active"><a href="#description" data-toggle="tab">Description</a></li>
-                            <li><a href="#shippingEstimate" data-toggle="tab">Shipping Details</a></li>
+                            <li><a href="#shippingEstimate" data-toggle="tab">Shipping Estimate</a></li>
                         </ul>
 
                         <div class="tab-content">
                             <div class="tab-pane active" id="description">@Html.Raw(Model.Description)</div>
                             <div class="tab-pane" id="shippingEstimate">
-                                lkjsdflkjsdf
+
+                                <div class="control-group">
+                                    <label for="postcode">Post Code</label>
+                                    <div class="controls">
+                                        <input id="postcode" name="postcode" type="text" data-numbers-only maxlength="4">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <button type="button" class="btn" data-productid="@Model.ProductId" id="getShippingEstimateForProduct">Get Estimate</button>
+                                    </div>
+                                </div>
+
+                                <table class="table table-bordered table-hover" id="estimates">
+                                    <tbody></tbody>
+                                </table>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -152,13 +167,12 @@
     <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd', 'even', 'first', 'last'])</script>
 
     <script>
-        (function (jq) {
-            jQuery('.more-views a').css({ 'cursor': 'pointer' });
+        (function (jq, svc) {
+            jq('.more-views a').css({ 'cursor': 'pointer' });
             jq('.more-views a').on('click', function () {
                 var newSrc = jq(this).children('img').attr('src');
                 jq('#mainImage').attr('src', newSrc);
             });
-
-        })(jQuery);
+        })(jQuery, neemo.svc);
     </script>
 }

@@ -1,4 +1,6 @@
-﻿namespace Neemo.Web.Controllers
+﻿using Neemo.Shipping;
+
+namespace Neemo.Web.Controllers
 {
     using System.Web.Mvc;
     using AutoMapper;
@@ -11,11 +13,13 @@
     {
         private readonly IProductService _productService;
         private readonly ICategoryService _categoryService;
+        private readonly IShippingCalculatorService _shippingService;
 
-        public ProductsController(IProductService productService, ICategoryService categoryService)
+        public ProductsController(IProductService productService, ICategoryService categoryService, IShippingCalculatorService shippingService)
         {
             _productService = productService;
             _categoryService = categoryService;
+            _shippingService = shippingService;
         }
 
         public ActionResult Details(int id)
@@ -48,6 +52,16 @@
                 .ToList();
             
             return View(findModelView);
+        }
+
+        [HttpPost]
+        public ActionResult GetShippingEstimate(int productId, string postcode)
+        {
+            var shippingCosts = _shippingService.GetAll(productId, postcode);
+
+            var viewModel = shippingCosts.Select(Mapper.Map<Shipping.ShippingCost, Models.ShippingCostView>).ToList();
+
+            return Json(viewModel);
         }
     }
 }

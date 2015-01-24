@@ -141,7 +141,7 @@
                                                                     </a>
                                                                 </span>
                                                             </form>
-                                                            
+
                                                         </div>
                                                     </li>
                                                 }
@@ -333,7 +333,8 @@
                 removeProduct: '@Url.Action("RemoveProduct", "Cart")',
                 getItems: '@Url.Action("GetCurrentItems", "Cart")',
                 updateQuantity: '@Url.Action("UpdateQuantity", "Cart")',
-                calculateShippingEstimate: '@Url.Action("CalculateShippingEstimate", "Cart")'
+                calculateShippingEstimate: '@Url.Action("CalculateShippingEstimate", "Cart")',
+                getShippingEstimate: '@Url.Action("GetShippingEstimate", "Products")'
             },
             img: {
                 generic: '@Url.Image("placeholder")',
@@ -346,7 +347,7 @@
                 get: function (id) {
                     return neemo.endpoints.product.generic.replace(-1, id);
                 },
-                search: '@Url.Action("Find", "Products")'
+                search: '@Url.Action("Find", "Products")',
             }
         };
     </script>
@@ -358,4 +359,3 @@
     @RenderSection("Scripts", false)
 </body>
 </html>
-
