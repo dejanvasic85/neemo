@@ -541,19 +541,18 @@ namespace Neemo.Web.Controllers
 
             var profile = _profileService.GetProfile(username);
 
-            var memberDetailsView = Mapper.Map<UserProfile, MemberDetailsView>(profile);
+            var memberDetailsView = Mapper.Map<PersonalDetails, PersonalDetailsView>(profile.BillingDetails);
 
             return View(memberDetailsView);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Details(MemberDetailsView viewModel)
+        public ActionResult Details(PersonalDetailsView viewModel)
         {
             // Fetch the original profile
-            var profile = _profileService.GetProfile(User.Identity.Name);
-            profile.UpdateShipping( Mapper.Map<PersonalDetailsView, PersonalDetails>(viewModel.ShippingDetails) );
-            profile.UpdateBilling( Mapper.Map<PersonalDetailsView, PersonalDetails>(viewModel.BillingDetails) );
+            var personalDetails = Mapper.Map<PersonalDetailsView, PersonalDetails>(viewModel);
+            _profileService.UpdateBillingDetails(User.Identity.Name, personalDetails);
 
             ViewBag.DetailsUpdated = true;
 

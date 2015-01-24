@@ -31,7 +31,6 @@ namespace Neemo.Web
             config.CreateMap<Neemo.Country, Models.CountryView>();
             config.CreateMap<PersonalDetails, Models.PersonalDetailsView>();
             config.CreateMap<Membership.UserProfile, Models.CheckoutView>();
-            config.CreateMap<Membership.UserProfile, Models.MemberDetailsView>();
             config.CreateMap<Tax.TaxCost, Models.TaxCostView>();
             config.CreateMap<ShoppingCart.Cart, Models.OrderSummaryView>().ConvertUsing<Models.OrderSummaryConverter>();
             config.CreateMap<ShoppingCart.Cart, Models.InvoiceDetailView>().ConvertUsing<Models.CartToInvoiceConverter>();

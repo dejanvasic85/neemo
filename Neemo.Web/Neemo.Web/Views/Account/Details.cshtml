@@ -1,4 +1,4 @@
-﻿@model MemberDetailsView
+﻿@model PersonalDetailsView
 
 @{
     ViewBag.Title = "Manage your details";
@@ -9,7 +9,7 @@
     <div class="my-account">
         <div class="dashboard">
             <div class="page-title">
-                <h1>Account Information</h1>
+                <h1>Personal Details</h1>
             </div>
 
             <form action="@Url.Action("Details", "Account")" method="POST">
@@ -23,31 +23,17 @@
                     }
                 </div>
                 <div class="row-fluid">
-                    
-                    <div class="span6">
-                        <div class="bordered-form">
-                            <h3>Personal Details</h3>
-                            @Html.Partial("~/Views/Shared/Partial/_PersonalDetailsEditor.cshtml", @Model.BillingDetails)
-                        </div>
-                    </div>
-                    <div class="span6">
-                        <div class="bordered-form">
-                            <h3>Shipping Details</h3>
-                            @Html.Partial("~/Views/Shared/Partial/_PersonalDetailsEditor.cshtml", @Model.ShippingDetails)
-                        </div>
-                    </div>
-
-                </div>
-                <div class="row-fluid">
                     <div class="span12">
+                        <div class="bordered-form">
+                            <h3>Update your personal / billing details</h3>
+                            @Html.Partial("~/Views/Shared/Partial/_PersonalDetailsEditor.cshtml", @Model)
+                        </div>
                         <div class="footer-submit">
-                            <button class="btn pull-right">Update</button>
+                            <button type="submit" class="btn pull-right">Update</button>
                         </div>
                     </div>
                 </div>
             </form>
-
-
         </div>
     </div>
 </div>
