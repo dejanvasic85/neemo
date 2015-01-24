@@ -44,21 +44,26 @@
                                     @*<a href="@Url.Image(Model.Images.First())" class="ma-a-lighbox" rel="lightbox[rotation]"></a>*@
                                     <!--++++++++++++-->
                                     <a class="cloud-zoom" id="ma-zoom1" style="position: relative; display: block;" rel="adjustX:10, adjustY:-2, zoomWidth:300, zoomHeight:300">
-                                        <img id="mainImage" src="@Url.Image(Model.Images.First())" alt="@Model.Title" title="@Model.Title" />
+                                        <img id="mainImage" src="@Url.Image(Model.DefaultImage)" alt="@Model.Title" title="@Model.Title" />
                                     </a>
                                 </p>
                                 <div class="more-views ma-more-img">
-                                    <h2>More Views</h2>
-                                    <ul>
-                                        @foreach (var img in Model.Images)
-                                        {
-                                            <li>
-                                                <a class="cloud-zoom-gallery">
-                                                    <img src="@Url.Image(img)" width="56" height="56" alt="" title="" />
-                                                </a>
-                                            </li>
-                                        }
-                                    </ul>
+                                    @if (Model.Images != null && Model.Images.Length > 0)
+                                    {
+                                        <h2>More Views</h2>
+                                        <ul>
+
+                                            @foreach (var img in Model.Images)
+                                            {
+                                                <li>
+                                                    <a class="cloud-zoom-gallery">
+                                                        <img src="@Url.Image(img)" width="56" height="56" alt="" title="" />
+                                                    </a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    }
+
                                 </div>
                             </div>
 
