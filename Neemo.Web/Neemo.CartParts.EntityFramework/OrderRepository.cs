@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using AutoMapper;
 using Neemo.Orders;
@@ -26,6 +27,7 @@ namespace Neemo.CarParts.EntityFramework
             {
                 var dbOrders = context.OrderHeaders
                     .Where(o => o.UserName.Equals(username, StringComparison.OrdinalIgnoreCase) && o.Active)
+                    .Include(o => o.OrderDetails)
                     .ToList();
 
                 return dbOrders.Select(Mapper.Map<Models.OrderHeader, Orders.Order>);

@@ -213,6 +213,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\InvoiceDetailView.cs" />
     <Compile Include="Models\InvoiceItemView.cs" />
+    <Compile Include="Models\OrderHistoryView.cs" />
     <Compile Include="Models\OrderSummaryView.cs" />
     <Compile Include="Models\PersonalDetailsView.cs" />
     <Compile Include="Models\CartItemView.cs" />

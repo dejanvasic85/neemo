@@ -19,25 +19,12 @@ namespace Neemo.Orders
             };
         }
         public int? OrderLineItemId { get; private set; }
-
         public int? OrderId { get; private set; }
-
-        // OrderDetail -> ProductID
         public int ProductId { get; private set; }
-
-        // OrderDetail -> Quantity
         public int Quantity { get; private set; }
-
-        // OrderDetail -> UnitPrice
         public decimal UnitPrice { get; private set; }
-
-        // OrderDetail -> TotalValue
         public decimal TotalValue { get; private set; }
-
-        // OrderDetail -> TaxTotal
         public decimal TaxTotal { get; private set; }
-
         public DateTime CreatedDateTime { get; set; }
-
     }
 }

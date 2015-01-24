@@ -1,4 +1,4 @@
-﻿@model dynamic
+﻿@model OrderHistoryView
 
 @{
     ViewBag.Title = "My Orders";
@@ -18,7 +18,46 @@
                 <div class="row-fluid">
                     
                     <div class="span12">
-                        Coming soon
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Order Total</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var order in Model.Orders)
+                                {
+                                    <tr>
+                                        <td>@order.OrderId</td>
+                                        <td>@order.TotalAmount.ToString("C")</td>
+                                        <td><i class="fa fa-file-text fa-2x"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Product ID</th>
+                                                        <th>Price</th>
+                                                        <th>Quantity</th>
+                                                    </tr>
+                                                </thead>
+                                                @foreach (var lineItem in order.OrderLineItems)
+                                                {
+                                                    <tr>
+                                                        <td>@lineItem.ProductId</td>
+                                                        <td>@lineItem.UnitPrice.ToString("C")</td>
+                                                        <td>@lineItem.Quantity</td>
+                                                    </tr>
+                                                }
+                                            </table>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </form>

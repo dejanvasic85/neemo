@@ -1,4 +1,6 @@
-﻿namespace Neemo.Web.Controllers
+﻿using System.Linq;
+
+namespace Neemo.Web.Controllers
 {
     using AutoMapper;
     using CaptchaMvc.Attributes;
@@ -592,9 +594,9 @@
             var orders = _orderService.GetOrdersForUser(User.Identity.Name);
 
             // Map to view model
+            var viewModel = new OrderHistoryView { Orders = orders.Select(Mapper.Map<Orders.Order, OrderView>).ToArray() };
 
-
-            return View();
+            return View(viewModel);
         }
 
         protected override void Dispose(bool disposing)
