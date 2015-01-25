@@ -1,13 +1,12 @@
-﻿using Neemo.Shipping;
-
-namespace Neemo.Web.Controllers
+﻿namespace Neemo.Web.Controllers
 {
-    using System.Web.Mvc;
     using AutoMapper;
-    using Store;
-    using Models;
     using Infrastructure;
+    using Models;
+    using Shipping;
+    using Store;
     using System.Linq;
+    using System.Web.Mvc;
 
     public class ProductsController : MagentoController
     {

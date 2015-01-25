@@ -128,6 +128,7 @@
 
                         <ul class="nav nav-tabs" id="myTab">
                             <li class="active"><a href="#description" data-toggle="tab">Description</a></li>
+                            <li><a href="#productSpecifications" data-toggle="tab">Product Specifications</a></li>
                             <li><a href="#shippingEstimate" data-toggle="tab">Shipping Estimate</a></li>
                         </ul>
 
@@ -149,6 +150,19 @@
 
                                 <table class="table table-bordered table-hover" id="estimates">
                                     <tbody></tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane" id="productSpecifications">
+                                <table class="table table-striped">
+                                    <tbody>
+                                        @foreach (var m in Model.ProductSpecifications)
+                                        {
+                                            <tr>
+                                                <td>@m.Key</td>
+                                                <td>@m.Value</td>
+                                            </tr>
+                                        }
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
