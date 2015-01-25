@@ -19,7 +19,7 @@ namespace Neemo
             }
         }
 
-        public static Dictionary<string, string> ToDictionary(this object source)
+        public static Dictionary<string, string> ToDictionary(this object source, bool useEmptyProperties = false)
         {
             var propertiesToSet = source.GetType().GetProperties();
             var dictionary = new Dictionary<string, string>();
@@ -27,6 +27,11 @@ namespace Neemo
             foreach (var propertyInfo in propertiesToSet)
             {
                 var value = propertyInfo.GetValue(source);
+                if (!useEmptyProperties && string.IsNullOrEmpty(value.ToString()))
+                {
+                    continue;
+                }
+
                 dictionary.Add(propertyInfo.Name, value.ToString());
             }
             return dictionary;

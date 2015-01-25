@@ -41,12 +41,26 @@
                     .Include(t => t.ProducePrices)
                     .Include(p => p.Wreck)
                     .Include(p => p.Wreck.Make)
+                    .Include(p => p.Wreck.Model)
+                    .Include(p => p.Wreck.Chassis)
+                    .Include(p => p.Wreck.EngineSize)
+                    .Include(p => p.Wreck.FuelType)
+                    .Include(p => p.Wreck.WheelBase)
+                    .Include(p => p.Wreck.BodyType)
+                    .Include(p => p.Wreck.Year)
                     .First(p => p.ProductId == id);
                 
                 var product = Mapper.Map<Models.Product, Store.Product>(dbProduct);
                 product.ProductSpecifications = new
                 {
-                    Make = dbProduct.Wreck.Make != null ? dbProduct.Wreck.Make.Make1 : ""
+                    Make = dbProduct.Wreck.Make != null ? dbProduct.Wreck.Make.Make1 : "",
+                    Model = dbProduct.Wreck.Model != null ? dbProduct.Wreck.Model.Model1 : "",
+                    Chassis = dbProduct.Wreck.Chassis != null ? dbProduct.Wreck.Chassis.ChassisNo : "",
+                    EngineSie = dbProduct.Wreck.EngineSize != null ? dbProduct.Wreck.EngineSize.EngineSize1 : "",
+                    FuelType = dbProduct.Wreck.FuelType != null ? dbProduct.Wreck.FuelType.FuelType1 : "",
+                    WheelBase = dbProduct.Wreck.WheelBase != null ? dbProduct.Wreck.WheelBase.WheelBase1 : "",
+                    Body = dbProduct.Wreck.BodyType != null ? dbProduct.Wreck.BodyType.BodyType1 : "",
+                    Year = dbProduct.Wreck.Year != null ? dbProduct.Wreck.Year.Year1 : "",
                 };
 
                 return product;
