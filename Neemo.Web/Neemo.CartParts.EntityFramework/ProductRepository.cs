@@ -32,7 +32,25 @@
 
         public Product GetProduct(int id)
         {
-            return FindProduct(p => p.ProductId == id).FirstOrDefault();
+            using (var context = DbContextFactory.Create())
+            {
+                var dbProduct = context.Products
+                    .Include(t => t.Part)
+                    .Include(t => t.Part.PartPhoto)
+                    .Include(t => t.Part.PartPhotoes)
+                    .Include(t => t.ProducePrices)
+                    .Include(p => p.Wreck)
+                    .Include(p => p.Wreck.Make)
+                    .First(p => p.ProductId == id);
+                
+                var product = Mapper.Map<Models.Product, Store.Product>(dbProduct);
+                product.Features = new
+                {
+                    Make = dbProduct.Wreck.Make != null ? dbProduct.Wreck.Make.Make1 : ""
+                };
+
+                return product;
+            }
         }
 
         public void UpdateProduct(Product product)
@@ -56,8 +74,7 @@
                     .Include(t => t.Part.PartPhotoes)
                     .Include(t => t.ProducePrices)
                     .ToList();
-
-
+                
                 var featuredProducts = productModels
                     .Select(Mapper.Map<Models.Product, Store.Product>)
                     .ToList();
