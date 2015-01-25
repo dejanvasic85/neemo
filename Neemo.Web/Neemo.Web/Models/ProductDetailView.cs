@@ -24,5 +24,7 @@ namespace Neemo.Web.Models
 
         public int AvailableQty { get; set; }
         public CategoryView Category { get; set; }
+
+        public Dictionary<string, string> ProductSpecifications { get; set; } 
     }
 }

@@ -124,7 +124,7 @@ namespace Neemo.Web.Controllers
             }
 
             // Map the shipping details to billing details ( for those that are not set already )
-            viewModel.ShippingDetails.CopyPropertiesIfNotSet(viewModel.BillingDetails);
+            viewModel.ShippingDetails.CloneInTo(viewModel.BillingDetails);
             viewModel.OrderSummary = Mapper.Map<Cart, OrderSummaryView>(shoppingCart);
 
             return View(viewModel);

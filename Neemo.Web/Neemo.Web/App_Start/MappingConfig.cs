@@ -1,5 +1,8 @@
 using System;
+using System.Collections.Generic;
+using AutoMapper;
 using Microsoft.Practices.Unity;
+using System.Reflection;
 
 namespace Neemo.Web
 {
@@ -18,7 +21,8 @@ namespace Neemo.Web
             config.CreateMap<Store.Product, Models.ProductSummaryView>()
                 .ForMember(member => member.OutOfStock, options => options.ResolveUsing(t => t.IsOutOfStock()));
 
-            config.CreateMap<Store.Product, Models.ProductDetailView>();
+            config.CreateMap<Store.Product, Models.ProductDetailView>()
+                .ForMember(member => member.ProductSpecifications, options => options.ResolveUsing<ProductSpecificationConverter>());
 
             config.CreateMap<Store.ProductCartItem, Models.CartItemView>()
                 .ForMember(member => member.ItemSubTotal, options => options.MapFrom(source => source.CalculateSubTotalWithoutTax()));
@@ -44,6 +48,16 @@ namespace Neemo.Web
         public static void RegisterMaps(IUnityContainer container)
         {
             container.ResolveAll<IMappingConfig>().ForEach(mapper => mapper.RegisterMapping(AutoMapper.Mapper.Configuration));
+        }
+    }
+
+    public class ProductSpecificationConverter : ValueResolver<Store.Product, Dictionary<string, string>>
+    {
+        protected override Dictionary<string, string> ResolveCore(Store.Product source)
+        {
+            var dictionary = source.ProductSpecifications.ToDictionary();
+            
+            return dictionary;
         }
     }
 }

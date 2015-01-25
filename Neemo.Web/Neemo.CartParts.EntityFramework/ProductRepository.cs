@@ -44,7 +44,7 @@
                     .First(p => p.ProductId == id);
                 
                 var product = Mapper.Map<Models.Product, Store.Product>(dbProduct);
-                product.Features = new
+                product.ProductSpecifications = new
                 {
                     Make = dbProduct.Wreck.Make != null ? dbProduct.Wreck.Make.Make1 : ""
                 };

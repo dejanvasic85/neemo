@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Dynamic;
 
 namespace Neemo.Store
 {
@@ -15,7 +16,7 @@ namespace Neemo.Store
         public bool IsBestSeller { get; set; }
         public int AvailableQty { get; set; }
         public int CategoryId { get; set; }
-        public bool IsAvailable { get; set; } 
+        public bool IsAvailable { get; set; }
         public decimal Price { get; set; }
 
         public bool IsOutOfStock()
@@ -26,10 +27,8 @@ namespace Neemo.Store
             return IsAvailable && AvailableQty == 0;
         }
 
-        // Todo - WreckTable - Get all foreign keys to display the Part/Wreck specific shite!
-        
-        public dynamic Features { get; set; }
-        
+        public object ProductSpecifications { get; set; }
+
         public void ReduceQuantity(int quantity)
         {
             this.AvailableQty = this.AvailableQty - quantity;
