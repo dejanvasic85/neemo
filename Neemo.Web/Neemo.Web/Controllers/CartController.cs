@@ -1,6 +1,4 @@
-﻿using Neemo.Orders;
-
-namespace Neemo.Web.Controllers
+﻿namespace Neemo.Web.Controllers
 {
     using AutoMapper;
     using Infrastructure;
@@ -12,6 +10,7 @@ namespace Neemo.Web.Controllers
     using Store;
     using System.Linq;
     using System.Web.Mvc;
+    using Orders;
 
     public class CartController : MagentoController
     {
@@ -132,6 +131,7 @@ namespace Neemo.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [MultipleAction(Argument = "Checkout", Name = "action")]
         public ActionResult Checkout(PersonalDetailsView billingDetailsView)
         {
             var shoppingCart = _cartContext.Current();
@@ -160,6 +160,24 @@ namespace Neemo.Web.Controllers
 
             return Redirect(paymentResponse.PaymentUrl);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [MultipleAction(Argument = "CheckoutPayLater", Name = "action")]
+        public ActionResult CheckoutPayLater(PersonalDetailsView billingDetails)
+        {
+            var shoppingCart = _cartContext.Current();
+
+            // Set the billing details
+            shoppingCart.SetBillingDetails(Mapper.Map<PersonalDetailsView, PersonalDetails>(billingDetails));
+
+            if (Request.IsAuthenticated)
+            {
+                _profileService.UpdateBillingDetails(User.Identity.Name, shoppingCart.BillingDetails);
+            }
+
+            return RedirectToAction("Done");
+        } 
 
         public ActionResult AuthorisePayment(string payerId)
         {

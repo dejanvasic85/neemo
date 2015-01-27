@@ -11,7 +11,7 @@ namespace Neemo.CarParts.EntityFramework.Models
         }
 
         public int OrderHeaderID { get; set; }
-        public int RegistrationID { get; set; }
+        public int? RegistrationID { get; set; }
         public string RecordSourceIP { get; set; }
         public Nullable<decimal> TotalAmount { get; set; }
         public Nullable<decimal> TaxTotal { get; set; }

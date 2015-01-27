@@ -188,6 +188,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\MappingConfig.cs" />
+    <Compile Include="Infrastructure\MultipleActionAttribute.cs" />
     <Compile Include="Models\Converters\CartToInvoiceConverter.cs" />
     <Compile Include="Models\Converters\OrderSummaryConverter.cs" />
     <Compile Include="App_Start\RegisterMappersConvention.cs" />

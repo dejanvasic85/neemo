@@ -11,7 +11,7 @@
             <div class="page-title">
                 <h2>Checkout</h2>
             </div>
-            <form action="@Url.Action("Checkout", "Cart")" method="POST">
+            <form action="" method="POST">
                 @Html.AntiForgeryToken()
                 <div class="row-fluid">
                     <div class="span8">
@@ -83,7 +83,7 @@
                             </p>
                         </div>
                         <div class="footer-submit">
-                            <button type="submit" class="btn pull-right">
+                            <button type="submit" class="btn pull-right" name="action:Checkout">
                                 Proceed to Payment <i class="fa fa-arrow-right"></i>
                             </button>
                         </div>
@@ -99,9 +99,8 @@
                                 </p>
                             </div>
                             <div class="footer-submit">
-                                <button class="btn pull-right">
-                                    Proceed with Order Only <i class="fa fa-arrow-right"></i>
-                                </button>
+                                <input type="submit" class="btn pull-right" name="action:CheckoutPayLater" value="Checkout & Pay Later" />
+                                
                             </div>
                         }
                         

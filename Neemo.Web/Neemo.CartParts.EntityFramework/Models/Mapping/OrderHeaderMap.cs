@@ -133,9 +133,6 @@ namespace Neemo.CarParts.EntityFramework.Models.Mapping
             this.Property(t => t.UserName).HasColumnName("UserName");
 
             // Relationships
-            this.HasRequired(t => t.Registration)
-                .WithMany(t => t.OrderHeaders)
-                .HasForeignKey(d => d.RegistrationID);
             this.HasOptional(t => t.OrderStatu)
                 .WithMany(t => t.OrderHeaders)
                 .HasForeignKey(d => d.OrderStatusID);

@@ -14,6 +14,9 @@ namespace Neemo.CarParts.EntityFramework
             using (var context = DbContextFactory.Create())
             {
                 var dbOrder = Mapper.Map<Orders.Order, Models.OrderHeader>(order);
+                
+                // Hard code the db order here ( for the moment )
+                dbOrder.OrderStatusID = 1;
 
                 context.OrderHeaders.Add(dbOrder);
 

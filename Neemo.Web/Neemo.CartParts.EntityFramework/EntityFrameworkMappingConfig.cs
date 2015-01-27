@@ -121,6 +121,7 @@ namespace Neemo.CarParts.EntityFramework
                 .ForMember(m => m.Shipping_Phone, options => options.MapFrom(src => src.ShippingDetails.PhoneNumber))
                 .ForMember(m => m.Shipping_PostCode, options => options.MapFrom(src => src.ShippingDetails.Postcode))
                 .ForMember(m => m.Shipping_State, options => options.MapFrom(src => src.ShippingDetails.State))
+                .ForMember(m => m.ShippingCharges, options => options.MapFrom(src => src.ShippingTotal))
 
                 .ForMember(m => m.DateCreated, options => options.MapFrom(src => src.CreatedDateTime))
                 .ForMember(m => m.DateDeleted, options => options.Ignore())
