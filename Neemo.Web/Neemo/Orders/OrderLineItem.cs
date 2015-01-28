@@ -15,7 +15,8 @@ namespace Neemo.Orders
                 TaxTotal = cartItem.CalculateTotalTax(),
                 TotalValue = cartItem.CalculateSubTotalWithoutTax(),
                 UnitPrice = cartItem.PriceWithoutTax,
-                CreatedDateTime = DateTime.Now
+                CreatedDateTime = DateTime.Now,
+                ProductName = cartItem.Title
             };
         }
         public int? OrderLineItemId { get; private set; }
@@ -26,5 +27,6 @@ namespace Neemo.Orders
         public decimal TotalValue { get; private set; }
         public decimal TaxTotal { get; private set; }
         public DateTime CreatedDateTime { get; set; }
+        public string ProductName { get; set; }
     }
 }

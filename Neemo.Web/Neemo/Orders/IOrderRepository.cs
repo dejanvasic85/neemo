@@ -6,5 +6,6 @@ namespace Neemo.Orders
     {
         void CreateOrder(Order order);
         IEnumerable<Order> GetOrdersForUser(string username);
+        Order GetOrder(int? orderId);
     }
 }

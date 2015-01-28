@@ -8,6 +8,7 @@ namespace Neemo.Orders
     {
         Order CreateOrder(ShoppingCart.Cart cart);
         IEnumerable<Order> GetOrdersForUser(string username);
+        Order GetOrder(int? orderId);
     }
 
     public class OrderService : IOrderService
@@ -32,6 +33,13 @@ namespace Neemo.Orders
         public IEnumerable<Order> GetOrdersForUser(string username)
         {
             return _orderRepository.GetOrdersForUser(username);
+        }
+
+        public Order GetOrder(int? orderId)
+        {
+            Guard.NotNull(orderId);
+
+            return _orderRepository.GetOrder(orderId);
         }
     }
 }

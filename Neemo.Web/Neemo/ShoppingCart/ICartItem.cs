@@ -8,7 +8,8 @@ namespace Neemo.ShoppingCart
         decimal Price { get; }
         decimal PriceWithoutTax { get; }
         int Quantity { get; }
-        
+        string Title { get; }
+
         decimal CalculateSubTotal();
         decimal CalculateSubTotalWithoutTax();
         

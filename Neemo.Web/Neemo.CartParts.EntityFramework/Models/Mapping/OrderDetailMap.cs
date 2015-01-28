@@ -23,6 +23,7 @@ namespace Neemo.CarParts.EntityFramework.Models.Mapping
             this.Property(t => t.DateCreated).HasColumnName("DateCreated");
             this.Property(t => t.DateDeleted).HasColumnName("DateDeleted");
             this.Property(t => t.TaxTotal).HasColumnName("TaxTotal");
+            this.Property(t => t.ProductName).HasColumnName("ProductName");
 
             // Relationships
             this.HasOptional(t => t.OrderHeader)

@@ -21,7 +21,8 @@ namespace Neemo.Orders
                 SourceIpAddress = shoppingCart.SourceIpAddress,
                 OrderLineItems = shoppingCart.GetItems().Select(OrderLineItem.FromShoppingCartItem).ToArray(),
                 UserName = shoppingCart.UserName,
-                CreatedDateTime = DateTime.Now
+                CreatedDateTime = DateTime.Now,
+                PaymentTransactionId = shoppingCart.PaymentTransactionId
             };
         }
 
@@ -44,7 +45,7 @@ namespace Neemo.Orders
             };
         }
 
-        public int? OrderId { get; private set; }
+        public int? OrderId { get; set; }
         public Guid GUID { get; private set; }
         public PersonalDetails ShippingDetails { get; private set; }
         public PersonalDetails BillingDetails { get; private set; }
@@ -56,5 +57,14 @@ namespace Neemo.Orders
         public string SourceIpAddress { get; private set; }
         public string UserName { get; set; }
         public DateTime CreatedDateTime { get; private set; }
+        public string PaymentTransactionId { get; set; }    
+
+        /// <summary>
+        /// Returns the sum of TotalAmount, Tax and Shipping 
+        /// </summary>
+        public decimal GetGrandTotal()
+        {
+            return TotalAmount + TaxTotal + ShippingTotal;
+        }
     }
 }

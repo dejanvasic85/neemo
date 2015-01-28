@@ -6,7 +6,7 @@ namespace Neemo.Web.Models
     using Store;
     using System.Linq;
 
-    public class OrderSummaryConverter : ITypeConverter<Cart, OrderSummaryView>
+    public class CartToOrderSummaryConverter : ITypeConverter<Cart, OrderSummaryView>
     {
         public OrderSummaryView Convert(ResolutionContext context)
         {

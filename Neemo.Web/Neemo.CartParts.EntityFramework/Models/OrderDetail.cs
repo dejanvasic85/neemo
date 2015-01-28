@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Spatial;
 
 namespace Neemo.CarParts.EntityFramework.Models
 {
@@ -17,5 +18,6 @@ namespace Neemo.CarParts.EntityFramework.Models
         public Nullable<decimal> TaxTotal { get; set; }
         public virtual OrderHeader OrderHeader { get; set; }
         public virtual Product Product { get; set; }
+        public virtual string ProductName { get; set; }
     }
 }

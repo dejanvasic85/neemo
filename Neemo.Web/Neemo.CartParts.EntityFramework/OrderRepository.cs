@@ -21,6 +21,9 @@ namespace Neemo.CarParts.EntityFramework
                 context.OrderHeaders.Add(dbOrder);
 
                 context.SaveChanges();
+
+                // Map the Id's back
+                order.OrderId = dbOrder.OrderHeaderID;
             }
         }
 
@@ -34,6 +37,24 @@ namespace Neemo.CarParts.EntityFramework
                     .ToList();
 
                 return dbOrders.Select(Mapper.Map<Models.OrderHeader, Orders.Order>);
+            }
+        }
+
+        public Order GetOrder(int? orderId)
+        {
+            using (var context = DbContextFactory.Create())
+            {
+                var dbOrder = context.OrderHeaders
+                    .Where(o => o.OrderHeaderID == orderId)
+                    .Include(o => o.OrderDetails)
+                    .FirstOrDefault();
+
+                if (dbOrder == null)
+                {
+                    return null;
+                }
+                
+                return Mapper.Map<Models.OrderHeader, Orders.Order>(dbOrder);
             }
         }
     }

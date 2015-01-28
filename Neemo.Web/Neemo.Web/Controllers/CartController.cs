@@ -198,14 +198,13 @@
             var shoppingCart = _cartContext.Current();
 
             // Creates the order from the shopping cart and saves to database
-            _orderService.CreateOrder(shoppingCart);
+            var order = _orderService.CreateOrder(shoppingCart);
 
 
             // Adjusts the stock levels
             _productService.AdjustStockLevels(shoppingCart);
 
-
-            var invoice = Mapper.Map<Cart, InvoiceDetailView>(shoppingCart);
+            var invoice = Mapper.Map<Order, InvoiceDetailView>(_orderService.GetOrder(order.OrderId));
             invoice.CompanyName = _sysConfig.CompanyName;
             invoice.CompanyAddress = _sysConfig.CompanyAddress;
             invoice.CompanyPhone = _sysConfig.CompanyPhone;
