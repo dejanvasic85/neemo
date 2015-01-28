@@ -100,9 +100,9 @@ namespace Neemo.Web.Infrastructure
             return urlHelper.Action("Orders", "Account");
         }
 
-        public static string Invoice(this UrlHelper urlHelper, string transactionId)
+        public static string Invoice(this UrlHelper urlHelper, int orderId)
         {
-            return urlHelper.Action("Invoice", "Account", new {transactionId});
+            return urlHelper.Action("Invoice", "Account", new {orderId});
         }
 
         public static string ActionAbsolute(this UrlHelper urlHelper, string actionName, string controllerName, object routeValues = null)

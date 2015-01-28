@@ -239,6 +239,7 @@
   <ItemGroup>
     <Content Include="Content\magento\ajax_cart_super.css" />
     <Content Include="Content\magento\bootstrap-2.3.2.css" />
+    <Content Include="Content\magento\bootstrap-panel.css" />
     <Content Include="Content\magento\bootstrap-responsive-2.3.2.css" />
     <Content Include="Content\magento\css3.htc" />
     <Content Include="Content\magento\fish_menu.css" />

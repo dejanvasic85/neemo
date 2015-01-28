@@ -19,6 +19,7 @@ namespace Neemo.Web.Models
                 BillingDetailsView = Mapper.Map<PersonalDetails, PersonalDetailsView>(order.BillingDetails),
                 InvoiceLineItems = order.OrderLineItems.Select(Mapper.Map<OrderLineItem, InvoiceItemView>).ToList(),
                 InvoiceNumber = order.PaymentTransactionId,
+                OrderId = order.OrderId.GetValueOrDefault()
             };
         }
     }

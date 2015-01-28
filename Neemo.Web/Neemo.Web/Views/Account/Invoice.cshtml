@@ -9,10 +9,12 @@
 <html>
     <head>
         <title>Invoice Details</title>
+        <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/bootstrap-2.3.2.css")" media="all">
+        <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/bootstrap-panel.css")" media="all">
     </head>
     <body>
-        <div>
-              Coming soon
+        <div class="container-fluid">
+              @Html.Partial("_Invoice", Model)
         </div>
     </body>
 </html>

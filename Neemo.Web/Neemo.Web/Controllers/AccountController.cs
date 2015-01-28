@@ -533,12 +533,17 @@ namespace Neemo.Web.Controllers
             return (ActionResult)PartialView("_RemoveAccountPartial", linkedAccounts);
         }
 
-        public ActionResult Invoice(string transactionId)
+        public ActionResult Invoice(int orderId)
         {
-            // Todo - Fetch the transaction and the invoice detail and map the invoice details
+            var order = _orderService.GetOrder(orderId);
 
+            var invoiceViewModel = Mapper.Map<Orders.Order, Models.InvoiceDetailView>(order);
 
-            return View();
+            invoiceViewModel.CompanyName = _config.CompanyName;
+            invoiceViewModel.CompanyAddress = _config.CompanyAddress;
+            invoiceViewModel.CompanyPhone = _config.CompanyPhone;
+
+            return View(invoiceViewModel);
         }
 
         public ActionResult Details()

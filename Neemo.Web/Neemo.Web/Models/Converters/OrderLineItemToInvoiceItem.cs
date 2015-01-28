@@ -13,7 +13,8 @@ namespace Neemo.Web.Models
             {
                 Title = orderItem.ProductName,
                 Quantity = orderItem.Quantity,
-                ItemSubTotalWithoutTax = orderItem.UnitPrice
+                ItemSubTotalWithoutTax = orderItem.TotalValue,
+                PriceWithoutTax = orderItem.UnitPrice
             };
         }
     }

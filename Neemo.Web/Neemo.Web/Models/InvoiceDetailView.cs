@@ -14,5 +14,6 @@ namespace Neemo.Web.Models
         public decimal Tax { get; set; }
         public decimal Shipping { get; set; }
         public decimal GrandTotal { get; set; }
+        public int OrderId { get; set; }
     }
 }
