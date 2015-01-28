@@ -4,13 +4,14 @@
     using Infrastructure;
     using Membership;
     using Models;
+    using Notifications;
+    using Orders;
     using Payments;
     using Shipping;
     using ShoppingCart;
     using Store;
     using System.Linq;
     using System.Web.Mvc;
-    using Orders;
 
     public class CartController : MagentoController
     {
@@ -19,24 +20,28 @@
         private readonly IShippingCalculatorService _shippingService;
         private readonly IProfileService _profileService;
         private readonly IPaymentService _paymentService;
-        private readonly ISysConfig _sysConfig;
+        private readonly ISysConfig _config;
         private readonly IOrderService _orderService;
+        private readonly ITemplateService _templateService;
+        private readonly INotificationService _notificationService;
 
         public CartController(ICartContext cartContext,
             IProductService productService,
             IShippingCalculatorService shippingService,
             IProfileService profileService,
             IPaymentService paymentService,
-            ISysConfig sysConfig,
-            IOrderService orderService)
+            ISysConfig config,
+            IOrderService orderService, ITemplateService templateService, INotificationService notificationService)
         {
             _cartContext = cartContext;
             _productService = productService;
             _shippingService = shippingService;
             _profileService = profileService;
             _paymentService = paymentService;
-            _sysConfig = sysConfig;
+            _config = config;
             _orderService = orderService;
+            _templateService = templateService;
+            _notificationService = notificationService;
         }
 
         public ActionResult MyCart()
@@ -199,15 +204,21 @@
 
             // Creates the order from the shopping cart and saves to database
             var order = _orderService.CreateOrder(shoppingCart);
-
-
+            
             // Adjusts the stock levels
             _productService.AdjustStockLevels(shoppingCart);
 
             var invoice = Mapper.Map<Order, InvoiceDetailView>(_orderService.GetOrder(order.OrderId));
-            invoice.CompanyName = _sysConfig.CompanyName;
-            invoice.CompanyAddress = _sysConfig.CompanyAddress;
-            invoice.CompanyPhone = _sysConfig.CompanyPhone;
+            invoice.CompanyName = _config.CompanyName;
+            invoice.CompanyAddress = _config.CompanyAddress;
+            invoice.CompanyPhone = _config.CompanyPhone;
+
+            // Email the user the details of the order
+            _notificationService.Email("Order Confirmation",
+                    _templateService.ViewToString(this, "~/Views/EmailTemplates/OrderConfirmation.cshtml",
+                    invoice),
+                    _config.NotificationSenderEmail,
+                    shoppingCart.UserName); // The username should be email!!
 
             _cartContext.Clear();
 

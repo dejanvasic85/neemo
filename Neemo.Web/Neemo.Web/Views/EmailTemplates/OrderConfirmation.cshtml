@@ -1,0 +1,77 @@
+﻿@model InvoiceDetailView
+
+@{
+    Layout = "_EmailLayout.cshtml";
+}
+
+<h3>Order Confirmation</h3>
+
+<p>
+    Thank you for shopping at @Model.CompanyName.
+    Please find your order details below.
+</p>
+
+<strong>
+    Order ID: @Model.OrderId
+</strong>
+
+<table style="border-collapse: collapse; border: 1px solid #eee; width: 50%">
+    <thead>
+        <tr>
+            <th>
+                <h4>Item</h4>
+            </th>
+            <th>
+                <h4>Quantity</h4>
+            </th>
+            <th>
+                <h4>Price</h4>
+            </th>
+            <th>
+                <h4>Totals</h4>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.InvoiceLineItems)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td class="text-right">@item.Quantity</td>
+                <td class="text-right">@item.PriceWithoutTax.ToString("C")</td>
+                <td class="text-right">@item.ItemSubTotalWithoutTax.ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" style="text-align: right">Sub Total</td>
+            <td colspan="3">@Model.SubTotal.ToString("C")</td>
+        </tr>
+        <tr>
+            <td colspan="3" style="text-align: right">Tax</td>
+            <td colspan="3">@Model.Tax.ToString("C")</td>
+        </tr>
+        <tr>
+            <td colspan="3" style="text-align: right">Postage / Shipping</td>
+            <td colspan="3">@Model.Shipping.ToString("C")</td>
+        </tr>
+        <tr>
+            <td colspan="3" style="text-align: right">Grand Total</td>
+            <td colspan="3">@Model.GrandTotal.ToString("C")</td>
+        </tr>
+    </tfoot>
+</table>
+
+
+
+
+@if (Model.PaidWithPayPal)
+{
+    <p>Your payment has been processed successfully with PayPal</p>
+    <p>We will notify you once the items have been posted</p>
+}
+else
+{
+    <p>Total Owing: @Model.GrandTotal.ToString("C")</p>
+}
