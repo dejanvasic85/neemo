@@ -15,5 +15,6 @@ namespace Neemo.Web.Models
         public decimal Shipping { get; set; }
         public decimal GrandTotal { get; set; }
         public int OrderId { get; set; }
+        public bool PaidWithPayPal { get; set; }
     }
 }
