@@ -54,6 +54,18 @@
                                 @Html.TextBoxFor(m => m.PriceMax, new { data_numbers_only = "" })
                             </div>
                         </div>
+                        
+                        <div class="control-group">
+                            @Html.BootstrapLabelFor(m => m.Make)
+                            <div class="controls">
+                                @Html.FilterLinkDropFor(m => m.Make, new[]
+                                {
+                                    new SelectListItem{Text = "Please Select", Selected = true}, 
+                                    new SelectListItem{Text = "Stan", Value = "Wawrinks"}
+                                })
+                            </div>
+                        </div>
+
                         <div class="control-group">
                             <button class="btn" data-apply-filters data-loading-text="Please wait...">Apply</button>
                         </div>

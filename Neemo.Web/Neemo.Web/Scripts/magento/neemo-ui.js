@@ -101,6 +101,12 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
             ui.queryManager.addOrUpdate({ key: 'priceMax', newVal: priceMax }, false);
             return searchFilters;
         },
+        setMake : function(make) {
+            ui.queryManager.addOrUpdate({ key: 'Make', newVal: make }, true);
+        },
+        clearFilter : function(key) {
+            ui.queryManager.addOrUpdate({ key: key, newVal: '' }, true);
+        },
         apply: function () {
             ui.queryManager.goWithNewQuery();
         }
@@ -175,6 +181,14 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
 
     $('[data-category-filter]').on('click', function () {
         searchFilters.setCategory($(this).attr('data-category-filter'));
+    });
+
+    $('#Make').on('change', function () {
+        searchFilters.setMake($(this).val());
+    });
+
+    $('[remove-filter]').on('click', function () {
+        searchFilters.clearFilter($(this).attr('remove-filter'));
     });
 
     $('#getShippingEstimate').button();
