@@ -188,6 +188,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\MappingConfig.cs" />
+    <Compile Include="Controllers\CarPartController.cs" />
     <Compile Include="Infrastructure\MultipleActionAttribute.cs" />
     <Compile Include="Models\Converters\OrderLineItemToInvoiceItem.cs" />
     <Compile Include="Models\Converters\OrderToInvoiceConverter.cs" />
@@ -582,6 +583,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\CarPart\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -14,33 +14,23 @@ namespace Neemo.Web
 
             
             // Register all repository classes automatically 
-            const string carPartsAssemblyName = "Neemo.CarParts.EntityFramework";
-            
-            container.RegisterTypes(
-                AllClasses.FromAssemblies(new[]
-                {
-                    Assembly.Load(carPartsAssemblyName)
-                }),
-                WithMappings.FromMatchingInterface,
-                WithName.Default);
-
-            
             // Register all service classes automatically in the business layer
+            
             container.RegisterTypes(
                 AllClasses.FromAssemblies(new[]
                 {
-                    Assembly.Load("Neemo")
+                    Assembly.Load("Neemo"),
+                    Assembly.Load("Neemo.CarParts"),
+                    Assembly.Load("Neemo.CarParts.EntityFramework"), 
                 }),
                 WithMappings.FromMatchingInterface,
                 WithName.Default);
-
+            
             // Register the PayPal payment service ( later we may have a few more :)
             container.RegisterType<Payments.IPaymentService, Payments.pp.PaymentService>();
-
-
+            
             // FileStore image service requires http utility to initialise
-            container.RegisterType<Images.IImageService, Images.FileImageService>(
-                new InjectionConstructor(HttpContext.Current.Server.MapPath("~/"), typeof(ISysConfig)));
+            container.RegisterType<Images.IImageService, Images.FileImageService>(new InjectionConstructor(HttpContext.Current.Server.MapPath("~/"), typeof(ISysConfig)));
 
             // ICartContext (session based)
             container.RegisterType<ShoppingCart.ICartContext, Infrastructure.SessionCartContext>();
@@ -51,7 +41,7 @@ namespace Neemo.Web
 
             // Register all the assemblies that use the IMapping Config
             container.RegisterType<IMappingConfig, MappingConfig>("WebConfig");
-            container.RegisterTypes(new RegisterMappersConvention(carPartsAssemblyName, "Neemo.Payments.PayPal"));
+            container.RegisterTypes(new RegisterMappersConvention("Neemo.CarParts.EntityFramework", "Neemo.Payments.PayPal"));
             
             // Set the MVC dependency resolver to use Unity!
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));

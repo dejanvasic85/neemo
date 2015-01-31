@@ -7,7 +7,6 @@ namespace Neemo.CarParts.EntityFramework
 {
     public class CategoryRepository : ICategoryRepository
     {
-
         public List<Category> GetAllCategories()
         {
             using (var context = DbContextFactory.Create())
@@ -23,7 +22,6 @@ namespace Neemo.CarParts.EntityFramework
                 var category = context.Categories.Single(p => p.CategoryID == categoryId);
 
                 return Mapper.Map<Models.Category, Store.Category>(category);
-
             }
         }
     }

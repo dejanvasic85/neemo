@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CarPartRepository.cs" />
     <Compile Include="CategoryRepository.cs" />
     <Compile Include="Converters\OrderHeaderToOrderConverter.cs" />
     <Compile Include="Converters\RegistrationToUserProfileConverter.cs" />
@@ -187,6 +188,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Neemo.CarParts\Neemo.CarParts.csproj">
+      <Project>{72dfb756-9699-4447-8794-cada7cae4765}</Project>
+      <Name>Neemo.CarParts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Neemo\Neemo.csproj">
       <Project>{d118aa0c-9057-440c-97ac-343293f834aa}</Project>
       <Name>Neemo</Name>
