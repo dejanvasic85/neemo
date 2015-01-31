@@ -620,8 +620,13 @@
     <Content Include="Views\Account\Orders.cshtml" />
     <Content Include="Views\Account\ShippingDetails.cshtml" />
     <Content Include="Views\EmailTemplates\OrderConfirmation.cshtml" />
+    <Content Include="Views\Products\_CarPartFilters.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Neemo.CarParts\Neemo.CarParts.csproj">
+      <Project>{72dfb756-9699-4447-8794-cada7cae4765}</Project>
+      <Name>Neemo.CarParts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Neemo.CartParts.EntityFramework\Neemo.CarParts.EntityFramework.csproj">
       <Project>{2a0a573d-a9d5-4afe-a485-88545b9a855a}</Project>
       <Name>Neemo.CarParts.EntityFramework</Name>

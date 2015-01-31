@@ -101,8 +101,8 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
             ui.queryManager.addOrUpdate({ key: 'priceMax', newVal: priceMax }, false);
             return searchFilters;
         },
-        setMake : function(make) {
-            ui.queryManager.addOrUpdate({ key: 'Make', newVal: make }, true);
+        setFilter : function(filter, val) {
+            ui.queryManager.addOrUpdate({ key: filter, newVal: val }, false);
         },
         clearFilter : function(key) {
             ui.queryManager.addOrUpdate({ key: key, newVal: '' }, true);
@@ -183,8 +183,11 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
         searchFilters.setCategory($(this).attr('data-category-filter'));
     });
 
-    $('#Make').on('change', function () {
-        searchFilters.setMake($(this).val());
+    $('[data-search-filter]').on('change', function () {
+        var filter = $(this).data().searchFilter;
+        var value = $(this).val();
+        debugger;
+        searchFilters.setFilter(filter, value);
     });
 
     $('[remove-filter]').on('click', function () {

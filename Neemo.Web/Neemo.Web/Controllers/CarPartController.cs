@@ -1,14 +1,22 @@
 ﻿using System.Web.Mvc;
+using Neemo.CarParts;
 
 namespace Neemo.Web.Controllers
 {
     public class CarPartController : Controller
     {
-        //public ActionResult GetMakes()
-        //{
+        private readonly ICarPartService _carPartService;
 
+        public CarPartController(ICarPartService carPartService)
+        {
+            _carPartService = carPartService;
+        }
 
-        //    return View(null);
-        //}
+        public ActionResult GetMakes()
+        {
+            var makes = _carPartService.GetMakes();
+
+            return Json(makes);
+        }
     }
 }
