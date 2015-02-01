@@ -9,5 +9,6 @@ namespace Neemo.CarParts
         List<EngineSize> GetEngineSizes();
         List<FuelType> GetFuelTypes();
         List<BodyType> GetBodyTypes();
+        List<WheelBase> GetWheelBases();
     }
 }

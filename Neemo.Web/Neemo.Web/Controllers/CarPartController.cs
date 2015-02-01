@@ -52,5 +52,13 @@ namespace Neemo.Web.Controllers
 
             return Json(models, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult GetWheelBases()
+        {
+            var models = _carPartService.GetWheelBases()
+                .Select(m => new SelectListItem { Text = m.Title, Value = m.Id.ToString() });
+
+            return Json(models, JsonRequestBehavior.AllowGet);
+        }
     }
 }

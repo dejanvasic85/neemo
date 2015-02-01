@@ -79,5 +79,20 @@ namespace Neemo.CarParts.EntityFramework
                     .ToList();
             }
         }
+
+        public List<WheelBase> GetWheelBases()
+        {
+            using (var context = DbContextFactory.Create())
+            {
+                return context.WheelBases
+                    .Where(m => m.Active == true && m.WheelBase1.Trim() != "Any")
+                    .Select(m => new WheelBase
+                    {
+                        Id = m.WheelBaseID,
+                        Title = m.WheelBase1
+                    })
+                    .ToList();
+            }
+        }
     }
 }

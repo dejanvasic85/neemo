@@ -83,6 +83,7 @@ namespace Neemo.Web.Models
         public int EngineSize { get; set; }
         public int FuelType { get; set; }
         public int BodyType { get; set; }
+        public int WheelBase { get; set; }
 
         #endregion
     }

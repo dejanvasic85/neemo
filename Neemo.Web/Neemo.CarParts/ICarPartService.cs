@@ -9,6 +9,7 @@ namespace Neemo.CarParts
         List<EngineSize> GetEngineSizes();
         List<FuelType> GetFuelTypes();
         List<BodyType> GetBodyTypes();
+        List<WheelBase> GetWheelBases();
     }
 
     public class CarPartService : ICarPartService
@@ -43,6 +44,11 @@ namespace Neemo.CarParts
         public List<BodyType> GetBodyTypes()
         {
             return _repository.GetBodyTypes();
+        }
+
+        public List<WheelBase> GetWheelBases()
+        {
+            return _repository.GetWheelBases();
         }
     }
 }
