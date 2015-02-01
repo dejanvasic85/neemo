@@ -20,3 +20,11 @@
                 data-url="@Url.Action("GetModelOptions", "CarPart")"></select>
     </div>
 </div>
+
+
+<div class="control-group">
+    @Html.BootstrapLabelFor(m => m.Chassis)
+    <div class="controls">
+        @Html.FilterTextBoxFor(m => m.Chassis)
+    </div>
+</div>

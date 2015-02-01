@@ -41,10 +41,6 @@ namespace Neemo.Web.Models
         [Display(Name = "Sort By")]
         public FindModelSortByView SortBy { get; set; }
 
-        public string Make { get; set; }
-
-        public string Model { get; set; }
-
         public IEnumerable<SelectListItem> SortByItems { get; set; }
 
         public IEnumerable<SelectListItem> PageSizeItems { get; set; }
@@ -77,7 +73,16 @@ namespace Neemo.Web.Models
             get { return (int)Math.Ceiling((double)TotalResultCount / PageSize); }
         }
 
-        
+
+        #region Refactor this out ( somehow )
+
+        public int Make { get; set; }
+
+        public int Model { get; set; }
+
+        public string Chassis { get; set; }
+
+        #endregion
     }
 
     public enum FindModelSortByView

@@ -27,5 +27,15 @@ namespace Neemo.Web.Infrastructure
                 + metaData.PropertyName + "'>"
                 + value + "&nbsp; <i class='fa fa-times'></i></a>");
         }
+
+        public static MvcHtmlString FilterTextBoxFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression)
+        {
+            // We don't need to do too much work here 
+            // Because textbox uses default model binding 
+            // So we just add the class that will apply the filter automatically
+            var metaData = ModelMetadata.FromLambdaExpression(expression, html.ViewData);
+
+            return html.TextBoxFor(expression, new { @data_search_filter = metaData.PropertyName });
+        }
     }
 }

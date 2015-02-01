@@ -105,12 +105,15 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
         },
         setFilter: function (filter, val) {
             ui.queryManager.addOrUpdate({ key: filter, newVal: val }, false);
+            return searchFilters;
         },
         clearFilter: function (key) {
             ui.queryManager.addOrUpdate({ key: key, newVal: '' }, true);
+            return searchFilters;
         },
         apply: function () {
             ui.queryManager.goWithNewQuery();
+            return searchFilters;
         }
     };
 
@@ -171,25 +174,27 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
     });
 
     $('[data-apply-filters').on('click', function () {
-        searchFilters
+        var filter = searchFilters
             .setKeyword($('#Keyword').val())
             .setSortBy($('#SortBy').val())
             .setPriceMin($('#PriceMin').val())
-            .setPriceMax($('#PriceMax').val())
-            .apply();
+            .setPriceMax($('#PriceMax').val());
+
+        $('[data-search-filter').each(function (index, item) {
+            var sf = $(this).data().searchFilter;
+            var value = $(this).val();
+            filter.setFilter(sf, value);
+        });
 
         $(this).button('loading');
+
+        filter.apply();
     });
 
+    // Changing the category is not a regular filter
+    // Todo - It needs ability to reset the existing filters!
     $('[data-category-filter]').on('click', function () {
         searchFilters.setCategory($(this).attr('data-category-filter'));
-    });
-
-    // Handle the search filter changes
-    $('[data-search-filter]').on('change', function () {
-        var filter = $(this).data().searchFilter;
-        var value = $(this).val();
-        searchFilters.setFilter(filter, value);
     });
 
     // Load all the search filters
