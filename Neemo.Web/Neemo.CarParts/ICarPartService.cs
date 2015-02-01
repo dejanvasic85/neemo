@@ -7,6 +7,7 @@ namespace Neemo.CarParts
         List<Make> GetMakes();
         List<Model> GetModels();
         List<EngineSize> GetEngineSizes();
+        List<FuelType> GetFuelTypes();
     }
 
     public class CarPartService : ICarPartService
@@ -31,6 +32,11 @@ namespace Neemo.CarParts
         public List<EngineSize> GetEngineSizes()
         {
             return _repository.GetEngineSizes();
+        }
+
+        public List<FuelType> GetFuelTypes()
+        {
+            return _repository.GetFuelTypes();
         }
     }
 }

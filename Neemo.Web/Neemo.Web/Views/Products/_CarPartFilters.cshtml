@@ -47,3 +47,15 @@
                 data-url="@Url.Action("GetEngineSizes", "CarPart")">></select>
     </div>
 </div>
+
+<div class="control-group">
+    <label for="FuelType">Fuel Type</label>
+    <div class="controls">
+        <select id="FuelType" class="control"
+                data-search-filter="FuelType"
+                data-select-filter="@Model.FuelType"
+                data-url="@Url.Action("GetFuelTypes", "CarPart")">
+            >
+        </select>
+    </div>
+</div>

@@ -36,5 +36,13 @@ namespace Neemo.Web.Controllers
 
             return Json(models, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult GetFuelTypes()
+        {
+            var models = _carPartService.GetFuelTypes()
+                .Select(m => new SelectListItem { Text = m.Title, Value = m.Id.ToString() });
+
+            return Json(models, JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -7,5 +7,6 @@ namespace Neemo.CarParts
         List<Make> GetMakes();
         List<Model> GetModels();
         List<EngineSize> GetEngineSizes();
+        List<FuelType> GetFuelTypes();
     }
 }
