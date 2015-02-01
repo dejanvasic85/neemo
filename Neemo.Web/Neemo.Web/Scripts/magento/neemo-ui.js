@@ -23,13 +23,15 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
 
             // Locate the item and update it
             $.each(q.items, function (idx, val) {
-                if (val.startsWith(self.keyPair.key + '=')) {
-                    if (self.keyPair.newVal === '') {
-                        remove(self.keyPair.key);
-                    } else {
-                        q.items[idx] = self.keyPair.key + '=' + self.keyPair.newVal;
+                if (val) {
+                    if (val.startsWith(self.keyPair.key + '=')) {
+                        if (self.keyPair.newVal === '') {
+                            remove(self.keyPair.key);
+                        } else {
+                            q.items[idx] = self.keyPair.key + '=' + self.keyPair.newVal;
+                        }
+                        self.exists = true;
                     }
-                    self.exists = true;
                 }
             });
 
@@ -101,10 +103,10 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
             ui.queryManager.addOrUpdate({ key: 'priceMax', newVal: priceMax }, false);
             return searchFilters;
         },
-        setFilter : function(filter, val) {
+        setFilter: function (filter, val) {
             ui.queryManager.addOrUpdate({ key: filter, newVal: val }, false);
         },
-        clearFilter : function(key) {
+        clearFilter: function (key) {
             ui.queryManager.addOrUpdate({ key: key, newVal: '' }, true);
         },
         apply: function () {
@@ -183,11 +185,31 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
         searchFilters.setCategory($(this).attr('data-category-filter'));
     });
 
+    // Handle the search filter changes
     $('[data-search-filter]').on('change', function () {
         var filter = $(this).data().searchFilter;
         var value = $(this).val();
-        debugger;
         searchFilters.setFilter(filter, value);
+    });
+
+    // Load all the search filters
+    $('[data-select-filter]').each(function () {
+        var me = $(this);
+        var selected = me.data().selectFilter;
+        me.attr('disabled', 'disabled');
+        me.append('<option>Loading...</option>');
+        var url = me.data().url;
+        $.getJSON(url).done(function (data) {
+            me.empty().append("<option value=''>-- Any --</option>");
+            $.each(data, function (index, option) {
+                if (selected == option.Value) {
+                    me.append('<option selected value="' + option.Value + '">' + option.Text + '</option>');
+                } else {
+                    me.append('<option value="' + option.Value + '">' + option.Text + '</option>');
+                }
+            });
+            me.removeAttr('disabled');
+        });
     });
 
     $('[remove-filter]').on('click', function () {

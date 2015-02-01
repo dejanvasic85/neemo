@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
 using Neemo.CarParts;
 
 namespace Neemo.Web.Controllers
@@ -12,11 +13,12 @@ namespace Neemo.Web.Controllers
             _carPartService = carPartService;
         }
 
-        public ActionResult GetMakes()
+        public ActionResult GetMakesOptions()
         {
-            var makes = _carPartService.GetMakes();
+            var makes = _carPartService.GetMakes()
+                .Select(m => new SelectListItem { Text = m.Title, Value = m.Id.ToString() });
 
-            return Json(makes);
+            return Json(makes, JsonRequestBehavior.AllowGet);
         }
     }
 }

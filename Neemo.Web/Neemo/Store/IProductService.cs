@@ -18,7 +18,7 @@ namespace Neemo.Store
         /// The shopping cart is 'processed' by adjusting the stock levels for each item
         /// </summary>
         void AdjustStockLevels(Cart shoppingCart);
-        
+
     }
 
     public class ProductService : IProductService
