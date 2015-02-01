@@ -59,3 +59,15 @@
         </select>
     </div>
 </div>
+
+<div class="control-group">
+    <label for="BodyType">Body Type</label>
+    <div class="controls">
+        <select id="BodyType" class="control"
+                data-search-filter="BodyType"
+                data-select-filter="@Model.BodyType"
+                data-url="@Url.Action("GetBodyTypes", "CarPart")">
+            >
+        </select>
+    </div>
+</div>

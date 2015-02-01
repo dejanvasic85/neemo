@@ -64,5 +64,20 @@ namespace Neemo.CarParts.EntityFramework
                     .ToList();
             }
         }
+
+        public List<BodyType> GetBodyTypes()
+        {
+            using (var context = DbContextFactory.Create())
+            {
+                return context.BodyTypes
+                    .Where(m => m.Active == true && m.BodyType1.Trim() != "Any")
+                    .Select(m => new BodyType
+                    {
+                        Id = m.BodyTypeID,
+                        Title = m.BodyType1
+                    })
+                    .ToList();
+            }
+        }
     }
 }
