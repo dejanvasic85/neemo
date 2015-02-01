@@ -1,11 +1,22 @@
 ﻿@model FindModelView
 
 <div class="control-group">
-    <label for="make">Make</label>
+    <label for="Make">Make</label>
     <div class="controls">
         <select id="Make" class="control"
                 data-search-filter="Make"
                 data-select-filter="@Model.Make"
                 data-url="@Url.Action("GetMakesOptions", "CarPart")"></select>
+    </div>
+</div>
+
+
+<div class="control-group">
+    <label for="Model">Model</label>
+    <div class="controls">
+        <select id="Model" class="control"
+                data-search-filter="Model"
+                data-select-filter="@Model.Model"
+                data-url="@Url.Action("GetModelOptions", "CarPart")"></select>
     </div>
 </div>

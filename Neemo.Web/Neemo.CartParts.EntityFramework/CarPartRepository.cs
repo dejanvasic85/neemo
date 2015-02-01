@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace Neemo.CarParts.EntityFramework
@@ -16,6 +15,21 @@ namespace Neemo.CarParts.EntityFramework
                     {
                         Id = m.MakeID,
                         Title = m.Make1
+                    })
+                    .ToList();
+            }
+        }
+
+        public List<Model> GetModels()
+        {
+            using (var context = DbContextFactory.Create())
+            {
+                return context.Models
+                    .Where(m => m.Active == true && m.Model1 != "Any")
+                    .Select(m => new Model()
+                    {
+                        Id = m.ModelID,
+                        Title = m.Model1
                     })
                     .ToList();
             }

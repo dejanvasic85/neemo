@@ -5,5 +5,6 @@ namespace Neemo.CarParts
     public interface ICarPartRepository
     {
         List<Make> GetMakes();
+        List<Model> GetModels();
     }
 }

@@ -6,6 +6,5 @@
 
         public string Title { get; set; }
 
-        public int MakeId { get; set; }
     }
 }
