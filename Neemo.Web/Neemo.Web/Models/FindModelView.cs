@@ -84,6 +84,10 @@ namespace Neemo.Web.Models
         public int FuelType { get; set; }
         public int BodyType { get; set; }
         public int WheelBase { get; set; }
+        [Display(Name = "Year Min")]
+        public int? YearMin { get; set; }
+        [Display(Name = "Year Max")]
+        public int? YearMax { get; set; }
 
         #endregion
     }

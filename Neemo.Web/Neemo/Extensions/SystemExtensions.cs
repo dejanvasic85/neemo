@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Neemo
 {
@@ -19,22 +20,31 @@ namespace Neemo
             }
         }
 
-        public static Dictionary<string, string> ToDictionary(this object source, bool useEmptyProperties = false)
+        public static IDictionary<string, object> ToDictionary(this object source)
         {
-            var propertiesToSet = source.GetType().GetProperties();
-            var dictionary = new Dictionary<string, string>();
+            return source.ToDictionary<object>();
+        }
 
-            foreach (var propertyInfo in propertiesToSet)
+        public static IDictionary<string, T> ToDictionary<T>(this object source)
+        {
+            Guard.NotNull(source);
+
+            var dictionary = new Dictionary<string, T>();
+            foreach (PropertyDescriptor property in TypeDescriptor.GetProperties(source))
             {
-                var value = propertyInfo.GetValue(source);
-                if (!useEmptyProperties && string.IsNullOrEmpty(value.ToString()))
+                var value = property.GetValue(source);
+                if (value.IsOfType<T>())
                 {
-                    continue;
-                }
-
-                dictionary.Add(propertyInfo.Name, value.ToString());
+                    dictionary.Add(property.Name.Replace('_', '-'), (T)value);
+                } 
             }
             return dictionary;
         }
+
+        public static bool IsOfType<T>(this object value)
+        {
+            return value is T;
+        }
+
     }
 }

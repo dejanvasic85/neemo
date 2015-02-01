@@ -55,9 +55,9 @@ namespace Neemo.Web
     {
         protected override Dictionary<string, string> ResolveCore(Store.Product source)
         {
-            var dictionary = source.ProductSpecifications.ToDictionary();
+            var dictionary = source.ProductSpecifications.ToDictionary<string>();
             
-            return dictionary;
+            return dictionary as Dictionary<string, string>;
         }
     }
 }

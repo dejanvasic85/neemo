@@ -44,7 +44,9 @@
         <select id="EngineSize" class="control"
                 data-search-filter="EngineSize"
                 data-select-filter="@Model.EngineSize"
-                data-url="@Url.Action("GetEngineSizes", "CarPart")">></select>
+                data-url="@Url.Action("GetEngineSizes", "CarPart")">
+            >
+        </select>
     </div>
 </div>
 
@@ -78,7 +80,25 @@
         <select id="WheelBase" class="control"
                 data-search-filter="WheelBase"
                 data-select-filter="@Model.WheelBase"
-                data-url="@Url.Action("GetWheelBases", "CarPart")">
-        </select>
+                data-url="@Url.Action("GetWheelBases", "CarPart")"></select>
+    </div>
+</div>
+
+<div class="row-fluid">
+    <div class="span6">
+        <div class="control-group">
+            @Html.BootstrapLabelFor(m => m.YearMin)
+            <div class="controls">
+                @Html.FilterTextBoxFor(m => m.YearMin, new {@data_numbers_only=true, style="width: 80px"})
+            </div>
+        </div>
+    </div>
+    <div class="span6">
+        <div class="control-group">
+            @Html.BootstrapLabelFor(m => m.YearMax)
+            <div class="controls">
+                @Html.FilterTextBoxFor(m => m.YearMax, new { @data_numbers_only = true, style = "width: 80px" })
+            </div>
+        </div>
     </div>
 </div>
