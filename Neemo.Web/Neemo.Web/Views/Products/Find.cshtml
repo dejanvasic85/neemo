@@ -41,20 +41,29 @@
                             </div>
                         </div>
 
-                        <div class="control-group">
-                            @Html.BootstrapLabelFor(m => m.PriceMin)
-                            <div class="controls">
-                                @Html.TextBoxFor(m => m.PriceMin, new { data_numbers_only = "" })
+                        <div class="row-fluid">
+
+
+                            <div class="span6">
+                                <div class="control-group">
+                                    @Html.BootstrapLabelFor(m => m.PriceMin)
+                                    <div class="controls">
+                                        @Html.TextBoxFor(m => m.PriceMin, new { data_numbers_only = true, style="width: 80px" })
+                                    </div>
+                                </div>
                             </div>
+
+                            <div class="span6">
+                                <div class="control-group">
+                                    @Html.BootstrapLabelFor(m => m.PriceMax)
+                                    <div class="controls">
+                                        @Html.TextBoxFor(m => m.PriceMax, new { data_numbers_only = true, style="width: 80px" } )
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
 
-                        <div class="control-group">
-                            @Html.BootstrapLabelFor(m => m.PriceMax)
-                            <div class="controls">
-                                @Html.TextBoxFor(m => m.PriceMax, new { data_numbers_only = "" })
-                            </div>
-                        </div>
-                        
                         @Html.Partial("~/Views/Products/_CarPartFilters.cshtml")
 
                         <div class="control-group">
