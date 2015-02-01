@@ -36,3 +36,14 @@
         @Html.FilterTextBoxFor(m => m.EngineNumber)
     </div>
 </div>
+
+
+<div class="control-group">
+    <label for="EngineSize">Engine Size</label>
+    <div class="controls">
+        <select id="EngineSize" class="control"
+                data-search-filter="EngineSize"
+                data-select-filter="@Model.EngineSize"
+                data-url="@Url.Action("GetEngineSizes", "CarPart")">></select>
+    </div>
+</div>

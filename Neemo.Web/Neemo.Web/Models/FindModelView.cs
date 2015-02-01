@@ -80,7 +80,7 @@ namespace Neemo.Web.Models
         public int Model { get; set; }
         public string Chassis { get; set; }
         public string EngineNumber { get; set; }
-
+        public int EngineSize { get; set; }
         #endregion
     }
 

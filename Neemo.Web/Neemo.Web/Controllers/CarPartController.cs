@@ -28,5 +28,13 @@ namespace Neemo.Web.Controllers
 
             return Json(models, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult GetEngineSizes()
+        {
+            var models = _carPartService.GetEngineSizes()
+                .Select(m => new SelectListItem { Text = m.Title, Value = m.Id.ToString() });
+
+            return Json(models, JsonRequestBehavior.AllowGet);
+        }
     }
 }

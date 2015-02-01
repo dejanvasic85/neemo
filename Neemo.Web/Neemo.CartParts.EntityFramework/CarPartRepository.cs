@@ -34,5 +34,20 @@ namespace Neemo.CarParts.EntityFramework
                     .ToList();
             }
         }
+
+        public List<EngineSize> GetEngineSizes()
+        {
+            using (var context = DbContextFactory.Create())
+            {
+                return context.EngineSizes
+                    .Where(m => m.Active == true && m.EngineSize1.Trim() != "Any")
+                    .Select(m => new EngineSize
+                    {
+                        Id = m.EngineSizeID,
+                        Title = m.EngineSize1
+                    })
+                    .ToList();
+            }
+        }
     }
 }
