@@ -11,12 +11,11 @@
 </div>
 
 
-<div class="control-group">
+<div id="makeFilter" class="control-group @(Model.Make.HasValue ? "" : "no-display")">
     <label for="Model">Model</label>
     <div class="controls">
         <select id="Model" class="control"
                 data-search-filter="Model"
-                data-select-filter="@Model.Model"
                 data-url="@Url.Action("GetModelOptions", "CarPart")"></select>
     </div>
 </div>
@@ -56,9 +55,7 @@
         <select id="FuelType" class="control"
                 data-search-filter="FuelType"
                 data-select-filter="@Model.FuelType"
-                data-url="@Url.Action("GetFuelTypes", "CarPart")">
-            >
-        </select>
+                data-url="@Url.Action("GetFuelTypes", "CarPart")"></select>
     </div>
 </div>
 
@@ -68,9 +65,7 @@
         <select id="BodyType" class="control"
                 data-search-filter="BodyType"
                 data-select-filter="@Model.BodyType"
-                data-url="@Url.Action("GetBodyTypes", "CarPart")">
-            >
-        </select>
+                data-url="@Url.Action("GetBodyTypes", "CarPart")"></select>
     </div>
 </div>
 
@@ -89,7 +84,7 @@
         <div class="control-group">
             @Html.BootstrapLabelFor(m => m.YearMin)
             <div class="controls">
-                @Html.FilterTextBoxFor(m => m.YearMin, new {@data_numbers_only=true, style="width: 80px"})
+                @Html.FilterTextBoxFor(m => m.YearMin, new { @data_numbers_only = true, style = "width: 80px" })
             </div>
         </div>
     </div>
@@ -102,3 +97,44 @@
         </div>
     </div>
 </div>
+
+<script>
+    (function ($) {
+        $(function () {
+            $('#Make').on('change', function () {
+                if ($(this).val() !== '') {
+                    loadModels($(this).val());
+                    $('#makeFilter').removeClass("no-display");
+                } else {
+                    $('#makeFilter').addClass("no-display");
+                    $("#Model").empty().append('<option value="">-- Any --</option>');
+                }
+            });
+
+            // Initial load needs to load the make select
+            var makeId = '@Model.Make';
+            var modelId = '@Model.Model';
+
+            if (makeId !== '') {
+                loadModels(makeId);
+            }
+
+            function loadModels(make) {
+                var $select = $('#Model');
+                var url = $select.data().url;
+                var data = { makeId: make };
+                $.getJSON(url, data, function (items) {
+                    $select.empty();
+                    $select.append('<option value="">-- Any --</option>');
+                    $.each(items, function (index, option) {
+                        if (modelId !== '' && modelId == option.Value) {
+                            $select.append('<option selected="selected" value="' + option.Value + '">' + option.Text + '</option>');
+                        } else {
+                            $select.append('<option value="' + option.Value + '">' + option.Text + '</option>');
+                        }
+                    });
+                });
+            }
+        });
+    })(jQuery);
+</script>

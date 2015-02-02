@@ -21,7 +21,7 @@ namespace Neemo.Web.Controllers
             return Json(makes, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult GetModelOptions()
+        public ActionResult GetModelOptions(int makeId)
         {
             var models = _carPartService.GetModels()
                 .Select(m => new SelectListItem { Text = m.Title, Value = m.Id.ToString() });

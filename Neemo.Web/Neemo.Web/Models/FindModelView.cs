@@ -76,14 +76,14 @@ namespace Neemo.Web.Models
 
         #region Refactor this out ( somehow ) so that it's in a different category-specific model
 
-        public int Make { get; set; }
-        public int Model { get; set; }
+        public int? Make { get; set; }
+        public int? Model { get; set; }
         public string Chassis { get; set; }
         public string EngineNumber { get; set; }
-        public int EngineSize { get; set; }
-        public int FuelType { get; set; }
-        public int BodyType { get; set; }
-        public int WheelBase { get; set; }
+        public int? EngineSize { get; set; }
+        public int? FuelType { get; set; }
+        public int? BodyType { get; set; }
+        public int? WheelBase { get; set; }
         [Display(Name = "Year Min")]
         public int? YearMin { get; set; }
         [Display(Name = "Year Max")]
