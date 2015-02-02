@@ -20,7 +20,7 @@ namespace Neemo.CarParts.EntityFramework
             }
         }
 
-        public List<Model> GetModels()
+        public List<Model> GetModels(int makeId)
         {
             using (var context = DbContextFactory.Create())
             {

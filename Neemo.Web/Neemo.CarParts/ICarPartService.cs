@@ -5,7 +5,7 @@ namespace Neemo.CarParts
     public interface ICarPartService
     {
         List<Make> GetMakes();
-        List<Model> GetModels();
+        List<Model> GetModels(int makeId);
         List<EngineSize> GetEngineSizes();
         List<FuelType> GetFuelTypes();
         List<BodyType> GetBodyTypes();
@@ -26,9 +26,9 @@ namespace Neemo.CarParts
             return _repository.GetMakes();
         }
 
-        public List<Model> GetModels()
+        public List<Model> GetModels(int makeId)
         {
-            return _repository.GetModels();
+            return _repository.GetModels(makeId);
         }
 
         public List<EngineSize> GetEngineSizes()

@@ -16,7 +16,10 @@
     <div class="controls">
         <select id="Model" class="control"
                 data-search-filter="Model"
-                data-url="@Url.Action("GetModelOptions", "CarPart")"></select>
+                data-url="@Url.Action("GetModelOptions", "CarPart")">
+            <option value="">-- Any --</option>
+        </select>
+        
     </div>
 </div>
 
