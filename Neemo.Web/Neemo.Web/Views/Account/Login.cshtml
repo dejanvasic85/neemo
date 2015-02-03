@@ -17,19 +17,37 @@
 
                         @*first col*@
                         <div class="span4">
-                            <form action="@Url.Login()" method="post" id="login-form">
-                                <div class="bordered-form">
-                                    <h3><i class="fa fa-user"></i>&nbsp; Existing Customers</h3>
+                            <div class="bordered-form">
+                                <h3><i class="fa fa-user"></i>&nbsp; Existing Customers</h3>
+                                <h2>Registered Customers</h2>
+                                <p>
+                                    If you have an account with us, please log in
+                                    with your social network or username and password.
+                                </p>
+
+                                <div>
+                                    @using (Html.BeginForm("ExternalLogin", "Account"))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <ul class="form-list">
+                                            <li>
+                                                <button type="submit" value="Facebook" id="Provider" name="Provider" class="btn">
+                                                    Facebook &nbsp; <i class="fa fa-facebook-square"></i>
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    }
+                                </div>
+
+                                <form action="@Url.Login()" method="post" id="login-form">
 
                                     @Html.AntiForgeryToken()
 
 
-                                    <h2>Registered Customers</h2>
-                                    <p>If you have an account with us, please log in.</p>
-
+                                    
                                     @if (Model.WrongUsernameOrPassword)
                                     {
-                                    <div class="alert alert-danger">The username or password is not valid.</div>
+                                        <div class="alert alert-danger">The username or password is not valid.</div>
                                     }
 
                                     <ul class="form-list">
@@ -47,13 +65,18 @@
                                             </div>
                                             @Html.ValidationMessageFor(m => m.Password)
                                         </li>
+
                                     </ul>
-                                </div>
-                                <div class="footer-submit">
-                                    <a href="@Url.ForgottenPassword()" class="pull-left">Forgot your password?</a>
-                                    <button type="submit" class="btn pull-right" title="Login" tabindex="3">Login</button>
-                                </div>
-                            </form>
+
+
+
+                                    <div class="footer-submit">
+                                        <a href="@Url.ForgottenPassword()" class="pull-left">Forgot your password?</a>
+                                        <button type="submit" class="btn pull-right" title="Login" tabindex="3">Login</button>
+                                    </div>
+                                </form>
+                            </div>
+
                         </div>
 
                         @*second col*@
