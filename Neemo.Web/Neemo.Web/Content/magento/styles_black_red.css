@@ -6731,6 +6731,29 @@ tr.summary-details-excluded {
         *background-color: #a9302a;
     }
 
+.btn-facebook {
+    background-color: #3B5998;
+    *background-color: #3B5998;
+    background-image: -moz-linear-gradient(top, #3B5998, #3B5998);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3B5998), to(#3B5998));
+    background-image: -webkit-linear-gradient(top, #3B5998, #3B5998);
+    background-image: -o-linear-gradient(top, #3B5998, #3B5998);
+    background-image: linear-gradient(to bottom, #3B5998, #3B5998);
+    background-color: #3B5998;
+    border-color: #3B5998;
+}
+
+    .btn-facebook:hover,
+    .btn:focus,
+    .btn:active,
+    .btn.active,
+    .btn.disabled,
+    .btn[disabled] {
+        color: #ffffff;
+        background-color: #3B5998;
+        *background-color: #3B5998;
+    }
+
 .field-validation-error {
     color: #b94a48;
     display: inline-block;
@@ -6785,9 +6808,10 @@ tr.summary-details-excluded {
     padding: 10px;
     border-bottom: 1px solid #ccc;
 }
-.filter-toolbar .pagination {
-    margin: 0;
-}
+
+    .filter-toolbar .pagination {
+        margin: 0;
+    }
 
 .controls input {
     min-height: 30px;
@@ -6800,30 +6824,25 @@ tr.summary-details-excluded {
     margin-top: 10px;
 }
 
-.bordered-form h3 {
-    padding: 15px;
-    border-bottom: 1px solid #d7d7d7;
-    margin-bottom: 20px;
-}
+    .bordered-form h3 {
+        padding: 15px;
+        border-bottom: 1px solid #d7d7d7;
+        margin-bottom: 20px;
+    }
 
 .footer-submit {
     min-height: 20px;
     padding: 15px 10px 20px 10px;
     background-color: #000;
-    color: #fff;'
+    color: #fff;
+    ';
 }
 
-.footer-submit a {
-    color: #fff;
-}
+    .footer-submit a {
+        color: #fff;
+    }
 
 .inverted {
     background-color: #000;
     color: #fff;
 }
-
-
-
-
-
-
