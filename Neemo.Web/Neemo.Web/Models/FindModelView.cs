@@ -49,6 +49,21 @@ namespace Neemo.Web.Models
 
         public int Page { get; set; }
 
+        public IEnumerable<SelectListItem> PageOptions
+        {
+            get
+            {
+                for (int i = 1; i <= TotalPageCount; i++)
+                {
+                    yield return new SelectListItem
+                    {
+                        Text = i.ToString(),
+                        Value = i.ToString(),
+                        Selected = this.Page == i
+                    };
+                }
+            }
+        } 
         public List<ProductSummaryView> ProductResults { get; set; }
 
         public bool HasResults

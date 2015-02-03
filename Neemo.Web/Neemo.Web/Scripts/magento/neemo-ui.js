@@ -161,8 +161,8 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
         }
     });
 
-    $('[data-page-num]').on('click', function () {
-        searchFilters.setPageNumber($(this).text());
+    $('[data-page-num]').on('change', function () {
+        searchFilters.setPageNumber($(this).val());
     });
 
     $('#checkoutAsGuest').on('click', function () {

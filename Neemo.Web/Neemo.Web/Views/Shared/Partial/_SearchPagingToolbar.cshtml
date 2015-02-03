@@ -1,28 +1,29 @@
 ﻿@model FindModelView
 
-    <div class="filter-toolbar">
-        <div class="row-fluid">
-            <div class="span6">
-                Search found @Model.TotalResultCount items.
-            </div>
-            <div class="span3">
-                @Html.DropDownListFor(m => m.PageSize, Model.PageSizeItems, htmlAttributes: new { @style = "width: 50px", data_page_size = "" })
-                <label>items per page</label>
-            </div>
-            <div class="span3">
-                @if (Model.HasPages)
-                {
-                    <div class="pagination pull-right">
-                        <ul>
-                            @for (var p = 1; p <= Model.TotalPageCount; p++)
-                            {
-                                <li class="@(Model.Page == p ? "disabled" : "")">
-                                    <a data-page-num>@p</a>
-                                </li>
-                            }
-                        </ul>
-                    </div>
-                }
-            </div>
+<div class="filter-toolbar">
+    <div class="row-fluid">
+        <div class="span4">
+            Search found @Model.TotalResultCount items.
+        </div>
+        <div class="span4">
+
+            @Html.DropDownListFor(m => m.PageSize, Model.PageSizeItems, htmlAttributes: new { @style = "width: 50px", data_page_size = "" })
+            <label>Items per page</label>
+        </div>
+        <div class="span4">
+            @if (Model.HasPages)
+            {
+                <div class="pagination pull-right">
+                    @Html.DropDownListFor(m => m.Page, Model.PageOptions, new
+                    {
+                        data_page_num = "true",
+                        style = "width:80px",
+                        @class="control"
+                    })
+                    <label>page</label>
+                </div>
+                
+            }
         </div>
     </div>
+</div>

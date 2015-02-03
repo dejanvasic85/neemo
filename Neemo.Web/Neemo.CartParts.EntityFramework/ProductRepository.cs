@@ -12,7 +12,29 @@
     {
         public List<Product> SearchProducts(string keyword)
         {
-            return FindProduct(p => p.Part.Part1.Contains(keyword));
+            using (var context = DbContextFactory.Create())
+            {
+                // Todo - call a stored procedure instead
+                var dbProducts = context.Products
+                        .Include(t => t.Part)
+                        .Include(t => t.Part.PartPhoto)
+                        .Include(t => t.Part.PartPhotoes)
+                        .Include(t => t.ProducePrices)
+                        .Include(p => p.Wreck)
+                        .Include(p => p.Wreck.Make)
+                        .Include(p => p.Wreck.Model)
+                        .Include(p => p.Wreck.Chassis)
+                        .Include(p => p.Wreck.EngineSize)
+                        .Include(p => p.Wreck.FuelType)
+                        .Include(p => p.Wreck.WheelBase)
+                        .Include(p => p.Wreck.BodyType)
+                        .Include(p => p.Wreck.Year)
+                        .ToList();
+
+                var items = dbProducts.Select(Mapper.Map<Models.Product, Store.Product>).ToList();
+
+                return items;
+            }
         }
 
         public List<Product> GetFeaturedProducts()
@@ -49,8 +71,10 @@
                     .Include(p => p.Wreck.BodyType)
                     .Include(p => p.Wreck.Year)
                     .First(p => p.ProductId == id);
-                
+
                 var product = Mapper.Map<Models.Product, Store.Product>(dbProduct);
+
+                // Todo - move this possibly elsewhere?
                 product.ProductSpecifications = new
                 {
                     Make = dbProduct.Wreck.Make != null ? dbProduct.Wreck.Make.Make1 : "",
@@ -88,7 +112,7 @@
                     .Include(t => t.Part.PartPhotoes)
                     .Include(t => t.ProducePrices)
                     .ToList();
-                
+
                 var featuredProducts = productModels
                     .Select(Mapper.Map<Models.Product, Store.Product>)
                     .ToList();
