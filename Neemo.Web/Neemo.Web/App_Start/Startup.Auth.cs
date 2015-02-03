@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using System.Configuration;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
@@ -33,6 +34,9 @@ namespace Neemo.Web
             });
             
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
+            app.UseFacebookAuthentication(
+                ConfigurationManager.AppSettings["FacebookAppId"], 
+                ConfigurationManager.AppSettings["FacebookAppSecret"]);
         }
     }
 }

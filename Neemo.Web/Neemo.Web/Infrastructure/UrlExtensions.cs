@@ -15,8 +15,11 @@ namespace Neemo.Web.Infrastructure
             return urlHelper.Action("Details", "Products", new { id = productId });
         }
 
-        public static string Home(this UrlHelper urlHelper)
+        public static string Home(this UrlHelper urlHelper, bool absoluteUrl = false)
         {
+            if (absoluteUrl)
+                return urlHelper.ActionAbsolute("Home", "Index");
+
             return urlHelper.Action("Index", "Home");
         }
 

@@ -1,8 +1,12 @@
 ﻿@using CaptchaMvc.HtmlHelpers
+@using Microsoft.Owin.Security
 @model RegisterViewModel
 @{
     ViewBag.Title = "Register";
     Layout = "~/Views/Shared/_Magento.cshtml";
+
+    var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+
 }
 
 <div class="ma-main-container col2-right-layout">
@@ -19,13 +23,25 @@
                         <div class="span6">
 
                             <div class="bordered-form">
-                                <h3><i class="fa fa-user"></i>&nbsp; Use one of your social logins</h3>
-                                <div class="row-fluid">
-                                    <div class="span3 hidden-phone"></div>
-                                    <div class="span3"><i class="fa fa-facebook-square fa-5x"></i></div>
-                                    <div class="span3"><i class="fa fa-google-plus-square fa-5x"></i></div>
-                                    <div class="span3 hidden-phone"></div>
-                                </div>
+
+                                @using (Html.BeginForm("ExternalLogin", "Account"))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <h3><i class="fa fa-user"></i>&nbsp; Use one of your social logins</h3>
+                                    <div class="row-fluid">
+                                        <div class="span2 hidden-phone"></div>
+
+                                        <div class="span4">
+                                            <button type="submit" value="Facebook" id="Provider" name="Provider" class="btn btn-large">
+                                                Facebook &nbsp; <i class="fa fa-facebook-square fa-2x"></i>
+                                            </button>
+                                        </div>
+
+                                        <div class="span4"><i class="fa fa-google-plus-square fa-5x"></i></div>
+                                        <div class="span2 hidden-phone"></div>
+                                    </div>
+                                }
+
                             </div>
 
                         </div>
@@ -37,7 +53,7 @@
                                     <h3>
                                         <i class="fa fa-sign-in"></i> &nbsp; Create login details with us.
                                     </h3>
-                                    
+
                                     @Html.ValidationSummary()
 
                                     @Html.AntiForgeryToken()

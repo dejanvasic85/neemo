@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace Neemo.Web.Controllers
+﻿namespace Neemo.Web.Controllers
 {
     using AutoMapper;
     using CaptchaMvc.Attributes;
@@ -17,6 +15,7 @@ namespace Neemo.Web.Controllers
     using System.Threading.Tasks;
     using System.Web;
     using System.Web.Mvc;
+    using System.Linq;
 
 
     [Authorize]
@@ -402,8 +401,9 @@ namespace Neemo.Web.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult ExternalLogin(string provider, string returnUrl)
+        public ActionResult ExternalLogin(string provider)
         {
+            var returnUrl = Url.Home(true);
             // Request a redirect to the external login provider
             return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
         }
