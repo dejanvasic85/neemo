@@ -51,9 +51,11 @@
                 return RedirectToAction("Login", "Account");
             }
 
+            var shoppingCart = _cartContext.Current();
+
             var userShippingDetails = Request.IsAuthenticated
                 ? Mapper.Map<PersonalDetails, PersonalDetailsView>(_profileService.GetProfile(User.Identity.Name).ShippingDetails)
-                : new PersonalDetailsView();
+                : Mapper.Map<PersonalDetails, PersonalDetailsView>(shoppingCart.ShippingDetails) ?? new PersonalDetailsView();
 
             var shippingOptions = _shippingService.Calculate(_cartContext.Current(), userShippingDetails.Postcode).Select(Mapper.Map<Shipping.ShippingCost, Models.ShippingCostView>);
 
@@ -182,7 +184,7 @@
             }
 
             return RedirectToAction("Done");
-        } 
+        }
 
         public ActionResult AuthorisePayment(string payerId)
         {
@@ -204,7 +206,7 @@
 
             // Creates the order from the shopping cart and saves to database
             var order = _orderService.CreateOrder(shoppingCart);
-            
+
             // Adjusts the stock levels
             _productService.AdjustStockLevels(shoppingCart);
 
@@ -274,7 +276,7 @@
             // Verify the new quantity
             var cart = _cartContext.Current();
             var isRequestedQuantityTooLarge = !_productService.IsAvailable(productId, newQuantity, cart.GetTotalQuantityForProduct(productId, lineItemId));
-        
+
             if (isRequestedQuantityTooLarge)
                 return Json(new { QuantityTooLarge = true });
 
