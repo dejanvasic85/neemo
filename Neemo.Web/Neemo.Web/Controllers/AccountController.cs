@@ -163,7 +163,7 @@
                         return RedirectToAction("Checkout", "Cart");
                     }
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Details", "Account");
                 }
                 else
                 {
