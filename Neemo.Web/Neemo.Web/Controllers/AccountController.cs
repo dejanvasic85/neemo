@@ -489,7 +489,7 @@
                         // Add the user to the registration table like normal account
                         // Create the profile for the user
                         // But no need to create the billing and shipping details
-                        var userProfile = UserProfile.Create(model.Email, string.Empty, string.Empty,
+                        var userProfile = UserProfile.Create(model.Email, string.Empty, model.Email,
                             model.NewsletterSubscription, Request.UserHostAddress);
 
                         _profileService.CreateUser(userProfile);
