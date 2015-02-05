@@ -8,6 +8,9 @@ namespace Neemo.Web.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Display(Name = "Subscribe to our newsletter")]
+        public bool NewsletterSubscription { get; set; }
     }
 
     public class ExternalLoginListViewModel
