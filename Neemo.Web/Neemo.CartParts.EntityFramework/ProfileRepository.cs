@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using AutoMapper;
+using Neemo.CarParts.EntityFramework.Models;
 using Neemo.Membership;
 
 namespace Neemo.CarParts.EntityFramework
@@ -24,10 +25,17 @@ namespace Neemo.CarParts.EntityFramework
         {
             using (var context = DbContextFactory.Create())
             {
-                var registration = Mapper.Map<UserProfile, Models.Registration>(userProfile);
+                try
+                {
+                    var registration = Mapper.Map<UserProfile, Registration>(userProfile);
 
-                context.Registrations.Add(registration);
-                context.SaveChanges();
+                    context.Registrations.Add(registration);
+                    context.SaveChanges();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException e)
+                {
+                    Console.WriteLine(e);
+                }
             }
         }
 

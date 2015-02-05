@@ -46,11 +46,11 @@ namespace Neemo.CarParts.EntityFramework.Models.Mapping
 
             this.Property(t => t.UserName)
                 .IsFixedLength()
-                .HasMaxLength(20);
+                .HasMaxLength(50);
 
             this.Property(t => t.UserPassword)
                 .IsFixedLength()
-                .HasMaxLength(20);
+                .HasMaxLength(50);
 
             this.Property(t => t.OriginIP)
                 .HasMaxLength(50);
