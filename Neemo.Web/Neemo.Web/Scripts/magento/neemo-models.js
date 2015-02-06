@@ -12,14 +12,14 @@
         me.Price = ko.observable(cartViewItem.Price);
         me.Quantity = ko.observable(cartViewItem.Quantity).extend({ numeric: 0 });
         me.ImageId = ko.observable(cartViewItem.ImageId);
-        me.PriceWithoutTax = ko.computed(function() {
+        me.PriceWithoutTax = ko.computed(function () {
             return me.Price() * 0.9;
         });
 
-        me.Total = function() {
+        me.Total = function () {
             return me.Price() * me.Quantity();
         };
-        me.TotalWithoutTax = function() {
+        me.TotalWithoutTax = function () {
             return me.PriceWithoutTax() * me.Quantity();
         };
 
@@ -46,7 +46,7 @@
             });
             return total;
         };
-        me.subTotalWithoutTax = function() {
+        me.subTotalWithoutTax = function () {
             return me.subTotal() * 0.9;
         };
 
@@ -57,8 +57,8 @@
             });
             return total;
         };
-        
-        me.tax = ko.computed(function() {
+
+        me.tax = ko.computed(function () {
             return me.subTotal() * 0.1;
         });
 

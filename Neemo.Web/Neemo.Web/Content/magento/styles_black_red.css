@@ -6744,11 +6744,11 @@ tr.summary-details-excluded {
 }
 
     .btn-facebook:hover,
-    .btn:focus,
-    .btn:active,
-    .btn.active,
-    .btn.disabled,
-    .btn[disabled] {
+    .btn-facebook:focus,
+    .btn-facebook:active,
+    .btn-facebook.active,
+    .btn-facebook.disabled,
+    .btn-facebook[disabled] {
         color: #ffffff;
         background-color: #3B5998;
         *background-color: #3B5998;
