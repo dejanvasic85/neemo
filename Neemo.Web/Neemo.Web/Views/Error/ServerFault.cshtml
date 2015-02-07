@@ -1,0 +1,34 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "500 Server Fault";
+    Layout = "~/Views/Shared/_MagentoPlain.cshtml";
+}
+
+<div class="hero-unit">
+    <h1><i class="fa fa-fire-extinguisher"></i><i class="fa fa-fire"></i> 500 Internal Server Error</h1>
+    <p class="lead">The web server is returning an internal error for <em><span id="display-domain">something you may have attempted to perform.</span></em>.</p>
+</div>
+
+<!-- Example row of columns -->
+<div class="row-fluid">
+    <div class="span6">
+        <h1>What happened?</h1>
+        <p>A 500 error status implies there is a problem with the web server's software causing it to malfunction.</p>
+    </div>
+    <div class="span6">
+        <h1>What can I do?</h1>
+        <p>If you're a site vistor:</p>
+        <p>
+            Here's a link to our <a href="@Url.Home()">home page</a> so you can try your request again. 
+            If problem persists please try to <a href="@Url.ContactUs()">contact us</a> and include the following:
+            <ul>
+                <li>Date and time of the issue</li>
+                <li>Details of your request</li>
+            </ul>
+            <br />We apologize for any inconvenience.
+        </p>
+        <p class="lead">If you're the site owner</p>
+        <p>This error can only be fixed by server admins, please contact your website provider.</p>
+    </div>
+</div>

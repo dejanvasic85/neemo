@@ -6846,3 +6846,7 @@ tr.summary-details-excluded {
     background-color: #000;
     color: #fff;
 }
+
+.top-padding-10 {
+    margin-top: 10px;
+}

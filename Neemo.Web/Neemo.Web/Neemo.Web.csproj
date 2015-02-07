@@ -189,6 +189,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\MappingConfig.cs" />
     <Compile Include="Controllers\CarPartController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Infrastructure\MultipleActionAttribute.cs" />
     <Compile Include="Models\Converters\OrderLineItemToInvoiceItem.cs" />
     <Compile Include="Models\Converters\OrderToInvoiceConverter.cs" />
@@ -583,7 +584,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\CarPart\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -621,6 +621,8 @@
     <Content Include="Views\Account\ShippingDetails.cshtml" />
     <Content Include="Views\EmailTemplates\OrderConfirmation.cshtml" />
     <Content Include="Views\Products\_CarPartFilters.cshtml" />
+    <Content Include="Views\Error\ServerFault.cshtml" />
+    <Content Include="Views\Shared\_MagentoPlain.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Neemo.CarParts\Neemo.CarParts.csproj">
