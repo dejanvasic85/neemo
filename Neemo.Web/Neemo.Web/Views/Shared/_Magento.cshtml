@@ -352,11 +352,8 @@
             }
         };
     </script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/neemo-svc.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/neemo-models.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/neemo-ui.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/neemo-ko-extensions.js")"></script>
-
+    @Scripts.Render("~/bundles/neemo")
+   
     @RenderSection("Scripts", false)
 </body>
 </html>

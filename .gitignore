@@ -185,6 +185,4 @@ FakesAssemblies/
 # ImageDatabase in case someone is using fake db (ignore this later)
 # ImageDatabase/
 
-
-Neemo.Web/Neemo.Web/Logs/
 Logs/
