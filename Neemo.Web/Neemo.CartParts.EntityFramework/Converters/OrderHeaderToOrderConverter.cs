@@ -50,6 +50,7 @@ namespace Neemo.CarParts.EntityFramework
                 source.TaxTotal.GetValueOrDefault(),
                 source.TotalAmount.GetValueOrDefault(),
                 source.UserName,
+                source.InvoiceNumber,
                 source.OrderDetails.Select(Mapper.Map<Models.OrderDetail, Orders.OrderLineItem>).ToArray()
                 );
         }

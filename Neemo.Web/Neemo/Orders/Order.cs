@@ -4,14 +4,25 @@ using Neemo.ShoppingCart;
 
 namespace Neemo.Orders
 {
+    public class InvoiceNumberGenerator
+    {
+        public static string Generate(Guid id)
+        {
+            var guid = id.ToString().Replace('-', ' ').Trim().ToUpper().Substring(0, 8);
+            return string.Format("{0}-{1}", "INV", guid);
+        }
+    }
+
     public class Order
     {
         public static Order FromShoppingCart(Cart shoppingCart)
         {
+            var orderGuid = Guid.NewGuid();
+
             // Create new one from shopping cart, ready for Db
-            return new Order
+            var order = new Order
             {
-                GUID = Guid.NewGuid(),
+                GUID = orderGuid,
                 ShippingDetails = shoppingCart.ShippingDetails,
                 BillingDetails = shoppingCart.BillingDetails,
                 HandlingTotal = 0,
@@ -22,11 +33,15 @@ namespace Neemo.Orders
                 OrderLineItems = shoppingCart.GetItems().Select(OrderLineItem.FromShoppingCartItem).ToArray(),
                 UserName = shoppingCart.UserName,
                 CreatedDateTime = DateTime.Now,
-                PaymentTransactionId = shoppingCart.PaymentTransactionId
+                PaymentTransactionId = shoppingCart.PaymentTransactionId,
+                InvoiceNumber = shoppingCart.InvoiceNumber
             };
+            
+            return order;
         }
 
-        public static Order Create(PersonalDetails billingDetails, PersonalDetails shippingDetails, DateTime createdDateTime, Guid guid, decimal handlingTotal, int? orderId, decimal shippingTotal, string sourceIpAddress, decimal taxTotal, decimal totalAmount, string userName, OrderLineItem[] orderLineItems)
+
+        public static Order Create(PersonalDetails billingDetails, PersonalDetails shippingDetails, DateTime createdDateTime, Guid guid, decimal handlingTotal, int? orderId, decimal shippingTotal, string sourceIpAddress, decimal taxTotal, decimal totalAmount, string userName, string invoiceNumber, OrderLineItem[] orderLineItems)
         {
             return new Order
             {
@@ -41,7 +56,8 @@ namespace Neemo.Orders
                 TaxTotal = taxTotal,
                 TotalAmount = totalAmount,
                 UserName = userName,
-                OrderLineItems = orderLineItems
+                InvoiceNumber = invoiceNumber,
+                OrderLineItems = orderLineItems,
             };
         }
 
@@ -57,7 +73,8 @@ namespace Neemo.Orders
         public string SourceIpAddress { get; private set; }
         public string UserName { get; set; }
         public DateTime CreatedDateTime { get; private set; }
-        public string PaymentTransactionId { get; set; }    
+        public string PaymentTransactionId { get; set; }
+        public string InvoiceNumber { get; private set; }
 
         /// <summary>
         /// Returns the sum of TotalAmount, Tax and Shipping 

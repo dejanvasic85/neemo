@@ -95,6 +95,9 @@ namespace Neemo.CarParts.EntityFramework.Models.Mapping
             this.Property(t => t.PaymentTransactionId)
                 .HasMaxLength(100);
 
+            this.Property(t => t.InvoiceNumber)
+                .HasMaxLength(20);
+
             // Table & Column Mappings
             this.ToTable("OrderHeader");
             this.Property(t => t.OrderHeaderID).HasColumnName("OrderHeaderID");
@@ -135,6 +138,7 @@ namespace Neemo.CarParts.EntityFramework.Models.Mapping
             this.Property(t => t.GUID).HasColumnName("GUID");
             this.Property(t => t.UserName).HasColumnName("UserName");
             this.Property(t => t.PaymentTransactionId).HasColumnName("PaymentTransactionId");
+            this.Property(t => t.InvoiceNumber).HasColumnName("InvoiceNumber");
 
             // Relationships
             this.HasOptional(t => t.OrderStatu)

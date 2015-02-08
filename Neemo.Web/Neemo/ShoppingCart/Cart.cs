@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Neemo.Orders;
 using Neemo.Shipping;
 using Neemo.Tax;
 
@@ -9,7 +10,10 @@ namespace Neemo.ShoppingCart
     [Serializable]
     public class Cart
     {
+        
         private readonly List<ICartItem> _items;
+        public Guid Id { get; private set; }
+        public string InvoiceNumber { get; private set; }
         public ShippingCost ShippingCost { get; private set; }
         public PersonalDetails ShippingDetails { get; private set; }
         public PersonalDetails BillingDetails { get; private set; }
@@ -22,6 +26,10 @@ namespace Neemo.ShoppingCart
             _items = new List<ICartItem>();
             SourceIpAddress = sourceIpAddress;
             UserName = userName;
+
+            // Generate a unique shopping cart Id and InvoiceNumber up front
+            Id = Guid.NewGuid();
+            InvoiceNumber = InvoiceNumberGenerator.Generate(Id);
         }
 
         public void AddItem(ICartItem cartItem)

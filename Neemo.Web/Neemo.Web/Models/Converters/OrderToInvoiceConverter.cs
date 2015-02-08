@@ -18,7 +18,7 @@ namespace Neemo.Web.Models
                 Tax = order.TaxTotal,
                 BillingDetailsView = Mapper.Map<PersonalDetails, PersonalDetailsView>(order.BillingDetails),
                 InvoiceLineItems = order.OrderLineItems.Select(Mapper.Map<OrderLineItem, InvoiceItemView>).ToList(),
-                InvoiceNumber = order.PaymentTransactionId,
+                InvoiceNumber = order.InvoiceNumber,
                 OrderId = order.OrderId.GetValueOrDefault(),
                 PaidWithPayPal = order.PaymentTransactionId.HasValue()
             };
