@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using PayPal.Api.Payments;
 
 namespace Neemo.Web.Models
 {
@@ -7,25 +6,31 @@ namespace Neemo.Web.Models
     {
         [Display(Name = "First Name")]
         [Required]
+        [StringLength(50)]
         public string Firstname { get; set; }
 
         [Display(Name = "Last Name")]
         [Required]
+        [StringLength(50)]
         public string Surname { get; set; }
 
         [Display(Name = "Company")]
+        [StringLength(50)]
         public string Company { get; set; }
 
         [Display(Name = "Address")]
         [Required]
+        [StringLength(50)]
         public string AddressLine1 { get; set; }
 
         [Display(Name = "Suburb")]
         [Required]
+        [StringLength(50)]
         public string City { get; set; }
 
         [Display(Name = "State")]
         [Required]
+        [StringLength(50)]
         public string State { get; set; }
 
         [Display(Name = "Post Code")]
