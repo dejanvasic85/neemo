@@ -24,5 +24,6 @@ namespace Neemo.Web.Models
         public decimal TotalValue { get; set; }
         public decimal TaxTotal { get; set; }
         public DateTime CreatedDateTime { get; set; }
+        public string ProductName { get; set; }
     }
 }

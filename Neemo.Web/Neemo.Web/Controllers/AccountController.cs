@@ -602,7 +602,7 @@
         public ActionResult Orders()
         {
             // Fetch all orders per user
-            var orders = _orderService.GetOrdersForUser(User.Identity.Name);
+            var orders = _orderService.GetOrdersForUser(User.Identity.Name).OrderByDescending(o => o.OrderId);
 
             // Map to view model
             var viewModel = new OrderHistoryView { Orders = orders.Select(Mapper.Map<Orders.Order, OrderView>).ToArray() };

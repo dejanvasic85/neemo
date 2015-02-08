@@ -23,6 +23,7 @@
                             <thead>
                                 <tr>
                                     <th>Order ID</th>
+                                    <th>Date</th>
                                     <th>Order Total</th>
                                     <th>Invoice</th>
                                     <th>Details</th>
@@ -33,6 +34,7 @@
                                 {
                                     <tr>
                                         <td>@order.OrderId</td>
+                                        <td>@order.CreatedDateTime.ToString("dd-MMM-yyyy")</td>
                                         <td>@order.TotalAmount.ToString("C")</td>
                                         <td><a href="@Url.Invoice(order.OrderId)" target="_blank"><i class="fa fa-file-text fa-2x"></i></a></td>
                                         <td><button class="btn" data-show-orders>View <i class="fa fa-chevron-down"></i></button></td>
@@ -42,6 +44,7 @@
                                             <table class="table table-hover table-bordered">
                                                 <thead>
                                                     <tr>
+                                                        <th>Product</th>
                                                         <th>Product ID</th>
                                                         <th>Price</th>
                                                         <th>Quantity</th>
@@ -50,6 +53,7 @@
                                                 @foreach (var lineItem in order.OrderLineItems)
                                                 {
                                                     <tr>
+                                                        <td>@lineItem.ProductName</td>
                                                         <td>@lineItem.ProductId</td>
                                                         <td>@lineItem.UnitPrice.ToString("C")</td>
                                                         <td>@lineItem.Quantity</td>
