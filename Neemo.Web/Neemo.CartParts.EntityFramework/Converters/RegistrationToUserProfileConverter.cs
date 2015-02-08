@@ -27,7 +27,6 @@ namespace Neemo.CarParts.EntityFramework
                 AddressLine1 = source.Shipping_Address,
                 City = source.Shipping_City,
                 Company = source.Shipping_CompanyName,
-                Country = source.Shipping_CountryID,
                 FirstName = source.Shipping_FirstName,
                 IsDefault = true,
                 PhoneNumber = source.Shipping_Mobile,

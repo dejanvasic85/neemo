@@ -76,9 +76,6 @@ namespace Neemo.CarParts.EntityFramework.Models.Mapping
             this.Property(t => t.Shipping_State)
                 .HasMaxLength(50);
 
-            this.Property(t => t.Shipping_CountryID)
-                .HasMaxLength(10);
-
             this.Property(t => t.Shipping_Mobile)
                 .HasMaxLength(50);
 
@@ -133,7 +130,6 @@ namespace Neemo.CarParts.EntityFramework.Models.Mapping
             this.Property(t => t.Shipping_City).HasColumnName("Shipping_City");
             this.Property(t => t.Shipping_State).HasColumnName("Shipping_State");
             this.Property(t => t.Shipping_PostCode).HasColumnName("Shipping_PostCode");
-            this.Property(t => t.Shipping_CountryID).HasColumnName("Shipping_CountryID");
             this.Property(t => t.Shipping_Mobile).HasColumnName("Shipping_Mobile");
             this.Property(t => t.Shipping_Phone).HasColumnName("Shipping_Phone");
             this.Property(t => t.Shipping_Fax).HasColumnName("Shipping_Fax");

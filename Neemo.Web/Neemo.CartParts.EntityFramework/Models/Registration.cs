@@ -38,7 +38,6 @@ namespace Neemo.CarParts.EntityFramework.Models
         public string Shipping_City { get; set; }
         public string Shipping_State { get; set; }
         public Nullable<int> Shipping_PostCode { get; set; }
-        public string Shipping_CountryID { get; set; }
         public string Shipping_Mobile { get; set; }
         public string Shipping_Phone { get; set; }
         public string Shipping_Fax { get; set; }
