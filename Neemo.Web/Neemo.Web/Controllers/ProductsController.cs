@@ -20,7 +20,7 @@
             _shippingService = shippingService;
         }
 
-        public ActionResult Details(int id)
+        public ActionResult Details(int id, string slug = "")
         {
             var productId = id;
 
@@ -28,12 +28,25 @@
             var product = _productService.GetProductById(productId);
 
             if (product == null)
-                return HttpNotFound("Requested product is not available");
+                return View("~/Views/Error/NotFound.cshtml");
 
             var productView = Mapper.Map<Store.Product, Models.ProductDetailView>(product);
             productView.Category = Mapper.Map<Store.Category, Models.CategoryView>( _categoryService.GetCategory(product.CategoryId) );
 
             return View(productView);
+        }
+
+        public ActionResult Identifier(int id)
+        {
+            // We need to create the slug by getting the title of the product first
+            var product = _productService.GetProductById(id);
+
+            if (product == null)
+                return View("~/Views/Error/NotFound.cshtml");
+
+            var slug = Slug.Create(product.Title);
+
+            return RedirectToAction("Details", new {id, slug});
         }
 
         [HttpGet]

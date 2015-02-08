@@ -4,7 +4,7 @@
     @foreach (var product in Model)
     {
         <li class="item">
-            <a href="@Url.Product(product.ProductId)"
+            <a href="@Url.Product(product.ProductId, Slug.Create(product.Title))"
                class="product-image" title="@product.Title">
                 <img src="@Url.Image(product.ImageId)"
                      width="135"
@@ -15,7 +15,7 @@
             <div class="product-shop">
                 <div class="f-fix">
                     <h2 class="product-name">
-                        <a href="@Url.Product(product.ProductId)" title="@product.Title">@product.Title</a>
+                        <a href="@Url.Product(product.ProductId, Slug.Create(product.Title))" title="@product.Title">@product.Title</a>
                     </h2>
 
                     <div class="price-box">
@@ -42,7 +42,7 @@
 
                     <div class="desc std">
                         @product.Description
-                        <a href="@Url.Product(product.ProductId)" title="@product.Title" class="link-learn">
+                        <a href="@Url.Product(product.ProductId, Slug.Create(product.Title))" title="@product.Title" class="link-learn">
                             Learn More
                         </a>
                     </div>

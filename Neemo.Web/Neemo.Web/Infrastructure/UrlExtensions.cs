@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using Antlr.Runtime.Misc;
+using System.Web.Routing;
 
 namespace Neemo.Web.Infrastructure
 {
@@ -12,7 +12,29 @@ namespace Neemo.Web.Infrastructure
 
         public static string Product(this UrlHelper urlHelper, int productId)
         {
-            return urlHelper.Action("Details", "Products", new { id = productId });
+            var path = RouteTable.Routes.GetVirtualPath(null, "productIdOnly", new RouteValueDictionary() {{"id", productId}});
+            return path.VirtualPath;
+        }
+
+        public static string Product(this UrlHelper urlHelper, int productId, string slug, bool includeSchemeAndProtocol = false)
+        {
+            var dictionary = new RouteValueDictionary
+            {
+                {"id", productId},
+                {"slug", slug}
+            };
+
+            var data = RouteTable.Routes.GetVirtualPath(null, "product", dictionary);
+            var path = data.VirtualPath;
+
+            if (!includeSchemeAndProtocol)
+                return path;
+
+            var contextUri = urlHelper.RequestContext.HttpContext.Request.Url;
+            var baseUri = string.Format("{0}://{1}{2}", contextUri.Scheme,
+              contextUri.Host, contextUri.Port == 80 ? string.Empty : ":" + contextUri.Port);
+
+            return string.Format("{0}{1}", baseUri, path);
         }
 
         public static string Home(this UrlHelper urlHelper, bool absoluteUrl = false)
@@ -65,7 +87,7 @@ namespace Neemo.Web.Infrastructure
         {
             return urlHelper.Action("Register", "Account");
         }
-        
+
         public static string ResetPassword(this UrlHelper urlHelper)
         {
             return urlHelper.Action("ResetPassword", "Account");
@@ -93,6 +115,7 @@ namespace Neemo.Web.Infrastructure
         {
             return urlHelper.Action("Details", "Account");
         }
+
         public static string MyShippingDetails(this UrlHelper urlHelper)
         {
             return urlHelper.Action("ShippingDetails", "Account");
@@ -105,7 +128,7 @@ namespace Neemo.Web.Infrastructure
 
         public static string Invoice(this UrlHelper urlHelper, int orderId)
         {
-            return urlHelper.Action("Invoice", "Account", new {orderId});
+            return urlHelper.Action("Invoice", "Account", new { orderId });
         }
 
         public static string ActionAbsolute(this UrlHelper urlHelper, string actionName, string controllerName, object routeValues = null)

@@ -10,8 +10,12 @@ namespace Neemo.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             // images
-            routes.MapRoute("images", url: "img/{id}", defaults: new {controller = "Image", action="Download"});
-            routes.MapRoute("product", url: "product/{id}", defaults: new {controller = "Product", action = "Details"});
+            routes.MapRoute("images", url: "img/{id}", defaults: new { controller = "Image", action = "Download" });
+
+            // Product with slug
+            routes.MapRoute("product", url: "product/{slug}/{id}", defaults: new { controller = "Products", action = "Details" });
+            routes.MapRoute("productIdOnly", url: "product/{id}", defaults: new { controller = "Products", action = "Identifier" });
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
