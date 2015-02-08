@@ -121,16 +121,20 @@
                 // Fetch the user profile for the currently logged in user
                 var userProfile = _profileService.GetProfile(User.Identity.Name);
                 viewModel = Mapper.Map<UserProfile, CheckoutView>(userProfile);
+                shoppingCart.SetUser(User.Identity.Name);
             }
             else
             {
                 // Map the shipping details from the shopping cart for the guest user
-                viewModel.ShippingDetails =
-                    Mapper.Map<PersonalDetails, PersonalDetailsView>(shoppingCart.ShippingDetails);
+                viewModel.ShippingDetails = Mapper.Map<PersonalDetails, PersonalDetailsView>(shoppingCart.ShippingDetails);
             }
 
-            // Map the shipping details to billing details ( for those that are not set already )
-            viewModel.ShippingDetails.CloneInTo(viewModel.BillingDetails);
+            // Clone the shipping details to billing details ( for those that are not set already )
+            if (viewModel.BillingDetails == null)
+            {
+                viewModel.ShippingDetails.CloneInTo(viewModel.BillingDetails);
+            }
+
             viewModel.OrderSummary = Mapper.Map<Cart, OrderSummaryView>(shoppingCart);
 
             return View(viewModel);
