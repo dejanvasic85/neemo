@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/toastr-2.0.1.css")">
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/font-awesome-4.2.0.css")">
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/print.css")" media="print">
-
+    
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/jquery-1.11.0.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/prototype.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/ccard.js")"></script>
@@ -352,8 +352,11 @@
             }
         };
     </script>
-    @Scripts.Render("~/bundles/neemo")
-   
+    <script type="text/javascript" src="@Url.Content("~/Scripts/neemo-svc.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/neemo-models.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/neemo-ui.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/neemo-ko-extensions.js")"></script>
+
     @RenderSection("Scripts", false)
 </body>
 </html>
