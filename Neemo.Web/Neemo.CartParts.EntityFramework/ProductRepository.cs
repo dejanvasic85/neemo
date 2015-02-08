@@ -70,7 +70,10 @@
                     .Include(p => p.Wreck.WheelBase)
                     .Include(p => p.Wreck.BodyType)
                     .Include(p => p.Wreck.Year)
-                    .First(p => p.ProductId == id);
+                    .FirstOrDefault(p => p.ProductId == id);
+
+                if (dbProduct == null)
+                    return null;
 
                 var product = Mapper.Map<Models.Product, Store.Product>(dbProduct);
 

@@ -1,0 +1,21 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "404 Not Found";
+    Layout = "~/Views/Shared/_MagentoPlain.cshtml";
+}
+
+
+<div class="hero-unit">
+    <h1><i class="fa fa-thumbs-down"></i> 404 Not Found</h1>
+    <p class="lead">Ooops. We cannot find what you are looking for...</p>
+</div>
+
+
+<div class="row-fluid">
+    <div class="span12">
+        <h1>What happened?</h1>
+        <p>You have clicked a link or went to an address that does not exist.</p>
+        <p><a href="@Url.Home()"><i class="fa fa-home"></i> &nbsp; Go back to the home page </a>or click back in your browser.</p>
+    </div>    
+</div>

@@ -628,6 +628,7 @@
     <Content Include="Views\Products\_CarPartFilters.cshtml" />
     <Content Include="Views\Error\ServerFault.cshtml" />
     <Content Include="Views\Shared\_MagentoPlain.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Neemo.CarParts\Neemo.CarParts.csproj">

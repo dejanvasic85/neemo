@@ -13,5 +13,10 @@ namespace Neemo.Web.Controllers
 
             return View();
         }
+
+        public ActionResult NotFound()
+        {
+            return View();
+        }
     }
 }

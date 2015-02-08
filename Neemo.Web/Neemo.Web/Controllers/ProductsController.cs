@@ -2,7 +2,6 @@
 {
     using AutoMapper;
     using Infrastructure;
-    using Models;
     using Shipping;
     using Store;
     using System.Linq;
@@ -29,7 +28,7 @@
             var product = _productService.GetProductById(productId);
 
             if (product == null)
-                return HttpNotFound();
+                return HttpNotFound("Requested product is not available");
 
             var productView = Mapper.Map<Store.Product, Models.ProductDetailView>(product);
             productView.Category = Mapper.Map<Store.Category, Models.CategoryView>( _categoryService.GetCategory(product.CategoryId) );
@@ -38,7 +37,7 @@
         }
 
         [HttpGet]
-        public ActionResult Find(FindModelView findModelView)
+        public ActionResult Find(Models.FindModelView findModelView)
         {
             var productResults = _productService.Search(findModelView.Keyword);
 
@@ -47,7 +46,7 @@
             findModelView.ProductResults = productResults
                 .Skip(findModelView.SkipAmount)
                 .Take(findModelView.PageSize)
-                .Select(Mapper.Map<Product, ProductSummaryView>)
+                .Select(Mapper.Map<Product, Models.ProductSummaryView>)
                 .ToList();
             
             return View(findModelView);
