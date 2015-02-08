@@ -118,7 +118,7 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
     };
 
     $('.btn-cart').on('click', function () {
-        var me = $(this);
+        var me = $(this).attr('data-loading-text', 'Please wait...').button('loading');
         var qty = 1;
 
         // Get the QTY from the UI (if any)
@@ -133,12 +133,15 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
             function (item) {
                 broadcaster.success('Your order has been added.');
                 ui.cart.items.push(new lineItem(item));
+                me.button('reset');
             },
             function () {
                 broadcaster.error('Not enough items in stock for your request.');
+                me.button('reset');
             },
             function () {
                 broadcaster.error('Item is no longer available.');
+                me.button('reset');
             });
 
         // In case this is a button we'll return false

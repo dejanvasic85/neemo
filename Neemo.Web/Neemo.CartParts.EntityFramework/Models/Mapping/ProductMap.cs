@@ -28,7 +28,6 @@ namespace Neemo.CarParts.EntityFramework.Models.Mapping
             this.Property(t => t.Featured).HasColumnName("Featured");
             this.Property(t => t.New).HasColumnName("New");
             this.Property(t => t.TopSeller).HasColumnName("TopSeller");
-            this.Property(t => t.BalanceQty).HasColumnName("BalanceQty");
 
             // Relationships
             this.HasRequired(t => t.Part)

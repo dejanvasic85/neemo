@@ -26,7 +26,6 @@ namespace Neemo.CarParts.EntityFramework.Models
         public Nullable<bool> Featured { get; set; }
         public Nullable<bool> New { get; set; }
         public Nullable<bool> TopSeller { get; set; }
-        public Nullable<int> BalanceQty { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
         public virtual Part Part { get; set; }
         public virtual Wreck Wreck { get; set; }

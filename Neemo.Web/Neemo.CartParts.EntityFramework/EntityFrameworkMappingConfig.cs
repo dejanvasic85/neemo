@@ -47,7 +47,6 @@ namespace Neemo.CarParts.EntityFramework
                 .ForMember(m => m.Featured, options => options.Ignore())
                 .ForMember(m => m.TopSeller, options => options.Ignore())
                 .ForMember(m => m.Active, options => options.Ignore())
-                .ForMember(m => m.BalanceQty, options => options.Ignore())
                 .ForMember(m => m.Comment, options => options.Ignore())
                 .ForMember(m => m.CostPrice, options => options.Ignore())
                 .ForMember(m => m.CreatedDateTime, options => options.Ignore())
