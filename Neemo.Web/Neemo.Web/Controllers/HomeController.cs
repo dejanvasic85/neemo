@@ -28,7 +28,6 @@ namespace Neemo.Web.Controllers
 
         public ActionResult Index()
         {
-            throw new Exception("Hello there");
             // Fetch the featured/new/best-selling products for display
             var newProducts = _productService.GetNewProducts().Take(3).Select(Mapper.Map<Product, ProductSummaryView>);
             var featuredProducts = _productService.GetFeaturedProducts().Take(3).Select(Mapper.Map<Product, ProductSummaryView>);

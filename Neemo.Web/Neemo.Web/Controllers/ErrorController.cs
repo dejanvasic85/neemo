@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
+using Neemo.Web.Infrastructure;
 
 namespace Neemo.Web.Controllers
 {
@@ -7,6 +9,8 @@ namespace Neemo.Web.Controllers
         // GET: Error
         public ActionResult ServerFault()
         {
+            
+
             return View();
         }
     }
