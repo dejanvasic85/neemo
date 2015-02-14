@@ -1,4 +1,4 @@
-﻿neemo = neemo || {};
+﻿var neemo = neemo || {};
 
 neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
 

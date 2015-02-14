@@ -31,7 +31,7 @@
                         .Include(p => p.Wreck.Year)
                         .ToList();
 
-                var items = dbProducts.Select(Mapper.Map<Models.Product, Store.Product>).ToList();
+                var items = dbProducts.Where(p => p.Active == true).Select(Mapper.Map<Models.Product, Store.Product>).ToList();
 
                 return items;
             }
@@ -70,7 +70,7 @@
                     .Include(p => p.Wreck.WheelBase)
                     .Include(p => p.Wreck.BodyType)
                     .Include(p => p.Wreck.Year)
-                    .FirstOrDefault(p => p.ProductId == id && p.Active == true);
+                    .FirstOrDefault(p => p.ProductId == id);
 
                 if (dbProduct == null)
                     return null;

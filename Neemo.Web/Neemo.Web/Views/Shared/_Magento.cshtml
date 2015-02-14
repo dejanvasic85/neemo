@@ -36,6 +36,7 @@
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/font-awesome-4.2.0.css")">
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/print.css")" media="print">
     
+    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/json2.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/jquery-1.11.0.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/prototype.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/ccard.js")"></script>
@@ -348,7 +349,7 @@
                 get: function (id) {
                     return neemo.endpoints.product.generic.replace(-1, id);
                 },
-                search: '@Url.Action("Find", "Products")',
+                search: '@Url.Action("Find", "Products")'
             }
         };
     </script>

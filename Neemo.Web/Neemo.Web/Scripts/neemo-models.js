@@ -1,4 +1,4 @@
-﻿neemo = neemo || {};
+﻿var neemo = neemo || {};
 
 (function ($, accounting, cartSvc, broadcaster) {
 

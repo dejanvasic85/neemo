@@ -1,4 +1,4 @@
-﻿neemo = neemo || {};
+﻿var neemo = neemo || {};
 neemo.svc = (function ($, urls) {
 
     function call(url, data, type) {
