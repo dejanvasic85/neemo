@@ -42,13 +42,6 @@
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/ccard.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/validation.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/builder.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/effects.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/dragdrop.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/controls.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/slider.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/js.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/form.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/menu.js")"></script>
     
     <!--[if lt IE 9]>
         <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/styles-ie8.css")" media="all" />
@@ -253,11 +246,7 @@
                                                     </div>
                                                 </div>
                                             </form>
-                                            <script type="text/javascript">
-                                                //<![CDATA[
-                                                var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
-                                                //]]>
-                                            </script>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -358,6 +347,13 @@
     <script type="text/javascript">
     var Translator = new Translate([]);
     </script>
+    
+    <script type="text/javascript">
+    //<![CDATA[
+    var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+    //]]>
+    </script>
+
 
 </body>
 </html>
