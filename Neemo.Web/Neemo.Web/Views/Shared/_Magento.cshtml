@@ -61,9 +61,6 @@
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/ma.flexslider.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/ma.nivo.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/calendar.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/toastr.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/knockout-3.2.0.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/accounting.js")"></script>
     
     <!--[if lt IE 9]>
         <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/styles-ie8.css")" media="all" />
@@ -366,8 +363,10 @@
         };
     </script>
    
-    @Scripts.Render("~/Scripts/bootstrap")
-    @Scripts.Render("~/Scripts/neemo")
+    @Scripts.Render("~/magento")
+    @Scripts.Render("~/bootstrap")
+    @Scripts.Render("~/knockout")
+    @Scripts.Render("~/neemo")
     
     @RenderSection("Scripts", false)
 </body>
