@@ -7,7 +7,10 @@ namespace Neemo.Web.Infrastructure
     {
         public static string Image(this UrlHelper urlHelper, string imageId)
         {
-            return urlHelper.Action("Download", "Image", new { id = imageId });
+            if (imageId == null)
+                return string.Empty;
+
+            return urlHelper.Action("Download", "Image", new { id = imageId.WithoutFileExtension() });
         }
 
         public static string Product(this UrlHelper urlHelper, int productId)

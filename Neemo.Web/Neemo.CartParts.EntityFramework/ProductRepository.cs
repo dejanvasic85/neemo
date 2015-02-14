@@ -1,6 +1,7 @@
 ﻿namespace Neemo.CarParts.EntityFramework
 {
     using AutoMapper;
+    using Dapper;
     using Store;
     using System;
     using System.Collections.Generic;
@@ -10,10 +11,32 @@
 
     public class ProductRepository : IProductRepository
     {
-        public List<Product> SearchProducts(string keyword)
+        public List<Product> SearchProducts(string keyword, decimal? priceMin, decimal? priceMax, int? categoryId, int? makeId, int? modelId, string chassis, string engineNo, int? engineSizeId, int? fuelTypeId, int? bodyTypeId, int? wheelBaseId, int? yearMin, int? yearMax)
         {
             using (var context = DbContextFactory.Create())
             {
+                // Call dapper to make the proc call but just use the EntityFramework connection
+                var products = context.Database.Connection.Query<Product>("Product_Search", new
+                {
+                    keyword,
+                    priceMin,
+                    priceMax,
+                    categoryId,
+                    makeId,
+                    modelId,
+                    chassis,
+                    engineNo,
+                    engineSizeId,
+                    fuelTypeId,
+                    bodyTypeId,
+                    wheelBaseId,
+                    yearMin,
+                    yearMax
+                }).ToList();
+
+                return products;
+
+                /*
                 // Todo - call a stored procedure instead
                 var dbProducts = context.Products
                         .Include(t => t.Part)
@@ -34,6 +57,7 @@
                 var items = dbProducts.Where(p => p.Active == true).Select(Mapper.Map<Models.Product, Store.Product>).ToList();
 
                 return items;
+                */
             }
         }
 

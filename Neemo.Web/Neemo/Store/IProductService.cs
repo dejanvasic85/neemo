@@ -47,7 +47,7 @@ namespace Neemo.Store
 
         public List<Product> Search(string keyword)
         {
-            return _productRepository.SearchProducts(keyword);
+            return _productRepository.SearchProducts(keyword, null, null, null, null, null, null, null, null, null, null, null, null, null);
         }
 
         public Product GetProductById(int id)
