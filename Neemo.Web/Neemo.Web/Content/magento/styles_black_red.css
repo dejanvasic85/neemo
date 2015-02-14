@@ -6850,3 +6850,12 @@ tr.summary-details-excluded {
 .top-padding-10 {
     margin-top: 10px;
 }
+
+
+/*
+    Search controls need to be tighter
+*/
+
+.sidebar .controls {
+    max-height: 25px;
+}

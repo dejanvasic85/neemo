@@ -21,11 +21,11 @@
                         <strong><span>Search</span></strong>
                     </div>
                     <div style="padding:10px">
-                        
+
                         <form action="@Url.Find()" method="GET">
                             @Html.Partial("~/Views/Shared/Partial/_SearchFilters.cshtml", Model.SearchFilters)
-                            
-                            
+
+
                             <a id="advancedSearchBtn">Advanced Search</a>
 
                             <div class="no-display" id="advancedSearch">
@@ -36,7 +36,7 @@
                                 <button class="btn" type="submit" data-loading-text="Please wait...">Search</button>
                             </div>
                         </form>
-                        
+
                     </div>
                 </div>
             </div>
@@ -166,7 +166,7 @@
             });
         });
 
-        jQuery('#advancedSearchBtn').on('click', function() {
+        jQuery('#advancedSearchBtn').on('click', function () {
             jQuery('#advancedSearch').slideDown(2000);
             jQuery(this).hide();
         });
