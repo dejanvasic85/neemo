@@ -37,7 +37,7 @@ namespace Neemo.Web.Controllers
             {
                 NewProducts = newProducts.ToList(),
                 FeaturedProducts = featuredProducts.ToList(),
-                BestSellingProducts = bestSellingProducts.ToList()
+                BestSellingProducts = bestSellingProducts.ToList(),
             };
 
             return View(homeModel);

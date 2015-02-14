@@ -12,10 +12,33 @@
                 <div class="block block-verticalmenu">
                     <div class="block-title"><strong><span>Categories </span></strong></div>
                     <div class="block-content">
-                        @Html.Partial("~/Views/Shared/Partial/_CategoriesSearchLinks.cshtml", (CategoryListView) @ViewBag.Categories)
+                        @Html.Partial("~/Views/Shared/Partial/_CategoriesSearchLinks.cshtml", (CategoryListView)@ViewBag.Categories)
                     </div>
                 </div>
-                <p><a href="#"><img src="http://www.plazathemes.com/demo/ma_carstore_res/media/wysiwyg/left.png" alt=""></a></p>
+
+                <div class="block block-layered-nav">
+                    <div class="block-title">
+                        <strong><span>Search</span></strong>
+                    </div>
+                    <div style="padding:10px">
+                        
+                        <form action="@Url.Find()" method="GET">
+                            @Html.Partial("~/Views/Shared/Partial/_SearchFilters.cshtml", Model.SearchFilters)
+                            
+                            
+                            <a id="advancedSearchBtn">Advanced Search</a>
+
+                            <div class="no-display" id="advancedSearch">
+                                @Html.Partial("~/Views/Products/_CarPartFilters.cshtml", Model.SearchFilters)
+                            </div>
+
+                            <div class="control-group">
+                                <button class="btn" type="submit" data-loading-text="Please wait...">Search</button>
+                            </div>
+                        </form>
+                        
+                    </div>
+                </div>
             </div>
             <div class="col-wrapper span9">
 
@@ -141,6 +164,11 @@
                     $jq('.banner7-title, .banner7-des, .banner7-readmore').css("left", "100px")
                 }
             });
+        });
+
+        jQuery('#advancedSearchBtn').on('click', function() {
+            jQuery('#advancedSearch').slideDown(2000);
+            jQuery(this).hide();
         });
     </script>
 

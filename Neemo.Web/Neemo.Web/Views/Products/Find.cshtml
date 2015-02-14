@@ -25,43 +25,9 @@
                         <strong><span>Product Filters</span></strong>
                     </div>
                     <div style="padding:10px">
-
-                        <div class="control-group">
-                            @Html.BootstrapLabelFor(m => m.Keyword)
-                            <div class="controls">
-                                @Html.TextBoxFor(m => m.Keyword)
-                            </div>
-                        </div>
-
-                        <div class="control-group">
-                            @Html.BootstrapLabelFor(m => m.SortBy)
-                            <div class="controls">
-                                @Html.DropDownListFor(m => m.SortBy, Model.SortByItems)
-                            </div>
-                        </div>
-
-                        <div class="row-fluid">
-
-
-                            <div class="span6">
-                                <div class="control-group">
-                                    @Html.BootstrapLabelFor(m => m.PriceMin)
-                                    <div class="controls">
-                                        @Html.TextBoxFor(m => m.PriceMin, new { data_numbers_only = true, style="width: 80px" })
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="span6">
-                                <div class="control-group">
-                                    @Html.BootstrapLabelFor(m => m.PriceMax)
-                                    <div class="controls">
-                                        @Html.TextBoxFor(m => m.PriceMax, new { data_numbers_only = true, style="width: 80px" } )
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
+                        
+                        
+                        @Html.Partial("~/Views/Shared/Partial/_SearchFilters.cshtml", Model)
                         
                         @*Todo - this needs to be rendered per category*@
                         @Html.Partial("~/Views/Products/_CarPartFilters.cshtml")
