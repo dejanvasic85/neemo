@@ -7,9 +7,15 @@
 
         // Todo - make these properties lowercase (like other js conventions)
         me.Id = ko.observable(cartViewItem.Id);
+        me.ProductUrl = ko.computed(function() {
+            return endpoint.product.get(me.Id());
+        });
         me.LineItemId = ko.observable(cartViewItem.LineItemId);
         me.Title = ko.observable(cartViewItem.Title);
         me.Price = ko.observable(cartViewItem.Price);
+        me.PriceFormatted = ko.computed(function() {
+            return accounting.formatMoney(me.Price());
+        });
         me.Quantity = ko.observable(cartViewItem.Quantity).extend({ numeric: 0 });
         me.ImageFileName = cartViewItem.ImageId;
         me.ImageUrl = ko.computed(function () {
@@ -17,6 +23,9 @@
         });
         me.PriceWithoutTax = ko.computed(function () {
             return me.Price() * 0.9;
+        });
+        me.PriceWithoutTaxFormatted = ko.computed(function () {
+            return accounting.formatMoney(me.PriceWithoutTax());
         });
 
         me.Total = function () {

@@ -12,7 +12,7 @@
 
         <ol id="cart-sidebar" class="mini-products-list" data-bind="foreach: items">
             <li class="item">
-                <a data-bind="attr : {href : neemo.endpoints.product.get(Id())}"
+                <a data-bind="attr : {href : ProductUrl() }"
                    class="product-image">
                     <img data-bind="attr : { src: ImageUrl(), alt : Title }"
                          width="50"
@@ -21,10 +21,10 @@
                 <div class="product-details">
                     <a title="Remove This Item" class="btn-remove" data-bind="click: $parent.removeItem">Remove This Item</a>
                     <p class="product-name">
-                        <a data-bind="text: Title, attr : {href: neemo.endpoints.product.get(Id())}"></a>
+                        <a data-bind="text: Title, attr : {href: ProductUrl()}"></a>
                     </p>
                     <strong data-bind="text: Quantity"></strong> x
-                    <span class="price" data-bind="text: accounting.formatMoney(Price())"></span>
+                    <span class="price" data-bind="text: PriceFormatted()"></span>
                 </div>
             </li>
         </ol>
