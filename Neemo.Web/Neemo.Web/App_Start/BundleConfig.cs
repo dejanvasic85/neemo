@@ -5,8 +5,11 @@ namespace Neemo.Web
     public class BundleConfig
     {
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
-        public static void RegisterBundles(BundleCollection bundles)
+        public static void RegisterScripts(BundleCollection bundles)
         {
+
+
+
             bundles.Add(new ScriptBundle("~/jquery").IncludeDirectory("~/Scripts", "jquery*"));
 
             bundles.Add(new ScriptBundle("~/magento")
@@ -42,6 +45,14 @@ namespace Neemo.Web
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862
             BundleTable.EnableOptimizations = true;
+        }
+
+        public static void RegisterStyles(BundleCollection bundles)
+        {
+            bundles.Add(new StyleBundle("~/Content/ThirdParty")
+                .Include("~/Content/magento/ma.featuredslider.css")
+                .Include("~/Content/magento/toastr-2.0.1.css")
+                );
         }
     }
 }

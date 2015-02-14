@@ -19,7 +19,8 @@ namespace Neemo.Web
             
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
+            BundleConfig.RegisterScripts(BundleTable.Bundles);
+            BundleConfig.RegisterStyles(BundleTable.Bundles);
 
             var formViewEngine = ViewEngines.Engines.OfType<WebFormViewEngine>().FirstOrDefault();
             if (formViewEngine != null)
