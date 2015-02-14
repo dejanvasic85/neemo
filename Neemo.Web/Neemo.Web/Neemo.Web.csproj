@@ -249,6 +249,7 @@
     <Compile Include="Models\MyCartView.cs" />
     <Compile Include="Models\ProductDetailView.cs" />
     <Compile Include="Models\HomeView.cs" />
+    <Compile Include="Models\ProductSummaryComparer.cs" />
     <Compile Include="Models\ProductSummaryView.cs" />
     <Compile Include="Models\ShippingCostView.cs" />
     <Compile Include="Models\TaxCostView.cs" />

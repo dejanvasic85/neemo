@@ -1,4 +1,6 @@
-﻿namespace Neemo.Web.Models
+﻿using System;
+
+namespace Neemo.Web.Models
 {
     public class ProductSummaryView
     {
@@ -8,5 +10,6 @@
         public string ImageId { get; set; }
         public bool OutOfStock { get; set; }
         public string Description { get; set; }
+        public DateTime CreatedDateTime { get; set; }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace Neemo.Web.Controllers
+﻿using Neemo.Web.Models;
+
+namespace Neemo.Web.Controllers
 {
     using AutoMapper;
     using Infrastructure;
@@ -31,7 +33,7 @@
                 return View("~/Views/Error/NotFound.cshtml");
 
             var productView = Mapper.Map<Store.Product, Models.ProductDetailView>(product);
-            productView.Category = Mapper.Map<Store.Category, Models.CategoryView>( _categoryService.GetCategory(product.CategoryId) );
+            productView.Category = Mapper.Map<Store.Category, Models.CategoryView>(_categoryService.GetCategory(product.CategoryId));
 
             return View(productView);
         }
@@ -46,7 +48,7 @@
 
             var slug = Slug.Create(product.Title);
 
-            return RedirectToAction("Details", new {id, slug});
+            return RedirectToAction("Details", new { id, slug });
         }
 
         [HttpGet]
@@ -75,6 +77,7 @@
                 .Skip(findModelView.SkipAmount)
                 .Take(findModelView.PageSize)
                 .Select(Mapper.Map<Product, Models.ProductSummaryView>)
+                .OrderBy(p => p, new ProductSummaryComparer(findModelView.SortBy))
                 .ToList();
             
             return View(findModelView);

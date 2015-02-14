@@ -63,14 +63,14 @@ namespace Neemo.Web.Models
                     };
                 }
             }
-        } 
+        }
         public List<ProductSummaryView> ProductResults { get; set; }
 
         public bool HasResults
         {
             get { return this.ProductResults.Count > 0; }
         }
-        
+
         public bool HasPages
         {
             get { return this.TotalPageCount > 1; }
@@ -78,7 +78,7 @@ namespace Neemo.Web.Models
 
         public int SkipAmount
         {
-            get { return PageSize*(Page - 1); }
+            get { return PageSize * (Page - 1); }
         }
 
         public int TotalResultCount { get; set; }
@@ -112,6 +112,6 @@ namespace Neemo.Web.Models
         NewestFirst,
         OldestFirst,
         PriceLowest,
-        PriceHighest
+        PriceHighest,
     }
 }

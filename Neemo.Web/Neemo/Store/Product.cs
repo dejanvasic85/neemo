@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 
@@ -19,6 +20,7 @@ namespace Neemo.Store
         public int CategoryId { get; set; }
         public bool IsAvailable { get; set; }
         public decimal Price { get; set; }
+        public DateTime CreatedDateTime { get; set; }
 
         public bool IsOutOfStock()
         {
