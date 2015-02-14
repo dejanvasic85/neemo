@@ -64,9 +64,7 @@
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/toastr.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/knockout-3.2.0.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/accounting.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/bootstrap.min.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/bootstrap-tooltip.js")"></script>
-
+    
     <!--[if lt IE 9]>
         <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/styles-ie8.css")" media="all" />
     <![endif]-->
@@ -367,11 +365,10 @@
             }
         };
     </script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/neemo-svc.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/neemo-models.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/neemo-ui.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/neemo-ko-extensions.js")"></script>
-
+   
+    @Scripts.Render("~/Scripts/bootstrap")
+    @Scripts.Render("~/Scripts/neemo")
+    
     @RenderSection("Scripts", false)
 </body>
 </html>
