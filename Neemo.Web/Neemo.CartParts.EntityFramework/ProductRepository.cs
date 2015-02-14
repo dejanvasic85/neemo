@@ -1,4 +1,6 @@
-﻿namespace Neemo.CarParts.EntityFramework
+﻿using System.Data;
+
+namespace Neemo.CarParts.EntityFramework
 {
     using AutoMapper;
     using Dapper;
@@ -32,32 +34,9 @@
                     wheelBaseId,
                     yearMin,
                     yearMax
-                }).ToList();
+                }, commandType: CommandType.StoredProcedure).ToList();
 
                 return products;
-
-                /*
-                // Todo - call a stored procedure instead
-                var dbProducts = context.Products
-                        .Include(t => t.Part)
-                        .Include(t => t.Part.PartPhoto)
-                        .Include(t => t.Part.PartPhotoes)
-                        .Include(t => t.ProducePrices)
-                        .Include(p => p.Wreck)
-                        .Include(p => p.Wreck.Make)
-                        .Include(p => p.Wreck.Model)
-                        .Include(p => p.Wreck.Chassis)
-                        .Include(p => p.Wreck.EngineSize)
-                        .Include(p => p.Wreck.FuelType)
-                        .Include(p => p.Wreck.WheelBase)
-                        .Include(p => p.Wreck.BodyType)
-                        .Include(p => p.Wreck.Year)
-                        .ToList();
-
-                var items = dbProducts.Where(p => p.Active == true).Select(Mapper.Map<Models.Product, Store.Product>).ToList();
-
-                return items;
-                */
             }
         }
 
