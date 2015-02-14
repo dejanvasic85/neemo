@@ -1,6 +1,6 @@
 ﻿var neemo = neemo || {};
 
-(function ($, accounting, cartSvc, broadcaster) {
+(function ($, accounting, cartSvc, broadcaster, endpoint) {
 
     neemo.lineItem = function (cartViewItem) {
         var me = this;
@@ -11,7 +11,10 @@
         me.Title = ko.observable(cartViewItem.Title);
         me.Price = ko.observable(cartViewItem.Price);
         me.Quantity = ko.observable(cartViewItem.Quantity).extend({ numeric: 0 });
-        me.ImageId = ko.observable(cartViewItem.ImageId);
+        me.ImageFileName = cartViewItem.ImageId;
+        me.ImageUrl = ko.computed(function () {
+            return endpoint.img.get(me.ImageFileName);
+        });
         me.PriceWithoutTax = ko.computed(function () {
             return me.Price() * 0.9;
         });
@@ -87,4 +90,4 @@
         }
     };
 
-})(jQuery, accounting, neemo.svc, toastr);
+})(jQuery, accounting, neemo.svc, toastr, neemo.endpoints);

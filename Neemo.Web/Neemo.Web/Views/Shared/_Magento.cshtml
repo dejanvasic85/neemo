@@ -340,8 +340,22 @@
             },
             img: {
                 generic: '@Url.Image("placeholder")',
-                get: function (imageId) {
-                    return neemo.endpoints.img.generic.replace('placeholder', imageId);
+                get: function (fileName) {
+                    if (fileName === undefined || fileName === null) {
+                        return "";
+                    }
+
+                    var fileNameWithoutExtension = WithoutFileExtension(fileName);
+                    var url = neemo.endpoints.img.generic.replace('placeholder', fileNameWithoutExtension);
+                    return url;
+
+                    function WithoutFileExtension(val) {
+                        if (val.indexOf('.') === -1) {
+                            return val;
+                        }
+
+                        return val.substring(0, val.lastIndexOf('.'));
+                    }
                 }
             },
             product: {

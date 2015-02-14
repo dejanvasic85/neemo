@@ -1,6 +1,4 @@
-﻿using Neemo.Web.Models;
-
-namespace Neemo.Web.Controllers
+﻿namespace Neemo.Web.Controllers
 {
     using AutoMapper;
     using Infrastructure;
@@ -77,7 +75,7 @@ namespace Neemo.Web.Controllers
                 .Skip(findModelView.SkipAmount)
                 .Take(findModelView.PageSize)
                 .Select(Mapper.Map<Product, Models.ProductSummaryView>)
-                .OrderBy(p => p, new ProductSummaryComparer(findModelView.SortBy))
+                .OrderBy(p => p, new Models.ProductSummaryComparer(findModelView.SortBy))
                 .ToList();
             
             return View(findModelView);
