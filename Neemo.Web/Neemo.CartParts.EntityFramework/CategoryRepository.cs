@@ -11,7 +11,7 @@ namespace Neemo.CarParts.EntityFramework
         {
             using (var context = DbContextFactory.Create())
             {
-                return context.Categories.Select(Mapper.Map<Models.Category, Store.Category>).ToList();
+                return context.Categories.Where(c => c.Active == true).Select(Mapper.Map<Models.Category, Store.Category>).ToList();
             }
         }
 
@@ -19,7 +19,7 @@ namespace Neemo.CarParts.EntityFramework
         {
             using (var context = DbContextFactory.Create())
             {
-                var category = context.Categories.Single(p => p.CategoryID == categoryId);
+                var category = context.Categories.Where(c => c.Active == true).Single(p => p.CategoryID == categoryId);
 
                 return Mapper.Map<Models.Category, Store.Category>(category);
             }

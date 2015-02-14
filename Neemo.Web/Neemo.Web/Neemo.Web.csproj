@@ -640,6 +640,7 @@
     <Content Include="Views\Error\ServerFault.cshtml" />
     <Content Include="Views\Shared\_MagentoPlain.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
+    <None Include="Properties\PublishProfiles\local.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Neemo.CarParts\Neemo.CarParts.csproj">

@@ -12,8 +12,9 @@ namespace Neemo.CarParts.EntityFramework
         {
             using (var context = DbContextFactory.Create())
             {
-                var registration = context.Registrations.FirstOrDefault(
-                    u => u.EmailAddress.Equals(email, StringComparison.OrdinalIgnoreCase));
+                var registration = context.Registrations
+                    .FirstOrDefault(u => u.EmailAddress.Equals(email, StringComparison.OrdinalIgnoreCase) && u.Active == true)
+                    ;
 
                 var user = Mapper.Map<Models.Registration, UserProfile>(registration);
 

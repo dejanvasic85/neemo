@@ -70,7 +70,7 @@
                     .Include(p => p.Wreck.WheelBase)
                     .Include(p => p.Wreck.BodyType)
                     .Include(p => p.Wreck.Year)
-                    .FirstOrDefault(p => p.ProductId == id);
+                    .FirstOrDefault(p => p.ProductId == id && p.Active == true);
 
                 if (dbProduct == null)
                     return null;

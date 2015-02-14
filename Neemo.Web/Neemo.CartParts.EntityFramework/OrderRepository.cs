@@ -45,7 +45,7 @@ namespace Neemo.CarParts.EntityFramework
             using (var context = DbContextFactory.Create())
             {
                 var dbOrder = context.OrderHeaders
-                    .Where(o => o.OrderHeaderID == orderId)
+                    .Where(o => o.OrderHeaderID == orderId && o.Active == true)
                     .Include(o => o.OrderDetails)
                     .FirstOrDefault();
 
