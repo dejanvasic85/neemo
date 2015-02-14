@@ -9,7 +9,7 @@ namespace Neemo.Store
         List<Product> GetFeaturedProducts();
         List<Product> GetNewProducts();
         List<Product> GetBestSellingProducts();
-        List<Product> Search(string keyword);
+        List<Product> Search(string keyword, decimal? priceMin, decimal? priceMax, int? categoryId, int? makeId, int? modelId, string chassis, string engineNo, int? engineSizeId, int? fuelTypeId, int? bodyTypeId, int? wheelBaseId, int? yearMin, int? yearMax);
         Product GetProductById(int id);
         bool IsAvailable(int productId, int desiredQuantity, int? bookedQuantity);
         bool IsInStock(int productId);
@@ -45,9 +45,9 @@ namespace Neemo.Store
             return _productRepository.GetBestSellingProducts();
         }
 
-        public List<Product> Search(string keyword)
+        public List<Product> Search(string keyword, decimal? priceMin, decimal? priceMax, int? categoryId, int? makeId, int? modelId, string chassis, string engineNo, int? engineSizeId, int? fuelTypeId, int? bodyTypeId, int? wheelBaseId, int? yearMin, int? yearMax)
         {
-            return _productRepository.SearchProducts(keyword, null, null, null, null, null, null, null, null, null, null, null, null, null);
+            return _productRepository.SearchProducts(keyword, priceMin, priceMax, categoryId, makeId, modelId, chassis, engineNo, engineSizeId, fuelTypeId, bodyTypeId, wheelBaseId, yearMin, yearMax);
         }
 
         public Product GetProductById(int id)

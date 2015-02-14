@@ -52,7 +52,22 @@
         [HttpGet]
         public ActionResult Find(Models.FindModelView findModelView)
         {
-            var productResults = _productService.Search(findModelView.Keyword);
+            var productResults = _productService.Search(
+                findModelView.Keyword,
+                findModelView.PriceMin,
+                findModelView.PriceMax,
+                findModelView.CategoryId,
+                findModelView.Make,
+                findModelView.Model,
+                findModelView.Chassis,
+                findModelView.EngineNumber,
+                findModelView.EngineSize,
+                findModelView.FuelType,
+                findModelView.BodyType,
+                findModelView.WheelBase,
+                findModelView.YearMin,
+                findModelView.YearMax
+                );
 
             findModelView.TotalResultCount = productResults.Count;
 
