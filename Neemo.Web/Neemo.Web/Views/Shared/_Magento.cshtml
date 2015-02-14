@@ -49,8 +49,6 @@
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/js.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/form.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/magento/menu.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/translate.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/cookies.js")"></script>
     
     <!--[if lt IE 9]>
         <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/styles-ie8.css")" media="all" />
@@ -63,11 +61,8 @@
         <script type="text/javascript" src="@Url.Content("~/Scripts/magento/ie6.js")"></script>
     <![endif]-->
 
-    <script type="text/javascript">
-    </script>
-    <script type="text/javascript">
-        var Translator = new Translate([]);
-    </script>
+    
+    
     <!-- theme color -->
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/styles_black_red.css")" media="screen">
     <!-- MENU -->
@@ -359,5 +354,10 @@
     @Scripts.Render("~/neemo")
     
     @RenderSection("Scripts", false)
+    
+    <script type="text/javascript">
+    var Translator = new Translate([]);
+    </script>
+
 </body>
 </html>
