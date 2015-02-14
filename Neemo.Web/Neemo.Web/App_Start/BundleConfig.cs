@@ -8,6 +8,11 @@ namespace Neemo.Web
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/magento")
+                .Include("~/Scripts/magento/jquery-ui.js")
+                .Include("~/Scripts/magento/ma.dropdown.js")
+                .Include("~/Scripts/magento/ma.accordion.js")
+                .Include("~/Scripts/magento/ma.flexslider.js")
+                .Include("~/Scripts/magento/ma.nivo.js")
                 .Include("~/Scripts/magento/calendar.js")
                 .Include("~/Scripts/magento/accounting.js")
                 .Include("~/Scripts/magento/toastr.js")
