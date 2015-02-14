@@ -548,12 +548,12 @@
     <Content Include="Scripts\magento\effects.js" />
     <Content Include="Scripts\magento\form.js" />
     <Content Include="Scripts\magento\ie6.js" />
-    <Content Include="Scripts\magento\jquery-1.11.0.js" />
+    <Content Include="Scripts\jquery-1.11.0.js" />
     <Content Include="Scripts\magento\json2.js" />
     <Content Include="Scripts\neemo-ko-extensions.js" />
     <Content Include="Scripts\neemo-ui.js" />
-    <Content Include="Scripts\magento\jquery-ui.js" />
-    <Content Include="Scripts\magento\jquery.fancybox.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery.fancybox.js" />
     <Content Include="Scripts\magento\js.js" />
     <Content Include="Scripts\knockout-3.2.0.js" />
     <Content Include="Scripts\magento\ma.accordion.js" />

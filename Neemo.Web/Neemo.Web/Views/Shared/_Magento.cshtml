@@ -35,27 +35,15 @@
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/toastr-2.0.1.css")">
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/font-awesome-4.2.0.css")">
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/print.css")" media="print">
-    
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/json2.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/jquery-1.11.0.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/prototype.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/ccard.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/validation.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/magento/builder.js")"></script>
-    
+
+    @Scripts.Render("~/jquery")
+
     <!--[if lt IE 9]>
         <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/styles-ie8.css")" media="all" />
     <![endif]-->
     <!--[if lt IE 8]>
         <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/styles-ie.css")" media="all" />
     <![endif]-->
-    <!--[if lt IE 7]>
-        <script type="text/javascript" src="@Url.Content("~/Scripts/magento/ds-sleight.js")"></script>
-        <script type="text/javascript" src="@Url.Content("~/Scripts/magento/ie6.js")"></script>
-    <![endif]-->
-
-    
-    
     <!-- theme color -->
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/styles_black_red.css")" media="screen">
     <!-- MENU -->
@@ -246,7 +234,7 @@
                                                     </div>
                                                 </div>
                                             </form>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -336,24 +324,32 @@
             }
         };
     </script>
-   
+
     @Scripts.Render("~/magento")
     @Scripts.Render("~/bootstrap")
     @Scripts.Render("~/knockout")
     @Scripts.Render("~/neemo")
-    
+
     @RenderSection("Scripts", false)
-    
+
     <script type="text/javascript">
-    var Translator = new Translate([]);
-    </script>
-    
-    <script type="text/javascript">
-    //<![CDATA[
-    var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
-    //]]>
+        var Translator = new Translate([]);
     </script>
 
+    <script type="text/javascript">
+        //<![CDATA[
+        var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+        //]]>
+    </script>
+
+    <!--[if lt IE 7]>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/magento/ds-sleight.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/magento/ie6.js")"></script>
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/magento/json2.js")"></script>
+    <![endif]-->
 
 </body>
 </html>
