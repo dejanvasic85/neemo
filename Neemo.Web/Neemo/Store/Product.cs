@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Dynamic;
+using System.Linq;
 
 namespace Neemo.Store
 {
@@ -10,7 +11,18 @@ namespace Neemo.Store
         public string QuickOverview { get; set; }
         public string Description { get; set; }
         public string[] Images { get; set; }
-        public string ImageId { get; set; }
+
+        public string ImageId
+        {
+            get
+            {
+                if (Images == null || Images.Length == 0)
+                    return null;
+
+                return Images.First();
+            }
+        }
+
         public bool IsNew { get; set; }
         public bool IsFeatured { get; set; }
         public bool IsBestSeller { get; set; }

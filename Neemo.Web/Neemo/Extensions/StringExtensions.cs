@@ -13,5 +13,15 @@ namespace Neemo
         {
             return !string.Equals(value, compareTo, comparison);
         }
+
+        public static string WithoutFileExtension(this string fileName)
+        {
+            var index = fileName.LastIndexOf('.');
+
+            if (index == -1 || index == 1)
+                return fileName;
+
+            return fileName.Substring(0, index);
+        }
     }
 }

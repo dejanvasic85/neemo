@@ -75,7 +75,7 @@ namespace Neemo.CarParts.EntityFramework
                 .ForMember(m => m.QuickOverview, options => options.MapFrom(src => src.Part.ShortDescription))
                 .ForMember(m => m.Description, options => options.MapFrom(src => src.Part.Description))
                 .ForMember(m => m.Images,
-                    options => options.MapFrom(src => src.Part.PartPhotoes.Select(p => p.PhotoName).ToArray()))
+                    options => options.MapFrom(src => src.Part.PartPhotoes.Select(p => p.PhotoName.WithoutFileExtension()).ToArray()))
                 .ForMember(m => m.ImageId, options => options.MapFrom(src => src.Part.PartPhoto.PhotoName))
                 .ForMember(m => m.CategoryId, options => options.MapFrom(src => src.Part.CategoryID))
                 ;
