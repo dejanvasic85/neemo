@@ -258,12 +258,30 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\magento\ajax_cart_super.css" />
+    <Content Include="Content\magento\ajax_cart_super.min.css">
+      <DependentUpon>ajax_cart_super.css</DependentUpon>
+    </Content>
     <Content Include="Content\magento\bootstrap-2.3.2.css" />
+    <Content Include="Content\magento\bootstrap-2.3.2.min.css">
+      <DependentUpon>bootstrap-2.3.2.css</DependentUpon>
+    </Content>
     <Content Include="Content\magento\bootstrap-panel.css" />
+    <Content Include="Content\magento\bootstrap-panel.min.css">
+      <DependentUpon>bootstrap-panel.css</DependentUpon>
+    </Content>
     <Content Include="Content\magento\bootstrap-responsive-2.3.2.css" />
+    <Content Include="Content\magento\bootstrap-responsive-2.3.2.min.css">
+      <DependentUpon>bootstrap-responsive-2.3.2.css</DependentUpon>
+    </Content>
     <Content Include="Content\magento\css3.htc" />
     <Content Include="Content\magento\fish_menu.css" />
+    <Content Include="Content\magento\fish_menu.min.css">
+      <DependentUpon>fish_menu.css</DependentUpon>
+    </Content>
     <Content Include="Content\magento\font-awesome-4.2.0.css" />
+    <Content Include="Content\magento\font-awesome-4.2.0.min.css">
+      <DependentUpon>font-awesome-4.2.0.css</DependentUpon>
+    </Content>
     <Content Include="Content\magento\font\glyphicons-halflings-regular.svg" />
     <Content Include="Content\magento\font\glyphicons-halflings-white.png" />
     <Content Include="Content\magento\font\glyphicons-halflings.png" />
@@ -521,17 +539,53 @@
     <Content Include="Content\magento\images\validation_advice_bg.gif" />
     <Content Include="Content\magento\images\wishlist.png" />
     <Content Include="Content\magento\jquery-ui.css" />
+    <Content Include="Content\magento\jquery-ui.min.css">
+      <DependentUpon>jquery-ui.css</DependentUpon>
+    </Content>
     <Content Include="Content\magento\jquery.fancybox.css" />
+    <Content Include="Content\magento\jquery.fancybox.min.css">
+      <DependentUpon>jquery.fancybox.css</DependentUpon>
+    </Content>
     <Content Include="Content\magento\ma.banner7.css" />
+    <Content Include="Content\magento\ma.banner7.min.css">
+      <DependentUpon>ma.banner7.css</DependentUpon>
+    </Content>
     <Content Include="Content\magento\ma.featuredslider.css" />
+    <Content Include="Content\magento\ma.featuredslider.min.css">
+      <DependentUpon>ma.featuredslider.css</DependentUpon>
+    </Content>
     <Content Include="Content\magento\ma.verticalmenu.css" />
+    <Content Include="Content\magento\ma.verticalmenu.min.css">
+      <DependentUpon>ma.verticalmenu.css</DependentUpon>
+    </Content>
     <Content Include="Content\magento\print.css" />
+    <Content Include="Content\magento\print.min.css">
+      <DependentUpon>print.css</DependentUpon>
+    </Content>
     <Content Include="Content\magento\skin.css" />
+    <Content Include="Content\magento\skin.min.css">
+      <DependentUpon>skin.css</DependentUpon>
+    </Content>
     <Content Include="Content\magento\styles-ie.css" />
+    <Content Include="Content\magento\styles-ie.min.css">
+      <DependentUpon>styles-ie.css</DependentUpon>
+    </Content>
     <Content Include="Content\magento\styles-ie8.css" />
+    <Content Include="Content\magento\styles-ie8.min.css">
+      <DependentUpon>styles-ie8.css</DependentUpon>
+    </Content>
     <Content Include="Content\magento\styles_black_red.css" />
+    <Content Include="Content\magento\styles_black_red.min.css">
+      <DependentUpon>styles_black_red.css</DependentUpon>
+    </Content>
     <Content Include="Content\magento\toastr-2.0.1.css" />
+    <Content Include="Content\magento\toastr-2.0.1.min.css">
+      <DependentUpon>toastr-2.0.1.css</DependentUpon>
+    </Content>
     <Content Include="Content\magento\widgets.css" />
+    <Content Include="Content\magento\widgets.min.css">
+      <DependentUpon>widgets.css</DependentUpon>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\magento\accounting.js" />

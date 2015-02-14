@@ -49,10 +49,7 @@ namespace Neemo.Web
 
         public static void RegisterStyles(BundleCollection bundles)
         {
-            bundles.Add(new StyleBundle("~/Content/ThirdParty")
-                .Include("~/Content/magento/ma.featuredslider.css")
-                .Include("~/Content/magento/toastr-2.0.1.css")
-                );
+           
         }
     }
 }
