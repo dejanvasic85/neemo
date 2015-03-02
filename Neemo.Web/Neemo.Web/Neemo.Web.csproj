@@ -474,6 +474,7 @@
     <Content Include="Content\magento\images\logo.gif" />
     <Content Include="Content\magento\images\logo.png" />
     <Content Include="Content\magento\images\logo_email.gif" />
+    <Content Include="Content\magento\images\logo_neemo.png" />
     <Content Include="Content\magento\images\logo_print.gif" />
     <Content Include="Content\magento\images\magnifier_handle.gif" />
     <Content Include="Content\magento\images\map_popup_arrow.gif" />
