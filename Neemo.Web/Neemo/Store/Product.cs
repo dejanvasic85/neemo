@@ -29,6 +29,8 @@ namespace Neemo.Store
 
         public object ProductSpecifications { get; set; }
         public object OtherDetails { get; set; }
+        public object Defects { get; set; }
+        public string DefectNotes { get; set; }
 
         public void ReduceQuantity(int quantity)
         {

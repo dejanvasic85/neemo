@@ -23,8 +23,10 @@ namespace Neemo.Web.Models
         }
 
         public int AvailableQty { get; set; }
+        public string DefectNotes { get; set; }
         public CategoryView Category { get; set; }
 
-        public Dictionary<string, string> ProductSpecifications { get; set; } 
+        public Dictionary<string, string> ProductSpecifications { get; set; }
+        public Dictionary<string, string> OtherDetails { get; set; }
     }
 }

@@ -22,7 +22,8 @@ namespace Neemo.Web
                 .ForMember(member => member.OutOfStock, options => options.ResolveUsing(t => t.IsOutOfStock()));
 
             config.CreateMap<Store.Product, Models.ProductDetailView>()
-                .ForMember(member => member.ProductSpecifications, options => options.ResolveUsing<ProductSpecificationConverter>());
+                .ForMember(member => member.ProductSpecifications, options => options.ResolveUsing<ProductSpecificationConverter>())
+                .ForMember(member => member.OtherDetails, options => options.ResolveUsing<OtherDetailsConverter>());
 
             config.CreateMap<Store.ProductCartItem, Models.CartItemView>()
                 .ForMember(member => member.ItemSubTotal, options => options.MapFrom(source => source.CalculateSubTotalWithoutTax()));
@@ -57,6 +58,16 @@ namespace Neemo.Web
         {
             var dictionary = source.ProductSpecifications.ToDictionary<string>();
             
+            return dictionary as Dictionary<string, string>;
+        }
+    }
+
+    public class OtherDetailsConverter : ValueResolver<Store.Product, Dictionary<string, string>>
+    {
+        protected override Dictionary<string, string> ResolveCore(Store.Product source)
+        {
+            var dictionary = source.OtherDetails.ToDictionary<string>();
+
             return dictionary as Dictionary<string, string>;
         }
     }

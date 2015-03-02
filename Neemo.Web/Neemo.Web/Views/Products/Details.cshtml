@@ -129,7 +129,8 @@
                         <ul class="nav nav-tabs" id="myTab">
                             <li class="active"><a href="#description" data-toggle="tab">Description</a></li>
                             <li><a href="#productSpecifications" data-toggle="tab">Product Specifications</a></li>
-                            <li><a href="#shippingEstimate" data-toggle="tab">Shipping Estimate</a></li>
+                            <li><a href="#otherDetails" data-toggle="tab">Part Details</a></li>
+                            <li><a href="#defects" data-toggle="tab">Defect Notes</a></li>
                         </ul>
 
                         <div class="tab-content">
@@ -165,6 +166,20 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <div class="tab-pane" id="otherDetails">
+                                <table class="table table-striped">
+                                    <tbody>
+                                        @foreach (var m in Model.OtherDetails)
+                                        {
+                                            <tr>
+                                                <td>@m.Key</td>
+                                                <td>@m.Value</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane" id="defects">@Html.Raw(Model.DefectNotes)</div>
                         </div>
 
                     </div>
