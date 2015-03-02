@@ -59,39 +59,48 @@ namespace Neemo.CarParts.EntityFramework
         {
             using (var context = DbContextFactory.Create())
             {
-                var dbProduct = context.Products
-                    .Include(t => t.Part)
-                    .Include(t => t.Part.PartPhoto)
-                    .Include(t => t.Part.PartPhotoes)
-                    .Include(t => t.ProducePrices)
-                    .Include(p => p.Wreck)
-                    .Include(p => p.Wreck.Make)
-                    .Include(p => p.Wreck.Model)
-                    .Include(p => p.Wreck.Chassis)
-                    .Include(p => p.Wreck.EngineSize)
-                    .Include(p => p.Wreck.FuelType)
-                    .Include(p => p.Wreck.WheelBase)
-                    .Include(p => p.Wreck.BodyType)
-                    .Include(p => p.Wreck.Year)
-                    .FirstOrDefault(p => p.ProductId == id);
+                // Call dapper to make the proc call but just use the EntityFramework connection
+                var dbProduct = context.Database.Connection
+                    .Query("select * from vw_productAll_Web where ProductId = @productId", new { productId = id }, commandType: CommandType.Text)
+                    .Single();
 
-                if (dbProduct == null)
-                    return null;
-
-                var product = Mapper.Map<Models.Product, Store.Product>(dbProduct);
-
-                // Todo - move this possibly elsewhere?
-                product.ProductSpecifications = new
+                var product = new Product
                 {
-                    Make = dbProduct.Wreck.Make != null ? dbProduct.Wreck.Make.Make1 : "",
-                    Model = dbProduct.Wreck.Model != null ? dbProduct.Wreck.Model.Model1 : "",
-                    Chassis = dbProduct.Wreck.Chassis != null ? dbProduct.Wreck.Chassis.ChassisNo : "",
-                    EngineSie = dbProduct.Wreck.EngineSize != null ? dbProduct.Wreck.EngineSize.EngineSize1 : "",
-                    FuelType = dbProduct.Wreck.FuelType != null ? dbProduct.Wreck.FuelType.FuelType1 : "",
-                    WheelBase = dbProduct.Wreck.WheelBase != null ? dbProduct.Wreck.WheelBase.WheelBase1 : "",
-                    Body = dbProduct.Wreck.BodyType != null ? dbProduct.Wreck.BodyType.BodyType1 : "",
-                    Year = dbProduct.Wreck.Year != null ? dbProduct.Wreck.Year.Year1 : "",
+                    ProductId = dbProduct.ProductId,
+                    AvailableQty = dbProduct.AvailableQty,
+                    Title = dbProduct.Title,
+                    QuickOverview = dbProduct.QuickOverview,
+                    ImageId = dbProduct.ImageId,
+                    IsAvailable = dbProduct.IsAvailable == 1 ? true : false,
+                    IsNew = (bool) dbProduct.New,
+                    IsBestSeller = (bool) dbProduct.TopSeller,
+                    IsFeatured = (bool) dbProduct.Featured,
+                    CategoryId = dbProduct.CategoryID,
+                    Price = dbProduct.Price,
+                    Description = dbProduct.Description,
+                    CreatedDateTime = dbProduct.CreatedDateTime,
+
+                    ProductSpecifications = new
+                    {
+                        Make = dbProduct.Make,
+                        Model = dbProduct.Model,
+                        Chassis = dbProduct.ChassisNo,
+                        Engine = dbProduct.EngineSize,
+                        EngineNo = dbProduct.EngineNo,
+                        FuelType = dbProduct.FuelType,
+                        WheelBase = dbProduct.WheelBase,
+                        Body = dbProduct.BodyType,
+                        Year = dbProduct.Year,
+                    },
+
+                    OtherDetails = new
+                    {
+                        
+                    }
                 };
+
+
+                //// Todo - move this possibly elsewhere?
 
                 return product;
             }

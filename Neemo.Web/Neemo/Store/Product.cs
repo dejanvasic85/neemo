@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Linq;
 
 namespace Neemo.Store
 {
@@ -31,6 +28,7 @@ namespace Neemo.Store
         }
 
         public object ProductSpecifications { get; set; }
+        public object OtherDetails { get; set; }
 
         public void ReduceQuantity(int quantity)
         {
