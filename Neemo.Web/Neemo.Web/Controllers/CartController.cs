@@ -68,12 +68,10 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult MyCart(PersonalDetailsView shippingDetailsView, string shippingType)
+        public ActionResult MyCart(PersonalDetailsView shippingDetailsView)
         {
-            if (string.IsNullOrEmpty(shippingType))
-            {
-                ModelState.AddModelError("shippingType", "Please select type of postage");
-            }
+            // Hard code shipping type just for now
+            var shippingType = ShippingType.Regular.ToString();
 
             if (!ModelState.IsValid)
             {

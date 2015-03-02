@@ -1,4 +1,5 @@
-﻿@model CheckoutView
+﻿@using Neemo
+@model CheckoutView
 
 @{
     ViewBag.Title = "Checkout";
@@ -52,7 +53,7 @@
                                     @*Postage*@
                                     <tr>
                                         <td colspan="3" style="text-align:right;"> <strong>Post</strong>: @Model.OrderSummary.ShippingCost.ShippingType</td>
-                                        <td>@Model.OrderSummary.ShippingCost.Cost.ToString("C")</td>
+                                        <td>@Model.OrderSummary.ShippingCost.Cost.ToDollarOrDefault()</td>
                                     </tr>
                                     
                                     @*Total*@

@@ -31,7 +31,7 @@
             return new[]
             {
                 new ShippingCost(10, ShippingType.Express),
-                new ShippingCost(5, ShippingType.Regular),
+                new ShippingCost(0, ShippingType.Regular),
             };
         }
 

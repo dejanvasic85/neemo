@@ -78,5 +78,14 @@ namespace Neemo
         {
             return string.IsNullOrEmpty(source);
         }
+
+        public static string ToDollarOrDefault(this decimal source, string defaultValue = "N/A")
+        {
+            if (source > 0)
+            {
+                return source.ToString("C");
+            }
+            return defaultValue;
+        }
     }
 }

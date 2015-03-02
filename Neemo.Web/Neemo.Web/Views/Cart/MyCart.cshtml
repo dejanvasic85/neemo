@@ -38,33 +38,46 @@
 
                                 </div>
                             </div>
+                            @*<div class="span4">
+                                    <div class="bordered-form">
+                                        <h3><i class="fa fa-calculator"></i>&nbsp; Postage Estimate</h3>
+                                        <p>Select your postage preference.</p>
+                                        @Html.ValidationMessageFor(s => s.ShippingType)
+                                        <table class="table table-bordered table-hover" id="estimates">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>Type</th>
+                                                    <th>Cost</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var shipping in Model.ShippingOptions)
+                                                {
+                                                    <tr>
+                                                        <td><input type="radio" name="shippingType" id="shippingType" value="@shipping.ShippingType" /></td>
+                                                        <td>@shipping.ShippingType</td>
+                                                        <td>@shipping.Cost.ToString("C")</td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                </div>*@
+
                             <div class="span4">
                                 <div class="bordered-form">
-                                    <h3><i class="fa fa-calculator"></i>&nbsp; Postage Estimate</h3>
-                                    <p>Select your postage preference.</p>
-                                    @Html.ValidationMessageFor(s => s.ShippingType)
-                                    <table class="table table-bordered table-hover" id="estimates">
-                                        <thead>
-                                            <tr>
-                                                <th></th>
-                                                <th>Type</th>
-                                                <th>Cost</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach (var shipping in Model.ShippingOptions)
-                                            {
-                                                <tr>
-                                                    <td><input type="radio" name="shippingType" id="shippingType" value="@shipping.ShippingType" /></td>
-                                                    <td>@shipping.ShippingType</td>
-                                                    <td>@shipping.Cost.ToString("C")</td>
-                                                </tr>
-                                            }
-                                        </tbody>
-                                    </table>
-
+                                    <h3><i class="fa fa-calculator"></i>&nbsp; Postage</h3>
+                                    <p>
+                                        Postage is not included during checkout. Once the order 
+                                        is processed, we'll call you to confirm the postage
+                                        details. If you are not satisfied, 100% refund 
+                                        is guaranteed.
+                                    </p>
                                 </div>
                             </div>
+
                             <div class="span4">
                                 <div class="bordered-form">
                                     <h3>Totals</h3>

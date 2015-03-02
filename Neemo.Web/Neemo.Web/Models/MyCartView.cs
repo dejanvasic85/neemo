@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace Neemo.Web.Models
 {
@@ -7,7 +6,6 @@ namespace Neemo.Web.Models
     {
         public PersonalDetailsView ShippingDetails { get; set; }
      
-        [Required]
         public string ShippingType { get; set; }
 
         public List<ShippingCostView> ShippingOptions { get; set; }
