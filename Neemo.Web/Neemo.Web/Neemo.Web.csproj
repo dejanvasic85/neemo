@@ -700,6 +700,7 @@
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <Content Include="Views\Shared\Partial\_SearchFilters.cshtml" />
     <Content Include="Views\Home\TermsAndConditions.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Neemo.CarParts\Neemo.CarParts.csproj">

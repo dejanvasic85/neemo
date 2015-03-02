@@ -15,7 +15,7 @@ namespace Neemo.Web.Infrastructure
 
         public static string Product(this UrlHelper urlHelper, int productId)
         {
-            var path = RouteTable.Routes.GetVirtualPath(null, "productIdOnly", new RouteValueDictionary() {{"id", productId}});
+            var path = RouteTable.Routes.GetVirtualPath(null, "productIdOnly", new RouteValueDictionary() { { "id", productId } });
             return path.VirtualPath;
         }
 
@@ -59,6 +59,25 @@ namespace Neemo.Web.Infrastructure
             }
 
             return urlHelper.Action(actionName, controllerName);
+        }
+
+        public static string AboutUs(this UrlHelper urlHelper, bool absoluteUrl = false)
+        {
+            return urlHelper.Action("About", "Home");
+        }
+        public static string Terms(this UrlHelper urlHelper, bool absoluteUrl = false)
+        {
+            return urlHelper.Action("TermsAndConditions", "Home");
+        }
+
+        public static string Privacy(this UrlHelper urlHelper, bool absoluteUrl = false)
+        {
+            return urlHelper.Action("Privacy", "Home");
+        }
+
+        public static string ReturnPolicy(this UrlHelper urlHelper, bool absoluteUrl = false)
+        {
+            return urlHelper.Action("ReturnPolicy", "Home");
         }
 
         public static string Find(this UrlHelper urlHelper)

@@ -81,5 +81,23 @@ namespace Neemo.Web.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public ActionResult About()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Privacy()
+        {
+            return View();
+        }
+        
+        [HttpGet]
+        public ActionResult ReturnPolicy()
+        {
+            return View();
+        }
     }
 }

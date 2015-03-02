@@ -6869,3 +6869,7 @@ tr.summary-details-excluded {
 .top-buffer-10 {
     margin-top: 10px;
 }
+
+.bottom-buffer-10 {
+    margin-bottom: 10px;
+}
