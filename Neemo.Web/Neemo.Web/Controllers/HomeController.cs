@@ -75,5 +75,11 @@ namespace Neemo.Web.Controllers
 
             return View(viewModel);
         }
+
+        [HttpGet]
+        public ActionResult TermsAndConditions()
+        {
+            return View();
+        }
     }
 }
