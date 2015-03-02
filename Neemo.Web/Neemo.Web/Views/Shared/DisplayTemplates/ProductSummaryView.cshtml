@@ -1,38 +1,39 @@
-﻿@model ProductSummaryView
+﻿@using Neemo
+@model ProductSummaryView
 
-<li class="Modelslider-item" style="width: 187px; float: left; display: block;">
-    <div class="feadture-inner">
+
+<div class="span3 featured-product-tile">
+    <div class="thumbnail text-center" style="min-height: 220px">
+
         <a href="@Url.Product(Model.ProductId, Slug.Create(Model.Title))"
            title="@Model.Title"
            class="product-image">
-            <img src="@Url.Image(Model.ImageId)">
+
+            <img src="@Url.Image(Model.ImageId)" style="width: 129px; height: 97px;">
         </a>
+        <div class="caption">
+            <p>
+                @if (Model.OutOfStock)
+                {
+                    <div style="padding: 5px; font-weight: bold">
+                        <span class="label label-warning">Sold Out</span>
+                    </div>
+                }
+                else
+                {
+                    <button type="button" title="Add to Cart" class="btn btn-cart" data-productid="@Model.ProductId">
+                        <i class="icon-plus icon-white"></i> Add To Cart
+                    </button>
+                }
+            </p>
+            <h3 class="top-buffer-10">
+                <a href="@Url.Product(Model.ProductId, Slug.Create(Model.Title))">
+                    @Model.Title.TruncateOnWordBoundary(20)
+                </a>
+            </h3>
+            <p>@Model.Price.ToString("C")</p>
+            @*<p>@Model.Description.TruncateOnWordBoundary(100)</p>*@
 
-        <h2 class="product-name">
-            <a href="@Url.Product(Model.ProductId, Slug.Create(Model.Title))">
-                @Model.Title
-            </a>
-        </h2>
-
-        <div class="price-box">
-            <span class="regular-price" id="product-price-2">
-                <span class="price">@Model.Price.ToString("C")</span>
-            </span>
-        </div>
-
-        <div class="actions">
-            @if (Model.OutOfStock)
-            {
-                <div style="padding: 5px; font-weight: bold">
-                    <span class="label label-warning">Sold Out</span>
-                </div>
-            }
-            else
-            {
-                <button type="button" title="Add to Cart" class="btn btn-cart" data-productid="@Model.ProductId">
-                    <i class="icon-plus icon-white"></i> Add To Cart
-                </button>
-            }
         </div>
     </div>
-</li>
+</div>

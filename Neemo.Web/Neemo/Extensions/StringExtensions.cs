@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Mime;
 
 namespace Neemo
 {
@@ -22,6 +23,60 @@ namespace Neemo
                 return fileName;
 
             return fileName.Substring(0, index);
+        }
+
+        public static string TruncateOnWordBoundary(this string content, int maxLength)
+        {
+            return content.TruncateOnWordBoundary(maxLength, "...");
+        }
+
+        public static string TruncateOnWordBoundary(this string content, int maxLength, string suffix)
+        {
+            if (content.IsNullOrEmpty())
+                return String.Empty;
+
+            content = content.StripLineBreaks();
+
+            if (content.Length <= maxLength - 1)
+                return content;
+
+            int i = maxLength - 1;
+            while (i > 0)
+            {
+                if (Char.IsWhiteSpace(content[i]))
+                    break;
+                i--;
+            }
+
+            if (i == 0)
+            {
+                return content;
+            }
+
+            return content.Truncate(i, suffix);
+        }
+
+        public static string StripLineBreaks(this string content)
+        {
+            return content.Replace("\n\r", " ").Replace('\n', ' ').Replace('\r', ' ');
+        }
+
+        public static string Truncate(this string content, int maxLength, string suffix)
+        {
+            if (maxLength < 1)
+                throw new ArgumentOutOfRangeException("maxLength", maxLength, "MaxLength must be positive");
+
+            if (content.IsNullOrEmpty())
+                return String.Empty;
+
+            return (content.Length <= maxLength)
+                ? content
+                : content.Substring(0, maxLength).TrimEnd() + suffix;
+        }
+
+        public static bool IsNullOrEmpty(this string source)
+        {
+            return string.IsNullOrEmpty(source);
         }
     }
 }

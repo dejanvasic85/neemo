@@ -29,15 +29,15 @@ namespace Neemo.Web.Controllers
         public ActionResult Index()
         {
             // Fetch the featured/new/best-selling products for display
-            var newProducts = _productService.GetNewProducts().Take(3).Select(Mapper.Map<Product, ProductSummaryView>);
-            var featuredProducts = _productService.GetFeaturedProducts().Take(3).Select(Mapper.Map<Product, ProductSummaryView>);
-            var bestSellingProducts = _productService.GetBestSellingProducts().Take(6).Select(Mapper.Map<Product, ProductSummaryView>);
+            var newProducts = _productService.GetNewProducts().Where(m => m.ImageId.HasValue()).Select(Mapper.Map<Product, ProductSummaryView>);
+            //var featuredProducts = _productService.GetFeaturedProducts().Take(3).Select(Mapper.Map<Product, ProductSummaryView>);
+            //var bestSellingProducts = _productService.GetBestSellingProducts().Take(6).Select(Mapper.Map<Product, ProductSummaryView>);
 
             var homeModel = new HomeView
             {
                 NewProducts = newProducts.ToList(),
-                FeaturedProducts = featuredProducts.ToList(),
-                BestSellingProducts = bestSellingProducts.ToList(),
+                //FeaturedProducts = featuredProducts.ToList(),
+                //BestSellingProducts = bestSellingProducts.ToList(),
             };
 
             return View(homeModel);
@@ -65,9 +65,9 @@ namespace Neemo.Web.Controllers
 
             // Email
             _notificationService.Email(
-                string.Format("{0} - Contact Us", _config.CompanyName), 
-                _templateService.ViewToString(this, "~/Views/EmailTemplates/ContactUsTemplate.cshtml", viewModel), 
-                _config.NotificationSenderEmail, 
+                string.Format("{0} - Contact Us", _config.CompanyName),
+                _templateService.ViewToString(this, "~/Views/EmailTemplates/ContactUsTemplate.cshtml", viewModel),
+                _config.NotificationSenderEmail,
                 _config.NotificationSupportEmail);
 
             // Set the view to have been submitted

@@ -119,11 +119,11 @@ namespace Neemo.CarParts.EntityFramework
                     .Include(t => t.ProducePrices)
                     .ToList();
 
-                var featuredProducts = productModels
+                var products = productModels
                     .Select(Mapper.Map<Models.Product, Store.Product>)
                     .ToList();
 
-                return featuredProducts;
+                return products;
             }
         }
     }

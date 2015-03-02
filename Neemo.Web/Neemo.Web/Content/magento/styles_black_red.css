@@ -6859,3 +6859,13 @@ tr.summary-details-excluded {
 .sidebar .controls {
     max-height: 25px;
 }
+
+.featured-product-tile {
+    margin-top: 10px;
+    margin-left: 12px !important;
+    margin-bottom: 10px;
+}
+
+.top-buffer-10 {
+    margin-top: 10px;
+}

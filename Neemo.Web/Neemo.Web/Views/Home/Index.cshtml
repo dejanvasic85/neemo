@@ -42,7 +42,7 @@
             </div>
             <div class="col-wrapper span9">
 
-                <!-- start enable 
+                <!-- start enable
                 <div class="ma-banner7-container">
                     <div class="flexslider ma-nivoslider">
                         <div class="ma-loading" style="display: none;"></div>
@@ -59,77 +59,93 @@
                 end enable -->
 
                 <div class="row-fluid">
-                    <div class="col-main span8">
+                    <div class="col-main span12">
                         <div class="std">
-                            <div class="ma-featuredproductslider-container">
-                                <div class="ma-featured-sldier-title">
-                                    <h2>Featured Products</h2>
-                                </div>
-                                <div class="flexslider carousel">
-                                    <div class="flex-viewport" style="overflow: hidden; position: relative;">
-                                        <ul class="products-grid first odd" style="width: 1800%; -webkit-transition: 0s; transition: 0s; -webkit-transform: translate3d(0px, 0px, 0px);">
-                                            @foreach (var featured in Model.FeaturedProducts)
-                                            {
-                                                @Html.DisplayFor(m => featured)
-                                            }
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
 
                             <div class="ma-featuredproductslider-container">
                                 <div class="ma-featured-sldier-title">
                                     <h2>New Products</h2>
                                 </div>
                                 <div class="flexslider carousel">
-                                    <div class="flex-viewport" style="overflow: hidden; position: relative;">
-                                        <ul class="products-grid first odd" style="width: 1800%; -webkit-transition: 0s; transition: 0s; -webkit-transform: translate3d(0px, 0px, 0px);">
-                                            @foreach (var newProduct in Model.NewProducts)
+
+                                    @{
+                                        var columns = 4;
+                                        var rows = Model.NewProducts.Count / columns;
+                                        if (Model.NewProducts.Count % columns > 0)
+                                        {
+                                            rows++;
+                                        }
+                                    }
+
+                                    @for (var i = 0; i < rows; i++)
+                                    {
+                                        <div class="row-fluid">
+                                            @foreach (var newProduct in Model.NewProducts.Skip(i * columns).Take(columns))
                                             {
                                                 @Html.DisplayFor(m => newProduct)
                                             }
-                                        </ul>
-                                    </div>
+                                        </div>
+                                    }
                                 </div>
                             </div>
+
+                            @*<div class="ma-featuredproductslider-container">
+                                    <div class="ma-featured-sldier-title">
+                                        <h2>Featured Products</h2>
+                                    </div>
+                                    <div class="flexslider carousel">
+                                        <div class="flex-viewport" style="overflow: hidden; position: relative;">
+                                            <ul class="products-grid first odd" style="width: 1800%; -webkit-transition: 0s; transition: 0s; -webkit-transform: translate3d(0px, 0px, 0px);">
+                                                @foreach (var featured in Model.FeaturedProducts)
+                                                {
+                                                    @Html.DisplayFor(m => featured)
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>*@
+
                         </div>
                     </div>
-                    <div class="col-right sidebar span4">
 
-                        <div class="ma-bestseller-products block">
-                            <!-- start mt products list -->
-                            <div class="ma-bestseller-product-title block-title"><strong>Bestseller Products</strong></div>
-                            <div class="bestseller-category block-content">
-                                <ul class="bestseller-product  first">
-                                    @foreach (var bestSeller in Model.BestSellingProducts)
-                                    {
-                                        <li class="item">
-                                            <a href="@Url.Product(bestSeller.ProductId, Slug.Create(bestSeller.Title))"
-                                               title="@bestSeller.Title" class="product-image">
-                                                <img src="@Url.Image(bestSeller.ImageId)" width="52" height="52" alt="@bestSeller.Title">
-                                            </a>
-                                            <h2 class="product-name">
-                                                <a href="@Url.Product(bestSeller.ProductId, Slug.Create(bestSeller.Title))" title="@bestSeller.Title">
-                                                    @bestSeller.Title
+
+
+                    @*<div class="col-right sidebar span4">
+
+                            <div class="ma-bestseller-products block">
+                                <!-- start mt products list -->
+                                <div class="ma-bestseller-product-title block-title"><strong>Bestseller Products</strong></div>
+                                <div class="bestseller-category block-content">
+                                    <ul class="bestseller-product  first">
+                                        @foreach (var bestSeller in Model.BestSellingProducts)
+                                        {
+                                            <li class="item">
+                                                <a href="@Url.Product(bestSeller.ProductId, Slug.Create(bestSeller.Title))"
+                                                   title="@bestSeller.Title" class="product-image">
+                                                    <img src="@Url.Image(bestSeller.ImageId)" width="52" height="52" alt="@bestSeller.Title">
                                                 </a>
-                                            </h2>
-                                            <div class="price-box">
-                                                <span class="regular-price" id="product-price-2">
-                                                    <span class="price">@bestSeller.Price.ToString("C")</span>
-                                                </span>
-                                            </div>
-                                        </li>
-                                    }
+                                                <h2 class="product-name">
+                                                    <a href="@Url.Product(bestSeller.ProductId, Slug.Create(bestSeller.Title))" title="@bestSeller.Title">
+                                                        @bestSeller.Title
+                                                    </a>
+                                                </h2>
+                                                <div class="price-box">
+                                                    <span class="regular-price" id="product-price-2">
+                                                        <span class="price">@bestSeller.Price.ToString("C")</span>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                        }
 
-                                </ul>
-                                <!--  -->
+                                    </ul>
+                                    <!--  -->
 
-                            </div>
-                            <!-- end exist product -->
-                        </div> <!-- end products list -->
+                                </div>
+                                <!-- end exist product -->
+                            </div> <!-- end products list -->
 
 
-                    </div>
+                        </div>*@
                 </div>
             </div>
         </div>
