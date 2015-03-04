@@ -680,8 +680,7 @@ function slideEffectAjax() {
 }
 
 $jq(document).ready(function(){
-    var enable_module = $jq('#enable_module').val();
-    if(enable_module==0 || !enable_module) return false;
+
     //add Class to wishlist link 
     $jq('.quick-access ul li a').each(function(){
         var link = $jq(this).attr('href');
