@@ -40,9 +40,6 @@ namespace Neemo.CarParts.EntityFramework.Models.Mapping
             this.Property(t => t.EffectiveDateTo).HasColumnName("EffectiveDateTo");
 
             // Relationships
-            this.HasOptional(t => t.Feature)
-                .WithMany(t => t.PartFeatures)
-                .HasForeignKey(d => d.FeatureID);
             this.HasRequired(t => t.Part)
                 .WithMany(t => t.PartFeatures)
                 .HasForeignKey(d => d.PartID);

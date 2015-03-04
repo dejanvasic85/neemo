@@ -7,8 +7,6 @@ namespace Neemo.CarParts.EntityFramework.Models
     {
         public EngineSize()
         {
-            this.VehicleListing_Archive = new List<VehicleListing_Archive>();
-            this.VehicleListings = new List<VehicleListing>();
             this.Wrecks = new List<Wreck>();
         }
 
@@ -24,8 +22,6 @@ namespace Neemo.CarParts.EntityFramework.Models
         public string DeletedByUser { get; set; }
         public Nullable<System.DateTime> EffectiveDateFrom { get; set; }
         public Nullable<System.DateTime> EffectiveDateTo { get; set; }
-        public virtual ICollection<VehicleListing_Archive> VehicleListing_Archive { get; set; }
-        public virtual ICollection<VehicleListing> VehicleListings { get; set; }
         public virtual ICollection<Wreck> Wrecks { get; set; }
     }
 }

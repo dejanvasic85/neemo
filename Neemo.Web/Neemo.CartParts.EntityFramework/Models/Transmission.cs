@@ -5,12 +5,6 @@ namespace Neemo.CarParts.EntityFramework.Models
 {
     public partial class Transmission
     {
-        public Transmission()
-        {
-            this.VehicleListing_Archive = new List<VehicleListing_Archive>();
-            this.VehicleListings = new List<VehicleListing>();
-        }
-
         public int TransmissionID { get; set; }
         public string Transmission1 { get; set; }
         public string Image { get; set; }
@@ -23,7 +17,5 @@ namespace Neemo.CarParts.EntityFramework.Models
         public string DeletedByUser { get; set; }
         public Nullable<System.DateTime> EffectiveDateFrom { get; set; }
         public Nullable<System.DateTime> EffectiveDateTo { get; set; }
-        public virtual ICollection<VehicleListing_Archive> VehicleListing_Archive { get; set; }
-        public virtual ICollection<VehicleListing> VehicleListings { get; set; }
     }
 }

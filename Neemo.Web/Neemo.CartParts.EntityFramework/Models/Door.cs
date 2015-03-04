@@ -5,11 +5,6 @@ namespace Neemo.CarParts.EntityFramework.Models
 {
     public partial class Door
     {
-        public Door()
-        {
-            this.VehicleListing_Archive = new List<VehicleListing_Archive>();
-            this.VehicleListings = new List<VehicleListing>();
-        }
 
         public int DoorID { get; set; }
         public string Door1 { get; set; }
@@ -23,7 +18,5 @@ namespace Neemo.CarParts.EntityFramework.Models
         public string DeletedByUser { get; set; }
         public Nullable<System.DateTime> EffectiveDateFrom { get; set; }
         public Nullable<System.DateTime> EffectiveDateTo { get; set; }
-        public virtual ICollection<VehicleListing_Archive> VehicleListing_Archive { get; set; }
-        public virtual ICollection<VehicleListing> VehicleListings { get; set; }
     }
 }
