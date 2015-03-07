@@ -5,16 +5,16 @@ namespace Neemo.Notifications
 {
     public interface INotificationService
     {
-        void Email(string subject, string body, string from, params string[] to);
+        void Email(string subject, string body, string from, string cc, params string[] to);
     }
 
     public class NotificationService : INotificationService
     {
-        public void Email(string subject, string body, string @from, params string[] to)
+        public void Email(string subject, string body, string @from, string cc, params string[] to)
         {
             Task.Run(() =>
             {
-                MailMessage mailMessage = new MailMessage
+                var mailMessage = new MailMessage
                 {
                     IsBodyHtml = true,
                     Body = body,
@@ -23,7 +23,12 @@ namespace Neemo.Notifications
                 mailMessage.To.Add(string.Join(",", to));
                 mailMessage.From = new MailAddress(from);
 
-                SmtpClient client = new SmtpClient();
+                if (cc.HasValue())
+                {
+                    mailMessage.CC.Add(cc);
+                }
+
+                var client = new SmtpClient();
                 client.Send(mailMessage);
             });
         }

@@ -13,9 +13,12 @@ namespace Neemo
         /// </summary>
         string[] NotificationSupportEmail { get; }
 
+        string NotificationInvoiceEmail { get; }
+
         decimal Gst { get; }
         string CompanyAddress { get; }
         string CompanyPhone { get; }
+        string Currency { get; }
     }
 
     public class SysConfig : ISysConfig
@@ -40,6 +43,11 @@ namespace Neemo
             get { return ConfigurationManager.AppSettings["NotificationSupportEmail"].Split(','); }
         }
 
+        public string NotificationInvoiceEmail
+        {
+            get { return ConfigurationManager.AppSettings["NotificationInvoiceEmail"]; }
+        }
+
         public decimal Gst
         {
             get { return decimal.Parse(ConfigurationManager.AppSettings["Gst"]); }
@@ -54,5 +62,11 @@ namespace Neemo
         {
             get { return ConfigurationManager.AppSettings["CompanyPhone"]; }
         }
+
+        public string Currency
+        {
+            get { return ConfigurationManager.AppSettings["Currency"]; }
+        }
+
     }
 }

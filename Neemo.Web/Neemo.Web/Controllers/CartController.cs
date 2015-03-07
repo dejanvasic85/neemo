@@ -221,8 +221,9 @@
             _notificationService.Email("Order Confirmation",
                     _templateService.ViewToString(this, "~/Views/EmailTemplates/OrderConfirmation.cshtml",
                     invoice),
-                    _config.NotificationSenderEmail,
-                    shoppingCart.UserName); // The username should be email!!
+                    from: _config.NotificationSenderEmail, // from
+                    cc: _config.NotificationInvoiceEmail, // cc 
+                    to: shoppingCart.UserName); // The username should be email!!
 
             _cartContext.Clear();
 

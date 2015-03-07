@@ -9,6 +9,13 @@ namespace Neemo.Payments.pp
 {
     public class PaymentService : IPaymentService
     {
+        private readonly ISysConfig _config;
+
+        public PaymentService(ISysConfig config)
+        {
+            _config = config;
+        }
+
         public PaymentResponse ProcessPaymentForCart(Cart cart, string cancelUrl, string returnUrl)
         {
             var apiContext = ApiContextFactory.Create();
@@ -19,7 +26,7 @@ namespace Neemo.Payments.pp
                 {
                     name = li.Title,
                     price = li.PriceWithoutTax.ToString("N"),
-                    currency = "AUD",
+                    currency = _config.Currency,
                     quantity = li.Quantity.ToString(),
                     sku = li.Id.ToString()
                 }).ToList()
@@ -51,7 +58,7 @@ namespace Neemo.Payments.pp
             // Let's you specify a payment amount.
             var amount = new Amount
             {
-                currency = "AUD",
+                currency = _config.Currency,
                 total = cart.CalculateGrandTotal().ToString("N"), // Total must be equal to sum of shipping, tax and subtotal.
                 details = details
             };
