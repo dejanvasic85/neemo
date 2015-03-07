@@ -14,6 +14,9 @@
 
         [Dependency]
         public ICartContext CartContext { get; set; }
+
+        [Dependency]
+        public ISysConfig Config { get; set; }
         
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
@@ -35,6 +38,8 @@
             {
                 ViewBag.CheckoutUrl = Url.MyCart();
             }
+
+            ViewBag.CompanyName = Config.CompanyName;
         }
     }
 }
