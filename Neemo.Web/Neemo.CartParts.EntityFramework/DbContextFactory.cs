@@ -1,4 +1,7 @@
-﻿using Neemo.CarParts.EntityFramework.Models;
+﻿using System.Configuration;
+using System.Data.Common;
+using System.Data.SqlClient;
+using Neemo.CarParts.EntityFramework.Models;
 
 namespace Neemo.CarParts.EntityFramework
 {
@@ -7,6 +10,11 @@ namespace Neemo.CarParts.EntityFramework
         public static NeemoContext Create()
         {
             return new NeemoContext();
+        }
+
+        public static DbConnection CreateConnection()
+        {
+            return new SqlConnection(ConfigurationManager.ConnectionStrings["NeemoConnection"].ConnectionString);
         }
     }
 }

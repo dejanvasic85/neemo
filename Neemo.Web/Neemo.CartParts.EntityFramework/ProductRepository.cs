@@ -1,4 +1,4 @@
-﻿using System.Data;
+﻿using System.Runtime.Remoting.Contexts;
 
 namespace Neemo.CarParts.EntityFramework
 {
@@ -7,18 +7,20 @@ namespace Neemo.CarParts.EntityFramework
     using Store;
     using System;
     using System.Collections.Generic;
+    using System.Data;
     using System.Data.Entity;
     using System.Linq;
     using System.Linq.Expressions;
+
 
     public class ProductRepository : IProductRepository
     {
         public List<Product> SearchProducts(string keyword, decimal? priceMin, decimal? priceMax, int? categoryId, int? makeId, int? modelId, string chassis, string engineNo, int? engineSizeId, int? fuelTypeId, int? bodyTypeId, int? wheelBaseId, int? yearMin, int? yearMax)
         {
-            using (var context = DbContextFactory.Create())
+            using (var context = DbContextFactory.CreateConnection())
             {
                 // Call dapper to make the proc call but just use the EntityFramework connection
-                var products = context.Database.Connection.Query<Product>("Product_Search", new
+                var products = context.Query<Product>("Product_Search", new
                 {
                     keyword,
                     priceMin,
@@ -47,7 +49,12 @@ namespace Neemo.CarParts.EntityFramework
 
         public List<Product> GetNewProducts()
         {
-            return FindProduct(p => p.New == true).ToList();
+            using(var context = DbContextFactory.CreateConnection())
+            {
+                var products = context.Query<Product>("SELECT * FROM vw_productAll_Web WHERE IsNew = 1").ToList();
+
+                return products;
+            }
         }
 
         public List<Product> GetBestSellingProducts()
