@@ -51,9 +51,8 @@ namespace Neemo.CarParts.EntityFramework
         {
             using(var context = DbContextFactory.CreateConnection())
             {
-                var products = context.Query<Product>("SELECT * FROM vw_productAll_Web WHERE IsNew = 1").ToList();
-
-                return products;
+                // 
+                return context.Query<Product>("SELECT TOP 12 * FROM vw_productAll_Web WHERE IsNew = 1 AND AvailableQty > 0 AND IsAvailable = 1 ORDER BY CreatedDateTime").ToList();
             }
         }
 
