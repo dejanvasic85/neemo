@@ -35,7 +35,6 @@ namespace Neemo.CarParts.EntityFramework.Models
         public Nullable<System.DateTime> EffectiveDateTo { get; set; }
         public string ShortDescription { get; set; }
         public string Description { get; set; }
-        public virtual Category Category { get; set; }
         public virtual PartPhoto PartPhoto { get; set; }
         public virtual ICollection<PartFeature> PartFeatures { get; set; }
         public virtual ICollection<PartPhoto> PartPhotoes { get; set; }

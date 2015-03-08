@@ -15,8 +15,6 @@ namespace Neemo.CarParts.EntityFramework
             
             var config = (IConfiguration)mapper;
 
-            MapCategory(config);
-
             MapProduct(config);
 
             MapRegistration(config);
@@ -80,16 +78,7 @@ namespace Neemo.CarParts.EntityFramework
                 .ForMember(m => m.CategoryId, options => options.MapFrom(src => src.Part.CategoryID))
                 ;
         }
-
-        private static void MapCategory(IConfiguration config)
-        {
-            config.CreateMap<Models.Category, Neemo.Store.Category>()
-                .ForMember(m => m.ParentId, options => options.Ignore())
-                .ForMember(m => m.CategoryId, options => options.MapFrom(src => src.CategoryID))
-                .ForMember(m => m.Title, options => options.MapFrom(src => src.Category1))
-                ;
-        }
-
+        
         private static void MapOrder(IConfiguration config)
         {
             // To Database

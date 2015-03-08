@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
+using Dapper;
 using Neemo.Store;
 
 namespace Neemo.CarParts.EntityFramework
@@ -9,20 +10,15 @@ namespace Neemo.CarParts.EntityFramework
     {
         public List<Category> GetAllCategories()
         {
-            using (var context = DbContextFactory.Create())
+            using (var context = DbContextFactory.CreateConnection())
             {
-                return context.Categories.Where(c => c.Active == true).Select(Mapper.Map<Models.Category, Store.Category>).ToList();
+                return context.Query<Category>("SELECT * FROM vw_Category").ToList();
             }
         }
 
         public Category GetCategory(int categoryId)
         {
-            using (var context = DbContextFactory.Create())
-            {
-                var category = context.Categories.Where(c => c.Active == true).Single(p => p.CategoryID == categoryId);
-
-                return Mapper.Map<Models.Category, Store.Category>(category);
-            }
+            return GetAllCategories().FirstOrDefault(c => c.CategoryId == categoryId);
         }
     }
 }

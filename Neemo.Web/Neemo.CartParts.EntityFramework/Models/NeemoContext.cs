@@ -19,7 +19,6 @@ namespace Neemo.CarParts.EntityFramework.Models
 
         //public DbSet<AncapRating> AncapRatings { get; set; }
         public DbSet<BodyType> BodyTypes { get; set; }
-        public DbSet<Category> Categories { get; set; }
         public DbSet<Chassis> Chassis { get; set; }
         public DbSet<Door> Doors { get; set; }
         public DbSet<Engine> Engines { get; set; }
@@ -49,7 +48,6 @@ namespace Neemo.CarParts.EntityFramework.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new BodyTypeMap());
-            modelBuilder.Configurations.Add(new CategoryMap());
             modelBuilder.Configurations.Add(new ChassisMap());
             modelBuilder.Configurations.Add(new EngineMap());
             modelBuilder.Configurations.Add(new EngineSizeMap());

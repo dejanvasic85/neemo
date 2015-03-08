@@ -68,9 +68,6 @@ namespace Neemo.CarParts.EntityFramework.Models.Mapping
             this.Property(t => t.Description).HasColumnName("Description");
 
             // Relationships
-            this.HasOptional(t => t.Category)
-                .WithMany(t => t.Parts)
-                .HasForeignKey(d => d.CategoryID);
             this.HasOptional(t => t.PartPhoto)
                 .WithMany(t => t.Parts)
                 .HasForeignKey(d => d.DefaultPartPhotoID);

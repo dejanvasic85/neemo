@@ -64,7 +64,6 @@
     <Compile Include="DbContextFactory.cs" />
     <Compile Include="EntityFrameworkMappingConfig.cs" />
     <Compile Include="Models\BodyType.cs" />
-    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Chassis.cs" />
     <Compile Include="Models\Door.cs" />
     <Compile Include="Models\Engine.cs" />
@@ -74,7 +73,6 @@
     <Compile Include="Models\ListingHeader.cs" />
     <Compile Include="Models\Make.cs" />
     <Compile Include="Models\Mapping\BodyTypeMap.cs" />
-    <Compile Include="Models\Mapping\CategoryMap.cs" />
     <Compile Include="Models\Mapping\ChassisMap.cs" />
     <Compile Include="Models\Mapping\EngineMap.cs" />
     <Compile Include="Models\Mapping\EngineSizeMap.cs" />
