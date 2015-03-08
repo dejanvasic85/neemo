@@ -15,9 +15,11 @@ namespace Neemo.Images
     {
         private readonly string _baseDirectory;
         
-        public FileImageService(string baseDirectory, ISysConfig config)
+        public FileImageService(string baseDirectory, ISysConfig config, ILogger logger)
         {
             _baseDirectory = baseDirectory + config.ImageDatabaseFolderName;
+
+            logger.Info(string.Format("Base Directory [{0}]", _baseDirectory));
         }
 
         public ItemImage GetImage(string imageId, bool usePlaceholder)

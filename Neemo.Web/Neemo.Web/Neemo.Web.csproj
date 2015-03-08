@@ -205,7 +205,7 @@
     <Compile Include="Controllers\CarPartController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
-    <Compile Include="Infrastructure\ILogger.cs" />
+    <Compile Include="Infrastructure\Log4NetLog.cs" />
     <Compile Include="Infrastructure\MultipleActionAttribute.cs" />
     <Compile Include="Infrastructure\Slug.cs" />
     <Compile Include="Models\Converters\OrderLineItemToInvoiceItem.cs" />
@@ -697,6 +697,7 @@
     <Content Include="Views\Error\ServerFault.cshtml" />
     <Content Include="Views\Shared\_MagentoPlain.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
+    <None Include="Properties\PublishProfiles\ftp.pubxml" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <Content Include="Views\Shared\Partial\_SearchFilters.cshtml" />
     <Content Include="Views\Home\TermsAndConditions.cshtml" />

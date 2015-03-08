@@ -45,6 +45,7 @@
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\SystemExtensions.cs" />
     <Compile Include="Guard.cs" />
+    <Compile Include="ILogger.cs" />
     <Compile Include="IMappingConfig.cs" />
     <Compile Include="ISysConfig.cs" />
     <Compile Include="Images\IImageService.cs" />
