@@ -1,6 +1,4 @@
-﻿using System.Runtime.Remoting.Contexts;
-
-namespace Neemo.CarParts.EntityFramework
+﻿namespace Neemo.CarParts.EntityFramework
 {
     using AutoMapper;
     using Dapper;
@@ -11,7 +9,6 @@ namespace Neemo.CarParts.EntityFramework
     using System.Data.Entity;
     using System.Linq;
     using System.Linq.Expressions;
-
 
     public class ProductRepository : IProductRepository
     {
@@ -82,9 +79,9 @@ namespace Neemo.CarParts.EntityFramework
                     QuickOverview = dbProduct.QuickOverview,
                     ImageId = dbProduct.ImageId,
                     IsAvailable = dbProduct.IsAvailable == 1 ? true : false,
-                    IsNew = (bool)dbProduct.New,
-                    IsBestSeller = (bool)dbProduct.TopSeller,
-                    IsFeatured = (bool)dbProduct.Featured,
+                    IsNew = (bool)dbProduct.IsNew,
+                    IsBestSeller = (bool)dbProduct.IsBestSeller,
+                    IsFeatured = (bool)dbProduct.IsFeatured,
                     CategoryId = dbProduct.CategoryID,
                     Price = dbProduct.Price,
                     Description = dbProduct.Description,
@@ -117,9 +114,6 @@ namespace Neemo.CarParts.EntityFramework
                     DefectNotes = dbProduct.DeffectNotes
 
                 };
-
-
-                //// Todo - move this possibly elsewhere?
 
                 return product;
             }

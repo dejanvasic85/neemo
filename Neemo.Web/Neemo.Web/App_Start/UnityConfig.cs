@@ -34,7 +34,7 @@ namespace Neemo.Web
             container.RegisterType<Payments.IPaymentService, Payments.pp.PaymentService>();
             
             // FileStore image service requires http utility to initialise
-            container.RegisterType<Images.IImageService, Images.FileImageService>(new InjectionConstructor(HttpContext.Current.Server.MapPath("~/"), typeof(ISysConfig), typeof(ILogger)));
+            container.RegisterType<Images.IImageService, Images.FileImageService>(new InjectionConstructor(HttpContext.Current.Server.MapPath("~/"), typeof(ISysConfig)));
 
             // ICartContext (session based)
             container.RegisterType<ShoppingCart.ICartContext, Infrastructure.SessionCartContext>();

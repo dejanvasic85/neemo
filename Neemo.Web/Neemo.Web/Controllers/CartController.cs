@@ -235,20 +235,18 @@
         [HttpPost]
         public ActionResult AddProduct(int productId, int qty)
         {
-            // Validate stock levels
-            var isInStock = _productService.IsInStock(productId);
-            if (!isInStock)
-                return Json(new { NotAvailable = true });
-
             var cart = _cartContext.Current();
 
-            var isRequestedQuantityTooLarge =
-                !_productService.IsAvailable(productId, qty, cart.GetTotalQuantityForProduct(productId, string.Empty));
-            if (isRequestedQuantityTooLarge)
+            var checkStockResult = _productService.CheckStock(productId, qty, cart.GetTotalQuantityForProduct(productId, string.Empty));
+
+            if (checkStockResult.StockCheck == CheckStockType.NotAvailable)
+                return Json(new { NotAvailable = true });
+
+            if (checkStockResult.StockCheck == CheckStockType.RequestTooLarge)
                 return Json(new { QuantityTooLarge = true });
 
             // All good - proceed to add to the cart
-            var productCartItem = new ProductCartItem(_productService.GetProductById(productId), qty);
+            var productCartItem = new ProductCartItem(checkStockResult.Product, qty);
             cart.AddItem(productCartItem);
 
             return Json(new { Added = true, Item = productCartItem });
@@ -278,9 +276,9 @@
         {
             // Verify the new quantity
             var cart = _cartContext.Current();
-            var isRequestedQuantityTooLarge = !_productService.IsAvailable(productId, newQuantity, cart.GetTotalQuantityForProduct(productId, lineItemId));
 
-            if (isRequestedQuantityTooLarge)
+            var checkStockResult = _productService.CheckStock(productId, newQuantity, cart.GetTotalQuantityForProduct(productId, lineItemId));
+            if (checkStockResult.StockCheck == CheckStockType.RequestTooLarge)
                 return Json(new { QuantityTooLarge = true });
 
             cart.UpdateQuantity(lineItemId, newQuantity);

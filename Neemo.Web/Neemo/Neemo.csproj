@@ -67,6 +67,7 @@
     <Compile Include="Shipping\ShippingType.cs" />
     <Compile Include="ShoppingCart\CartException.cs" />
     <Compile Include="Orders\OrderLineItem.cs" />
+    <Compile Include="Store\CheckStockType.cs" />
     <Compile Include="Store\Status.cs" />
     <Compile Include="Tax\TaxCost.cs" />
     <Compile Include="Tax\TaxCostExtensions.cs" />

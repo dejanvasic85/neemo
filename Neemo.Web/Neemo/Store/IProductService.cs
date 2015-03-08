@@ -11,8 +11,7 @@ namespace Neemo.Store
         List<Product> GetBestSellingProducts();
         List<Product> Search(string keyword, decimal? priceMin, decimal? priceMax, int? categoryId, int? makeId, int? modelId, string chassis, string engineNo, int? engineSizeId, int? fuelTypeId, int? bodyTypeId, int? wheelBaseId, int? yearMin, int? yearMax);
         Product GetProductById(int id);
-        bool IsAvailable(int productId, int desiredQuantity, int? bookedQuantity);
-        bool IsInStock(int productId);
+        CheckStockResult CheckStock(int productId, int desiredQuantiy, int? bookedQuantity);
 
         /// <summary>
         /// The shopping cart is 'processed' by adjusting the stock levels for each item
@@ -55,19 +54,30 @@ namespace Neemo.Store
             return _productRepository.GetProduct(id);
         }
 
-        public bool IsAvailable(int productId, int desiredQuantity, int? bookedQuantity)
+        public CheckStockResult CheckStock(int productId, int desiredQuantiy, int? bookedQuantity)
         {
             var product = GetProductById(productId);
-            if (product == null)
-                return false;
+            Guard.NotNull(product);
 
-            return product.AvailableQty - (desiredQuantity + bookedQuantity.GetValueOrDefault()) >= 0;
-        }
+            var result = new CheckStockResult
+            {
+                Product = product,
+                StockCheck = CheckStockType.InStock
+            };
 
-        public bool IsInStock(int productId)
-        {
-            // Should return true if there is at least one in there!
-            return IsAvailable(productId, 1, bookedQuantity: null);
+            // Ensure that there is any stock at all
+            if (product.IsOutOfStock())
+            {
+                result.StockCheck = CheckStockType.NotAvailable;
+            }
+
+            // Ensure that the user is not requesting more than what's in stock
+            if (product.AvailableQty - (desiredQuantiy + bookedQuantity.GetValueOrDefault()) < 0)
+            {
+                result.StockCheck = CheckStockType.RequestTooLarge;
+            }
+
+            return result;
         }
 
         public void AdjustStockLevels(Cart shoppingCart)
