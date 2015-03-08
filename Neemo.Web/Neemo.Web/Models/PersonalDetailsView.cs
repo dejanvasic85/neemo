@@ -29,7 +29,6 @@ namespace Neemo.Web.Models
         public string City { get; set; }
 
         [Display(Name = "State")]
-        [Required]
         [StringLength(50)]
         public string State { get; set; }
 
