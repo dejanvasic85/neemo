@@ -127,14 +127,27 @@
                     <div class="product-collateral">
 
                         <ul class="nav nav-tabs" id="myTab">
-                            <li class="active"><a href="#description" data-toggle="tab">Description</a></li>
-                            <li><a href="#productSpecifications" data-toggle="tab">Product Specifications</a></li>
+                            <li class="active"><a href="#productSpecifications" data-toggle="tab">Product Specifications</a></li>
+                            <li><a href="#description" data-toggle="tab">Description</a></li>
                             <li><a href="#otherDetails" data-toggle="tab">Part Details</a></li>
                             <li><a href="#defects" data-toggle="tab">Defect Notes</a></li>
                         </ul>
 
                         <div class="tab-content">
-                            <div class="tab-pane active" id="description">@Html.Raw(Model.Description)</div>
+                            <div class="tab-pane active" id="productSpecifications">
+                                <table class="table table-striped">
+                                    <tbody>
+                                        @foreach (var m in Model.ProductSpecifications)
+                                        {
+                                            <tr>
+                                                <td>@m.Key</td>
+                                                <td>@m.Value</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane" id="description">@Html.Raw(Model.Description)</div>
                             <div class="tab-pane" id="shippingEstimate">
 
                                 <div class="control-group">
@@ -153,19 +166,7 @@
                                     <tbody></tbody>
                                 </table>
                             </div>
-                            <div class="tab-pane" id="productSpecifications">
-                                <table class="table table-striped">
-                                    <tbody>
-                                        @foreach (var m in Model.ProductSpecifications)
-                                        {
-                                            <tr>
-                                                <td>@m.Key</td>
-                                                <td>@m.Value</td>
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </table>
-                            </div>
+                            
                             <div class="tab-pane" id="otherDetails">
                                 <table class="table table-striped">
                                     <tbody>
