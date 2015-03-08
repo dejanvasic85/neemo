@@ -2,6 +2,7 @@ using Microsoft.Practices.Unity;
 using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
+using Neemo.Web.Infrastructure;
 using Unity.Mvc5;
 
 namespace Neemo.Web
@@ -26,6 +27,9 @@ namespace Neemo.Web
                 WithMappings.FromMatchingInterface,
                 WithName.Default);
             
+            // Register ilogger with log4net
+            container.RegisterType<ILogger, Log4NetLog>();
+
             // Register the PayPal payment service ( later we may have a few more :)
             container.RegisterType<Payments.IPaymentService, Payments.pp.PaymentService>();
             
