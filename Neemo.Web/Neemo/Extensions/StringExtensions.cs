@@ -87,5 +87,15 @@ namespace Neemo
             }
             return defaultValue;
         }
+
+        public static int? ToIntOrNull(this string source)
+        {
+            int val;
+            if (int.TryParse(source, out val))
+            {
+                return val;
+            }
+            return null;
+        }
     }
 }

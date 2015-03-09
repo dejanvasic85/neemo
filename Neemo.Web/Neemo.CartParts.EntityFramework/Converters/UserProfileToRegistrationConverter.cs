@@ -35,7 +35,7 @@ namespace Neemo.CarParts.EntityFramework
                 registration.Shipping_LastName = src.ShippingDetails.Surname;
                 registration.Shipping_Mobile = src.ShippingDetails.PhoneNumber;
                 registration.Shipping_Phone = src.ShippingDetails.PhoneNumber;
-                registration.Shipping_PostCode = int.Parse(src.ShippingDetails.Postcode);
+                registration.Shipping_PostCode = src.ShippingDetails.Postcode.ToIntOrNull();
                 registration.Shipping_State = src.ShippingDetails.State;
             }
 
