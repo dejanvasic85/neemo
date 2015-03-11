@@ -49,7 +49,7 @@
             using(var context = DbContextFactory.CreateConnection())
             {
                 // 
-                return context.Query<Product>("SELECT TOP 12 * FROM vw_productAll_Web WHERE IsNew = 1 AND AvailableQty > 0 AND IsAvailable = 1 ORDER BY CreatedDateTime").ToList();
+                return context.Query<Product>("SELECT TOP 16 * FROM vw_productAll_Web WHERE IsNew = 1 AND AvailableQty > 0 AND IsAvailable = 1 ORDER BY CreatedDateTime desc").ToList();
             }
         }
 
