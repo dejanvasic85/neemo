@@ -68,8 +68,8 @@ namespace Neemo.Web.Controllers
                 string.Format("{0} - Contact Us", _config.CompanyName),
                 _templateService.ViewToString(this, "~/Views/EmailTemplates/ContactUsTemplate.cshtml", viewModel),
                 _config.NotificationSenderEmail,
-                string.Empty,
-                _config.NotificationSupportEmail);
+                cc :string.Empty,
+                to: _config.NotificationSupportEmail);
 
             // Set the view to have been submitted
             viewModel.IsSubmitted = true;

@@ -238,6 +238,7 @@
                     _templateService.ViewToString(this, "~/Views/EmailTemplates/ForgotPassword.cshtml",
                     forgotPasswordEmailView),
                     _config.NotificationSenderEmail,
+                    string.Empty,
                     model.Email);
 
                 return RedirectToAction("ForgotPasswordConfirmation", "Account");
