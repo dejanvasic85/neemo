@@ -165,7 +165,7 @@
 
             var paymentResponse = _paymentService.ProcessPaymentForCart(shoppingCart,
                 cancelUrl: Url.ActionAbsolute("Cancel", "Cart"),
-                returnUrl: Url.ActionAbsolute("Done", "Cart"));
+                returnUrl: Url.ActionAbsolute("AuthorisePayment", "Cart"));
 
             return Redirect(paymentResponse.PaymentUrl);
         }
