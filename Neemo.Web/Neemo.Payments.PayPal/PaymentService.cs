@@ -71,7 +71,7 @@ namespace Neemo.Payments.pp
             {
                 new Transaction
                 {
-                    description = "Testing out the paypal API Integration.",
+                    description = "UNIXMO Online Store",
                     amount = amount,
                     item_list = paypalItems
                 }
