@@ -22,8 +22,12 @@
 
         public TaxCost CalculateForAmountIncludingTax(decimal afterTaxAmount)
         {
-            var beforeTaxAmount = (1 - _config.Gst) * afterTaxAmount;
+            //var beforeTaxAmount = (1 - _config.Gst) * afterTaxAmount;
+            //var taxAmount = afterTaxAmount - beforeTaxAmount;
+
+            var beforeTaxAmount = afterTaxAmount / (1 + _config.Gst);
             var taxAmount = afterTaxAmount - beforeTaxAmount;
+
             return new TaxCost(beforeTaxAmount, taxAmount, afterTaxAmount, TaxType.GST);
         }
     }
