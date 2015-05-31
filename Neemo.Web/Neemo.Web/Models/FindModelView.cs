@@ -11,7 +11,7 @@ namespace Neemo.Web.Models
         {
             ProductResults = new List<ProductSummaryView>();
             Page = 1;
-            PageSize = 5;
+            PageSize = 20;
             SortByItems = new List<SelectListItem>
             {
                 new SelectListItem{Text = "Newest First", Value = "NewestFirst"},
@@ -21,11 +21,11 @@ namespace Neemo.Web.Models
             };
             PageSizeItems = new List<SelectListItem>
             {
-                new SelectListItem {Text = "5", Value = "5"},
-                new SelectListItem {Text = "10", Value = "10"},
-                new SelectListItem {Text = "25", Value = "25"},
-                new SelectListItem {Text = "50", Value = "50"},
-                new SelectListItem {Text = "100", Value = "100"}
+                new SelectListItem {Text = "20", Value = "20"},
+                new SelectListItem {Text = "40", Value = "40"},
+                new SelectListItem {Text = "80", Value = "80"},
+                new SelectListItem {Text = "100", Value = "100"},
+                new SelectListItem {Text = "200", Value = "200"}
             };
         }
         public string Keyword { get; set; }
