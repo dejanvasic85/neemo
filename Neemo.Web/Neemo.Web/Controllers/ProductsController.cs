@@ -52,6 +52,10 @@
         [HttpGet]
         public ActionResult Find(Models.FindModelView findModelView)
         {
+            if (findModelView.CategoryId != null)
+            {
+                findModelView.Keyword = null;
+            }
             var productResults = _productService.Search(
                 findModelView.Keyword,
                 findModelView.PriceMin,
