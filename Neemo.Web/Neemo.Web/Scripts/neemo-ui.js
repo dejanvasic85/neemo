@@ -5,12 +5,22 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
     var ui = {};
 
     ui.queryManager = (function (querystring) {
-        var q = this;
-        q.originalQuery = querystring;
-        q.newQuery = querystring;
-        q.targetUrl = window.location.pathname;
-        q.items = querystring.replace('?', '').split('&');
 
+        // Create local variable to manage the query string
+        var q = {
+            originalQuery: querystring,
+            newQuery: querystring,
+            targetUrl: window.location.pathname,
+            items : getCurrentItems()
+        };
+
+        function getCurrentItems() {
+            if (querystring === '') {
+                return [];
+            }
+            return querystring.replace('?', '').split('&');
+        }
+       
         function addOrUpdate(keyPair, go, ensureUrl) {
             var self = this;
             self.keyPair = keyPair;
@@ -40,14 +50,14 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
             }
 
             // Update the query 
-            q.newQuery = '?' + q.items.join('&');
+            q.newQuery = q.items.join('&');
             if (go) {
                 goWithNewQuery();
             } return q;
         }
 
         function goWithNewQuery() {
-            window.location = q.targetUrl + q.newQuery;
+            window.location.search = q.newQuery;
         }
 
         function remove(key) {
@@ -164,8 +174,8 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
         }
     });
 
-    $('[data-page-num]').on('change', function () {
-        searchFilters.setPageNumber($(this).val());
+    $('[data-page-num]').on('click', function () {
+        searchFilters.setPageNumber($(this).attr('data-page-num'));
     });
 
     $('#checkoutAsGuest').on('click', function () {
