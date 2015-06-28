@@ -35,7 +35,7 @@
                     @for (var pageNum = pageLinkStart; pageNum <= pageLinkEnd; pageNum++)
                     {
                         <li class="@(Model.Page == pageNum ? "active" : "")">
-                            <a data-page-num="@pageNum">@pageNum.ToString()</a>
+                            <a @(Model.Page != pageNum ? "data-page-num=" + pageNum : "")>@pageNum.ToString()</a>
                         </li>
                     }
 
@@ -52,10 +52,7 @@
                     </li>
 
                 </ul>
-
-
             </div>
-
 
         }
     </div>
