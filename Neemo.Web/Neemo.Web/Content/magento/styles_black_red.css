@@ -6890,12 +6890,20 @@ tr.summary-details-excluded {
         margin: 10px 10px 0 10px;
     }
 
-    .search-result-summary .summary-item .right {
-        float: right;
-    }
+        .search-result-summary .summary-item .right {
+            float: right;
+        }
 
-    .search-result-summary .summary-item p {
-        margin-top: 5px;
-        font-size: 1.2em;
-        font-weight: bold;
+        .search-result-summary .summary-item p {
+            margin-top: 5px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+.product-filters {
+    padding: 10px;
+}
+
+    .product-filters .control-group .controls input, select {
+        width: 100%;
     }

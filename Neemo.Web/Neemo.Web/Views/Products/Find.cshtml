@@ -24,12 +24,10 @@
                     <div class="block-title">
                         <strong><span>Product Filters</span></strong>
                     </div>
-                    <div style="padding:10px">
-                        
+                    <div class="product-filters">
                         
                         @Html.Partial("~/Views/Shared/Partial/_SearchFilters.cshtml", Model)
                         
-                        @*Todo - this needs to be rendered per category*@
                         @Html.Partial("~/Views/Products/_CarPartFilters.cshtml")
 
                         <div class="control-group">
