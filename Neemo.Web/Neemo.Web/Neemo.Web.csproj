@@ -15,7 +15,7 @@
     <AssemblyName>Neemo.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -559,6 +559,10 @@
     <Content Include="Content\magento\ma.verticalmenu.min.css">
       <DependentUpon>ma.verticalmenu.css</DependentUpon>
     </Content>
+    <Content Include="Content\magento\neemo.css" />
+    <Content Include="Content\magento\neemo.min.css">
+      <DependentUpon>neemo.css</DependentUpon>
+    </Content>
     <Content Include="Content\magento\print.css" />
     <Content Include="Content\magento\print.min.css">
       <DependentUpon>print.css</DependentUpon>
@@ -739,7 +743,16 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>11263</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/unixmo</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>

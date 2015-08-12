@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/toastr-2.0.1.min.css")">
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/font-awesome-4.2.0.min.css")">
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/print.min.css")" media="print">
+    
 
     @Scripts.Render("~/jquery")
 
@@ -46,6 +47,8 @@
     <![endif]-->
     <!-- theme color -->
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/styles_black_red.min.css")" media="screen">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/neemo.min.css")" media="all">
+
     <!-- MENU -->
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/fish_menu.min.css")" media="screen">
 </head>
@@ -114,7 +117,6 @@
                                                                     </a>
                                                                 </span>
                                                             </form>
-
                                                         </div>
                                                     </li>
                                                 }
@@ -123,11 +125,11 @@
                                                     <li><a href="@Url.Login()">Login</a></li>
                                                     <li><a href="@Url.Register()">Register</a></li>
                                                 }
-
+                                               
                                             </ul>
                                             <form action="@Url.Find()" method="GET">
                                                 <div class="input-append controls">
-                                                    <input id="keyword" name="keyword" type="text" placeholder="Search Keyword">
+                                                    <input id="keyword" name="keyword" type="text" class="search-keyword" placeholder="Search Keyword">
                                                     <button class="btn" type="submit">Search!</button>
                                                 </div>
                                                 <div>
@@ -154,8 +156,6 @@
                             </div>
                         </div>
 
-                        @*@Html.Partial("~/Views/Shared/Partial/_CategoriesMenuBarMobile.cshtml", @categories)
-                            @Html.Partial("~/Views/Shared/Partial/_CategoriesMenuBar.cshtml", @categories)*@
 
                         @RenderBody()
 

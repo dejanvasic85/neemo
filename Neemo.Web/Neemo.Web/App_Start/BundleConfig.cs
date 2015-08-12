@@ -8,8 +8,6 @@ namespace Neemo.Web
         public static void RegisterScripts(BundleCollection bundles)
         {
 
-
-
             bundles.Add(new ScriptBundle("~/jquery").IncludeDirectory("~/Scripts", "jquery*"));
 
             bundles.Add(new ScriptBundle("~/magento")
