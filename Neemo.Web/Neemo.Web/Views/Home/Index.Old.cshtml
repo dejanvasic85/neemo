@@ -1,0 +1,196 @@
+﻿@model Neemo.Web.Models.HomeView
+
+
+@{
+    ViewBag.Title = "Home - Featured Products and New Products";
+    Layout = "~/Views/Shared/_Magento.cshtml";
+}
+
+<div class="ma-main-container col3-layout">
+    <div class="main">
+        <div class="row-fluid">
+            <div class="col-left sidebar span3">
+                <div class="block block-verticalmenu">
+                    <div class="block-title"><strong><span>Categories </span></strong></div>
+                    <div class="block-content">
+                        @Html.Partial("~/Views/Shared/Partial/_CategoriesSearchLinks.cshtml", (CategoryListView)@ViewBag.Categories)
+                    </div>
+                </div>
+
+                <div class="block block-layered-nav">
+                    <div class="block-title">
+                        <strong><span>Search</span></strong>
+                    </div>
+                    <div style="padding:10px">
+
+                        <form action="@Url.Find()" method="GET">
+                            @Html.Partial("~/Views/Shared/Partial/_SearchFilters.cshtml", Model.SearchFilters)
+
+
+                            <a id="advancedSearchBtn">Advanced Search</a>
+
+                            <div class="no-display" id="advancedSearch">
+                                @Html.Partial("~/Views/Products/_CarPartFilters.cshtml", Model.SearchFilters)
+                            </div>
+
+                            <div class="control-group">
+                                <button class="btn" type="submit" data-loading-text="Please wait...">Search</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-wrapper span9">
+
+                <!-- start enable
+                <div class="ma-banner7-container">
+                    <div class="flexslider ma-nivoslider">
+                        <div class="ma-loading" style="display: none;"></div>
+                        <div id="ma-inivoslider" class="slides nivoSlider">
+                            <img style="display: none;" src="@Url.Content("~/Content/Magento/Images/Media/slide-1.png")" title="#banner7-caption1" alt="">
+                            <img style="display: none;" src="@Url.Content("~/Content/Magento/Images/Media/slide-2.png")" title="#banner7-caption2" alt="">
+                            <img style="display: none;" src="@Url.Content("~/Content/Magento/Images/Media/slide-3.png")" title="#banner7-caption3" alt="">
+                            <img style="display: none;" src="@Url.Content("~/Content/Magento/Images/Media/slide-4.png")" title="#banner7-caption4" alt="">
+                            <div class="nivo-caption"></div><div class="nivo-directionNav"><a class="nivo-prevNav">Prev</a><a class="nivo-nextNav">Next</a></div>
+                        </div>
+
+                    </div>
+                </div>
+                end enable -->
+
+                <div class="row-fluid">
+                    <div class="col-main span12">
+                        <div class="std">
+
+                            <div class="ma-featuredproductslider-container">
+                                <div class="ma-featured-sldier-title">
+                                    <h2>New Products</h2>
+                                </div>
+                                <div class="flexslider carousel">
+
+                                    @{
+                                        var columns = 4;
+                                        var rows = Model.NewProducts.Count / columns;
+                                        if (Model.NewProducts.Count % columns > 0)
+                                        {
+                                            rows++;
+                                        }
+                                    }
+
+                                    @for (var i = 0; i < rows; i++)
+                                    {
+                                        <div class="row-fluid">
+                                            @foreach (var newProduct in Model.NewProducts.Skip(i * columns).Take(columns))
+                                            {
+                                                @Html.DisplayFor(m => newProduct)
+                                            }
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+
+                            @*<div class="ma-featuredproductslider-container">
+                                    <div class="ma-featured-sldier-title">
+                                        <h2>Featured Products</h2>
+                                    </div>
+                                    <div class="flexslider carousel">
+                                        <div class="flex-viewport" style="overflow: hidden; position: relative;">
+                                            <ul class="products-grid first odd" style="width: 1800%; -webkit-transition: 0s; transition: 0s; -webkit-transform: translate3d(0px, 0px, 0px);">
+                                                @foreach (var featured in Model.FeaturedProducts)
+                                                {
+                                                    @Html.DisplayFor(m => featured)
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>*@
+
+                        </div>
+                    </div>
+
+
+
+                    @*<div class="col-right sidebar span4">
+
+                            <div class="ma-bestseller-products block">
+                                <!-- start mt products list -->
+                                <div class="ma-bestseller-product-title block-title"><strong>Bestseller Products</strong></div>
+                                <div class="bestseller-category block-content">
+                                    <ul class="bestseller-product  first">
+                                        @foreach (var bestSeller in Model.BestSellingProducts)
+                                        {
+                                            <li class="item">
+                                                <a href="@Url.Product(bestSeller.ProductId, Slug.Create(bestSeller.Title))"
+                                                   title="@bestSeller.Title" class="product-image">
+                                                    <img src="@Url.Image(bestSeller.ImageId)" width="52" height="52" alt="@bestSeller.Title">
+                                                </a>
+                                                <h2 class="product-name">
+                                                    <a href="@Url.Product(bestSeller.ProductId, Slug.Create(bestSeller.Title))" title="@bestSeller.Title">
+                                                        @bestSeller.Title
+                                                    </a>
+                                                </h2>
+                                                <div class="price-box">
+                                                    <span class="regular-price" id="product-price-2">
+                                                        <span class="price">@bestSeller.Price.ToString("C")</span>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                        }
+
+                                    </ul>
+                                    <!--  -->
+
+                                </div>
+                                <!-- end exist product -->
+                            </div> <!-- end products list -->
+
+
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $jq(window).load(function () {
+            $jq('#ma-inivoslider').nivoSlider({
+                effect: 'random',
+                slices: 15,
+                boxCols: 8,
+                boxRows: 4,
+                animSpeed: 600,
+                pauseTime: 500000,
+                startSlide: 0,
+                controlNav: false,
+                controlNavThumbs: false,
+                pauseOnHover: true,
+                manualAdvance: false,
+                prevText: 'Prev',
+                nextText: 'Next',
+                afterLoad: function () {
+                    $jq('.ma-loading').css("display", "none");
+                    //$jq('.banner7-title, .banner7-des, .banner7-readmore').css("left","100px") ;
+                },
+                beforeChange: function () {
+                    $jq('.banner7-title, .banner7-des').css("left", "-550px");
+                    $jq('.banner7-readmore').css("left", "-1500px");
+                },
+                afterChange: function () {
+                    $jq('.banner7-title, .banner7-des, .banner7-readmore').css("left", "100px")
+                }
+            });
+        });
+
+        jQuery('#advancedSearchBtn').on('click', function () {
+            jQuery('#advancedSearch').slideDown(2000);
+            jQuery(this).hide();
+        });
+    </script>
+
+    <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd', 'even', 'first', 'last'])</script>
+
+}
