@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace Neemo.Web.Infrastructure
@@ -33,12 +34,32 @@ namespace Neemo.Web.Infrastructure
             if (!includeSchemeAndProtocol)
                 return path;
 
-            var contextUri = urlHelper.RequestContext.HttpContext.Request.Url;
-            var baseUri = string.Format("{0}://{1}{2}", contextUri.Scheme,
-              contextUri.Host, contextUri.Port == 80 ? string.Empty : ":" + contextUri.Port);
-
-            return string.Format("{0}{1}", baseUri, path);
+            return WithSchemaAndProtocol(urlHelper.RequestContext.HttpContext.Request.Url, path);
         }
+
+        public static string Provider(this UrlHelper urlHelper, int productId)
+        {
+            var path = RouteTable.Routes.GetVirtualPath(null, "providerIdOnly", new RouteValueDictionary { { "id", productId } });
+            return path.VirtualPath;
+        }
+
+        public static string Provider(this UrlHelper urlHelper, int productId, string slug, bool includeSchemeAndProtocol = false)
+        {
+            var dictionary = new RouteValueDictionary
+            {
+                {"id", productId},
+                {"slug", slug}
+            };
+
+            var data = RouteTable.Routes.GetVirtualPath(null, "provider", dictionary);
+            var path = data.VirtualPath;
+
+            if (!includeSchemeAndProtocol)
+                return path;
+
+            return WithSchemaAndProtocol(urlHelper.RequestContext.HttpContext.Request.Url, path);
+        }
+
 
         public static string Home(this UrlHelper urlHelper, bool absoluteUrl = false)
         {
@@ -158,6 +179,14 @@ namespace Neemo.Web.Infrastructure
             string scheme = urlHelper.RequestContext.HttpContext.Request.Url.Scheme;
 
             return urlHelper.Action(actionName, controllerName, routeValues, scheme);
+        }
+        
+        private static string WithSchemaAndProtocol(Uri contextUri, string path)
+        {
+            var baseUri = string.Format("{0}://{1}{2}", contextUri.Scheme,
+                contextUri.Host, contextUri.Port == 80 ? string.Empty : ":" + contextUri.Port);
+
+            return string.Format("{0}{1}", baseUri, path);
         }
     }
 }

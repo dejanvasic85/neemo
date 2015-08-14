@@ -22,16 +22,28 @@
             <div class="span3 bordered">
                 <div class="ma-featured-product-title">
                     <h2>Latest Wreckers</h2>
+                    @foreach (var newProduct in Model.NewWreckers)
+                    {
+                        @Html.DisplayFor(m => newProduct)
+                    }
                 </div>
             </div>
             <div class="span3 bordered">
                 <div class="ma-featured-product-title">
                     <h2>Latest Repairers</h2>
+                    @foreach (var newProduct in Model.NewRepairers)
+                    {
+                        @Html.DisplayFor(m => newProduct)
+                    }
                 </div>
             </div>
             <div class="span3 bordered">
                 <div class="ma-featured-product-title">
                     <h2>Latest Auxiliaries</h2>
+                    @foreach (var newProduct in Model.NewAuxiliaries)
+                    {
+                        @Html.DisplayFor(m => newProduct)
+                    }
                 </div>
             </div>
         </div>

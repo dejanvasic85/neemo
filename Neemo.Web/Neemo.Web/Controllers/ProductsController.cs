@@ -81,7 +81,7 @@
                 .Select(Mapper.Map<Product, Models.ProductSummaryView>)
                 .OrderBy(p => p, new Models.ProductSummaryComparer(findModelView.SortBy))
                 .ToList();
-            
+
             return View(findModelView);
         }
 

@@ -16,6 +16,10 @@ namespace Neemo.Web
             routes.MapRoute("product", url: "product/{slug}/{id}", defaults: new { controller = "Products", action = "Details" });
             routes.MapRoute("productIdOnly", url: "product/{id}", defaults: new { controller = "Products", action = "Identifier" });
 
+            // Provider with slug
+            routes.MapRoute("provider", url: "provider/{slug}/{id}", defaults: new { controller = "Provider", action = "Details" });
+            routes.MapRoute("providerIdOnly", url: "provider/{id}", defaults: new { controller = "Provider", action = "Identifier" });
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

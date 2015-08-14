@@ -204,6 +204,7 @@
     <Compile Include="App_Start\MappingConfig.cs" />
     <Compile Include="Controllers\CarPartController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\ProviderController.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Infrastructure\Log4NetLog.cs" />
     <Compile Include="Infrastructure\MultipleActionAttribute.cs" />
@@ -251,6 +252,8 @@
     <Compile Include="Models\HomeView.cs" />
     <Compile Include="Models\ProductSummaryComparer.cs" />
     <Compile Include="Models\ProductSummaryView.cs" />
+    <Compile Include="Models\ProviderDetailView.cs" />
+    <Compile Include="Models\ProviderSummaryView.cs" />
     <Compile Include="Models\ShippingCostView.cs" />
     <Compile Include="Models\TaxCostView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -711,6 +714,8 @@
     <Content Include="Views\Home\ReturnPolicy.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Home\Index.Old.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\ProviderSummaryView.cshtml" />
+    <Content Include="Views\Provider\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Neemo.CarParts\Neemo.CarParts.csproj">

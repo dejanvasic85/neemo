@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Neemo.Web.Controllers
 {
@@ -29,11 +30,14 @@ namespace Neemo.Web.Controllers
         public ActionResult Index()
         {
             // Fetch the featured/new/best-selling products for display
-            var newProducts = _productService.GetNewProducts().Where(m => m.ImageId.HasValue()).Select(Mapper.Map<Product, ProductSummaryView>).Take(10);
-
+            var newProducts = _productService.GetNewProducts().Where(m => m.ImageId.HasValue()).Select(Mapper.Map<Product, ProductSummaryView>).Take(5);
+            
             var homeModel = new HomeView
             {
                 NewProducts = newProducts.ToList(),
+                NewWreckers = MockProviderList(),
+                NewAuxiliaries = MockProviderList(),
+                NewRepairers = MockProviderList(),
             };
 
             return View(homeModel);
@@ -95,6 +99,58 @@ namespace Neemo.Web.Controllers
         public ActionResult ReturnPolicy()
         {
             return View();
+        }
+
+        private List<ProviderSummaryView> MockProviderList()
+        {
+            return new List<ProviderSummaryView>
+            {
+                new ProviderSummaryView
+                {
+                    CreateDateTime = DateTime.Today,
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
+                    Title = "Provider 1",
+                    ImageId = "",
+                    Address = "1 Melbourne Place, Melbourne, VIC 3000",
+                    ProviderId = 1
+                },
+                new ProviderSummaryView
+                {
+                    CreateDateTime = DateTime.Today,
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
+                    Title = "Provider 2",
+                    ImageId = "",
+                    Address = "1 Melbourne Place, Melbourne, VIC 3000",
+                    ProviderId = 2
+                },
+                new ProviderSummaryView
+                {
+                    CreateDateTime = DateTime.Today,
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
+                    Title = "Provider 3",
+                    ImageId = "",
+                    Address = "1 Melbourne Place, Melbourne, VIC 3000",
+                    ProviderId = 3
+                },
+                new ProviderSummaryView
+                {
+                    CreateDateTime = DateTime.Today,
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
+                    Title = "Provider 4",
+                    ImageId = "",
+                    Address = "1 Melbourne Place, Melbourne, VIC 3000",
+                    ProviderId = 4
+                },
+                new ProviderSummaryView
+                {
+                    CreateDateTime = DateTime.Today,
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
+                    Title = "Provider 5",
+                    ImageId = "",
+                    Address = "1 Melbourne Place, Melbourne, VIC 3000",
+                    ProviderId = 5
+                },
+            };
         }
     }
 }

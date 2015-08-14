@@ -1,0 +1,32 @@
+﻿@using Neemo
+@model ProviderSummaryView
+
+
+<div class="featured-tile">
+    <div class="thumbnail text-center" style="min-height: 220px">
+
+        <a href="@Url.Product(Model.ProviderId, Slug.Create(Model.Title))"
+           title="@Model.Title"
+           class="product-image">
+
+            <img src="@Url.Image(Model.ImageId)" style="width: 129px; height: 97px;">
+        </a>
+        <div class="caption">
+            <p>
+                <a href="@Url.Provider(Model.ProviderId)" class="btn">
+                    <i class="fa fa-wrench"></i> More Details ...
+                </a>
+            </p>
+            <h3 class="top-buffer-10">
+                <a href="@Url.Product(Model.ProviderId, Slug.Create(Model.Title))">
+                    @Model.Title.TruncateOnWordBoundary(20)
+                </a>
+            </h3>
+            <p>@Model.Description.TruncateOnWordBoundary(100)</p>
+            <p>
+                <i class="fa fa-map-marker"></i>
+                <span>@Model.Address</span>
+            </p>
+        </div>
+    </div>
+</div>
