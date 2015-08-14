@@ -2,7 +2,7 @@
 @model ProductSummaryView
 
 
-<div class="span3 featured-product-tile">
+<div class="featured-tile">
     <div class="thumbnail text-center" style="min-height: 220px">
 
         <a href="@Url.Product(Model.ProductId, Slug.Create(Model.Title))"
@@ -32,7 +32,7 @@
                 </a>
             </h3>
             <p>@Model.Price.ToString("C")</p>
-            @*<p>@Model.Description.TruncateOnWordBoundary(100)</p>*@
+            <p>@Model.Description.TruncateOnWordBoundary(100)</p>
 
         </div>
     </div>

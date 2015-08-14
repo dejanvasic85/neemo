@@ -156,10 +156,8 @@
     max-height: 25px;
 }
 
-.featured-product-tile {
-    margin-top: 10px;
-    margin-left: 12px !important;
-    margin-bottom: 10px;
+.featured-tile {
+    padding: 8px;
 }
 
 .top-buffer-10 {

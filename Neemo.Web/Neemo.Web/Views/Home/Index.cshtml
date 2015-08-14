@@ -12,6 +12,10 @@
             <div class="span3 bordered">
                 <div class="ma-featured-product-title">
                     <h2>Latest Products</h2>
+                    @foreach (var newProduct in Model.NewProducts)
+                    {
+                        @Html.DisplayFor(m => newProduct)
+                    }
                 </div>
                 
             </div>
