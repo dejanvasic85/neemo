@@ -1611,6 +1611,7 @@ tr.summary-details-excluded {
         background: url(images/bg-quick-access.png) top left repeat-x #fff;
         width: 90%;
         min-height: 100px;
+        text-align: left;
     }
 
         .header .quick-access .quick-access-left {

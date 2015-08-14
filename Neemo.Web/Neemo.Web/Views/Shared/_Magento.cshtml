@@ -128,9 +128,21 @@
                                                
                                             </ul>
                                             <form action="@Url.Find()" method="GET">
-                                                <div class="input-append controls">
-                                                    <input id="keyword" name="keyword" type="text" class="search-keyword" placeholder="Search Keyword">
-                                                    <button class="btn" type="submit">Search!</button>
+                                                <div class="input-append controls keyword-search">
+                                                    <input id="keyword" name="keyword" type="text" placeholder="Search Keyword">
+                                                    <div class="btn-group">
+                                                        <button class="btn dropdown-toggle" data-toggle="dropdown">
+                                                            <span class="selected">Parts</span>
+                                                            <span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu">
+                                                            <li>Parts</li>
+                                                            <li>Wreckers</li>
+                                                            <li>Repairers</li>
+                                                            <li>Auxiliaries</li>
+                                                        </ul>
+                                                    </div>
+                                                    <button class="btn" type="submit"> <i class="fa fa-search"></i> Search</button>
                                                 </div>
                                                 <div>
                                                     Tired of searching for parts? <a href="@Url.ContactUs()">Contact Us</a>
