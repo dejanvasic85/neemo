@@ -705,6 +705,7 @@
     <Content Include="Views\Error\ServerFault.cshtml" />
     <Content Include="Views\Shared\_MagentoPlain.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
+    <None Include="Properties\PublishProfiles\Drogo.pubxml" />
     <None Include="Properties\PublishProfiles\ftp.pubxml" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <Content Include="Views\Shared\Partial\_SearchFilters.cshtml" />

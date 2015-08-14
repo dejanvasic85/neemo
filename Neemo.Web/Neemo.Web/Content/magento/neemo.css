@@ -160,6 +160,31 @@
     padding: 8px;
 }
 
+    .featured-tile .thumbnail {
+        padding: 0;
+    }
+
+    .featured-tile .thumbnail img {
+        margin-top: 10px;
+    }
+
+        .featured-tile .thumbnail .caption {
+            padding: 0;
+            margin-top: 10px;
+        }
+
+            .featured-tile .thumbnail .caption .bottom-separator {
+                border-top: 1px solid #eee;
+                background-color: #eee;
+                margin: 0;
+                padding: 10px;
+            }
+
+            /*.featured-tile .thumbnail .caption .location {
+                color: #007BAC;
+            }*/
+            
+
 .top-buffer-10 {
     margin-top: 10px;
 }

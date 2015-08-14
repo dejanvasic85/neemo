@@ -111,7 +111,7 @@ namespace Neemo.Web.Controllers
                     Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
                     Title = "Provider 1",
                     ImageId = "",
-                    Address = "1 Melbourne Place, Melbourne, VIC 3000",
+                    Address = "1 Melbourne Rd, Melbourne, VIC 3000",
                     ProviderId = 1
                 },
                 new ProviderSummaryView
@@ -120,7 +120,7 @@ namespace Neemo.Web.Controllers
                     Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
                     Title = "Provider 2",
                     ImageId = "",
-                    Address = "1 Melbourne Place, Melbourne, VIC 3000",
+                    Address = "1 Melbourne Rd, Melbourne, VIC 3000",
                     ProviderId = 2
                 },
                 new ProviderSummaryView
@@ -129,7 +129,7 @@ namespace Neemo.Web.Controllers
                     Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
                     Title = "Provider 3",
                     ImageId = "",
-                    Address = "1 Melbourne Place, Melbourne, VIC 3000",
+                    Address = "1 Melbourne Rd, Melbourne, VIC 3000",
                     ProviderId = 3
                 },
                 new ProviderSummaryView
@@ -138,7 +138,7 @@ namespace Neemo.Web.Controllers
                     Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
                     Title = "Provider 4",
                     ImageId = "",
-                    Address = "1 Melbourne Place, Melbourne, VIC 3000",
+                    Address = "1 Melbourne Rd, Melbourne, VIC 3000",
                     ProviderId = 4
                 },
                 new ProviderSummaryView
@@ -147,7 +147,7 @@ namespace Neemo.Web.Controllers
                     Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
                     Title = "Provider 5",
                     ImageId = "",
-                    Address = "1 Melbourne Place, Melbourne, VIC 3000",
+                    Address = "1 Melbourne Rd, Melbourne, VIC 3000",
                     ProviderId = 5
                 },
             };
