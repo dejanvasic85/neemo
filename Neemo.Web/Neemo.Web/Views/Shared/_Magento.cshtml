@@ -125,9 +125,8 @@
                                             </ul>
                                             <div class="input-append controls keyword-search">
                                                 <input id="keyword" name="keyword" type="text" placeholder="Search Keyword">
-                                                <input id="searchType" name="searchType" type="hidden" value="Parts"/>
 
-                                                <div class="btn-group">
+                                                <div class="btn-group" id="searchTypeOptions">
                                                     <button class="btn dropdown-toggle" data-toggle="dropdown">
                                                         <span class="selected">Parts</span>
                                                         <span class="caret"></span>
@@ -139,9 +138,9 @@
                                                         <li>Auxiliaries</li>
                                                     </ul>
                                                 </div>
-                                                <a class="btn" id="searchBtn">
+                                                <button class="btn" id="searchBtn" data-loading-text="Please wait...">
                                                     <i class="fa fa-search"></i> Search
-                                                </a>
+                                                </button>
                                             </div>
                                             <br/>
                                             <span>
