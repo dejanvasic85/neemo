@@ -1,4 +1,4 @@
-﻿@model Neemo.Web.Models.HomeView
+﻿@model HomeView
 
 
 @{
@@ -11,17 +11,28 @@
         <div class="row-fluid">
             <div class="span3 bordered">
                 <div class="ma-featured-product-title">
-                    <h2>Latest Products</h2>
+                    <div class="section-header">
+                        <a href="@Url.Find()">
+                            <h3>Latest Products</h3>
+                            <span><i class="fa fa-angle-right"></i> see all</span>
+                        </a>
+                    </div>
                     @foreach (var newProduct in Model.NewProducts)
                     {
                         @Html.DisplayFor(m => newProduct)
                     }
                 </div>
-                
+
             </div>
             <div class="span3 bordered">
                 <div class="ma-featured-product-title">
-                    <h2>Latest Wreckers</h2>
+                    <div class="section-header">
+                        <a href="@Url.FindProviders("Wreckers")">
+                            <h3>Latest Wreckers</h3>
+                            <span><i class="fa fa-angle-right"></i> see all</span>
+                        </a>
+                    </div>
+
                     @foreach (var newProduct in Model.NewWreckers)
                     {
                         @Html.DisplayFor(m => newProduct)
@@ -30,7 +41,13 @@
             </div>
             <div class="span3 bordered">
                 <div class="ma-featured-product-title">
-                    <h2>Latest Repairers</h2>
+                    <div class="section-header">
+                        <a href="@Url.FindProviders("Repairers")">
+                            <h3>Latest Repairers</h3>
+                            <span><i class="fa fa-angle-right"></i> see all</span>
+                        </a>
+                    </div>
+
                     @foreach (var newProduct in Model.NewRepairers)
                     {
                         @Html.DisplayFor(m => newProduct)
@@ -39,7 +56,12 @@
             </div>
             <div class="span3 bordered">
                 <div class="ma-featured-product-title">
-                    <h2>Latest Auxiliaries</h2>
+                    <div class="section-header">
+                        <a href="@Url.FindProviders("Auxiliaries")">
+                            <h3>Latest Auxiliaries</h3>
+                            <span><i class="fa fa-angle-right"></i> see all</span>
+                        </a>
+                    </div>
                     @foreach (var newProduct in Model.NewAuxiliaries)
                     {
                         @Html.DisplayFor(m => newProduct)
@@ -50,15 +72,3 @@
 
     </div>
 </div>
-
-@section Scripts
-{
-    <script type="text/javascript">
-
-        jQuery('#advancedSearchBtn').on('click', function () {
-            jQuery('#advancedSearch').slideDown(2000);
-            jQuery(this).hide();
-        });
-    </script>
-
-}

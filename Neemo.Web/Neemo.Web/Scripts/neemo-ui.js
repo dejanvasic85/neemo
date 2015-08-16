@@ -295,6 +295,14 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
         ko.applyBindings(cart);
     });
     
+    /*
+     * Advanced search
+     */
+    $('#advancedSearchBtn').on('click', function () {
+        $('#advancedSearch').slideDown(2000);
+        $(this).hide();
+    });
+    
     return ui;
 
 })(jQuery, toastr, neemo.svc, neemo.shoppingCart, neemo.lineItem);

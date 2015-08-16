@@ -183,10 +183,35 @@
                 padding: 10px;
             }
 
-/*.featured-tile .thumbnail .caption .location {
-                color: #007BAC;
-            }*/
+.ma-featured-product-title .section-header {
+    background: url("images/bg-main-title.jpg") repeat-x scroll 50% 50% #000;
+    color: #fff;
+}
 
+.ma-featured-product-title .section-header a {
+    color: #fff;
+}
+
+.ma-featured-product-title .section-header a:hover span {
+    display: inline-block;
+}
+
+.ma-featured-product-title .section-header h3 {
+    display: inline-block;
+    margin: 0;
+    font: 18px/34px Metrophobic;
+    line-height: 34px;
+    padding: 0 0 0 10px;
+    color: #fff;
+    text-decoration: underline;
+}
+
+.ma-featured-product-title .section-header span {
+    float: right;
+    line-height: 34px;
+    margin-right: 5px;
+    display: none;
+}
 
 .top-buffer-10 {
     margin-top: 10px;
@@ -250,9 +275,9 @@
     cursor: pointer;
 }
 
-.keyword-search .dropdown-menu > li:hover {
-    background-color: #eee;
-}
+    .keyword-search .dropdown-menu > li:hover {
+        background-color: #eee;
+    }
 
 /* Large desktop */
 @media (min-width: 1200px) {
@@ -272,7 +297,4 @@
 
 /* Landscape phone to portrait tablet */
 @media (min-width: 768px) and (max-width: 979px) {
-    /*.quick-access-right {
-        float: left;
-    }*/ 
 }
