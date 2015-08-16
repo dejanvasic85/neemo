@@ -188,30 +188,30 @@
     color: #fff;
 }
 
-.ma-featured-product-title .section-header a {
-    color: #fff;
-}
+    .ma-featured-product-title .section-header a {
+        color: #fff;
+    }
 
-.ma-featured-product-title .section-header a:hover span {
-    display: inline-block;
-}
+        .ma-featured-product-title .section-header a:hover span {
+            display: inline-block;
+        }
 
-.ma-featured-product-title .section-header h3 {
-    display: inline-block;
-    margin: 0;
-    font: 18px/34px Metrophobic;
-    line-height: 34px;
-    padding: 0 0 0 10px;
-    color: #fff;
-    text-decoration: underline;
-}
+    .ma-featured-product-title .section-header h3 {
+        display: inline-block;
+        margin: 0;
+        font: 18px/34px Metrophobic;
+        line-height: 34px;
+        padding: 0 0 0 10px;
+        color: #fff;
+        text-decoration: underline;
+    }
 
-.ma-featured-product-title .section-header span {
-    float: right;
-    line-height: 34px;
-    margin-right: 5px;
-    display: none;
-}
+    .ma-featured-product-title .section-header span {
+        float: right;
+        line-height: 34px;
+        margin-right: 5px;
+        display: none;
+    }
 
 .top-buffer-10 {
     margin-top: 10px;
@@ -293,34 +293,33 @@
     margin-bottom: 10px;
     padding: 0;
     border: 1px solid #d7d7d7;
-    background-color: #fff
+    background-color: #fff;
 }
 
-.search-type-results .item {
-    display: inline-block;
-    -moz-min-width: 80px;
-    -ms-min-width: 80px;
-    -o-min-width: 80px;
-    -webkit-min-width: 80px;
-    min-width: 80px;
-    text-align: center;
-    padding: 0;
-    
-}
+    .search-type-results .item {
+        display: inline-block;
+        -moz-min-width: 80px;
+        -ms-min-width: 80px;
+        -o-min-width: 80px;
+        -webkit-min-width: 80px;
+        min-width: 80px;
+        text-align: center;
+        padding: 0;
+    }
 
-.search-type-results .selected {
-    border-bottom: 3px solid #c41c1c;
-    border-top: 3px solid #c41c1c;
-}
+    .search-type-results .selected {
+        border-bottom: 3px solid #c41c1c;
+        border-top: 3px solid #c41c1c;
+    }
 
-.search-type-results .item:hover {
-    background-color: #eee;
-}
+    .search-type-results .item:hover {
+        background-color: #eee;
+    }
 
-.search-type-results .item a {
-    text-decoration: none;
-    color: #666;
-}
+    .search-type-results .item a {
+        text-decoration: none;
+        color: #666;
+    }
 
 /* Large desktop */
 @media (min-width: 1200px) {
@@ -340,4 +339,24 @@
 
 /* Landscape phone to portrait tablet */
 @media (min-width: 768px) and (max-width: 979px) {
+}
+
+
+/*
+    Phones
+*/
+@media (max-width: 480px) {
+
+    .search-type-results {
+        text-align: left;
+        font-size: 0.9em;
+    }
+
+        .search-type-results .item {
+            -moz-min-width: 60px;
+            -ms-min-width: 60px;
+            -o-min-width: 60px;
+            -webkit-min-width: 60px;
+            min-width: 60px;
+        }
 }

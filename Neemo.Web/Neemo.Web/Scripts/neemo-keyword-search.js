@@ -1,4 +1,8 @@
 ﻿var neemo = neemo || {};
+
+/*
+ * Navigator
+ */
 neemo.navigator = (function (window, url) {
 
     return {
@@ -58,6 +62,11 @@ neemo.navigator = (function (window, url) {
 
 })(window, neemo.endpoints);
 
+
+
+/*
+ * Search UI
+ */
 (function ($, navigator) {
 
     // Search
@@ -67,15 +76,21 @@ neemo.navigator = (function (window, url) {
         $me.closest('.btn-group').find('.selected').text(searchType);
     });
 
-    $('#searchBtn').on('click', startSeach);
+    $('#searchBtn').on('click', startSearch);
     $('#keyword').on('keypress', function(e) {
         if (e.which === 13) {
             e.preventDefault();
-            startSeach();
+            startSearch();
         }
     });
 
-    function startSeach() {
+    $('[data-search-provider]').on('click', function() {
+        var $me = $(this);
+        var keySearchResult = navigator.getCurrentSearchKeyword();
+        navigator.searchProviders(keySearchResult.keyword, $me.text());
+    });
+
+    function startSearch() {
         var searchType = $('#searchTypeOptions .selected').text(),
             searchKeyword = $('#keyword').val();
 
