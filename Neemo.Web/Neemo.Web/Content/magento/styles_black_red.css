@@ -1617,7 +1617,10 @@ tr.summary-details-excluded {
         .header .quick-access .quick-access-left {
             float: left;
             padding: 10px;
+            width: 380px;
         }
+
+
 
         .header .quick-access .quick-access-right {
             padding: 15px;
@@ -6537,6 +6540,11 @@ tr.summary-details-excluded {
 @media (min-width: 767px) and (max-width: 960px) {
     .header .quick-access .quick-access-left {
         width: 305px;
+    }
+
+    .header .quick-access .quick-access-right {
+        float: none;
+        display: inline-block;
     }
 
     .products-grid li.item {

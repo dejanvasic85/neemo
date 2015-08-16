@@ -17,7 +17,7 @@
             var BLANK_IMG = 'http://www.plazathemes.com/demo/ma_carstore_res/js/spacer.gif';
             //]]>
         </script>
-    <![endif]-->    
+    <![endif]-->
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/bootstrap-2.3.2.min.css")" media="all">
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/bootstrap-responsive-2.3.2.min.css")" media="all">
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/bootstrap-panel.min.css")" media="all">
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/toastr-2.0.1.min.css")">
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/font-awesome-4.2.0.min.css")">
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/print.min.css")" media="print">
-    
+
 
     @Scripts.Render("~/jquery")
 
@@ -42,7 +42,7 @@
         <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/styles-ie.min.css")" media="all" />
     <![endif]-->
     <!-- theme color -->
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/styles_black_red.min.css")" media="screen">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/styles_black_red.min.css")">
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/neemo.min.css")" media="all">
 
     <!-- MENU -->
@@ -121,30 +121,32 @@
                                                     <li><a href="@Url.Login()">Login</a></li>
                                                     <li><a href="@Url.Register()">Register</a></li>
                                                 }
-                                               
-                                            </ul>
-                                            <form action="@Url.Find()" method="GET">
-                                                <div class="input-append controls keyword-search">
-                                                    <input id="keyword" name="keyword" type="text" placeholder="Search Keyword">
 
-                                                    <div class="btn-group">
-                                                        <button class="btn dropdown-toggle" data-toggle="dropdown">
-                                                            <span class="selected">Parts</span>
-                                                            <span class="caret"></span>
-                                                        </button>
-                                                        <ul class="dropdown-menu">
-                                                            <li>Parts</li>
-                                                            <li>Wreckers</li>
-                                                            <li>Repairers</li>
-                                                            <li>Auxiliaries</li>
-                                                        </ul>
-                                                    </div>
-                                                    <button class="btn" type="submit"> <i class="fa fa-search"></i> Search</button>
+                                            </ul>
+                                            <div class="input-append controls keyword-search">
+                                                <input id="keyword" name="keyword" type="text" placeholder="Search Keyword">
+                                                <input id="searchType" name="searchType" type="hidden" value="Parts"/>
+
+                                                <div class="btn-group">
+                                                    <button class="btn dropdown-toggle" data-toggle="dropdown">
+                                                        <span class="selected">Parts</span>
+                                                        <span class="caret"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li>Parts</li>
+                                                        <li>Wreckers</li>
+                                                        <li>Repairers</li>
+                                                        <li>Auxiliaries</li>
+                                                    </ul>
                                                 </div>
-                                                <div>
-                                                    Tired of searching for parts? <a href="@Url.ContactUs()">Contact Us</a>
-                                                </div>
-                                            </form>
+                                                <a class="btn" id="searchBtn">
+                                                    <i class="fa fa-search"></i> Search
+                                                </a>
+                                            </div>
+                                            <br/>
+                                            <span>
+                                                Tired of searching for parts? <a href="@Url.ContactUs()">Contact Us</a>
+                                            </span>
                                         </div>
 
                                         @*Shopping cart*@
@@ -323,6 +325,9 @@
                     return neemo.endpoints.product.generic.replace(-1, id);
                 },
                 search: '@Url.Action("Find", "Products")'
+            },
+            providers : {
+                search : 'NotFound'
             }
         };
     </script>

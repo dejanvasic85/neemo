@@ -284,18 +284,6 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
         $(this).find('button[type=submit]').button('loading');
     });
 
-    // Search
-    $('.keyword-search .btn-group > ul > li').on('click', function () {
-        var $me = $(this);
-        $me.closest('.btn-group').find('.selected').text($me.text());
-    });
-
-    (function() {
-        
-        // Initialise the current search
-
-    })();
-
     // Initialise the shopping cart
     svc.getItems().then(function (items) {
         var viewModels = [];

@@ -254,7 +254,12 @@
     background-color: #eee;
 }
 
+/* Large desktop */
 @media (min-width: 1200px) {
+    .quick-access-left {
+        width: 515px;
+    }
+
     .keyword-search input {
         -moz-min-width: 300px;
         -ms-min-width: 300px;
@@ -262,4 +267,12 @@
         -webkit-min-width: 300px;
         min-width: 300px;
     }
+}
+
+
+/* Landscape phone to portrait tablet */
+@media (min-width: 768px) and (max-width: 979px) {
+    /*.quick-access-right {
+        float: left;
+    }*/ 
 }

@@ -613,6 +613,7 @@
     <Content Include="Scripts\jquery-1.11.0.js" />
     <Content Include="Scripts\magento\json2.js" />
     <Content Include="Scripts\neemo-ko-extensions.js" />
+    <Content Include="Scripts\neemo-keyword-search.js" />
     <Content Include="Scripts\neemo-ui.js" />
     <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery.fancybox.js" />
