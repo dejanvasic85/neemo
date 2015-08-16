@@ -43,7 +43,6 @@ neemo.navigator = (function (window, url) {
     }
 
     function searchWithKeyWord(target, keyword) {
-        console.log(keyword);
         if (keyword === '') {
             window.location = target;
         }
