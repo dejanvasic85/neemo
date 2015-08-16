@@ -21,7 +21,7 @@ namespace Neemo.Web
             // Note: the provider is different to providersController (they are different!)
             routes.MapRoute("provider", url: "provider/{slug}/{id}", defaults: new { controller = "Providers", action = "Details" });
             routes.MapRoute("providerIdOnly", url: "provider/{id}", defaults: new { controller = "Providers", action = "Identifier" });
-            routes.MapRoute("providerSearch", url: "providers/{providerType}/find", defaults: new {controller = "Providers", action = "Find"});
+            routes.MapRoute("providerSearch", url: "providers/find/{providerType}", defaults: new {controller = "Providers", action = "Find"});
 
             routes.MapRoute(
                 name: "Default",
