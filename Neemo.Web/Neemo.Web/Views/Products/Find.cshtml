@@ -6,6 +6,17 @@
     Layout = "~/Views/Shared/_Magento.cshtml";
 }
 
+<div class="row-fluid">
+    <div class="span12">
+        <div class="search-type-results">
+            <div class="item selected"><a>Products</a></div>
+            <div class="item"><a>Wreckers</a></div>
+            <div class="item"><a>Repairers</a></div>
+            <div class="item"><a>Auxiliaries</a></div>
+        </div>
+    </div>
+</div>
+
 <div class="ma-main-container col3-layout">
     <div class="main">
         <div class="row-fluid">
@@ -25,9 +36,9 @@
                         <strong><span>Product Filters</span></strong>
                     </div>
                     <div class="product-filters">
-                        
+
                         @Html.Partial("~/Views/Shared/Partial/_SearchFilters.cshtml", Model)
-                        
+
                         @Html.Partial("~/Views/Products/_CarPartFilters.cshtml")
 
                         <div class="control-group">
