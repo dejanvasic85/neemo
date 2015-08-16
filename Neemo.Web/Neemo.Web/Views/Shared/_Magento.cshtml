@@ -1,8 +1,4 @@
-﻿@{
-    var categories = (CategoryListView)ViewBag.Categories;
-}
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+﻿<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>@ViewBag.CompanyName - @ViewBag.Title</title>
@@ -21,7 +17,7 @@
             var BLANK_IMG = 'http://www.plazathemes.com/demo/ma_carstore_res/js/spacer.gif';
             //]]>
         </script>
-    <![endif]-->
+    <![endif]-->    
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/bootstrap-2.3.2.min.css")" media="all">
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/bootstrap-responsive-2.3.2.min.css")" media="all">
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/bootstrap-panel.min.css")" media="all">
@@ -130,6 +126,7 @@
                                             <form action="@Url.Find()" method="GET">
                                                 <div class="input-append controls keyword-search">
                                                     <input id="keyword" name="keyword" type="text" placeholder="Search Keyword">
+
                                                     <div class="btn-group">
                                                         <button class="btn dropdown-toggle" data-toggle="dropdown">
                                                             <span class="selected">Parts</span>

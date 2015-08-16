@@ -290,6 +290,12 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
         $me.closest('.btn-group').find('.selected').text($me.text());
     });
 
+    (function() {
+        
+        // Initialise the current search
+
+    })();
+
     // Initialise the shopping cart
     svc.getItems().then(function (items) {
         var viewModels = [];

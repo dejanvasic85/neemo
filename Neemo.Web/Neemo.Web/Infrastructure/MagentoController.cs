@@ -20,12 +20,6 @@
         
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            var categories = CategoryService.GetAllCategories()
-                .Select(Mapper.Map<Store.Category, Models.CategoryView>)
-                .ToList();
-
-            ViewBag.Categories = new Models.CategoryListView{AllCategories = categories};
-
             if (CartContext.HasItemsInCart() && Request.IsAuthenticated)
             {
                 ViewBag.CheckoutUrl = Url.Checkout();
