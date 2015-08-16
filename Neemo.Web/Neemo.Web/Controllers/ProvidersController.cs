@@ -3,9 +3,9 @@ using Neemo.Web.Infrastructure;
 
 namespace Neemo.Web.Controllers
 {
-    public class ProviderController : MagentoController
+    public class ProvidersController : MagentoController
     {
-        public ProviderController()
+        public ProvidersController()
         {
 
         }
@@ -18,6 +18,11 @@ namespace Neemo.Web.Controllers
         public ActionResult Identifier(int id)
         {
             return RedirectToAction("Details", new { id });
+        }
+
+        public ActionResult Find(string providerType)
+        {
+            return View();
         }
     }
 }

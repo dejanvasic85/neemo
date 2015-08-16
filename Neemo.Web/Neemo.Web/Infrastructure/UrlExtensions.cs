@@ -37,17 +37,17 @@ namespace Neemo.Web.Infrastructure
             return WithSchemaAndProtocol(urlHelper.RequestContext.HttpContext.Request.Url, path);
         }
 
-        public static string Provider(this UrlHelper urlHelper, int productId)
+        public static string Provider(this UrlHelper urlHelper, int providerId)
         {
-            var path = RouteTable.Routes.GetVirtualPath(null, "providerIdOnly", new RouteValueDictionary { { "id", productId } });
+            var path = RouteTable.Routes.GetVirtualPath(null, "providerIdOnly", new RouteValueDictionary { { "id", providerId } });
             return path.VirtualPath;
         }
 
-        public static string Provider(this UrlHelper urlHelper, int productId, string slug, bool includeSchemeAndProtocol = false)
+        public static string Provider(this UrlHelper urlHelper, int providerId, string slug, bool includeSchemeAndProtocol = false)
         {
             var dictionary = new RouteValueDictionary
             {
-                {"id", productId},
+                {"id", providerId},
                 {"slug", slug}
             };
 
@@ -59,7 +59,6 @@ namespace Neemo.Web.Infrastructure
 
             return WithSchemaAndProtocol(urlHelper.RequestContext.HttpContext.Request.Url, path);
         }
-
 
         public static string Home(this UrlHelper urlHelper, bool absoluteUrl = false)
         {
@@ -86,6 +85,7 @@ namespace Neemo.Web.Infrastructure
         {
             return urlHelper.Action("About", "Home");
         }
+
         public static string Terms(this UrlHelper urlHelper, bool absoluteUrl = false)
         {
             return urlHelper.Action("TermsAndConditions", "Home");
@@ -104,6 +104,16 @@ namespace Neemo.Web.Infrastructure
         public static string Find(this UrlHelper urlHelper)
         {
             return urlHelper.Action("Find", "Products");
+        }
+
+        public static string FindProviders(this UrlHelper urlHelper, string providerType = "Wreckers")
+        {
+            var routevalues = new RouteValueDictionary
+            {
+                {"providerType", providerType}
+            };
+            var data = RouteTable.Routes.GetVirtualPath(null, "providerSearch", routevalues);
+            return data.VirtualPath;
         }
 
         public static string Checkout(this UrlHelper urlHelper)

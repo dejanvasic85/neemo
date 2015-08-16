@@ -1,11 +1,9 @@
 ﻿namespace Neemo.Web.Infrastructure
 {
-    using AutoMapper;
-    using Store;
-    using System.Linq;
-    using System.Web.Mvc;
-    using Neemo.ShoppingCart;
     using Microsoft.Practices.Unity;
+    using Neemo.ShoppingCart;
+    using Store;
+    using System.Web.Mvc;
 
     public class MagentoController : Controller
     {

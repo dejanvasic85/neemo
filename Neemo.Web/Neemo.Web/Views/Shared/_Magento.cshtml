@@ -188,9 +188,6 @@
                                     </div>
 
 
-
-
-
                                     <div class="footer-block shipping span4">
                                         <div class="title">
                                             <h2>Privacy</h2>
@@ -203,19 +200,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    @*<div class="footer-block support-center span3">
-                                            <div class="title">
-                                                <h2>Support Center</h2>
-                                            </div>
-                                            <div class="content">
-                                                <ul>
-                                                    <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/catalog/seo_sitemap/category">Site Map</a></li>
-                                                    <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/catalogsearch/term/popular">Search Terms</a></li>
-                                                    <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/catalogsearch/advanced">Advanced Search</a></li>
-                                                    <li><a href="@Url.ContactUs()">Contact Us</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>*@
+                                   
                                     <div class="footer-block paypal span4">
                                         <div class="title">
                                             <h2>we accept</h2>
@@ -244,25 +229,7 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        @*<div class="block block-subscribe">
-                                                <div class="block-title">
-                                                    <strong><span>Newsletter</span></strong>
-                                                </div>
-                                                <form action="http://www.plazathemes.com/demo/ma_carstore_res/newsletter/subscriber/new/" method="post" id="newsletter-validate-detail">
-                                                    <div class="block-content">
-                                                        <div class="form-subscribe-header">
-                                                            <label for="newsletter">Sign Up for Our Newsletter:</label>
-                                                        </div>
-                                                        <div class="input-box">
-                                                            <input type="text" name="email" id="newsletter" title="Sign up for our newsletter" class="input-text required-entry validate-email">
-                                                        </div>
-                                                        <div class="actions">
-                                                            <button type="submit" title="Subscribe" class="button"><span><span>Subscribe</span></span></button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-
-                                            </div>*@
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -326,7 +293,7 @@
                 search: '@Url.Action("Find", "Products")'
             },
             providers : {
-                search : 'NotFound'
+                search : '@Url.FindProviders()'
             }
         };
     </script>
