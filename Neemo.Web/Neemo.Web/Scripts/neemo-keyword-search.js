@@ -90,6 +90,11 @@ neemo.navigator = (function (window, url) {
         navigator.searchProviders(keySearchResult.keyword, $me.text());
     });
 
+    $('[data-search-products]').on('click', function () {
+        var keySearchResult = navigator.getCurrentSearchKeyword();
+        navigator.searchProducts(keySearchResult.keyword);
+    });
+
     function startSearch() {
         var searchType = $('#searchTypeOptions .selected').text(),
             searchKeyword = $('#keyword').val();
@@ -110,6 +115,13 @@ neemo.navigator = (function (window, url) {
         var keySearchResult = navigator.getCurrentSearchKeyword();
         $('#keyword').val(keySearchResult.keyword);
         $('#searchTypeOptions .selected').text(keySearchResult.searchType);
+
+        $('[data-search-provider]').each(function (idx, item) {
+            var $item = $(item);
+            if (keySearchResult.searchType === $item.text()) {
+                $item.closest('div').addClass("selected");
+            }
+        });
 
     })();
 
