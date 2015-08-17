@@ -65,6 +65,7 @@
     <Compile Include="Providers\IProviderRepository.cs" />
     <Compile Include="Providers\IProviderService.cs" />
     <Compile Include="Providers\Provider.cs" />
+    <Compile Include="Providers\ProviderServiceType.cs" />
     <Compile Include="Providers\ProviderType.cs" />
     <Compile Include="Shipping\IShippingCalculatorService.cs" />
     <Compile Include="Shipping\IShippingRepository.cs" />

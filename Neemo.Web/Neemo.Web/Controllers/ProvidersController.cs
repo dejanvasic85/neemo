@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using Neemo.Providers;
 using Neemo.Web.Infrastructure;
@@ -8,11 +9,11 @@ namespace Neemo.Web.Controllers
 {
     public class ProvidersController : MagentoController
     {
-        private IProviderService providerService;
+        private readonly IProviderService _providerService;
 
         public ProvidersController(IProviderService providerService)
         {
-            this.providerService = providerService;
+            this._providerService = providerService;
         }
 
         public ActionResult Details(int id, string slug = "")
@@ -34,5 +35,11 @@ namespace Neemo.Web.Controllers
             return View(findProviderModel);
         }
 
+        public ActionResult GetProviderServiceTypes()
+        {
+            var services = _providerService.GetProviderServices().Select(s => new {Value = s.ServiceTypeId, Text = s.ServiceType}).ToList();
+
+            return Json(services, JsonRequestBehavior.AllowGet);
+        }
     }
 }

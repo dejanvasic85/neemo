@@ -48,6 +48,18 @@
                         </div>
                         
                         <div class="control-group">
+                            <label for="ProviderServiceType">Service Type</label>
+                            <div class="controls">
+                                <select id="ProviderServiceType" class="control"
+                                        data-search-filter="ProviderServiceType"
+                                        data-select-filter="@Model.ProviderServiceType"
+                                        data-url="@Url.Action("GetProviderServiceTypes", "Providers")">
+                                    >
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
                             <button class="btn" data-apply-provider-filters data-loading-text="Please wait...">Apply</button>
                         </div>
                     </div>

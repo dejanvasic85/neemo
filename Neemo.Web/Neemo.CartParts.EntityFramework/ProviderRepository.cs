@@ -12,12 +12,19 @@ namespace Neemo.CarParts.EntityFramework
         {
             using (var connection = DbContextFactory.CreateConnection())
             {
-                var results = connection.Query<Provider>(
-                    "Provider_GetLatestByType", 
-                    new { ProviderType = providerType.ToString(), Max = takeMax },
-                    commandType: CommandType.StoredProcedure);
+                return connection
+                    .Query<Provider>("Provider_GetLatestByType", new { ProviderType = providerType.ToString(), Max = takeMax }, commandType: CommandType.StoredProcedure)
+                    .ToList();
+            }
+        }
 
-                return results.ToList();
+        List<ProviderServiceType> IProviderRepository.GetProviderServices()
+        {
+            using (var conn = DbContextFactory.CreateConnection())
+            {
+                return conn
+                    .Query<ProviderServiceType>("ServiceType_GetAll", commandType: CommandType.StoredProcedure)
+                    .ToList();
             }
         }
     }

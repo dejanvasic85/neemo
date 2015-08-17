@@ -90,5 +90,6 @@ namespace Neemo.Web.Models
             get { return (int)Math.Ceiling((double)TotalResultCount / PageSize); }
         }
 
+        public string ProviderServiceType { get; set; }
     }
 }
