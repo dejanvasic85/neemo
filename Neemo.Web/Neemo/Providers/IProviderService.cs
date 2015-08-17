@@ -6,7 +6,7 @@ namespace Neemo.Providers
     {
         List<Provider> GetProvidersByType(ProviderType providerType, int takeMax);
         List<ProviderServiceType> GetProviderServices();
-        List<Provider> Search(ProviderType providerType, string keyword);
+        List<Provider> Search(ProviderType providerType, string keyword, int? providerServiceType);
     }
 
     public class ProviderService : IProviderService
@@ -28,9 +28,9 @@ namespace Neemo.Providers
             return _providerRepository.GetProviderServices();
         }
 
-        public List<Provider> Search(ProviderType providerType, string keyword)
+        public List<Provider> Search(ProviderType providerType, string keyword, int? providerServiceType)
         {
-            return _providerRepository.Search(providerType, keyword);
+            return _providerRepository.Search(providerType, keyword, providerServiceType);
         }
     }
 }

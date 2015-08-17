@@ -8,7 +8,7 @@ namespace Neemo.CarParts.EntityFramework
 {
     public class ProviderRepository : IProviderRepository
     {
-        public List<Provider> Search(ProviderType providerType, string keyword)
+        public List<Provider> Search(ProviderType providerType, string keyword, int? serviceTypeId)
         {
             using (var conn = DbContextFactory.CreateConnection())
             {
@@ -16,7 +16,8 @@ namespace Neemo.CarParts.EntityFramework
                     .Query<Provider>("Provider_Search", new
                     {
                         providerType = providerType.ToString(),
-                        keyword
+                        keyword,
+                        serviceTypeId
                     }, commandType: CommandType.StoredProcedure)
                     .ToList();
             }

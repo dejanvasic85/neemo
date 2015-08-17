@@ -28,7 +28,10 @@ namespace Neemo.Web.Controllers
 
         public ActionResult Find(FindProvidersModel findProviderModel)
         {
-            var providersSearchResults = _providerService.Search(findProviderModel.ProviderType, findProviderModel.Keyword);
+            var providersSearchResults = _providerService.Search(
+                findProviderModel.ProviderType, 
+                findProviderModel.Keyword,
+                findProviderModel.ProviderServiceType);
             
             findProviderModel.ProviderSummaryViews = providersSearchResults
                 .Skip(findProviderModel.SkipAmount)
