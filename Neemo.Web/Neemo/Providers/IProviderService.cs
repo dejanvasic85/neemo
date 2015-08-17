@@ -4,7 +4,7 @@ namespace Neemo.Providers
 {
     public interface IProviderService
     {
-        List<Provider> GetNewProviders();
+        List<Provider> GetProvidersByType(ProviderType providerType, int takeMax);
     }
 
     public class ProviderService : IProviderService
@@ -16,14 +16,9 @@ namespace Neemo.Providers
             _providerRepository = providerRepository;
         }
 
-        public List<Provider> GetNewProviders()
+        public List<Provider> GetProvidersByType(ProviderType providerType, int takeMax)
         {
-            return _providerRepository.GetNewProviders();
+            return _providerRepository.GetProvidersByType(providerType, takeMax);
         }
-    }
-
-    public interface IProviderRepository
-    {
-        List<Provider> GetNewProviders();
     }
 }

@@ -11,7 +11,7 @@ namespace Neemo.CarParts.EntityFramework
         {
             return new NeemoContext();
         }
-
+        
         public static DbConnection CreateConnection()
         {
             return new SqlConnection(ConfigurationManager.ConnectionStrings["NeemoConnection"].ConnectionString);
