@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neemo.Web", "Neemo.Web\Neemo.Web.csproj", "{4F2B3142-92BC-42A9-8614-4DFB1F98D5A9}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neemo.CarParts", "Neemo.CarParts\Neemo.CarParts.csproj", "{72DFB756-9699-4447-8794-CADA7CAE4765}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neemo.Database", "Neemo.Database\Neemo.Database.csproj", "{AA34DC3E-9EEC-4F30-90E7-C613B0A6AF63}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neemo.UnitTests", "Neemo.UnitTests\Neemo.UnitTests.csproj", "{238F7B0C-FDEE-4C5A-B6E0-F1E10BA504AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{AA34DC3E-9EEC-4F30-90E7-C613B0A6AF63}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA34DC3E-9EEC-4F30-90E7-C613B0A6AF63}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA34DC3E-9EEC-4F30-90E7-C613B0A6AF63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{238F7B0C-FDEE-4C5A-B6E0-F1E10BA504AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{238F7B0C-FDEE-4C5A-B6E0-F1E10BA504AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{238F7B0C-FDEE-4C5A-B6E0-F1E10BA504AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{238F7B0C-FDEE-4C5A-B6E0-F1E10BA504AC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

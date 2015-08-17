@@ -1,8 +1,6 @@
 using System;
-using System.Collections.Generic;
-using AutoMapper;
 using Microsoft.Practices.Unity;
-using System.Reflection;
+using Neemo.Web.Models;
 
 namespace Neemo.Web
 {
@@ -42,6 +40,9 @@ namespace Neemo.Web
             config.CreateMap<Orders.OrderLineItem, Models.OrderLineItemView>();
             config.CreateMap<Orders.OrderLineItem, Models.InvoiceItemView>().ConvertUsing<Models.OrderLineItemToInvoiceItem>();
 
+            config.CreateMap<Providers.Provider, ProviderSummaryView>()
+                .ForMember(member => member.Address, options => options.MapFrom(source => source.ToDisplayAddress()));
+
             // From view model
             config.CreateMap<Models.PersonalDetailsView, PersonalDetails>();
         }
@@ -49,26 +50,6 @@ namespace Neemo.Web
         public static void RegisterMaps(IUnityContainer container)
         {
             container.ResolveAll<IMappingConfig>().ForEach(mapper => mapper.RegisterMapping(AutoMapper.Mapper.Configuration));
-        }
-    }
-
-    public class ProductSpecificationConverter : ValueResolver<Store.Product, Dictionary<string, string>>
-    {
-        protected override Dictionary<string, string> ResolveCore(Store.Product source)
-        {
-            var dictionary = source.ProductSpecifications.ToDictionary<string>();
-            
-            return dictionary as Dictionary<string, string>;
-        }
-    }
-
-    public class OtherDetailsConverter : ValueResolver<Store.Product, Dictionary<string, string>>
-    {
-        protected override Dictionary<string, string> ResolveCore(Store.Product source)
-        {
-            var dictionary = source.OtherDetails.ToDictionary<string>();
-
-            return dictionary as Dictionary<string, string>;
         }
     }
 }

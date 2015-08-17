@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Neemo.Providers;
 
 namespace Neemo.Web.Controllers
 {
@@ -15,23 +16,26 @@ namespace Neemo.Web.Controllers
     public class HomeController : MagentoController
     {
         private readonly IProductService _productService;
+        private readonly IProviderService _providerService;
         private readonly ITemplateService _templateService;
         private readonly INotificationService _notificationService;
         private readonly ISysConfig _config;
 
-        public HomeController(IProductService productService, ITemplateService templateService, INotificationService notificationService, ISysConfig config)
+        public HomeController(IProductService productService, ITemplateService templateService, INotificationService notificationService, ISysConfig config, IProviderService providerService)
         {
             _productService = productService;
             _templateService = templateService;
             _notificationService = notificationService;
             _config = config;
+            _providerService = providerService;
         }
 
         public ActionResult Index()
         {
             // Fetch the featured/new/best-selling products for display
             var newProducts = _productService.GetNewProducts().Where(m => m.ImageId.HasValue()).Select(Mapper.Map<Product, ProductSummaryView>).Take(5);
-            
+            var newProviders = _providerService.GetNewProviders().Select(Mapper.Map<Provider, ProviderSummaryView>).ToList();
+
             var homeModel = new HomeView
             {
                 NewProducts = newProducts.ToList(),
@@ -107,45 +111,45 @@ namespace Neemo.Web.Controllers
             {
                 new ProviderSummaryView
                 {
-                    CreateDateTime = DateTime.Today,
+                    CreatedDateTime = DateTime.Today,
                     Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
-                    Title = "Provider 1",
+                    ProviderName = "Provider 1",
                     ImageId = "",
                     Address = "1 Melbourne Rd, Melbourne, VIC 3000",
                     ProviderId = 1
                 },
                 new ProviderSummaryView
                 {
-                    CreateDateTime = DateTime.Today,
+                    CreatedDateTime = DateTime.Today,
                     Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
-                    Title = "Provider 2",
+                    ProviderName = "Provider 2",
                     ImageId = "",
                     Address = "1 Melbourne Rd, Melbourne, VIC 3000",
                     ProviderId = 2
                 },
                 new ProviderSummaryView
                 {
-                    CreateDateTime = DateTime.Today,
+                    CreatedDateTime = DateTime.Today,
                     Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
-                    Title = "Provider 3",
+                    ProviderName = "Provider 3",
                     ImageId = "",
                     Address = "1 Melbourne Rd, Melbourne, VIC 3000",
                     ProviderId = 3
                 },
                 new ProviderSummaryView
                 {
-                    CreateDateTime = DateTime.Today,
+                    CreatedDateTime = DateTime.Today,
                     Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
-                    Title = "Provider 4",
+                    ProviderName = "Provider 4",
                     ImageId = "",
                     Address = "1 Melbourne Rd, Melbourne, VIC 3000",
                     ProviderId = 4
                 },
                 new ProviderSummaryView
                 {
-                    CreateDateTime = DateTime.Today,
+                    CreatedDateTime = DateTime.Today,
                     Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
-                    Title = "Provider 5",
+                    ProviderName = "Provider 5",
                     ImageId = "",
                     Address = "1 Melbourne Rd, Melbourne, VIC 3000",
                     ProviderId = 5

@@ -5,11 +5,11 @@ using System.Web.Mvc;
 
 namespace Neemo.Web.Models
 {
-    public class FindModelView
+    public class FindProvidersModel
     {
-        public FindModelView()
+        public FindProvidersModel()
         {
-            ProductResults = new List<ProductSummaryView>();
+            ProviderSummaryViews = new List<ProviderSummaryView>();
             Page = 1;
             PageSize = 20;
             SortByItems = new List<SelectListItem>
@@ -28,6 +28,7 @@ namespace Neemo.Web.Models
                 new SelectListItem {Text = "200", Value = "200"}
             };
         }
+
         public string Keyword { get; set; }
 
         public int? CategoryId { get; set; }
@@ -64,11 +65,11 @@ namespace Neemo.Web.Models
                 }
             }
         }
-        public List<ProductSummaryView> ProductResults { get; set; }
+        public List<ProviderSummaryView> ProviderSummaryViews { get; set; }
 
         public bool HasResults
         {
-            get { return this.ProductResults.Count > 0; }
+            get { return this.ProviderSummaryViews.Count > 0; }
         }
 
         public bool HasPages
@@ -88,22 +89,5 @@ namespace Neemo.Web.Models
             get { return (int)Math.Ceiling((double)TotalResultCount / PageSize); }
         }
 
-
-        #region Refactor this out ( somehow ) so that it's in a different category-specific model
-
-        public int? Make { get; set; }
-        public int? Model { get; set; }
-        public string Chassis { get; set; }
-        public string EngineNumber { get; set; }
-        public int? EngineSize { get; set; }
-        public int? FuelType { get; set; }
-        public int? BodyType { get; set; }
-        public int? WheelBase { get; set; }
-        [Display(Name = "Year Min")]
-        public int? YearMin { get; set; }
-        [Display(Name = "Year Max")]
-        public int? YearMax { get; set; }
-
-        #endregion
     }
 }
