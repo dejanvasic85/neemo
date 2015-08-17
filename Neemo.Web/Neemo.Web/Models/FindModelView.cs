@@ -5,7 +5,7 @@ using System.Web.Mvc;
 
 namespace Neemo.Web.Models
 {
-    public class FindModelView
+    public class FindModelView : IPagingModel
     {
         public FindModelView()
         {

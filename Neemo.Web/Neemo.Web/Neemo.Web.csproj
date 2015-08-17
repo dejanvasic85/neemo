@@ -239,6 +239,7 @@
     <Compile Include="Models\FindProvidersModel.cs" />
     <Compile Include="Models\InvoiceDetailView.cs" />
     <Compile Include="Models\InvoiceItemView.cs" />
+    <Compile Include="Models\IPagingModel.cs" />
     <Compile Include="Models\OrderHistoryView.cs" />
     <Compile Include="Models\OrderSummaryView.cs" />
     <Compile Include="Models\PersonalDetailsView.cs" />

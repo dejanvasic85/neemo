@@ -204,6 +204,21 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
         filter.apply();
     });
 
+    $('[data-apply-provider-filters').on('click', function () {
+        var filter = searchFilters
+            .setKeyword($('#Keyword').val())
+            .setSortBy($('#SortBy').val());
+
+        $('[data-search-filter').each(function (index, item) {
+            var sf = $(this).data().searchFilter;
+            var value = $(this).val();
+            filter.setFilter(sf, value);
+        });
+
+        $(this).button('loading');
+        filter.apply();
+    });
+
     // Changing the category is not a regular filter
     // Todo - It needs ability to reset the existing filters!
     $('[data-category-filter]').on('click', function () {

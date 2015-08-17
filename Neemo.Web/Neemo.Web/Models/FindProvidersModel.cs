@@ -5,7 +5,7 @@ using System.Web.Mvc;
 
 namespace Neemo.Web.Models
 {
-    public class FindProvidersModel
+    public class FindProvidersModel : IPagingModel
     {
         public FindProvidersModel()
         {
@@ -29,6 +29,7 @@ namespace Neemo.Web.Models
             };
         }
 
+        public string ProviderType { get; set; }
         public string Keyword { get; set; }
 
         public int? CategoryId { get; set; }
