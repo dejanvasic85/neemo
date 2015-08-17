@@ -259,6 +259,7 @@
     <Compile Include="Models\ProductSummaryView.cs" />
     <Compile Include="Models\ProviderDetailView.cs" />
     <Compile Include="Models\ProviderSummaryView.cs" />
+    <Compile Include="Models\ProviderSummaryViewModelComparer.cs" />
     <Compile Include="Models\ShippingCostView.cs" />
     <Compile Include="Models\TaxCostView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

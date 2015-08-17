@@ -8,6 +8,20 @@ namespace Neemo.CarParts.EntityFramework
 {
     public class ProviderRepository : IProviderRepository
     {
+        public List<Provider> Search(ProviderType providerType, string keyword)
+        {
+            using (var conn = DbContextFactory.CreateConnection())
+            {
+                return conn
+                    .Query<Provider>("Provider_Search", new
+                    {
+                        providerType = providerType.ToString(),
+                        keyword
+                    }, commandType: CommandType.StoredProcedure)
+                    .ToList();
+            }
+        }
+
         public List<Provider> GetProvidersByType(ProviderType providerType, int takeMax)
         {
             using (var connection = DbContextFactory.CreateConnection())

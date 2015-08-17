@@ -34,18 +34,6 @@
                                 @Html.TextBoxFor(m => m.Keyword)
                             </div>
                         </div>
-
-                        <div class="control-group">
-                            <label class="control-label" for="SortBy">Sort By</label>
-                            <div class="controls">
-                                <select data-val="true" data-val-required="The Sort By field is required." id="SortBy" name="SortBy">
-                                    <option selected="selected" value="NewestFirst">Newest First</option>
-                                    <option value="OldestFirst">Oldest First</option>
-                                    <option value="PriceLowest">Price Lowest</option>
-                                    <option value="PriceHighest">Price Highest</option>
-                                </select>
-                            </div>
-                        </div>
                         
                         <div class="control-group">
                             <label for="ProviderServiceType">Service Type</label>
@@ -60,6 +48,18 @@
                         </div>
 
                         <div class="control-group">
+                            <label class="control-label" for="SortBy">Sort By</label>
+                            <div class="controls">
+                                <select data-val="true" data-val-required="The Sort By field is required." id="SortBy" name="SortBy">
+                                    <option selected="selected" value="NewestFirst">Newest First</option>
+                                    <option value="OldestFirst">Oldest First</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                       
+
+                        <div class="control-group">
                             <button class="btn" data-apply-provider-filters data-loading-text="Please wait...">Apply</button>
                         </div>
                     </div>
@@ -67,7 +67,6 @@
             </div>
 
             @*Search Results*@
-            <div class="col-wrapper span9">
                @if (Model.HasResults)
                {
                 <div class="col-wrapper span9">
@@ -78,7 +77,12 @@
                     </div>
                     <div class="row-fluid">
                         <div class="col-main span12">
-                            
+                            <ul>
+                                @foreach (var p in Model.ProviderSummaryViews)
+                                {
+                                    <li>@p.ProviderName</li>
+                                }
+                            </ul>
                         </div>
                     </div>
                     <div class="row-fluid top-buffer-10">
@@ -92,11 +96,10 @@
                {
                 <div class="col-wrapper span9">
                     <div class="alert">
-                        Sorry. It looks like we don't have any products that match your search.
+                        Sorry. It looks like we don't have any @Model.ProviderType.ToString() that match your search.
                     </div>
                 </div>
                }
-            </div>
 
         </div>
     </div>

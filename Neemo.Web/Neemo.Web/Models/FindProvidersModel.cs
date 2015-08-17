@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
+using Neemo.Providers;
 
 namespace Neemo.Web.Models
 {
@@ -16,8 +17,6 @@ namespace Neemo.Web.Models
             {
                 new SelectListItem{Text = "Newest First", Value = "NewestFirst"},
                 new SelectListItem{Text = "Oldest First", Value = "OldestFirst"},
-                new SelectListItem{Text = "Price Lowest", Value = "PriceLowest"},
-                new SelectListItem{Text = "Price Highest", Value = "PriceHighest"},
             };
             PageSizeItems = new List<SelectListItem>
             {
@@ -29,7 +28,7 @@ namespace Neemo.Web.Models
             };
         }
 
-        public string ProviderType { get; set; }
+        public ProviderType ProviderType { get; set; }
         public string Keyword { get; set; }
 
         public int? CategoryId { get; set; }

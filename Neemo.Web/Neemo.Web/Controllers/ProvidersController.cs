@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
+using AutoMapper;
 using Neemo.Providers;
 using Neemo.Web.Infrastructure;
 using Neemo.Web.Models;
@@ -28,9 +28,16 @@ namespace Neemo.Web.Controllers
 
         public ActionResult Find(FindProvidersModel findProviderModel)
         {
-            findProviderModel.ProviderSummaryViews = new List<ProviderSummaryView>();
-            findProviderModel.TotalResultCount = 0;
+            var providersSearchResults = _providerService.Search(findProviderModel.ProviderType, findProviderModel.Keyword);
+            
+            findProviderModel.ProviderSummaryViews = providersSearchResults
+                .Skip(findProviderModel.SkipAmount)
+                .Take(findProviderModel.PageSize)
+                .Select(Mapper.Map<Provider, Models.ProviderSummaryView>)
+                .OrderBy(p => p, new Models.ProviderSummaryViewModelComparer(findProviderModel.SortBy))
+                .ToList();
 
+            findProviderModel.TotalResultCount = providersSearchResults.Count;
 
             return View(findProviderModel);
         }
