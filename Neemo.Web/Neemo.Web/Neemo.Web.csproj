@@ -695,8 +695,8 @@
     <Content Include="Views\EmailTemplates\ContactUsTemplate.cshtml" />
     <Content Include="Views\EmailTemplates\_EmailLayout.cshtml" />
     <Content Include="Views\Products\Find.cshtml" />
-    <Content Include="Views\Shared\Partial\_SearchPagingToolbar.cshtml" />
-    <Content Include="Views\Shared\Partial\_SearchResults.cshtml" />
+    <Content Include="Views\Shared\_SearchPagingToolbar.cshtml" />
+    <Content Include="Views\Products\_SearchResults.cshtml" />
     <Content Include="Views\EmailTemplates\ForgotPassword.cshtml" />
     <Content Include="Views\Shared\Partial\_PersonalDetailsEditor.cshtml" />
     <Content Include="Views\Cart\Cancel.cshtml" />
@@ -715,7 +715,7 @@
     <None Include="Properties\PublishProfiles\Drogo.pubxml" />
     <None Include="Properties\PublishProfiles\ftp.pubxml" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
-    <Content Include="Views\Shared\Partial\_SearchFilters.cshtml" />
+    <Content Include="Views\Products\_SearchFilters.cshtml" />
     <Content Include="Views\Home\TermsAndConditions.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Privacy.cshtml" />

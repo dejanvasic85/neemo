@@ -187,13 +187,15 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
     });
 
     $('[data-apply-filters').on('click', function () {
-        var filter = searchFilters
-            .setKeyword($('#Keyword').val())
-            .setSortBy($('#SortBy').val())
-            .setPriceMin($('#PriceMin').val())
-            .setPriceMax($('#PriceMax').val());
+        var $filterContainer = $(this).closest('.product-filters');
 
-        $('[data-search-filter').each(function (index, item) {
+        var filter = searchFilters
+            .setKeyword($filterContainer.find('#Keyword').val())
+            .setSortBy($filterContainer.find('#SortBy').val())
+            .setPriceMin($filterContainer.find('#PriceMin').val())
+            .setPriceMax($filterContainer.find('#PriceMax').val());
+
+        $filterContainer.find('[data-search-filter').each(function (index, item) {
             var sf = $(this).data().searchFilter;
             var value = $(this).val();
             filter.setFilter(sf, value);
