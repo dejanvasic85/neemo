@@ -25,50 +25,35 @@
 
             @*Filters*@
             <div class="col-left sidebar span3">
-                <div class="block block-layered-nav">
+                <div class="block block-layered-nav hidden-phone">
                     <div class="block-title"><strong><span>Filter Results</span></strong></div>
-                    <div class="product-filters">
-                        <div class="control-group">
-                            @Html.BootstrapLabelFor(m => m.Keyword)
-                            <div class="controls">
-                                @Html.TextBoxFor(m => m.Keyword)
-                            </div>
-                        </div>
-                        
-                        <div class="control-group">
-                            <label for="ProviderServiceType">Service Type</label>
-                            <div class="controls">
-                                <select id="ProviderServiceType" class="control"
-                                        data-search-filter="ProviderServiceType"
-                                        data-select-filter="@Model.ProviderServiceType"
-                                        data-url="@Url.Action("GetProviderServiceTypes", "Providers")">
-                                    >
-                                </select>
-                            </div>
-                        </div>
+                    @Html.Partial("_ProviderFilters", Model)
+                </div>
 
-                        <div class="control-group">
-                            <label class="control-label" for="SortBy">Sort By</label>
-                            <div class="controls">
-                                <select data-val="true" data-val-required="The Sort By field is required." id="SortBy" name="SortBy">
-                                    <option selected="selected" value="NewestFirst">Newest First</option>
-                                    <option value="OldestFirst">Oldest First</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                       
+                <div class="visible-phone bottom-buffer-10">
 
-                        <div class="control-group">
-                            <button class="btn" data-apply-provider-filters data-loading-text="Please wait...">Apply</button>
+                    <!-- Button to trigger modal -->
+                    <a href="#searchFilters" role="button" class="btn btn-block" data-toggle="modal">
+                        <i class="fa fa-edit"></i> Filter Results
+                    </a>
+
+                    <!-- Modal -->
+                    <div id="searchFilters" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h3 id="myModalLabel">Filter Results</h3>
+                        </div>
+                        <div class="modal-body">
+                            @Html.Partial("_ProviderFilters", Model)
                         </div>
                     </div>
+
                 </div>
             </div>
 
             @*Search Results*@
-               @if (Model.HasResults)
-               {
+            @if (Model.HasResults)
+            {
                 <div class="col-wrapper span9">
                     <div class="row-fluid">
                         <div class="col-main span12">
@@ -91,15 +76,15 @@
                         </div>
                     </div>
                 </div>
-               }
-               else
-               {
+            }
+            else
+            {
                 <div class="col-wrapper span9">
                     <div class="alert">
                         Sorry. It looks like we don't have any @Model.ProviderType.ToString() that match your search.
                     </div>
                 </div>
-               }
+            }
 
         </div>
     </div>
