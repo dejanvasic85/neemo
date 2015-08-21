@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Dynamic;
 using System.Linq.Expressions;
+using System.Text;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 
@@ -48,6 +49,13 @@ namespace Neemo.Web.Infrastructure
             htmlAttributes.Add("data-search-filter", metaData.PropertyName);
 
             return html.TextBoxFor(expression, htmlAttributes);
+        }
+
+        public static MvcHtmlString ProviderContactStub<TModel, TValue>(this HtmlHelper<TModel> html )
+        {
+            var sb =new StringBuilder();
+            
+            return new MvcHtmlString(sb.ToString());
         }
     }
 }
