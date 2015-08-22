@@ -19,7 +19,7 @@ namespace Neemo.Web
             // To view model
             config.CreateMap<Store.Product, Models.ProductSummaryView>()
                 .ForMember(member => member.OutOfStock, options => options.ResolveUsing(t => t.IsOutOfStock()))
-                .ForMember(member => member.TitleSlug, options => options.MapFrom(source => Slug.Create(source.Title)))
+                .ForMember(member => member.TitleSlug, options => options.MapFrom(source => Slug.Create(source.Title, true)))
                 ;
 
             config.CreateMap<Store.Product, Models.ProductDetailView>()

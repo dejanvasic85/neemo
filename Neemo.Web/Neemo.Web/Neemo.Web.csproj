@@ -266,6 +266,14 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Components\raty\fonts\raty.svg" />
+    <Content Include="Components\raty\images\cancel-off.png" />
+    <Content Include="Components\raty\images\cancel-on.png" />
+    <Content Include="Components\raty\images\star-half.png" />
+    <Content Include="Components\raty\images\star-off.png" />
+    <Content Include="Components\raty\images\star-on.png" />
+    <Content Include="Components\raty\jquery.raty.css" />
+    <Content Include="Components\raty\jquery.raty.js" />
     <Content Include="Content\magento\ajax_cart_super.css" />
     <Content Include="Content\magento\ajax_cart_super.min.css">
       <DependentUpon>ajax_cart_super.css</DependentUpon>
@@ -681,6 +689,9 @@
     <Content Include="Content\magento\font\glyphicons-halflings-regular.eot" />
     <Content Include="Content\magento\font\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\magento\font\glyphicons-halflings-regular.woff" />
+    <Content Include="Components\raty\fonts\raty.eot" />
+    <Content Include="Components\raty\fonts\raty.ttf" />
+    <Content Include="Components\raty\fonts\raty.woff" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Shared\DisplayTemplates\ProductSummaryView.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
