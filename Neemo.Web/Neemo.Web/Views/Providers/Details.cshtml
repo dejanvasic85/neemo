@@ -2,7 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/_Magento.cshtml";
-    //ViewBag.Title = Model.Title;
+    ViewBag.Title = Model.ProviderName;
 }
 
 <div class="ma-main-container col2-right-layout">
@@ -14,28 +14,13 @@
                     <span>/ </span>
                 </li>
                 <li class="product">
-                    @*<strong>@Model.Title</strong>*@
-                    <strong>Coming soon</strong>
+                    <strong>@Model.ProviderName</strong>
                 </li>
             </ul>
         </div>
         <div class="row-fluid">
             <div class="col-main span12">
-                <div id="messages_product_view"></div>
-                <div class="product-view">
-                    <div class="product-name">
-                        @*<h1>@Model.Title</h1>*@
-                        <h1>Coming Soon</h1>
-                    </div>
-                    <div class="product-essential">
-                        <div class="row-fluid">
-                            <div class="span12">
-                                Coming soon...
-                            </div>
-                        </div>
-                        <div class="clearer"></div>
-                    </div>
-                </div>
+               
             </div>
         </div>
     </div>

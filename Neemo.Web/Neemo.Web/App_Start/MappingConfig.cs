@@ -47,6 +47,9 @@ namespace Neemo.Web
                 .ForMember(member => member.Address, options => options.MapFrom(source => source.ToDisplayAddress()))
                 .ForMember(member => member.ProviderNameSlug, options => options.MapFrom(source => Slug.Create(source.ProviderName, true)));
 
+            config.CreateMap<Providers.Provider, ProviderDetailView>()
+                .ForMember(member => member.Address, options => options.MapFrom(source => source.ToDisplayAddress()));
+
             // From view model
             config.CreateMap<Models.PersonalDetailsView, PersonalDetails>();
         }

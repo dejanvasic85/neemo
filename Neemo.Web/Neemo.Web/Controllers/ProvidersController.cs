@@ -18,7 +18,11 @@ namespace Neemo.Web.Controllers
 
         public ActionResult Details(int id, string slug = "")
         {
-            return View();
+            var provider = _providerService.GetProviderById(id);
+
+            var viewModel = Mapper.Map<Provider, ProviderDetailView>(provider);
+
+            return View(viewModel);
         }
 
         public ActionResult Identifier(int id)
