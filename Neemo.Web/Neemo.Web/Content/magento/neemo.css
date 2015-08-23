@@ -341,7 +341,7 @@
 
     .provider-search-results .contact-card .provider-name {
         color: black;
-        font-size: 1.6em;
+        font-size: 2em;
         padding: 15px;
     }
 
@@ -350,9 +350,9 @@
         }
 
 
-    .provider-search-results .contact-card .provider-name .rating img {
-        vertical-align: middle;
-    }
+        .provider-search-results .contact-card .provider-name .rating img {
+            vertical-align: middle;
+        }
 
     .provider-search-results .contact-card .provider-description {
         display: inline-block;
@@ -366,8 +366,6 @@
         width: 23%;
         text-align: center;
     }
-
-
 
         .provider-search-results .contact-card .provider-img .thumbnail {
             width: 129px;
@@ -416,7 +414,7 @@
     }
 
     .provider-search-results .contact-card .provider-img {
-        width: 44%;
+        width: 43%;
     }
 }
 
@@ -446,5 +444,9 @@
 
     .provider-search-results .contact-card .provider-img {
         width: 42%;
+    }
+
+    .provider-search-results .contact-card .contact-info span {
+        margin-left: 10px;
     }
 }
