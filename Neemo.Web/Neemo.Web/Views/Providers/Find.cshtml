@@ -96,18 +96,9 @@
                                     </div>
 
                                     <div class="span12 contact-info">
-                                        <span>
-                                            <i class="fa fa-phone-square"></i>
-                                            <a href="tel:@provider.Phone">@provider.Phone</a>
-                                        </span>
-                                        <span>
-                                            <i class="fa fa-globe"></i>
-                                            <a href="@provider.URL">@provider.URL</a>
-                                        </span>
-                                        <span>
-                                            <i class="fa fa-map-marker"></i>
-                                            <a href="http://maps.google.com/?q=@provider.Address" target="_blank">@provider.Address</a>
-                                        </span>
+                                        @ContactStub(provider.Phone, "fa-phone-square", "tel:" + provider.Phone)
+                                        @ContactStub(provider.URL, "fa-globe", provider.URL)
+                                        @ContactStub(provider.Address, "fa-map-marker", "http://maps.google.com/?q=" + provider.Address, "_blank")
                                     </div>
                                 </div>
                             </div>
@@ -133,3 +124,15 @@
         </div>
     </div>
 </div>
+
+@helper ContactStub(string value, string icon, string href, string target = "_self")
+{
+    if (value.HasValue()) { 
+         <span>
+             <i class="fa @icon"></i>
+             <a href="@href" target="@target">
+                 @value
+             </a>
+         </span>
+    }
+}
