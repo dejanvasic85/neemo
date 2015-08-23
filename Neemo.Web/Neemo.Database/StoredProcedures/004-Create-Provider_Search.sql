@@ -4,6 +4,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE PROCEDURE [dbo].[Provider_Search]
        @Keyword nvarchar(100) = null,
+	   @ServiceTypeId varchar(100) = null,
 	   @ProviderType varchar(100)
  
 	   /*

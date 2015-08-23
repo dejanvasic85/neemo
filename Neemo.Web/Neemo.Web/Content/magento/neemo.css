@@ -333,9 +333,7 @@
     min-height: 100px;
 }
 
-.provider-search-results .contact-card:hover {
-    background-color: #F0F0F0 ;
-}
+
 
     .provider-search-results .contact-card .provider-title {
         border-bottom: 1px solid #C0C0C0;
@@ -347,10 +345,19 @@
         padding: 15px;
     }
 
+        .provider-search-results .contact-card .provider-name:hover {
+            background-color: #F0F0F0;
+        }
+
+
+    .provider-search-results .contact-card .provider-name .rating img {
+        vertical-align: middle;
+    }
+
     .provider-search-results .contact-card .provider-description {
         display: inline-block;
         padding: 10px;
-        width: 74%;
+        width: 72%;
     }
 
     .provider-search-results .contact-card .provider-img {
@@ -403,6 +410,14 @@
 
 /* Landscape phone to portrait tablet */
 @media (min-width: 768px) and (max-width: 979px) {
+
+    .provider-search-results .contact-card .provider-description {
+        width: 50%;
+    }
+
+    .provider-search-results .contact-card .provider-img {
+        width: 44%;
+    }
 }
 
 
@@ -430,6 +445,6 @@
     }
 
     .provider-search-results .contact-card .provider-img {
-        width: 44%;
+        width: 42%;
     }
 }

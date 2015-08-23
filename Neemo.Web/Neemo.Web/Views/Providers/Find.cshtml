@@ -68,11 +68,16 @@
                             <div class="contact-card">
                                 <div class="row-fluid">
                                     <div class="span12 provider-title">
+
                                         <div class="provider-name">
                                             <a href="@Url.Provider(provider.ProviderId, provider.ProviderNameSlug)">
                                                 @provider.ProviderName
                                             </a>
+                                            <div class="pull-right rating">
+                                                <div data-provider-summary-rating="@provider.Rating" data-path="@Url.Content("~/Components/raty/images")"></div>
+                                            </div>
                                         </div>
+
                                     </div>
                                     <div class="span12">
                                         <div class="provider-description">

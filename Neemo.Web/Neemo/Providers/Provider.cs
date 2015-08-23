@@ -25,7 +25,7 @@ namespace Neemo.Providers
         public string Fax { get; set; }
         public string EmailAddress { get; set; }
         public string URL { get; set; }
-        public int? Rating { get; set; }
+        public decimal? Rating { get; set; }
         public string ContactUsURL { get; set; }
         public int? DisplayOrderId { get; set; }
         public string Image { get; set; }

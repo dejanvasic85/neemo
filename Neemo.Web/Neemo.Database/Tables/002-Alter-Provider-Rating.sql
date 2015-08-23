@@ -1,0 +1,2 @@
+﻿ALTER TABLE Provider
+ALTER COLUMN Rating DECIMAL (18,2)

@@ -11,7 +11,7 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
             originalQuery: querystring,
             newQuery: querystring,
             targetUrl: window.location.pathname,
-            items : getCurrentItems()
+            items: getCurrentItems()
         };
 
         function getCurrentItems() {
@@ -20,7 +20,7 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
             }
             return querystring.replace('?', '').split('&');
         }
-       
+
         function addOrUpdate(keyPair, go, ensureUrl) {
             var self = this;
             self.keyPair = keyPair;
@@ -313,7 +313,7 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
         ui.cart = cart;
         ko.applyBindings(cart);
     });
-    
+
     /*
      * Advanced search
      */
@@ -321,7 +321,8 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
         $('#advancedSearch').slideDown(2000);
         $(this).hide();
     });
-    
+
+
     return ui;
 
 })(jQuery, toastr, neemo.svc, neemo.shoppingCart, neemo.lineItem);

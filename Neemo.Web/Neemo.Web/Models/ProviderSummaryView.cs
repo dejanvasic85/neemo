@@ -15,5 +15,6 @@ namespace Neemo.Web.Models
         public string ProviderNameSlug { get; set; }
         public string Longitude { get; set; }
         public string Latitude { get; set; }
+        public decimal? Rating { get; set; }
     }
 }

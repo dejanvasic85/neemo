@@ -143,7 +143,7 @@
                                                     <i class="fa fa-search"></i> Search
                                                 </button>
                                             </div>
-                                            <br/>
+                                            <br />
                                             <span>
                                                 Tired of searching for parts? <a href="@Url.ContactUs()">Contact Us</a>
                                             </span>
@@ -201,7 +201,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                   
+
                                     <div class="footer-block paypal span4">
                                         <div class="title">
                                             <h2>we accept</h2>
@@ -230,7 +230,7 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                       
+
                                     </div>
                                 </div>
                             </div>
@@ -293,8 +293,8 @@
                 },
                 search: '@Url.Action("Find", "Products")'
             },
-            providers : {
-                search : '@Url.FindProviders(providerType: "placeholder")'
+            providers: {
+                search: '@Url.FindProviders(providerType: "placeholder")'
             }
         };
     </script>
@@ -302,8 +302,9 @@
     @Scripts.Render("~/magento")
     @Scripts.Render("~/bootstrap")
     @Scripts.Render("~/knockout")
-    @Scripts.Render("~/neemo")
     <script src="@Url.Content("~/components/raty/jquery.raty.js")"></script>
+    @Scripts.Render("~/neemo")
+
 
     @RenderSection("Scripts", false)
 
@@ -327,4 +328,5 @@
     <![endif]-->
 
 </body>
+
 </html>
