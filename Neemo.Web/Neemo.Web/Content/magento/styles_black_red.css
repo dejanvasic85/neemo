@@ -288,7 +288,6 @@ ul, ol {
     min-height: 400px;
     padding: 12px 7px;
     border: 1px solid #d7d7d7;
-    
     background: #fff;
     text-align: left;
 }
@@ -6699,6 +6698,10 @@ tr.summary-details-excluded {
         float: left;
         clear: both;
         margin: 10px 0;
+    }
+
+    .product-shop .form-horizontal .control-group .controls .input-append input {
+        width: 100px;
     }
 }
 

@@ -1,9 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Neemo.Providers
 {
     public class Provider
     {
+        public Provider()
+        {
+            AvailableServices = new List<ProviderServiceType>();
+        }
         public int ProviderId { get; set; }
         public string ProviderName { get; set; }
         public string Description { get; set; }
@@ -38,7 +43,7 @@ namespace Neemo.Providers
         public string DeletedByUser { get; set; }
         public DateTime? EffectiveDateFrom { get; set; }
         public DateTime? EffectiveDateTo { get; set; }
-
+        public List<ProviderServiceType> AvailableServices { get; set; }
 
         public string ToDisplayAddress()
         {
@@ -49,7 +54,7 @@ namespace Neemo.Providers
                 .WithCity(City)
                 .WithState(State)
                 .WithPostCode(PostCode.ToString())
-                .WithCountry(Country);
+                ;
 
             return builder.ToString();
         }

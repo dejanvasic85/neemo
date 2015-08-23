@@ -47,9 +47,18 @@ namespace Neemo.CarParts.EntityFramework
         {
             using (var conn = DbContextFactory.CreateConnection())
             {
-                return conn
-                    .Query<Provider>("Provider_GetById", new {ProviderId = id}, commandType: CommandType.StoredProcedure)
+                var provider = conn
+                    .Query<Provider>("Provider_GetById", new { ProviderId = id }, commandType: CommandType.StoredProcedure)
                     .SingleOrDefault();
+
+                if (provider == null)
+                    return provider;
+
+                provider.AvailableServices = conn
+                    .Query<ProviderServiceType>("ProviderServiceType_GetByProvider", new { ProviderId = id }, commandType: CommandType.StoredProcedure)
+                    .ToList();  
+
+                return provider;
             }
         }
     }

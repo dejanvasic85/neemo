@@ -1,7 +1,7 @@
 using System;
+using System.Linq;
 using Microsoft.Practices.Unity;
 using Neemo.Web.Infrastructure;
-using Neemo.Web.Models;
 
 namespace Neemo.Web
 {
@@ -43,12 +43,14 @@ namespace Neemo.Web
             config.CreateMap<Orders.OrderLineItem, Models.OrderLineItemView>();
             config.CreateMap<Orders.OrderLineItem, Models.InvoiceItemView>().ConvertUsing<Models.OrderLineItemToInvoiceItem>();
 
-            config.CreateMap<Providers.Provider, ProviderSummaryView>()
+            config.CreateMap<Providers.Provider, Models.ProviderSummaryView>()
                 .ForMember(member => member.Address, options => options.MapFrom(source => source.ToDisplayAddress()))
                 .ForMember(member => member.ProviderNameSlug, options => options.MapFrom(source => Slug.Create(source.ProviderName, true)));
 
-            config.CreateMap<Providers.Provider, ProviderDetailView>()
-                .ForMember(member => member.Address, options => options.MapFrom(source => source.ToDisplayAddress()));
+            config.CreateMap<Providers.Provider, Models.ProviderDetailView>()
+                .ForMember(member => member.Address, options => options.MapFrom(source => source.ToDisplayAddress()))
+                .ForMember(member => member.AvailableServices, options => options.MapFrom(source => source.AvailableServices.Select(s => s.ServiceType)))
+                ;
 
             // From view model
             config.CreateMap<Models.PersonalDetailsView, PersonalDetails>();

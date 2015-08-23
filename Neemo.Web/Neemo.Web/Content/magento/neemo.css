@@ -319,8 +319,6 @@
 /*
     Search results for providers
 */
-
-
 .provider-search-results .contact-card {
     -webkit-box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.2);
     -ms-box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.2);
@@ -390,6 +388,85 @@
             padding: 5px;
         }
 
+/*
+    Provider Details Page
+*/
+
+.provider-details {
+}
+
+    .provider-details .provider-info {
+        border: 1px solid #eee;
+        padding: 3px;
+        padding-bottom: 10px;
+        border-radius: 7px;
+        width: auto;
+        margin-bottom: 10px;
+    }
+
+        .provider-details .provider-info .thumbnail {
+            margin: 10px auto;
+        }
+
+        .provider-details .provider-info .details {
+            margin: 10px auto;
+        }
+            
+        .provider-details .provider-info .minor-title {
+            display: block;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .provider-details .provider-info .provider-service-list {
+            width: 40%;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .provider-contact a {
+            font-size: 1.2em;
+            color: #333333;
+            display: block;
+            margin-bottom: 8px;
+            border-radius: 4px;
+            padding: 6px;
+            box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);
+        }
+
+        .provider-contact a:hover {
+            text-decoration: none;
+            background-color: #eee;
+        }
+
+    .provider-details .provider-name {
+        padding: 3px 10px;
+        margin: 3px;
+        background-color: #000;
+    }
+
+        .provider-details .provider-name h1 {
+            color: #fff;
+            font-size: 28px;
+            margin: auto;
+        }
+
+    .provider-details .provider-map {
+        width: auto;
+        height: 300px;
+        padding: 2px;
+        border: 1px solid #eee;
+        border-radius: 7px;
+    }
+
+    .provider-details .provider-title > h2 {
+        border-bottom: 2px solid #d7d7d7;
+        padding: 5px 0;
+        font-size: 18px;
+        font-weight: normal;
+        margin-top: 10px;
+    }
+
 /* Large desktop */
 @media (min-width: 1200px) {
     .quick-access-left {
@@ -448,5 +525,13 @@
 
     .provider-search-results .contact-card .contact-info span {
         margin-left: 10px;
+    }
+
+    .provider-details .provider-info .details {
+        padding: 10px;
+    }
+
+    .provider-details .provider-info .provider-service-list {
+        padding-left: 10px;
     }
 }

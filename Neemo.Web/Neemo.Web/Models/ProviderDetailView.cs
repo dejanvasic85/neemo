@@ -1,10 +1,14 @@
 using System;
-using System.Linq;
+using System.Collections.Generic;
 
 namespace Neemo.Web.Models
 {
     public class ProviderDetailView
     {
+        public ProviderDetailView()
+        {
+            AvailableServices = new List<string>();
+        }
         public int ProviderId { get; set; }
         public string ProviderName { get; set; }
         public string Image { get; set; }
@@ -16,6 +20,10 @@ namespace Neemo.Web.Models
         public string Longitude { get; set; }
         public string Latitude { get; set; }
         public decimal? Rating { get; set; }
-
+        public List<string> AvailableServices { get; set; }
+        public string Mobile { get; set; }
+        public string Fax { get; set; }
+        public string EmailAddress { get; set; }
+        public int ReviewCount { get; set; }
     }
 }

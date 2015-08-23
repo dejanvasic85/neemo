@@ -322,6 +322,39 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
         $(this).hide();
     });
 
+    /*
+     * Google Maps
+     */
+    $('.provider-map').each(function () {
+
+        var $me = $(this);
+
+        var latitude = $me.data().latitude,
+            longitude = $me.data().longitude,
+            address = $me.data().providerAddress;
+
+        var mapCanvas = $(this).get(0);
+
+        function initialize() {
+            var latLng = new google.maps.LatLng(latitude, longitude);
+            var mapOptions = {
+                center: latLng,
+                zoom: 16,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                scrollwheel: false
+            };
+            var map = new google.maps.Map(mapCanvas, mapOptions);
+
+            var marker = new google.maps.Marker({
+                position: latLng,
+                title: address,
+                visible: true
+            });
+            marker.setMap(map);
+        }
+
+        initialize();
+    });
 
     return ui;
 
