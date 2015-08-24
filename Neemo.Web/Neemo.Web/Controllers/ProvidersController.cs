@@ -15,7 +15,8 @@ namespace Neemo.Web.Controllers
         {
             this._providerService = providerService;
         }
-
+        
+        [HttpGet]
         public ActionResult Details(int id, string slug = "")
         {
             var provider = _providerService.GetProviderById(id);
@@ -25,11 +26,13 @@ namespace Neemo.Web.Controllers
             return View(viewModel);
         }
 
+        [HttpGet]
         public ActionResult Identifier(int id)
         {
             return RedirectToAction("Details", new { id });
         }
 
+        [HttpGet]
         public ActionResult Find(FindProvidersModel findProviderModel)
         {
             var providersSearchResults = _providerService.Search(
@@ -49,11 +52,23 @@ namespace Neemo.Web.Controllers
             return View(findProviderModel);
         }
 
+        [HttpGet]
         public ActionResult GetProviderServiceTypes()
         {
             var services = _providerService.GetProviderServices().Select(s => new {Value = s.ServiceTypeId, Text = s.ServiceType}).ToList();
 
             return Json(services, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult AddReview(ProviderReviewView providerReviewViewModel)
+        {
+            _providerService.ReviewProvider(providerReviewViewModel.ProviderId,
+                providerReviewViewModel.Score,
+                providerReviewViewModel.Comment,
+                providerReviewViewModel.ReviewerName);
+
+            return Json(true);
         }
     }
 }

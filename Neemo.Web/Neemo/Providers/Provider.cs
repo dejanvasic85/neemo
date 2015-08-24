@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Neemo.CustomerReviews;
 
 namespace Neemo.Providers
 {
@@ -8,6 +9,7 @@ namespace Neemo.Providers
         public Provider()
         {
             AvailableServices = new List<ProviderServiceType>();
+            CustomerReviews = new List<CustomerReview>();
         }
         public int ProviderId { get; set; }
         public string ProviderName { get; set; }
@@ -44,7 +46,9 @@ namespace Neemo.Providers
         public DateTime? EffectiveDateFrom { get; set; }
         public DateTime? EffectiveDateTo { get; set; }
         public List<ProviderServiceType> AvailableServices { get; set; }
+        public List<CustomerReview> CustomerReviews { get; set; }
 
+    
         public string ToDisplayAddress()
         {
             AddressBuilder builder = new AddressBuilder();

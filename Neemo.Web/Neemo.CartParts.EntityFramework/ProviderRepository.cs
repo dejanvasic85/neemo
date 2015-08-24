@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using System.Linq;
 using Dapper;
+using Neemo.CustomerReviews;
 using Neemo.Providers;
 using System.Collections.Generic;
 
@@ -59,6 +60,22 @@ namespace Neemo.CarParts.EntityFramework
                     .ToList();  
 
                 return provider;
+            }
+        }
+
+        public void Update(Provider provider)
+        {
+            using (var conn = DbContextFactory.CreateConnection())
+            {
+                
+            }
+        }
+
+        public void AddCustomerReview(Provider provider, CustomerReview review)
+        {
+            using (var conn = DbContextFactory.CreateConnection())
+            {
+                
             }
         }
     }

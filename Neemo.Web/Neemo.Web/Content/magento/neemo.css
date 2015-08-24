@@ -411,7 +411,7 @@
         .provider-details .provider-info .details {
             margin: 10px auto;
         }
-            
+
         .provider-details .provider-info .minor-title {
             display: block;
             margin-bottom: 5px;
@@ -424,48 +424,48 @@
             vertical-align: top;
         }
 
-        .provider-contact a {
-            font-size: 1.2em;
-            color: #333333;
-            display: block;
-            margin-bottom: 8px;
-            border-radius: 4px;
-            padding: 6px;
-            box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);
-        }
+.provider-contact a {
+    font-size: 1.2em;
+    color: #333333;
+    display: block;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    padding: 6px;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);
+}
 
-        .provider-contact a:hover {
-            text-decoration: none;
-            background-color: #eee;
-        }
-
-    .provider-details .provider-name {
-        padding: 3px 10px;
-        margin: 3px;
-        background-color: #000;
+    .provider-contact a:hover {
+        text-decoration: none;
+        background-color: #eee;
     }
 
-        .provider-details .provider-name h1 {
-            color: #fff;
-            font-size: 28px;
-            margin: auto;
-        }
+.provider-details .provider-name {
+    padding: 3px 10px;
+    margin: 3px;
+    background-color: #000;
+}
 
-    .provider-details .provider-map {
-        width: auto;
-        height: 300px;
-        padding: 2px;
-        border: 1px solid #eee;
-        border-radius: 7px;
+    .provider-details .provider-name h1 {
+        color: #fff;
+        font-size: 28px;
+        margin: auto;
     }
 
-    .provider-details .provider-title > h2 {
-        border-bottom: 2px solid #d7d7d7;
-        padding: 5px 0;
-        font-size: 18px;
-        font-weight: normal;
-        margin-top: 10px;
-    }
+.provider-details .provider-map {
+    width: auto;
+    height: 300px;
+    padding: 2px;
+    border: 1px solid #eee;
+    border-radius: 7px;
+}
+
+.provider-details .provider-title > h2 {
+    border-bottom: 2px solid #d7d7d7;
+    padding: 5px 0;
+    font-size: 18px;
+    font-weight: normal;
+    margin-top: 10px;
+}
 
 /* Large desktop */
 @media (min-width: 1200px) {

@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Country.cs" />
     <Compile Include="CustomerReviews\CustomerReview.cs" />
+    <Compile Include="CustomerReviews\ICustomerReviewRepository.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\SystemExtensions.cs" />
