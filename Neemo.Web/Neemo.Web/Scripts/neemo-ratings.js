@@ -1,5 +1,6 @@
 ﻿(function ($, neemo, cookieMgr) {
-    var hints = ['Poor', 'Not Good', 'Average', 'Good', 'Excellent'];
+    var hints = ['Poor', 'Not Good', 'Average', 'Good', 'Excellent'],
+        cookieName = 'provider-reviews';
 
     $('[data-provider-summary-rating]').each(function () {
         var $me = $(this);
@@ -16,11 +17,14 @@
 
         // Unfortunately, the ko applybindings is all about shopping and it's site wide!
         // So we have to fallback to using plain jQuery crap
-        var cookie = cookieMgr.get('providerReview');
-        if (cookie !== null) {
-            if (cookie === 'posted') {
-                done();
-                return;
+        var cookie = cookieMgr.get(cookieName);
+        if (cookie !== undefined && cookie !== null) {
+            var posts = cookie.split(',');
+            for (var i = 0; i < posts.length; i++) {
+                if (posts[i] === providerId) {
+                    done();
+                    return;
+                }
             }
         }
 
@@ -52,7 +56,13 @@
                 type: 'POST',
                 data: rating,
                 complete: function () {
-                    cookieMgr.set('providerReview', "posted");
+                    debugger;
+                    var cookieValue = cookieMgr.get(cookieName) || '';
+                    if (cookieValue != '') {
+                        cookieValue += ',';
+                    }
+                    cookieValue += providerId;
+                    cookieMgr.set(cookieName, cookieValue);
                     done();
                 },
             });
