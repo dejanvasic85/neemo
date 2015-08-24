@@ -3,7 +3,6 @@ using System.Web.Mvc;
 using AutoMapper;
 using Neemo.Providers;
 using Neemo.Web.Infrastructure;
-using Neemo.Web.Models;
 
 namespace Neemo.Web.Controllers
 {
@@ -20,9 +19,11 @@ namespace Neemo.Web.Controllers
         public ActionResult Details(int id, string slug = "")
         {
             var provider = _providerService.GetProviderById(id);
-
-            var viewModel = Mapper.Map<Provider, ProviderDetailView>(provider);
-
+            var viewModel = Mapper.Map<Provider, Models.ProviderDetailView>(provider);
+            if (User.Identity.IsAuthenticated)
+            {
+                viewModel.CurrentUsername = User.Identity.Name;
+            }
             return View(viewModel);
         }
 
@@ -33,7 +34,7 @@ namespace Neemo.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Find(FindProvidersModel findProviderModel)
+        public ActionResult Find(Models.FindProvidersModel findProviderModel)
         {
             var providersSearchResults = _providerService.Search(
                 findProviderModel.ProviderType, 
@@ -61,12 +62,13 @@ namespace Neemo.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddReview(ProviderReviewView providerReviewViewModel)
+        public ActionResult AddReview(Models.ProviderReviewView providerReviewViewModel)
         {
             _providerService.ReviewProvider(providerReviewViewModel.ProviderId,
                 providerReviewViewModel.Score,
                 providerReviewViewModel.Comment,
-                providerReviewViewModel.ReviewerName);
+                providerReviewViewModel.ReviewerName
+                );
 
             return Json(true);
         }

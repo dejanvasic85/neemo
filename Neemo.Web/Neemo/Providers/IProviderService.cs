@@ -59,6 +59,10 @@ namespace Neemo.Providers
             };
 
             var provider = _providerRepository.Get(providerId);
+            if (provider == null)
+            {
+                throw new ArgumentException("Provider ID " + providerId + " does not exist");
+            }
             provider.CustomerReviews.Add(review);
 
             var numberOfReviews = provider.CustomerReviews.Count;

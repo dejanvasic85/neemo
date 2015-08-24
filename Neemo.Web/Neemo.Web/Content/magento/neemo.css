@@ -467,6 +467,14 @@
     margin-top: 10px;
 }
 
+.provider-details .write-review {
+    margin-top: 15px;
+}
+
+.provider-details .reviews {
+    
+}
+
 /* Large desktop */
 @media (min-width: 1200px) {
     .quick-access-left {

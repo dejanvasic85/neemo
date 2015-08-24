@@ -1,4 +1,5 @@
 ﻿@using Neemo
+@using Neemo.Providers
 @model ProviderDetailView
 
 @{
@@ -64,7 +65,7 @@
                         <div class="provider-service-list">
                             <span class="minor-title">User Reviews (@Model.ReviewCount):</span>
                             <div data-provider-summary-rating="@Model.Rating" data-path="@Url.Content("~/Components/raty/images")"></div>
-                            <a href="#provider-reviews">Write a review</a>
+                            <a href="#write_review">Write a review</a>
                         </div>
                     </div>
                 </div>
@@ -80,8 +81,6 @@
                     @ContactStub(Model.Address, "fa-map-marker", "http://maps.google.com/?q=" + Model.Address, "_blank")
                 </div>
             </div>
-
-
         </div>
 
         <div class="row-fluid">
@@ -90,10 +89,43 @@
             </div>
         </div>
 
+        <div class="row-fluid">
+            <div class="span12 write-review" id="write_review">
+                <div class="provider-title">
+                    <h2>Write a Review</h2>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="providerRating">Rating</label>
+                    <div class="controls">
+                        <div id="providerRating" data-path="@Url.Content("~/Components/raty/images")"></div>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label class="control-label" for="comments">Name</label>
+                    <div class="controls">
+                        <input id="reviewerName" class="input-block-level" placeholder="Full Name / Username" value="@Model.CurrentUsername" />
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="comments">Comment</label>
+                    <div class="controls">
+                        <textarea id="comments" class="control input-block-level" rows="4" placeholder="Please leave your comments about your experience"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button class="btn btn-primary" id="submitReview">Submit</button>
+                </div>
+
+            </div>
+        </div>
 
         <div class="row-fluid">
             @*Reviews*@
-            <div class="span12" id="provider-reviews">
+            <div class="span12 reviews">
                 <div class="provider-title">
                     <h2>Reviews</h2>
                 </div>
@@ -113,4 +145,19 @@
             @value
         </a>
     }
+}
+
+@section Scripts
+{
+    <script>
+        (function($, neemo) {
+
+            var isAvailable = neemo.providerReview('@Model.ProviderId', $('#providerRating'), $('#reviewerName'), $('#comments'), $('#submitReview'), '@Url.Action("AddReview", "Providers")', ratingComplete);
+
+            function ratingComplete() {
+                console.log('complete');
+            }
+            
+        })(jQuery, neemo);
+    </script>
 }

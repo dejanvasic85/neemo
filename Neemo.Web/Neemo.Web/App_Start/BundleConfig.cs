@@ -8,7 +8,9 @@ namespace Neemo.Web
         public static void RegisterScripts(BundleCollection bundles)
         {
 
-            bundles.Add(new ScriptBundle("~/jquery").IncludeDirectory("~/Scripts", "jquery*"));
+            bundles.Add(new ScriptBundle("~/jquery")
+                .Include("~/Scripts/jquery-1.11.0.js") // The main library first in order
+                .IncludeDirectory("~/Scripts", "jquery*"));
 
             bundles.Add(new ScriptBundle("~/magento")
                 .Include("~/Scripts/magento/prototype.js")
@@ -38,7 +40,9 @@ namespace Neemo.Web
 
             bundles.Add(new ScriptBundle("~/knockout").IncludeDirectory("~/Scripts", searchPattern: "knockout-*", searchSubdirectories: false));
             bundles.Add(new ScriptBundle("~/bootstrap").IncludeDirectory("~/Scripts", searchPattern: "bootstrap*", searchSubdirectories: false));
-            bundles.Add(new ScriptBundle("~/neemo").IncludeDirectory("~/Scripts", searchPattern: "neemo-*", searchSubdirectories: false));
+            bundles.Add(new ScriptBundle("~/neemo")
+                .Include("~/Scripts/neemo-models.js") // models first in order
+                .IncludeDirectory("~/Scripts", searchPattern: "neemo-*", searchSubdirectories: false));
 
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862

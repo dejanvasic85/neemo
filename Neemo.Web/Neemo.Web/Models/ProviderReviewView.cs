@@ -8,7 +8,6 @@ namespace Neemo.Web.Models
         public decimal Score { get; set; }
         public string Comment { get; set; }
         public DateTime? CreatedDateTime { get; set; }
-        public string CreatedByUser { get; set; }
         public string ReviewerName { get; set; }
     }
 }

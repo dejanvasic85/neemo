@@ -25,5 +25,6 @@ namespace Neemo.Web.Models
         public string Fax { get; set; }
         public string EmailAddress { get; set; }
         public int ReviewCount { get; set; }
+        public string CurrentUsername { get; set; }
     }
 }
