@@ -12,14 +12,15 @@
         });
     });
 
-    neemo.providerReview = function (providerId, ratingElement, nameElement, commentElement, submitElement, endpoint, done) {
+    neemo.providerReview = function (providerId, ratingElement, nameElement, commentElement, submitElement, endpoint, done, invalid) {
 
         // Unfortunately, the ko applybindings is all about shopping and it's site wide!
         // So we have to fallback to using plain jQuery crap
         var cookie = cookieMgr.get('providerReview');
         if (cookie !== null) {
             if (cookie === 'posted') {
-                return false;
+                done();
+                return;
             }
         }
 
@@ -40,6 +41,12 @@
             rating.comment = commentElement.val();
             rating.reviewerName = nameElement.val();
 
+            if (rating.comment === '' || rating.reviewerName === '') {
+                invalid();
+                return;
+            }
+
+            submitElement.button('loading');
             $.ajax({
                 url: endpoint,
                 type: 'POST',
@@ -47,11 +54,9 @@
                 complete: function () {
                     cookieMgr.set('providerReview', "posted");
                     done();
-                }
+                },
             });
         });
-
-        return true;
     }
 
 

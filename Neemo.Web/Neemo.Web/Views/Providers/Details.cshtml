@@ -65,7 +65,7 @@
                         <div class="provider-service-list">
                             <span class="minor-title">User Reviews (@Model.ReviewCount):</span>
                             <div data-provider-summary-rating="@Model.Rating" data-path="@Url.Content("~/Components/raty/images")"></div>
-                            <a href="#write_review">Write a review</a>
+                            <a href="#writeReview">Write a review</a>
                         </div>
                     </div>
                 </div>
@@ -88,9 +88,18 @@
                 <div class="provider-map" data-latitude="@Model.Latitude" data-longitude="@Model.Longitude" data-provider-address="@Model.Address"></div>
             </div>
         </div>
+        
+        <div class="row-fluid">
+            <div class="span12 write-review" id="reviewComplete" style="display:none;">
+                <div class="alert alert-success">
+                    You review has been submitted successfully. Thank you.
+                </div>
+            </div>
+        </div>
 
         <div class="row-fluid">
-            <div class="span12 write-review" id="write_review">
+           
+            <div class="span12 write-review" id="writeReview">
                 <div class="provider-title">
                     <h2>Write a Review</h2>
                 </div>
@@ -114,6 +123,10 @@
                     <div class="controls">
                         <textarea id="comments" class="control input-block-level" rows="4" placeholder="Please leave your comments about your experience"></textarea>
                     </div>
+                </div>
+                
+                <div class="alert alert-danger" id="ratingInvalid" style="display: none;">
+                    Name and Comment fields are required.
                 </div>
 
                 <div class="form-actions">
@@ -152,10 +165,22 @@
     <script>
         (function($, neemo) {
 
-            var isAvailable = neemo.providerReview('@Model.ProviderId', $('#providerRating'), $('#reviewerName'), $('#comments'), $('#submitReview'), '@Url.Action("AddReview", "Providers")', ratingComplete);
+            neemo.providerReview('@Model.ProviderId',
+                $('#providerRating'),
+                $('#reviewerName'),
+                $('#comments'),
+                $('#submitReview'),
+                '@Url.Action("AddReview", "Providers")',
+                ratingComplete,
+                invalid);
 
             function ratingComplete() {
-                console.log('complete');
+                $('#reviewComplete').show();
+                $('#writeReview').hide();
+            }
+
+            function invalid() {
+                $('#ratingInvalid').show();
             }
             
         })(jQuery, neemo);
