@@ -29,7 +29,10 @@ namespace Neemo.Providers
         public List<Provider> GetProvidersByType(ProviderType providerType, int takeMax)
         {
             var providers = _providerRepository.GetProvidersByType(providerType, takeMax);
-
+            if (providers.Count > 0)
+            {
+                _providerRepository.Update(providers[0]);
+            }
             return providers;
         }
 

@@ -1,12 +1,18 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using System.Data;
+using System.Linq;
+using System.Reflection;
 using Dapper;
 
 namespace Neemo.CarParts.EntityFramework.DapperExtensions
 {
     public static class DbConnectionExtensions
     {
+        private static readonly string[] IgnoreUpdateProperties = new[]
+        {
+            "CreatedDateTime", "CreatedByUser", "DeletedDateTime", "DeletedByUser", "Active"
+        };
+
         public static void Update<TTarget>(this IDbConnection dbConnection, TTarget objectToUpdate)
         {
             var type = typeof(TTarget);
@@ -15,8 +21,7 @@ namespace Neemo.CarParts.EntityFramework.DapperExtensions
 
             foreach (var propertyInfo in properties)
             {
-                var propertyType = propertyInfo.PropertyType;
-                if (propertyType != typeof(string) && typeof(IEnumerable).IsAssignableFrom(propertyInfo.PropertyType))
+                if (IsIgnoredProperty(propertyInfo))
                 {
                     continue;
                 }
@@ -29,6 +34,16 @@ namespace Neemo.CarParts.EntityFramework.DapperExtensions
             var procName = type.Name + "_Update";
 
             dbConnection.Execute(procName, arguments, commandType: CommandType.StoredProcedure);
+        }
+
+        private static bool IsIgnoredProperty(PropertyInfo propertyInfo)
+        {
+            if (IgnoreUpdateProperties.Contains(propertyInfo.Name))
+            {
+                return true;
+            }
+
+            return propertyInfo != typeof(string) && typeof(IEnumerable).IsAssignableFrom(propertyInfo.PropertyType);
         }
     }
 }
