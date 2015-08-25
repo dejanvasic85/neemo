@@ -1,6 +1,8 @@
 ﻿using System.Data;
 using System.Linq;
+using System.Reflection;
 using Dapper;
+using Neemo.CarParts.EntityFramework.DapperExtensions;
 using Neemo.CustomerReviews;
 using Neemo.Providers;
 using System.Collections.Generic;
@@ -57,7 +59,7 @@ namespace Neemo.CarParts.EntityFramework
 
                 provider.AvailableServices = conn
                     .Query<ProviderServiceType>("ProviderServiceType_GetByProvider", new { ProviderId = id }, commandType: CommandType.StoredProcedure)
-                    .ToList();  
+                    .ToList();
 
                 return provider;
             }
@@ -67,7 +69,7 @@ namespace Neemo.CarParts.EntityFramework
         {
             using (var conn = DbContextFactory.CreateConnection())
             {
-                
+                conn.Update(provider);
             }
         }
 
@@ -75,7 +77,7 @@ namespace Neemo.CarParts.EntityFramework
         {
             using (var conn = DbContextFactory.CreateConnection())
             {
-                
+
             }
         }
     }

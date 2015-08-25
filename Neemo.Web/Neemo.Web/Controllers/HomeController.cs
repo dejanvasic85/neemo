@@ -35,7 +35,10 @@
         public ActionResult Index()
         {
             // Fetch the featured/new/best-selling products for display
-            var newProducts = _productService.GetNewProducts().Where(m => m.ImageId.HasValue()).Select(Mapper.Map<Product, ProductSummaryView>).Take(MaxRecordsOnHomePage);
+            var newProducts = _productService.GetNewProducts()
+                .Where(m => m.ImageId.HasValue())
+                .Select(Mapper.Map<Product, ProductSummaryView>)
+                .Take(MaxRecordsOnHomePage);
 
             var homeModel = new HomeView
             {

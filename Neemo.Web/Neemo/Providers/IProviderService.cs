@@ -28,7 +28,9 @@ namespace Neemo.Providers
 
         public List<Provider> GetProvidersByType(ProviderType providerType, int takeMax)
         {
-            return _providerRepository.GetProvidersByType(providerType, takeMax);
+            var providers = _providerRepository.GetProvidersByType(providerType, takeMax);
+
+            return providers;
         }
 
         public List<ProviderServiceType> GetProviderServices()

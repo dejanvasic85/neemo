@@ -62,6 +62,7 @@
     <Compile Include="Converters\RegistrationToUserProfileConverter.cs" />
     <Compile Include="Converters\UserProfileToRegistrationConverter.cs" />
     <Compile Include="CustomerReviewRepository.cs" />
+    <Compile Include="DapperExtensions\DbConnectionExtensions.cs" />
     <Compile Include="DbContextFactory.cs" />
     <Compile Include="EntityFrameworkMappingConfig.cs" />
     <Compile Include="Models\BodyType.cs" />
