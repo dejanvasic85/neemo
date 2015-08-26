@@ -470,6 +470,7 @@
 .provider-details .write-review {
     margin-top: 15px;
     padding: 15px;
+    padding-bottom: 0;
 }
 
     .provider-details .write-review input,
@@ -478,7 +479,32 @@
     }
 
 .provider-details .reviews {
+    padding: 15px;
+    padding-top: 0;
 }
+
+    .provider-details .reviews .review {
+        padding: 20px;
+        border-bottom: 1px solid #d7d7d7;
+    }
+
+        .provider-details .reviews .review:hover {
+            background-color: #eee;
+        }
+
+        .provider-details .reviews .review:nth-child(odd) {
+            background: #f5f5f5;
+        }
+        .provider-details .reviews .review:nth-child(odd):hover {
+            background: #eee;
+        }
+
+        .provider-details .reviews .review .review-header {
+            margin-bottom: 5px;
+            font-size: 1.2em;
+        }
+
+
 
 /* Large desktop */
 @media (min-width: 1200px) {

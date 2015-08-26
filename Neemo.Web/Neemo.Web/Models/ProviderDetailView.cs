@@ -8,6 +8,7 @@ namespace Neemo.Web.Models
         public ProviderDetailView()
         {
             AvailableServices = new List<string>();
+            CustomerReviews=new List<ProviderReviewView>();
         }
         public int ProviderId { get; set; }
         public string ProviderName { get; set; }
@@ -24,7 +25,8 @@ namespace Neemo.Web.Models
         public string Mobile { get; set; }
         public string Fax { get; set; }
         public string EmailAddress { get; set; }
-        public int ReviewCount { get; set; }
         public string CurrentUsername { get; set; }
+
+        public List<ProviderReviewView> CustomerReviews { get; set; }
     }
 }

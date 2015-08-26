@@ -20,6 +20,7 @@ namespace Neemo.Web.Controllers
         {
             var provider = _providerService.GetProviderById(id);
             var viewModel = Mapper.Map<Provider, Models.ProviderDetailView>(provider);
+
             if (User.Identity.IsAuthenticated)
             {
                 viewModel.CurrentUsername = User.Identity.Name;
@@ -60,14 +61,14 @@ namespace Neemo.Web.Controllers
 
             return Json(services, JsonRequestBehavior.AllowGet);
         }
-
+        
         [HttpPost]
         public ActionResult AddReview(Models.ProviderReviewView providerReviewViewModel)
         {
             _providerService.ReviewProvider(providerReviewViewModel.ProviderId,
                 providerReviewViewModel.Score,
                 providerReviewViewModel.Comment,
-                providerReviewViewModel.ReviewerName
+                providerReviewViewModel.CreatedByUser
                 );
 
             return Json(true);

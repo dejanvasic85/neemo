@@ -49,8 +49,10 @@ namespace Neemo.Web
 
             config.CreateMap<Providers.Provider, Models.ProviderDetailView>()
                 .ForMember(member => member.Address, options => options.MapFrom(source => source.ToDisplayAddress()))
-                .ForMember(member => member.AvailableServices, options => options.MapFrom(source => source.AvailableServices.Select(s => s.ServiceType)))
-                ;
+                .ForMember(member => member.AvailableServices, options => options.MapFrom(source => source.AvailableServices.Select(s => s.ServiceType)));
+
+            config.CreateMap<CustomerReviews.CustomerReview, Models.ProviderReviewView>()
+                .ForMember(member => member.ProviderId, options => options.Ignore());
 
             // From view model
             config.CreateMap<Models.PersonalDetailsView, PersonalDetails>();

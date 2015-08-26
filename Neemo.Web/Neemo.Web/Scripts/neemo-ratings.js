@@ -67,6 +67,6 @@
             });
         });
     }
-
+    
 
 })(jQuery, neemo, Mage.Cookies);
