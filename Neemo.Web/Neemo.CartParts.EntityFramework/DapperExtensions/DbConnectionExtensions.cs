@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Data;
 using System.Linq;
 using System.Reflection;
@@ -8,12 +9,17 @@ namespace Neemo.CarParts.EntityFramework.DapperExtensions
 {
     public static class DbConnectionExtensions
     {
-        private static readonly string[] IgnoreUpdateProperties = new[]
+        public static TTarget Add<TTarget>(this IDbConnection dbConnection, TTarget objectToUpdate)
         {
-            "CreatedDateTime", "CreatedByUser", "DeletedDateTime", "DeletedByUser", "Active"
-        };
+            return Execute(dbConnection, objectToUpdate, "_Add", IsIgnoredForAdd<TTarget>);
+        }
 
-        public static void Update<TTarget>(this IDbConnection dbConnection, TTarget objectToUpdate)
+        public static TTarget Update<TTarget>(this IDbConnection dbConnection, TTarget objectToUpdate)
+        {
+            return Execute(dbConnection, objectToUpdate, "_Update", IsIgnoredForUpdate);
+        }
+
+        private static TTarget Execute<TTarget>(IDbConnection dbConnection, TTarget objectToUpdate, string proc, Predicate<PropertyInfo> ignorePredicate)
         {
             var type = typeof(TTarget);
             var properties = type.GetProperties();
@@ -21,7 +27,7 @@ namespace Neemo.CarParts.EntityFramework.DapperExtensions
 
             foreach (var propertyInfo in properties)
             {
-                if (IsIgnoredProperty(propertyInfo))
+                if (ignorePredicate(propertyInfo))
                 {
                     continue;
                 }
@@ -31,19 +37,37 @@ namespace Neemo.CarParts.EntityFramework.DapperExtensions
 
             // Stored proc name is by convention
             // ObjectName_Update
-            var procName = type.Name + "_Update";
+            var procName = type.Name + proc;
 
-            dbConnection.Execute(procName, arguments, commandType: CommandType.StoredProcedure);
+            return dbConnection.Query<TTarget>(procName, arguments, commandType: CommandType.StoredProcedure).SingleOrDefault();
         }
 
-        private static bool IsIgnoredProperty(PropertyInfo propertyInfo)
+        private static bool IsIgnoredForUpdate(PropertyInfo propertyInfo)
         {
-            if (IgnoreUpdateProperties.Contains(propertyInfo.Name))
+            var ignoreUpdateProperties = new string[] { "CreatedDateTime", "CreatedByUser"};
+
+            if (ignoreUpdateProperties.Contains(propertyInfo.Name))
             {
                 return true;
             }
 
             return propertyInfo != typeof(string) && typeof(IEnumerable).IsAssignableFrom(propertyInfo.PropertyType);
+        }
+
+        private static bool IsIgnoredForAdd<TTarget>(PropertyInfo propertyInfo)
+        {
+            // Ignore the Id when we are adding a new object
+            // E.g. CustomerReview => CustomerReviewId
+            var idProperty = typeof (TTarget).Name + "Id";
+
+            var ignoreUpdateProperties = new [] {idProperty, "LastModifiedDateTime", "LastModifiedByUser", "DeletedDateTime", "DeletedByUser"};
+
+            if (ignoreUpdateProperties.Contains(propertyInfo.Name))
+            {
+                return true;
+            }
+
+            return propertyInfo.PropertyType != typeof(string) && typeof(IEnumerable).IsAssignableFrom(propertyInfo.PropertyType);
         }
     }
 }

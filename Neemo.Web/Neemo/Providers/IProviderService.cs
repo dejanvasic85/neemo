@@ -28,12 +28,7 @@ namespace Neemo.Providers
 
         public List<Provider> GetProvidersByType(ProviderType providerType, int takeMax)
         {
-            var providers = _providerRepository.GetProvidersByType(providerType, takeMax);
-            if (providers.Count > 0)
-            {
-                _providerRepository.Update(providers[0]);
-            }
-            return providers;
+            return _providerRepository.GetProvidersByType(providerType, takeMax);
         }
 
         public List<ProviderServiceType> GetProviderServices()
@@ -61,6 +56,7 @@ namespace Neemo.Providers
                 CreatedDateTime = DateTime.Now,
                 LastModifiedByUser = reviewerName,
                 LastModifiedDateTime = DateTime.Now,
+                Active = true
             };
 
             var provider = _providerRepository.Get(providerId);
@@ -74,9 +70,11 @@ namespace Neemo.Providers
             var newScore = provider.CustomerReviews.Sum(r => r.Score)/numberOfReviews;
 
             provider.Rating = newScore;
+            provider.LastModifiedByUser = reviewerName;
+            provider.LastModifiedDateTime = DateTime.Now;
 
-            _providerRepository.Update(provider);
             _providerRepository.AddCustomerReview(provider, review);
+            _providerRepository.UpdateProviderRating(provider);
         }
     }
 }

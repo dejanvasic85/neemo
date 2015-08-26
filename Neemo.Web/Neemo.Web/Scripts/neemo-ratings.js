@@ -55,8 +55,7 @@
                 url: endpoint,
                 type: 'POST',
                 data: rating,
-                complete: function () {
-                    debugger;
+                success: function () {
                     var cookieValue = cookieMgr.get(cookieName) || '';
                     if (cookieValue != '') {
                         cookieValue += ',';

@@ -7,6 +7,7 @@ namespace Neemo.CustomerReviews
         public int? CustomerReviewId { get; set; }
         public decimal Score { get; set; }
         public string Comment { get; set; }
+        public bool Active { get; set; }
         public DateTime? CreatedDateTime { get; set; }
         public string CreatedByUser { get; set; }
         public DateTime? LastModifiedDateTime { get; set; }

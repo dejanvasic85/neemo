@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Data.Common;
 using System.Linq;
 using Dapper;
 using Neemo.CarParts.EntityFramework.DapperExtensions;
@@ -56,19 +57,32 @@ namespace Neemo.CarParts.EntityFramework
                 if (provider == null)
                     return provider;
 
+                
                 provider.AvailableServices = conn
                     .Query<ProviderServiceType>("ProviderServiceType_GetByProvider", new { ProviderId = id }, commandType: CommandType.StoredProcedure)
+                    .ToList();
+
+
+                provider.CustomerReviews = conn
+                    .Query<CustomerReview>("CustomerReview_GetForProvider", new {ProviderId = id}, commandType: CommandType.StoredProcedure)
                     .ToList();
 
                 return provider;
             }
         }
 
-        public void Update(Provider provider)
+        public void UpdateProviderRating(Provider provider)
         {
             using (var conn = DbContextFactory.CreateConnection())
             {
-                conn.Update(provider);
+                conn.Execute("Provider_UpdateRating",
+                    new
+                    {
+                        ProviderId = provider.ProviderId,
+                        Rating = provider.Rating,
+                        User = provider.LastModifiedByUser
+                    },
+                    commandType: CommandType.StoredProcedure);
             }
         }
 
@@ -76,7 +90,15 @@ namespace Neemo.CarParts.EntityFramework
         {
             using (var conn = DbContextFactory.CreateConnection())
             {
+                // Add the customer review
+                var newReview = conn.Add(review);
 
+                // Then add the relationship to the provider
+                conn.Execute("ProviderCustomerReview_Add", new
+                {
+                    ProviderId = provider.ProviderId,
+                    CustomerReviewId = newReview.CustomerReviewId
+                }, commandType: CommandType.StoredProcedure);
             }
         }
     }

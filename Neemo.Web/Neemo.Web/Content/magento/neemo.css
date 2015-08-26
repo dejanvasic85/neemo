@@ -469,10 +469,15 @@
 
 .provider-details .write-review {
     margin-top: 15px;
+    padding: 15px;
 }
 
+    .provider-details .write-review input,
+    .provider-details .write-review textarea {
+        padding: 10px;
+    }
+
 .provider-details .reviews {
-    
 }
 
 /* Large desktop */
