@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
+using Neemo.Notifications;
 using Neemo.Providers;
 using Neemo.Web.Infrastructure;
 
@@ -9,12 +10,18 @@ namespace Neemo.Web.Controllers
     public class ProvidersController : MagentoController
     {
         private readonly IProviderService _providerService;
+        private readonly INotificationService _notificationService;
+        private readonly ITemplateService _templateService;
+        private readonly ISysConfig _config;
 
-        public ProvidersController(IProviderService providerService)
+        public ProvidersController(IProviderService providerService, INotificationService notificationService, ITemplateService templateService, ISysConfig config)
         {
             this._providerService = providerService;
+            _notificationService = notificationService;
+            _templateService = templateService;
+            _config = config;
         }
-        
+
         [HttpGet]
         public ActionResult Details(int id, string slug = "")
         {
@@ -38,10 +45,10 @@ namespace Neemo.Web.Controllers
         public ActionResult Find(Models.FindProvidersModel findProviderModel)
         {
             var providersSearchResults = _providerService.Search(
-                findProviderModel.ProviderType, 
+                findProviderModel.ProviderType,
                 findProviderModel.Keyword,
                 findProviderModel.ProviderServiceType);
-            
+
             findProviderModel.ProviderSummaryViews = providersSearchResults
                 .Skip(findProviderModel.SkipAmount)
                 .Take(findProviderModel.PageSize)
@@ -57,19 +64,24 @@ namespace Neemo.Web.Controllers
         [HttpGet]
         public ActionResult GetProviderServiceTypes()
         {
-            var services = _providerService.GetProviderServices().Select(s => new {Value = s.ServiceTypeId, Text = s.ServiceType}).ToList();
-
+            var services = _providerService.GetProviderServices().Select(s => new { Value = s.ServiceTypeId, Text = s.ServiceType }).ToList();
             return Json(services, JsonRequestBehavior.AllowGet);
         }
-        
+
         [HttpPost]
         public ActionResult AddReview(Models.ProviderReviewView providerReviewViewModel)
         {
             _providerService.ReviewProvider(providerReviewViewModel.ProviderId,
                 providerReviewViewModel.Score,
                 providerReviewViewModel.Comment,
-                providerReviewViewModel.CreatedByUser
-                );
+                providerReviewViewModel.CreatedByUser);
+
+            // Send an email to the support team
+            _notificationService.Email("Review Submitted by " + providerReviewViewModel.CreatedByUser,
+                _templateService.ViewToString(this, "~/Views/EmailTemplates/ProviderReviewSubmitted.cshtml", providerReviewViewModel),
+                _config.NotificationSenderEmail,
+                string.Empty,
+                to: _config.NotificationSupportEmail);
 
             return Json(true);
         }

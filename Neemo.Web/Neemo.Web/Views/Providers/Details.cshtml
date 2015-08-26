@@ -111,13 +111,15 @@
                         <div id="providerRating" data-path="@Url.Content("~/Components/raty/images")"></div>
                     </div>
                 </div>
-
-                <div class="control-group">
-                    <label class="control-label" for="comments">Name</label>
-                    <div class="controls">
-                        <input id="reviewerName" class="input-block-level" placeholder="Full Name / Username" value="@Model.CurrentUsername" />
+                
+                @if (!User.Identity.IsAuthenticated) { 
+                    <div class="control-group">
+                        <label class="control-label" for="comments">Name</label>
+                        <div class="controls">
+                            <input id="reviewerName" class="input-block-level" placeholder="Full Name / Username" value="@Model.CurrentUsername" />
+                        </div>
                     </div>
-                </div>
+                }
 
                 <div class="control-group">
                     <label class="control-label" for="comments">Comment</label>
@@ -185,8 +187,10 @@
         (function ($, neemo) {
 
             neemo.providerReview('@Model.ProviderId',
+                '@Model.ProviderName',
                 $('#providerRating'),
                 $('#reviewerName'),
+                @User.Identity.IsAuthenticated.ToString().ToLower(),
                 $('#comments'),
                 $('#submitReview'),
                 '@Url.Action("AddReview", "Providers")',

@@ -739,6 +739,7 @@
     <Content Include="Views\Providers\Details.cshtml" />
     <Content Include="Views\Providers\Find.cshtml" />
     <Content Include="Views\Providers\_ProviderFilters.cshtml" />
+    <Content Include="Views\EmailTemplates\ProviderReviewSubmitted.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Neemo.CarParts\Neemo.CarParts.csproj">

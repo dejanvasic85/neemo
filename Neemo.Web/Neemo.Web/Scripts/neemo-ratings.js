@@ -13,7 +13,7 @@
         });
     });
 
-    neemo.providerReview = function (providerId, ratingElement, nameElement, commentElement, submitElement, endpoint, done, invalid) {
+    neemo.providerReview = function (providerId, providerName, ratingElement, nameElement, isAuthenticated, commentElement, submitElement, endpoint, done, invalid) {
 
         // Unfortunately, the ko applybindings is all about shopping and it's site wide!
         // So we have to fallback to using plain jQuery crap
@@ -30,6 +30,7 @@
 
         var rating = {
             providerId: providerId,
+            providerName : providerName,
             score: 0
         };
 
@@ -43,9 +44,9 @@
 
         submitElement.on('click', function () {
             rating.comment = commentElement.val();
-            rating.reviewerName = nameElement.val();
+            rating.createdByUser = nameElement.val();
 
-            if (rating.comment === '' || rating.reviewerName === '') {
+            if (rating.comment === '' || (isAuthenticated === false && rating.reviewerName === '')) {
                 invalid();
                 return;
             }
