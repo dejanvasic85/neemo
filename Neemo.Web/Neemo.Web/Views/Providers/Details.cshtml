@@ -62,8 +62,8 @@
             <div class="span4">
                 <div class="provider-contact details">
                     @ContactStub(Model.Phone, "fa-phone-square", "tel:" + Model.Phone)
-                    @ContactStub(Model.Mobile, "fa-phone-square", "tel:" + Model.Phone)
-                    @ContactStub(Model.EmailAddress, "fa-envelope", Model.EmailAddress)
+                    @ContactStub(Model.Mobile, "fa-phone-square", "tel:" + Model.Mobile)
+                    @ContactStub(Model.EmailAddress, "fa-envelope", "mailto:" +  Model.EmailAddress, "_blank")
                     @ContactStub("Website", "fa-globe", Model.URL, "_blank")
                     @ContactStub(Model.Address, "fa-map-marker", "http://maps.google.com/?q=" + Model.Address, "_blank")
                 </div>
