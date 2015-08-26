@@ -41,6 +41,7 @@ namespace Neemo.Web
             bundles.Add(new ScriptBundle("~/knockout").IncludeDirectory("~/Scripts", searchPattern: "knockout-*", searchSubdirectories: false));
             bundles.Add(new ScriptBundle("~/bootstrap").IncludeDirectory("~/Scripts", searchPattern: "bootstrap*", searchSubdirectories: false));
             bundles.Add(new ScriptBundle("~/neemo")
+                .Include("~/Scripts/neemo-cartsvc.js")
                 .Include("~/Scripts/neemo-models.js") // models first in order
                 .IncludeDirectory("~/Scripts", searchPattern: "neemo-*", searchSubdirectories: false));
 

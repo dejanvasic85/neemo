@@ -21,9 +21,12 @@
                 }
                 else
                 {
-                    <button type="button" title="Add to Cart" class="btn btn-cart" data-productid="@Model.ProductId">
-                        <i class="icon-plus icon-white"></i> Add To Cart
-                    </button>
+                    @*<button type="button" title="Add to Cart" class="btn btn-cart" data-productid="@Model.ProductId">
+                            <i class="icon-plus icon-white"></i> Add To Cart
+                        </button>*@
+                    <a class="btn" title="@Model.Title" href="@Url.Product(Model.ProductId, Slug.Create(Model.Title))">
+                        More Info <i class="fa fa-arrow-right"></i> 
+                    </a>
                 }
             </p>
             <h3 class="top-buffer-10">
@@ -32,7 +35,7 @@
                 </a>
             </h3>
             @*<p>@Model.Description.TruncateOnWordBoundary(100)</p>*@
-            
+
             <div class="bottom-separator">
                 <span>@Model.Price.ToString("C")</span>
             </div>
