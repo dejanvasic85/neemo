@@ -48,20 +48,6 @@
 
                 <div class="row-fluid">
                     <div class="span12">
-                        @if (Model.AvailableServices.Count > 0)
-                        {
-                            <div class="provider-service-list">
-                                <span class="minor-title">Available Services:</span>
-                                <ul>
-                                    @foreach (var service in Model.AvailableServices)
-                                    {
-                                        <li>
-                                            <span class="label label-inverse">@service</span>
-                                        </li>
-                                    }
-                                </ul>
-                            </div>
-                        }
 
                         <div class="provider-service-list">
                             <span class="minor-title">User Reviews (@Model.CustomerReviews.Count):</span>
@@ -83,6 +69,26 @@
                 </div>
             </div>
         </div>
+        
+        @*Available Services*@
+        <div class="row-fluid">
+            <div class="span12">
+                @if (Model.AvailableServices.Count > 0)
+                {
+                    <div class="available-services">
+                        <span class="minor-title">Available Services:</span>
+
+                        @foreach (var service in Model.AvailableServices)
+                        {
+                            <span>
+                                <span class="label label-inverse">@service</span>
+                            </span>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+
 
         <div class="row-fluid">
             <div class="span12">

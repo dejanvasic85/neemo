@@ -71,6 +71,11 @@ namespace Neemo.Web.Controllers
         [HttpPost]
         public ActionResult AddReview(Models.ProviderReviewView providerReviewViewModel)
         {
+            if (providerReviewViewModel.CreatedByUser.IsNullOrEmpty() && User.Identity.IsAuthenticated)
+            {
+                providerReviewViewModel.CreatedByUser = User.Identity.Name;
+            }
+
             _providerService.ReviewProvider(providerReviewViewModel.ProviderId,
                 providerReviewViewModel.Score,
                 providerReviewViewModel.Comment,

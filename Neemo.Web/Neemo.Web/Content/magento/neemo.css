@@ -418,11 +418,16 @@
             border-bottom: 1px solid #eee;
         }
 
-        .provider-details .provider-info .provider-service-list {
+        /*.provider-details .provider-info .provider-service-list {
             width: 40%;
             display: inline-block;
             vertical-align: top;
-        }
+        }*/
+
+    .provider-details .available-services {
+        margin-left: 3%;
+        margin-right: 3%;
+    }
 
 .provider-contact a {
     font-size: 1.2em;
@@ -495,9 +500,10 @@
         .provider-details .reviews .review:nth-child(odd) {
             background: #f5f5f5;
         }
-        .provider-details .reviews .review:nth-child(odd):hover {
-            background: #eee;
-        }
+
+            .provider-details .reviews .review:nth-child(odd):hover {
+                background: #eee;
+            }
 
         .provider-details .reviews .review .review-header {
             margin-bottom: 5px;
