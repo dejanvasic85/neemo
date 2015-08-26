@@ -280,7 +280,7 @@
     Search results - top google-like bar
 */
 .search-type-results {
-    text-align: left;
+    text-align: center;
     font-size: 1.2em;
     color: #777;
     height: 59px;
