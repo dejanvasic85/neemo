@@ -27,11 +27,11 @@
                 }
             </p>
             <h3 class="top-buffer-10">
-                <a href="@Url.Product(Model.ProductId, Slug.Create(Model.Title))">
+                <a title="@Model.Title" href="@Url.Product(Model.ProductId, Slug.Create(Model.Title))">
                     @Model.Title.TruncateOnWordBoundary(20)
                 </a>
             </h3>
-            <p>@Model.Description.TruncateOnWordBoundary(100)</p>
+            @*<p>@Model.Description.TruncateOnWordBoundary(100)</p>*@
             
             <div class="bottom-separator">
                 <span>@Model.Price.ToString("C")</span>

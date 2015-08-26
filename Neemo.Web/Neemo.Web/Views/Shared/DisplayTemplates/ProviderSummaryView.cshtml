@@ -18,15 +18,15 @@
                 </a>
             </p>
             <h3 class="top-buffer-10">
-                <a href="@Url.Product(Model.ProviderId, Slug.Create(Model.ProviderName))">
+                <a title="@Model.ProviderName" href="@Url.Product(Model.ProviderId, Slug.Create(Model.ProviderName))">
                     @Model.ProviderName.TruncateOnWordBoundary(20)
                 </a>
             </h3>
-            <p>@Model.Description.TruncateOnWordBoundary(100)</p>
+            @*<p>@Model.Description.TruncateOnWordBoundary(100)</p>*@
             
             <div class="bottom-separator location">
                 <i class="fa fa-map-marker"></i>
-                <span>@Model.Address</span>
+                <span title="@Model.Address">@Model.Address.Truncate(20, "...")</span>
             </div>
         </div>
     </div>
