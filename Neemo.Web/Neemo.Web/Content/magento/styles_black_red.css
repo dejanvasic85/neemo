@@ -280,9 +280,6 @@ ul, ol {
     text-align: left;
 }
 
-.ma-main-container {
-}
-
 .main {
     margin: 0 auto;
     min-height: 400px;
@@ -6521,6 +6518,27 @@ tr.summary-details-excluded {
     padding: 3px 0;
 }
 
+
+@media (min-width: 1080px) {
+    .header {
+        position: fixed;
+        z-index: 10;
+        background: url(images/bg-quick-access.png) top left repeat-x #fff;
+        border-bottom: 2px solid #e3e3e3;
+        width: 940px;
+    }
+
+    .body-padder {
+        display: block;
+        padding-top: 120px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .header {
+        width: 1170px;
+    }
+}
 
 /* Fixed Mobile*/
 @media (max-width: 1080px) {
