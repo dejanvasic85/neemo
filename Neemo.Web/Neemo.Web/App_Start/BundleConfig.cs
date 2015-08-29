@@ -29,6 +29,7 @@ namespace Neemo.Web
                 .Include("~/Scripts/magento/calendar.js")
                 .Include("~/Scripts/magento/accounting.js")
                 .Include("~/Scripts/magento/toastr.js")
+                .Include("~/Scripts/magento/ajax_cart_super.js")
                 );
 
             bundles.Add(new ScriptBundle("~/knockout").IncludeDirectory("~/Scripts", searchPattern: "knockout-*", searchSubdirectories: false));

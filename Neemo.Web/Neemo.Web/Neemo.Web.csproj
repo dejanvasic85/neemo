@@ -616,6 +616,7 @@
     <Content Include="Scripts\magento\accounting.js" />
     <Content Include="Scripts\bootstrap-tooltip.js" />
     <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\magento\ajax_cart_super.js" />
     <Content Include="Scripts\magento\builder.js" />
     <Content Include="Scripts\magento\calendar.js" />
     <Content Include="Scripts\magento\ccard.js" />
