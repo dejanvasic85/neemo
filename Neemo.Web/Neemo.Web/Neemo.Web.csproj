@@ -495,6 +495,7 @@
     <Content Include="Content\magento\images\logo_neemo.png" />
     <Content Include="Content\magento\images\logo_print.gif" />
     <Content Include="Content\magento\images\magnifier_handle.gif" />
+    <Content Include="Content\magento\images\magnify.cur" />
     <Content Include="Content\magento\images\map_popup_arrow.gif" />
     <Content Include="Content\magento\images\media\404_callout1.jpg" />
     <Content Include="Content\magento\images\media\404_callout2.jpg" />
@@ -611,8 +612,8 @@
     </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery.loupe.js" />
     <Content Include="Scripts\magento\accounting.js" />
-    <Content Include="Scripts\magento\ajax_cart_super.js" />
     <Content Include="Scripts\bootstrap-tooltip.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\magento\builder.js" />
@@ -635,12 +636,6 @@
     <Content Include="Scripts\jquery.fancybox.js" />
     <Content Include="Scripts\magento\js.js" />
     <Content Include="Scripts\knockout-3.2.0.js" />
-    <Content Include="Scripts\magento\ma.accordion.js" />
-    <Content Include="Scripts\magento\ma.dropdown.js" />
-    <Content Include="Scripts\magento\ma.flexslider.js" />
-    <Content Include="Scripts\magento\ma.jq.slide.js" />
-    <Content Include="Scripts\magento\ma.mobilemenu.js" />
-    <Content Include="Scripts\magento\ma.nivo.js" />
     <Content Include="Scripts\magento\menu.js" />
     <Content Include="Scripts\neemo-models.js" />
     <Content Include="Scripts\neemo-cartsvc.js" />

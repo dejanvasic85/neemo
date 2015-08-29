@@ -254,6 +254,10 @@
     border: 1px solid #d7d7d7;
 }
 
+.loupe {
+    cursor: url(images/magnify.cur), -moz-zoom-in;
+}
+
 /*
     Keyword search
 */
