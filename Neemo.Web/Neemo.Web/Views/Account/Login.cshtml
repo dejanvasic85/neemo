@@ -47,7 +47,10 @@
                                 <form action="@Url.Login()" method="post" id="login-form">
 
                                     @Html.AntiForgeryToken()
-
+                                    @if (ViewBag.ReturnUrl != null)
+                                    {
+                                        <input type="hidden" name="ReturnUrl" id="ReturnUrl" value="@ViewBag.ReturnUrl"/>
+                                    }
 
                                     
                                     @if (Model.WrongUsernameOrPassword)

@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Security.Policy;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Glimpse.AspNet.Tab;
 
 namespace Neemo.Web.Infrastructure
 {
@@ -126,9 +129,16 @@ namespace Neemo.Web.Infrastructure
             return urlHelper.Action("CheckoutAsGuest", "Account");
         }
 
-        public static string Login(this UrlHelper urlHelper)
+        public static string Login(this UrlHelper urlHelper, bool withReturnUrl = false)
         {
-            return urlHelper.Action("Login", "Account");
+            if (!withReturnUrl)
+            {
+                return urlHelper.Action("Login", "Account");
+            }
+
+            var url = urlHelper.Action("Login", "Account");
+            var returnUrlParam = "?returnUrl=" + urlHelper.RequestContext.HttpContext.Request.Path;
+            return url + returnUrlParam;
         }
 
         public static string Logout(this UrlHelper urlHelper)
@@ -190,7 +200,7 @@ namespace Neemo.Web.Infrastructure
 
             return urlHelper.Action(actionName, controllerName, routeValues, scheme);
         }
-        
+
         private static string WithSchemaAndProtocol(Uri contextUri, string path)
         {
             var baseUri = string.Format("{0}://{1}{2}", contextUri.Scheme,

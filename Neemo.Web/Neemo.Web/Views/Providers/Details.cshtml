@@ -63,13 +63,13 @@
                 <div class="provider-contact details">
                     @ContactStub(Model.Phone, "fa-phone-square", "tel:" + Model.Phone)
                     @ContactStub(Model.Mobile, "fa-phone-square", "tel:" + Model.Mobile)
-                    @ContactStub(Model.EmailAddress, "fa-envelope", "mailto:" +  Model.EmailAddress, "_blank")
+                    @ContactStub(Model.EmailAddress, "fa-envelope", "mailto:" + Model.EmailAddress, "_blank")
                     @ContactStub("Website", "fa-globe", Model.URL, "_blank")
                     @ContactStub(Model.Address, "fa-map-marker", "http://maps.google.com/?q=" + Model.Address, "_blank")
                 </div>
             </div>
         </div>
-        
+
         @*Available Services*@
         <div class="row-fluid">
             <div class="span12">
@@ -105,44 +105,55 @@
         </div>
 
         <div class="row-fluid">
-
-            <div class="span12 write-review" id="writeReview">
-                <div class="provider-title">
-                    <h2>Write a Review</h2>
-                </div>
-
-                <div class="control-group">
-                    <label class="control-label" for="providerRating">Rating</label>
-                    <div class="controls">
-                        <div id="providerRating" data-path="@Url.Content("~/Components/raty/images")"></div>
+            @if (Model.CurrentUsername.IsNullOrEmpty())
+            {
+                <div class="span12 write-review">
+                    <div class="alert alert-info">
+                        Want to leave a rating for @Model.ProviderName? <a href='@Url.Login(withReturnUrl:true)'>Please login first.</a>
                     </div>
                 </div>
-                
-                @if (!User.Identity.IsAuthenticated) { 
+            }
+            else
+            {
+                <div class="span12 write-review" id="writeReview">
+                    <div class="provider-title">
+                        <h2>Write a Review</h2>
+                    </div>
+
                     <div class="control-group">
-                        <label class="control-label" for="comments">Name</label>
+                        <label class="control-label" for="providerRating">Rating</label>
                         <div class="controls">
-                            <input id="reviewerName" class="input-block-level" placeholder="Full Name / Username" value="@Model.CurrentUsername" />
+                            <div id="providerRating" data-path="@Url.Content("~/Components/raty/images")"></div>
                         </div>
                     </div>
-                }
 
-                <div class="control-group">
-                    <label class="control-label" for="comments">Comment</label>
-                    <div class="controls">
-                        <textarea id="comments" class="control input-block-level" rows="4" placeholder="Please leave your comments about your experience"></textarea>
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <div class="control-group">
+                            <label class="control-label" for="comments">Name</label>
+                            <div class="controls">
+                                <input id="reviewerName" class="input-block-level" placeholder="Full Name / Username" value="@Model.CurrentUsername" />
+                            </div>
+                        </div>
+                    }
+
+                    <div class="control-group">
+                        <label class="control-label" for="comments">Comment</label>
+                        <div class="controls">
+                            <textarea id="comments" class="control input-block-level" rows="4" placeholder="Please leave your comments about your experience"></textarea>
+                        </div>
                     </div>
-                </div>
 
-                <div class="alert alert-danger" id="ratingInvalid" style="display: none;">
-                    Name and Comment fields are required.
-                </div>
+                    <div class="alert alert-danger" id="ratingInvalid" style="display: none;">
+                        Name and Comment fields are required.
+                    </div>
 
-                <div class="form-actions">
-                    <button class="btn btn-primary" id="submitReview">Submit</button>
-                </div>
+                    <div class="form-actions">
+                        <button class="btn btn-primary" id="submitReview">Submit</button>
+                    </div>
 
-            </div>
+                </div>
+            }
         </div>
 
         <div class="row-fluid">
@@ -162,8 +173,8 @@
                     {
                         <div class="review">
                             <div class="review-header">
-                                <div style="display: inline" data-provider-summary-rating="@review.Score" data-path="@Url.Content("~/Components/raty/images")"></div> | 
-                                <i class="fa fa-user"></i> @review.CreatedByUser | 
+                                <div style="display: inline" data-provider-summary-rating="@review.Score" data-path="@Url.Content("~/Components/raty/images")"></div> |
+                                <i class="fa fa-user"></i> @review.CreatedByUser |
                                 <i class="fa fa-calendar-o"></i> @review.CreatedDateTime.GetValueOrDefault().ToString("dd MMM yyyy")
                             </div>
                             <div>@review.Comment</div>
