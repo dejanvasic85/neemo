@@ -98,6 +98,7 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
             return searchFilters; // Allow chaining
         },
         setSortBy: function (sortBy) {
+            debugger;
             if (sortBy === 'NewestFirst') {
                 ui.queryManager.remove('sortBy');
                 return searchFilters;
@@ -186,7 +187,7 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
         searchFilters.setPageSize($(this).val());
     });
 
-    $('[data-apply-filters').on('click', function () {
+    $('[data-apply-filters]').on('click', function () {
         var $filterContainer = $(this).closest('.product-filters');
 
         var filter = searchFilters
@@ -195,7 +196,7 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
             .setPriceMin($filterContainer.find('#PriceMin').val())
             .setPriceMax($filterContainer.find('#PriceMax').val());
 
-        $filterContainer.find('[data-search-filter').each(function (index, item) {
+        $filterContainer.find('[data-search-filter]').each(function (index, item) {
             var sf = $(this).data().searchFilter;
             var value = $(this).val();
             filter.setFilter(sf, value);
@@ -206,14 +207,14 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
         filter.apply();
     });
 
-    $('[data-apply-provider-filters').on('click', function () {
+    $('[data-apply-provider-filters]').on('click', function () {
         var $filterContainer = $(this).closest('.product-filters');
 
         var filter = searchFilters
             .setKeyword($filterContainer.find('#Keyword').val())
             .setSortBy($filterContainer.find('#SortBy').val());
 
-        $filterContainer.find('[data-search-filter').each(function (index, item) {
+        $filterContainer.find('[data-search-filter]').each(function (index, item) {
             var sf = $(this).data().searchFilter;
             var value = $(this).val();
             filter.setFilter(sf, value);

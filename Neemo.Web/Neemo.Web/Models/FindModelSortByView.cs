@@ -6,5 +6,6 @@
         OldestFirst,
         PriceLowest,
         PriceHighest,
+        BestRatingFirst
     }
 }

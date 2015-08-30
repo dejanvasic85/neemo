@@ -25,6 +25,10 @@ namespace Neemo.Web.Models
                 case FindModelSortByView.NewestFirst:
                     result = x.CreatedDateTime.CompareTo(y.CreatedDateTime);
                     break;
+
+                case FindModelSortByView.BestRatingFirst:
+                    result = y.Rating.GetValueOrDefault().CompareTo(x.Rating.GetValueOrDefault());
+                    break;
                 default:
                     throw new NotImplementedException();
             }
