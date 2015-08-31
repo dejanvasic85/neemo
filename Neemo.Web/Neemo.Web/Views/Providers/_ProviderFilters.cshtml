@@ -30,7 +30,18 @@
             </select>
         </div>
     </div>
-
+    
+    <div class="control-group">
+        <label for="Suburb">Suburb</label>
+        <div class="controls">
+            <select id="Suburb" class="control"
+                    data-search-filter="ProviderSuburb"
+                    data-select-filter="@Model.ProviderSuburb"
+                    data-url="@Url.Action("GetAllProviderSuburbs", "Providers")">
+                <option value="">-- Any --</option>
+            </select>
+        </div>
+    </div>
 
 
     <div class="control-group">

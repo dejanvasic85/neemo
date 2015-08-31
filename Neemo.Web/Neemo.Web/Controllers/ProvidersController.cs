@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
 using Neemo.Notifications;
@@ -47,7 +48,8 @@ namespace Neemo.Web.Controllers
             var providersSearchResults = _providerService.Search(
                 findProviderModel.ProviderType,
                 findProviderModel.Keyword,
-                findProviderModel.ProviderServiceType);
+                findProviderModel.ProviderServiceType,
+                findProviderModel.ProviderSuburb);
 
             findProviderModel.ProviderSummaryViews = providersSearchResults
                 .Skip(findProviderModel.SkipAmount)
@@ -89,6 +91,15 @@ namespace Neemo.Web.Controllers
                 to: _config.NotificationSupportEmail);
 
             return Json(true);
+        }
+
+        [HttpGet]
+        public ActionResult GetAllProviderSuburbs()
+        {
+            var suburbs = _providerService.GetAllProviderSuburbs()
+                .Select(m => new SelectListItem { Text = m, Value = m })
+                ;
+            return Json(suburbs, JsonRequestBehavior.AllowGet);
         }
     }
 }

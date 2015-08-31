@@ -11,7 +11,7 @@ namespace Neemo.CarParts.EntityFramework
 {
     public class ProviderRepository : IProviderRepository
     {
-        public List<Provider> Search(ProviderType providerType, string keyword, int? serviceTypeId)
+        public List<Provider> Search(ProviderType providerType, string keyword, int? serviceTypeId, string providerSuburb)
         {
             using (var conn = DbContextFactory.CreateConnection())
             {
@@ -20,7 +20,8 @@ namespace Neemo.CarParts.EntityFramework
                     {
                         providerType = providerType.ToString(),
                         keyword,
-                        serviceTypeId
+                        serviceTypeId,
+                        providerSuburb
                     }, commandType: CommandType.StoredProcedure)
                     .ToList();
             }
@@ -99,6 +100,18 @@ namespace Neemo.CarParts.EntityFramework
                     ProviderId = provider.ProviderId,
                     CustomerReviewId = newReview.CustomerReviewId
                 }, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        /// <summary>
+        /// Returns unique suburbs (cities) that were registered in the provider table
+        /// </summary>
+        /// <returns></returns>
+        public List<string> GetAllSuburbs()
+        {
+            using (var conn = DbContextFactory.CreateConnection())
+            {
+                return conn.Query<string>("SELECT CITY FROM [Provider] GROUP BY CITY").ToList();
             }
         }
     }

@@ -30,6 +30,7 @@ namespace Neemo.Web.Models
 
         public ProviderType ProviderType { get; set; }
         public string Keyword { get; set; }
+        public string ProviderSuburb { get; set; }
 
         public int? CategoryId { get; set; }
 

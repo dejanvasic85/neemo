@@ -12,12 +12,14 @@ GO
 CREATE PROCEDURE [dbo].[Provider_Search]
        @Keyword nvarchar(100) = null,
 	   @ServiceTypeId varchar(100) = null,
-	   @ProviderType varchar(100)
+	   @ProviderType varchar(100),
+	   @ProviderSuburb varchar(100) = null
  
 	   /*
 	   exec dbo.Provider_Search 
 			@ProviderType = 'Wreckers',
-			@keyword = ''
+			@keyword = '',
+			@providerSuburb = NULL
 
 	   */
 AS
@@ -27,6 +29,10 @@ BEGIN
 	SELECT  p.*
 	FROM	Provider p
 	WHERE	p.active = 1
+
+	-- Suburb Filter
+	AND		p.City = ISNULL(@ProviderSuburb, p.City)
+
 
 	-- Filter only specific provider type
 	AND EXISTS (SELECT	1 FROM Provider_ProviderType ppt
@@ -45,6 +51,6 @@ BEGIN
 				OR	EXISTS (SELECT	1 FROM ProviderServiceType pst
 							WHERE	pst.ProviderID = p.ProviderID
 							AND		pst.ServiceTypeID = @ServiceTypeId) )
-
+	
 
 END

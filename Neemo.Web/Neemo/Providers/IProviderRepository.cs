@@ -5,11 +5,12 @@ namespace Neemo.Providers
 {
     public interface IProviderRepository
     {
-        List<Provider> Search(ProviderType providerType, string keyword, int? serviceTypeId);
+        List<Provider> Search(ProviderType providerType, string keyword, int? serviceTypeId, string providerSuburb);
         List<Provider> GetProvidersByType(ProviderType providerType, int takeMax);
         List<ProviderServiceType> GetProviderServices();
         Provider Get(int id);
         void UpdateProviderRating(Provider provider);
         void AddCustomerReview(Provider provider, CustomerReview review);
+        List<string> GetAllSuburbs();
     }
 }

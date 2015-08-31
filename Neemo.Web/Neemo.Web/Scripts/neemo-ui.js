@@ -98,7 +98,6 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
             return searchFilters; // Allow chaining
         },
         setSortBy: function (sortBy) {
-            debugger;
             if (sortBy === 'NewestFirst') {
                 ui.queryManager.remove('sortBy');
                 return searchFilters;
