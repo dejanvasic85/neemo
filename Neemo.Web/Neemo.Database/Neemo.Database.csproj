@@ -61,7 +61,7 @@
     <Content Include="StoredProcedures\002-Create-Provider_GetLatestByType.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="StoredProcedures\011-Alter-Provider_Search.sql">
+    <Content Include="StoredProcedures\013-Alter-Provider_Search.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="StoredProcedures\010-Create-CustomerReview_GetForProvider.sql">
