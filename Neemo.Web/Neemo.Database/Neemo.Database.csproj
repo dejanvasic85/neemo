@@ -64,6 +64,9 @@
     <Content Include="StoredProcedures\011-Create-sp_getProviderMakes.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="StoredProcedures\014-Alter-Provider_Search.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="StoredProcedures\013-Alter-Provider_Search.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

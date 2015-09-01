@@ -49,7 +49,8 @@ namespace Neemo.Web.Controllers
                 findProviderModel.ProviderType,
                 findProviderModel.Keyword,
                 findProviderModel.ProviderServiceType,
-                findProviderModel.ProviderSuburb);
+                findProviderModel.ProviderSuburb,
+                findProviderModel.ProviderState);
 
             findProviderModel.ProviderSummaryViews = providersSearchResults
                 .Skip(findProviderModel.SkipAmount)
@@ -97,9 +98,15 @@ namespace Neemo.Web.Controllers
         public ActionResult GetAllProviderSuburbs()
         {
             var suburbs = _providerService.GetAllProviderSuburbs()
-                .Select(m => new SelectListItem { Text = m, Value = m })
-                ;
+                .Select(m => new SelectListItem { Text = m, Value = m });
             return Json(suburbs, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetAllProviderStates()
+        {
+            var states = _providerService.GetAllProviderStates()
+                .Select(m => new SelectListItem {Text = m, Value = m});
+            return Json(states, JsonRequestBehavior.AllowGet);
         }
     }
 }

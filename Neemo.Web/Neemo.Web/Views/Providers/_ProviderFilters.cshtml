@@ -43,6 +43,17 @@
         </div>
     </div>
 
+    <div class="control-group">
+        <label>State</label>
+        <div class="controls">
+            <select id="State" class="control"
+                    data-search-filter="ProviderState"
+                    data-select-filter="@Model.ProviderState"
+                    data-url="@Url.Action("GetAllProviderStates", "Providers")">
+                <option value="">-- Any --</option>
+            </select>
+        </div>
+    </div>
 
     <div class="control-group">
         <button class="btn" data-apply-provider-filters data-loading-text="Please wait...">Apply</button>

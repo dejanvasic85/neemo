@@ -91,5 +91,6 @@ namespace Neemo.Web.Models
         }
 
         public int? ProviderServiceType { get; set; }
+        public string ProviderState { get; set; }
     }
 }
