@@ -30,7 +30,7 @@
             </select>
         </div>
     </div>
-    
+
     <div class="control-group">
         <label for="Suburb">Suburb</label>
         <div class="controls">
@@ -52,6 +52,16 @@
                     data-url="@Url.Action("GetAllProviderStates", "Providers")">
                 <option value="">-- Any --</option>
             </select>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label for="Make">Make</label>
+        <div class="controls">
+            <select id="Make" class="control"
+                    data-search-filter="Make"
+                    data-select-filter="@Model.Make"
+                    data-url="@Url.Action("GetMakesOptions", "CarPart")"></select>
         </div>
     </div>
 

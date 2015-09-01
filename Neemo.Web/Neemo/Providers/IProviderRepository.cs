@@ -5,7 +5,7 @@ namespace Neemo.Providers
 {
     public interface IProviderRepository
     {
-        List<Provider> Search(ProviderType providerType, string keyword, int? serviceTypeId, string providerSuburb, string providerState);
+        List<Provider> Search(ProviderType providerType, string keyword, int? serviceTypeId, string providerSuburb, string providerState, int? make);
         List<Provider> GetProvidersByType(ProviderType providerType, int takeMax);
         List<ProviderServiceType> GetProviderServices();
         Provider Get(int id);

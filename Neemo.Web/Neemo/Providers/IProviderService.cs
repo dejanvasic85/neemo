@@ -10,7 +10,7 @@ namespace Neemo.Providers
     {
         List<Provider> GetProvidersByType(ProviderType providerType, int takeMax);
         List<ProviderServiceType> GetProviderServices();
-        List<Provider> Search(ProviderType providerType, string keyword, int? providerServiceType, string suburb, string providerSuburb);
+        List<Provider> Search(ProviderType providerType, string keyword, int? providerServiceType, string suburb, string providerSuburb, int? make);
         Provider GetProviderById(int id);
         void ReviewProvider(int providerId, decimal score, string reviewComment, string reviewerName);
         List<string> GetAllProviderSuburbs();
@@ -38,9 +38,9 @@ namespace Neemo.Providers
             return _providerRepository.GetProviderServices();
         }
 
-        public List<Provider> Search(ProviderType providerType, string keyword, int? providerServiceType, string suburb, string state)
+        public List<Provider> Search(ProviderType providerType, string keyword, int? providerServiceType, string suburb, string state, int? make)
         {
-            return _providerRepository.Search(providerType, keyword, providerServiceType, suburb, state);
+            return _providerRepository.Search(providerType, keyword, providerServiceType, suburb, state, make);
         }
 
         public Provider GetProviderById(int id)

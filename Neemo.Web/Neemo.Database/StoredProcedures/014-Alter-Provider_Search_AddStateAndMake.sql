@@ -14,7 +14,8 @@ CREATE PROCEDURE [dbo].[Provider_Search]
 	   @ServiceTypeId varchar(100) = null,
 	   @ProviderType varchar(100),
 	   @ProviderSuburb varchar(100) = null,
-	   @ProviderState varchar(100) = null
+	   @ProviderState varchar(100) = null,
+	   @Make INT = null
  
 	   /*
 	   exec dbo.Provider_Search 
@@ -55,6 +56,10 @@ BEGIN
 				OR	EXISTS (SELECT	1 FROM ProviderServiceType pst
 							WHERE	pst.ProviderID = p.ProviderID
 							AND		pst.ServiceTypeID = @ServiceTypeId) )
-	
+	-- Make
+	AND		(		@Make IS NULL
+				OR	EXISTS (SELECT	1 FROM ProviderMake pm
+							WHERE	pm.ProviderID = p.ProviderID
+							AND		pm.MakeID = @Make) )
 
 END

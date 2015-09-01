@@ -50,7 +50,8 @@ namespace Neemo.Web.Controllers
                 findProviderModel.Keyword,
                 findProviderModel.ProviderServiceType,
                 findProviderModel.ProviderSuburb,
-                findProviderModel.ProviderState);
+                findProviderModel.ProviderState,
+                findProviderModel.Make);
 
             findProviderModel.ProviderSummaryViews = providersSearchResults
                 .Skip(findProviderModel.SkipAmount)
