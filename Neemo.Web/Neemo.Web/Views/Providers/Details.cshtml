@@ -104,7 +104,7 @@
             </div>
         </div>
 
-        <div class="row-fluid">
+        <div class="row-fluid" id="writeReview">
             @if (Model.CurrentUsername.IsNullOrEmpty())
             {
                 <div class="span12 write-review">
@@ -115,7 +115,7 @@
             }
             else
             {
-                <div class="span12 write-review" id="writeReview">
+                <div class="span12 write-review">
                     <div class="provider-title">
                         <h2>Write a Review</h2>
                     </div>
