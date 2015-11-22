@@ -7,14 +7,14 @@ namespace Neemo.Web.Models
     {
         public HomeView()
         {
-            SearchFilters = new FindModelView();
             NewProducts = new List<ProductSummaryView>();
-            BestSellingProducts = new List<ProductSummaryView>();
-            FeaturedProducts = new List<ProductSummaryView>();
+            NewWreckers = new List<ProviderSummaryView>();
+            NewOthers = new List<ProviderSummaryView>();
+            NewRepairers = new List<ProviderSummaryView>();
         }
-        public List<ProductSummaryView> FeaturedProducts { get; set; }
         public List<ProductSummaryView> NewProducts { get; set; }
-        public List<ProductSummaryView> BestSellingProducts { get; set; }
-        public FindModelView SearchFilters { get; set; }
+        public List<ProviderSummaryView> NewWreckers { get; set; }
+        public List<ProviderSummaryView> NewOthers { get; set; }
+        public List<ProviderSummaryView> NewRepairers { get; set; }
     }
 }

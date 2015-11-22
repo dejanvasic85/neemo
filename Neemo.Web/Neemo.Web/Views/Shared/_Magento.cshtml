@@ -1,8 +1,4 @@
-﻿@{
-    var categories = (CategoryListView)ViewBag.Categories;
-}
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+﻿<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>@ViewBag.CompanyName - @ViewBag.Title</title>
@@ -35,6 +31,8 @@
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/toastr-2.0.1.min.css")">
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/font-awesome-4.2.0.min.css")">
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/print.min.css")" media="print">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/components/raty/jquery.raty.css")" media="all">
+    
 
     @Scripts.Render("~/jquery")
 
@@ -45,7 +43,9 @@
         <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/styles-ie.min.css")" media="all" />
     <![endif]-->
     <!-- theme color -->
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/styles_black_red.min.css")" media="screen">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/styles_black_red.min.css")">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/neemo.min.css")" media="all">
+
     <!-- MENU -->
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/magento/fish_menu.min.css")" media="screen">
 </head>
@@ -114,7 +114,6 @@
                                                                     </a>
                                                                 </span>
                                                             </form>
-
                                                         </div>
                                                     </li>
                                                 }
@@ -125,15 +124,29 @@
                                                 }
 
                                             </ul>
-                                            <form action="@Url.Find()" method="GET">
-                                                <div class="input-append controls">
-                                                    <input id="keyword" name="keyword" type="text" placeholder="Search Keyword">
-                                                    <button class="btn" type="submit">Search!</button>
+                                            <div class="input-append controls keyword-search">
+                                                <input id="keyword" name="keyword" type="text" placeholder="Search Keyword">
+
+                                                <div class="btn-group" id="searchTypeOptions">
+                                                    <button class="btn dropdown-toggle" data-toggle="dropdown">
+                                                        <span class="selected">Parts</span>
+                                                        <span class="caret"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li>Parts</li>
+                                                        <li>Wreckers</li>
+                                                        <li>Repairers</li>
+                                                        <li>Others</li>
+                                                    </ul>
                                                 </div>
-                                                <div>
-                                                    Tired of searching for parts? <a href="@Url.ContactUs()">Contact Us</a>
-                                                </div>
-                                            </form>
+                                                <button class="btn" id="searchBtn" data-loading-text="Please wait...">
+                                                    <i class="fa fa-search"></i> Search
+                                                </button>
+                                            </div>
+                                            <br />
+                                            <span>
+                                                Tired of Searching? <a href="@Url.ContactUs()">Contact Us</a>
+                                            </span>
                                         </div>
 
                                         @*Shopping cart*@
@@ -154,9 +167,7 @@
                             </div>
                         </div>
 
-                        @*@Html.Partial("~/Views/Shared/Partial/_CategoriesMenuBarMobile.cshtml", @categories)
-                            @Html.Partial("~/Views/Shared/Partial/_CategoriesMenuBar.cshtml", @categories)*@
-
+                        <div class="body-padder">&nbsp;</div>
                         @RenderBody()
 
                         <div class="ma-footer-static-container">
@@ -178,9 +189,6 @@
                                     </div>
 
 
-
-
-
                                     <div class="footer-block shipping span4">
                                         <div class="title">
                                             <h2>Privacy</h2>
@@ -193,19 +201,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    @*<div class="footer-block support-center span3">
-                                            <div class="title">
-                                                <h2>Support Center</h2>
-                                            </div>
-                                            <div class="content">
-                                                <ul>
-                                                    <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/catalog/seo_sitemap/category">Site Map</a></li>
-                                                    <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/catalogsearch/term/popular">Search Terms</a></li>
-                                                    <li><a href="http://www.plazathemes.com/demo/ma_carstore_res/catalogsearch/advanced">Advanced Search</a></li>
-                                                    <li><a href="@Url.ContactUs()">Contact Us</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>*@
+
                                     <div class="footer-block paypal span4">
                                         <div class="title">
                                             <h2>we accept</h2>
@@ -234,25 +230,7 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        @*<div class="block block-subscribe">
-                                                <div class="block-title">
-                                                    <strong><span>Newsletter</span></strong>
-                                                </div>
-                                                <form action="http://www.plazathemes.com/demo/ma_carstore_res/newsletter/subscriber/new/" method="post" id="newsletter-validate-detail">
-                                                    <div class="block-content">
-                                                        <div class="form-subscribe-header">
-                                                            <label for="newsletter">Sign Up for Our Newsletter:</label>
-                                                        </div>
-                                                        <div class="input-box">
-                                                            <input type="text" name="email" id="newsletter" title="Sign up for our newsletter" class="input-text required-entry validate-email">
-                                                        </div>
-                                                        <div class="actions">
-                                                            <button type="submit" title="Subscribe" class="button"><span><span>Subscribe</span></span></button>
-                                                        </div>
-                                                    </div>
-                                                </form>
 
-                                            </div>*@
                                     </div>
                                 </div>
                             </div>
@@ -314,6 +292,9 @@
                     return neemo.endpoints.product.generic.replace(-1, id);
                 },
                 search: '@Url.Action("Find", "Products")'
+            },
+            providers: {
+                search: '@Url.FindProviders(providerType: "placeholder")'
             }
         };
     </script>
@@ -321,7 +302,10 @@
     @Scripts.Render("~/magento")
     @Scripts.Render("~/bootstrap")
     @Scripts.Render("~/knockout")
+    <script src="@Url.Content("~/components/raty/jquery.raty.js")"></script>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
     @Scripts.Render("~/neemo")
+
 
     @RenderSection("Scripts", false)
 
@@ -345,4 +329,5 @@
     <![endif]-->
 
 </body>
+
 </html>

@@ -40,15 +40,20 @@
                         <div class="row-fluid">
                             <div class="product-img-box span4">
                                 <p class="product-image" style="padding:5px;">
-                                    <!-- images for lightbox -->
-                                    @*Todo - Implement lightbox and cloudzoom*@
-                                    @*<a href="@Url.Image(Model.Images.First())" class="ma-a-lighbox" rel="lightbox[rotation]"></a>*@
-                                    <!--++++++++++++-->
-                                    <a class="cloud-zoom" id="ma-zoom1" style="position: relative; display: block;" rel="adjustX:10, adjustY:-2, zoomWidth:300, zoomHeight:300">
-                                        <img id="mainImage" src="@Url.Image(Model.DefaultImage)" alt="@Model.Title" title="@Model.Title" />
-                                    </a>
+
+                                    <img id="mainImage" src="@Url.Image(Model.DefaultImage)" alt="@Model.Title" title="@Model.Title" data-img-lg="@Model.DefaultImage" />
+
+                                    @if (Model.Images != null && Model.Images.Length > 0)
+                                    {
+                                        foreach (var image in Model.Images.Where(img => img != Model.DefaultImage))
+                                        {
+                                            <img style="display: none " src="@Url.Image(image)" alt="@Model.Title" title="@Model.Title" data-img-lg="@image" />
+                                        }
+                                    }
                                 </p>
+                                <p>Hover over the image to zoom in.<a href="#largerImages" data-toggle="modal" role="button"> Click Here for larger images</a></p>
                                 <div class="more-views ma-more-img">
+
                                     @if (Model.Images != null && Model.Images.Length > 0)
                                     {
                                         <h2>More Views</h2>
@@ -57,19 +62,48 @@
                                             @foreach (var img in Model.Images)
                                             {
                                                 <li>
-                                                    <a class="cloud-zoom-gallery">
-                                                        <img src="@Url.Image(img)" width="56" height="56" alt="" title="" />
+                                                    <a>
+                                                        <img src="@Url.Image(img)" width="56" height="56" alt="" title="" data-img="@img" />
                                                     </a>
                                                 </li>
                                             }
                                         </ul>
                                     }
-
                                 </div>
                             </div>
+                            <!-- Modal -->
+                            @if (Model.Images != null && Model.Images.Length > 1)
+                            {
+                                <div id="largerImages" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-body">
+                                        <div id="imgCarousel" class="carousel slide">
+                                            <ol class="carousel-indicators">
+                                                @for (int i = 0; i < Model.Images.Length; i++)
+                                                {
+                                                    <li data-target="#imgCarousel" data-slide-to="@i"></li>
+                                                }
+                                            </ol>
+                                            <!-- Carousel items -->
+                                            <div class="carousel-inner">
+                                                @foreach (var image in Model.Images)
+                                                {
+                                                    <div class="item">
+                                                        <img src="@Url.Image(image)"/>
+                                                    </div>
+                                                }
+                                            </div>
+                                            <!-- Carousel nav -->
+                                            <a class="carousel-control left" href="#imgCarousel" data-slide="prev">&lsaquo;</a>
+                                            <a class="carousel-control right" href="#imgCarousel" data-slide="next">&rsaquo;</a>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                                    </div>
+                                </div>
+                            }
 
                             <div class="product-shop span8">
-                                @*<p class="email-friend"><a href="http://www.plazathemes.com/demo/ma_carstore_res/sendfriend/product/send/id/2/cat_id/3/">Email to a Friend</a></p>*@
                                 <p class="availability in-stock">
                                     Availability:
                                     <span>
@@ -204,12 +238,24 @@
     <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd', 'even', 'first', 'last'])</script>
 
     <script>
-        (function (jq, svc) {
-            jq('.more-views a').css({ 'cursor': 'pointer' });
-            jq('.more-views a').on('click', function () {
-                var newSrc = jq(this).children('img').attr('src');
-                jq('#mainImage').attr('src', newSrc);
+        (function ($) {
+
+            $(document).ready(function () {
+
+                $('.more-views a').css({ 'cursor': 'pointer' });
+                $('.more-views a').on('click', function () {
+                    var imgId = $(this).find('img').data('img');
+                    $('[data-img-lg]').hide();
+                    $('[data-img-lg="' + imgId + '"]').show();
+                });
+                $('[data-img-lg]').loupe({
+                    width: 500,
+                    height: 350,
+                    loupe: 'loupe'
+                });
+
             });
-        })(jQuery, neemo.svc);
+
+        })(jQuery);
     </script>
 }

@@ -1,0 +1,15 @@
+﻿@model ProviderReviewView
+
+@{
+    Layout = "_EmailLayout.cshtml";
+}
+
+User has submitted a new review for a provider.
+
+<ul>
+    <li>Provider: <strong>@Model.ProviderName</strong></li> 
+    <li>Provider Id: <strong>@Model.ProviderId</strong></li> 
+    <li>User: <strong>@Model.CreatedByUser</strong></li> 
+    <li>Score: <strong>@Model.Score</strong></li> 
+    <li>Comments: <strong>@Model.Comment</strong></li> 
+</ul>

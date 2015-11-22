@@ -81,7 +81,13 @@
                 .Select(Mapper.Map<Product, Models.ProductSummaryView>)
                 .OrderBy(p => p, new Models.ProductSummaryComparer(findModelView.SortBy))
                 .ToList();
-            
+
+            // Fetch the categories to display as links (maybe move this later to an async JS call on the client)
+            var categories = CategoryService.GetAllCategories()
+                .Select(Mapper.Map<Store.Category, Models.CategoryView>)
+                .ToList();
+            ViewBag.Categories = new Models.CategoryListView { AllCategories = categories };
+
             return View(findModelView);
         }
 

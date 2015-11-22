@@ -1,8 +1,7 @@
 using System;
-using System.Collections.Generic;
-using AutoMapper;
+using System.Linq;
 using Microsoft.Practices.Unity;
-using System.Reflection;
+using Neemo.Web.Infrastructure;
 
 namespace Neemo.Web
 {
@@ -19,7 +18,9 @@ namespace Neemo.Web
 
             // To view model
             config.CreateMap<Store.Product, Models.ProductSummaryView>()
-                .ForMember(member => member.OutOfStock, options => options.ResolveUsing(t => t.IsOutOfStock()));
+                .ForMember(member => member.OutOfStock, options => options.ResolveUsing(t => t.IsOutOfStock()))
+                .ForMember(member => member.TitleSlug, options => options.MapFrom(source => Slug.Create(source.Title, true)))
+                ;
 
             config.CreateMap<Store.Product, Models.ProductDetailView>()
                 .ForMember(member => member.ProductSpecifications, options => options.ResolveUsing<ProductSpecificationConverter>())
@@ -35,12 +36,23 @@ namespace Neemo.Web
             config.CreateMap<Membership.UserProfile, Models.CheckoutView>();
             config.CreateMap<Tax.TaxCost, Models.TaxCostView>();
             config.CreateMap<ShoppingCart.Cart, Models.OrderSummaryView>().ConvertUsing<Models.CartToOrderSummaryConverter>();
-            
+
             config.CreateMap<Orders.Order, Models.OrderView>();
-            config.CreateMap<Orders.Order, Models.InvoiceDetailView>().ConvertUsing<Models.OrderToInvoiceConverter>(); 
-            
+            config.CreateMap<Orders.Order, Models.InvoiceDetailView>().ConvertUsing<Models.OrderToInvoiceConverter>();
+
             config.CreateMap<Orders.OrderLineItem, Models.OrderLineItemView>();
             config.CreateMap<Orders.OrderLineItem, Models.InvoiceItemView>().ConvertUsing<Models.OrderLineItemToInvoiceItem>();
+
+            config.CreateMap<Providers.Provider, Models.ProviderSummaryView>()
+                .ForMember(member => member.Address, options => options.MapFrom(source => source.ToDisplayAddress()))
+                .ForMember(member => member.ProviderNameSlug, options => options.MapFrom(source => Slug.Create(source.ProviderName, true)));
+
+            config.CreateMap<Providers.Provider, Models.ProviderDetailView>()
+                .ForMember(member => member.Address, options => options.MapFrom(source => source.ToDisplayAddress()))
+                .ForMember(member => member.AvailableServices, options => options.MapFrom(source => source.AvailableServices.Select(s => s.ServiceType)));
+
+            config.CreateMap<CustomerReviews.CustomerReview, Models.ProviderReviewView>()
+                .ForMember(member => member.ProviderId, options => options.Ignore());
 
             // From view model
             config.CreateMap<Models.PersonalDetailsView, PersonalDetails>();
@@ -49,26 +61,6 @@ namespace Neemo.Web
         public static void RegisterMaps(IUnityContainer container)
         {
             container.ResolveAll<IMappingConfig>().ForEach(mapper => mapper.RegisterMapping(AutoMapper.Mapper.Configuration));
-        }
-    }
-
-    public class ProductSpecificationConverter : ValueResolver<Store.Product, Dictionary<string, string>>
-    {
-        protected override Dictionary<string, string> ResolveCore(Store.Product source)
-        {
-            var dictionary = source.ProductSpecifications.ToDictionary<string>();
-            
-            return dictionary as Dictionary<string, string>;
-        }
-    }
-
-    public class OtherDetailsConverter : ValueResolver<Store.Product, Dictionary<string, string>>
-    {
-        protected override Dictionary<string, string> ResolveCore(Store.Product source)
-        {
-            var dictionary = source.OtherDetails.ToDictionary<string>();
-
-            return dictionary as Dictionary<string, string>;
         }
     }
 }

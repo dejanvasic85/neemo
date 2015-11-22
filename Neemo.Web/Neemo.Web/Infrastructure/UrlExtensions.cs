@@ -1,5 +1,9 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Security.Policy;
+using System.Web;
+using System.Web.Mvc;
 using System.Web.Routing;
+using Glimpse.AspNet.Tab;
 
 namespace Neemo.Web.Infrastructure
 {
@@ -33,11 +37,30 @@ namespace Neemo.Web.Infrastructure
             if (!includeSchemeAndProtocol)
                 return path;
 
-            var contextUri = urlHelper.RequestContext.HttpContext.Request.Url;
-            var baseUri = string.Format("{0}://{1}{2}", contextUri.Scheme,
-              contextUri.Host, contextUri.Port == 80 ? string.Empty : ":" + contextUri.Port);
+            return WithSchemaAndProtocol(urlHelper.RequestContext.HttpContext.Request.Url, path);
+        }
 
-            return string.Format("{0}{1}", baseUri, path);
+        public static string Provider(this UrlHelper urlHelper, int providerId)
+        {
+            var path = RouteTable.Routes.GetVirtualPath(null, "providerIdOnly", new RouteValueDictionary { { "id", providerId } });
+            return path.VirtualPath;
+        }
+
+        public static string Provider(this UrlHelper urlHelper, int providerId, string slug, bool includeSchemeAndProtocol = false)
+        {
+            var dictionary = new RouteValueDictionary
+            {
+                {"id", providerId},
+                {"slug", slug}
+            };
+
+            var data = RouteTable.Routes.GetVirtualPath(null, "provider", dictionary);
+            var path = data.VirtualPath;
+
+            if (!includeSchemeAndProtocol)
+                return path;
+
+            return WithSchemaAndProtocol(urlHelper.RequestContext.HttpContext.Request.Url, path);
         }
 
         public static string Home(this UrlHelper urlHelper, bool absoluteUrl = false)
@@ -65,6 +88,7 @@ namespace Neemo.Web.Infrastructure
         {
             return urlHelper.Action("About", "Home");
         }
+
         public static string Terms(this UrlHelper urlHelper, bool absoluteUrl = false)
         {
             return urlHelper.Action("TermsAndConditions", "Home");
@@ -85,6 +109,16 @@ namespace Neemo.Web.Infrastructure
             return urlHelper.Action("Find", "Products");
         }
 
+        public static string FindProviders(this UrlHelper urlHelper, string providerType = "Wreckers")
+        {
+            var routevalues = new RouteValueDictionary
+            {
+                {"providerType", providerType}
+            };
+            var data = RouteTable.Routes.GetVirtualPath(null, "providerSearch", routevalues);
+            return data.VirtualPath;
+        }
+
         public static string Checkout(this UrlHelper urlHelper)
         {
             return urlHelper.Action("Checkout", "Cart");
@@ -95,9 +129,16 @@ namespace Neemo.Web.Infrastructure
             return urlHelper.Action("CheckoutAsGuest", "Account");
         }
 
-        public static string Login(this UrlHelper urlHelper)
+        public static string Login(this UrlHelper urlHelper, bool withReturnUrl = false)
         {
-            return urlHelper.Action("Login", "Account");
+            if (!withReturnUrl)
+            {
+                return urlHelper.Action("Login", "Account");
+            }
+
+            var url = urlHelper.Action("Login", "Account");
+            var returnUrlParam = "?returnUrl=" + urlHelper.RequestContext.HttpContext.Request.Path;
+            return url + returnUrlParam;
         }
 
         public static string Logout(this UrlHelper urlHelper)
@@ -158,6 +199,14 @@ namespace Neemo.Web.Infrastructure
             string scheme = urlHelper.RequestContext.HttpContext.Request.Url.Scheme;
 
             return urlHelper.Action(actionName, controllerName, routeValues, scheme);
+        }
+
+        private static string WithSchemaAndProtocol(Uri contextUri, string path)
+        {
+            var baseUri = string.Format("{0}://{1}{2}", contextUri.Scheme,
+                contextUri.Host, contextUri.Port == 80 ? string.Empty : ":" + contextUri.Port);
+
+            return string.Format("{0}{1}", baseUri, path);
         }
     }
 }

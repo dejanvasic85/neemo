@@ -15,7 +15,7 @@
     <AssemblyName>Neemo.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -202,8 +202,11 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\LoggingConfig.cs" />
     <Compile Include="App_Start\MappingConfig.cs" />
+    <Compile Include="Models\Converters\OtherDetailsConverter.cs" />
+    <Compile Include="Models\Converters\ProductSpecificationConverter.cs" />
     <Compile Include="Controllers\CarPartController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\ProvidersController.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Infrastructure\Log4NetLog.cs" />
     <Compile Include="Infrastructure\MultipleActionAttribute.cs" />
@@ -232,8 +235,12 @@
     <Compile Include="Infrastructure\ShippingService.cs" />
     <Compile Include="Infrastructure\UrlExtensions.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ProviderReviewView.cs" />
+    <Compile Include="Models\FindModelSortByView.cs" />
+    <Compile Include="Models\FindProvidersModel.cs" />
     <Compile Include="Models\InvoiceDetailView.cs" />
     <Compile Include="Models\InvoiceItemView.cs" />
+    <Compile Include="Models\IPagingModel.cs" />
     <Compile Include="Models\OrderHistoryView.cs" />
     <Compile Include="Models\OrderSummaryView.cs" />
     <Compile Include="Models\PersonalDetailsView.cs" />
@@ -251,12 +258,23 @@
     <Compile Include="Models\HomeView.cs" />
     <Compile Include="Models\ProductSummaryComparer.cs" />
     <Compile Include="Models\ProductSummaryView.cs" />
+    <Compile Include="Models\ProviderDetailView.cs" />
+    <Compile Include="Models\ProviderSummaryView.cs" />
+    <Compile Include="Models\ProviderSummaryViewModelComparer.cs" />
     <Compile Include="Models\ShippingCostView.cs" />
     <Compile Include="Models\TaxCostView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Components\raty\fonts\raty.svg" />
+    <Content Include="Components\raty\images\cancel-off.png" />
+    <Content Include="Components\raty\images\cancel-on.png" />
+    <Content Include="Components\raty\images\star-half.png" />
+    <Content Include="Components\raty\images\star-off.png" />
+    <Content Include="Components\raty\images\star-on.png" />
+    <Content Include="Components\raty\jquery.raty.css" />
+    <Content Include="Components\raty\jquery.raty.js" />
     <Content Include="Content\magento\ajax_cart_super.css" />
     <Content Include="Content\magento\ajax_cart_super.min.css">
       <DependentUpon>ajax_cart_super.css</DependentUpon>
@@ -477,6 +495,7 @@
     <Content Include="Content\magento\images\logo_neemo.png" />
     <Content Include="Content\magento\images\logo_print.gif" />
     <Content Include="Content\magento\images\magnifier_handle.gif" />
+    <Content Include="Content\magento\images\magnify.cur" />
     <Content Include="Content\magento\images\map_popup_arrow.gif" />
     <Content Include="Content\magento\images\media\404_callout1.jpg" />
     <Content Include="Content\magento\images\media\404_callout2.jpg" />
@@ -559,6 +578,10 @@
     <Content Include="Content\magento\ma.verticalmenu.min.css">
       <DependentUpon>ma.verticalmenu.css</DependentUpon>
     </Content>
+    <Content Include="Content\magento\neemo.css" />
+    <Content Include="Content\magento\neemo.min.css">
+      <DependentUpon>neemo.css</DependentUpon>
+    </Content>
     <Content Include="Content\magento\print.css" />
     <Content Include="Content\magento\print.min.css">
       <DependentUpon>print.css</DependentUpon>
@@ -589,10 +612,11 @@
     </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery.loupe.js" />
     <Content Include="Scripts\magento\accounting.js" />
-    <Content Include="Scripts\magento\ajax_cart_super.js" />
     <Content Include="Scripts\bootstrap-tooltip.js" />
     <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\magento\ajax_cart_super.js" />
     <Content Include="Scripts\magento\builder.js" />
     <Content Include="Scripts\magento\calendar.js" />
     <Content Include="Scripts\magento\ccard.js" />
@@ -606,17 +630,13 @@
     <Content Include="Scripts\jquery-1.11.0.js" />
     <Content Include="Scripts\magento\json2.js" />
     <Content Include="Scripts\neemo-ko-extensions.js" />
+    <Content Include="Scripts\neemo-keyword-search.js" />
+    <Content Include="Scripts\neemo-ratings.js" />
     <Content Include="Scripts\neemo-ui.js" />
     <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery.fancybox.js" />
     <Content Include="Scripts\magento\js.js" />
     <Content Include="Scripts\knockout-3.2.0.js" />
-    <Content Include="Scripts\magento\ma.accordion.js" />
-    <Content Include="Scripts\magento\ma.dropdown.js" />
-    <Content Include="Scripts\magento\ma.flexslider.js" />
-    <Content Include="Scripts\magento\ma.jq.slide.js" />
-    <Content Include="Scripts\magento\ma.mobilemenu.js" />
-    <Content Include="Scripts\magento\ma.nivo.js" />
     <Content Include="Scripts\magento\menu.js" />
     <Content Include="Scripts\neemo-models.js" />
     <Content Include="Scripts\neemo-cartsvc.js" />
@@ -667,6 +687,9 @@
     <Content Include="Content\magento\font\glyphicons-halflings-regular.eot" />
     <Content Include="Content\magento\font\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\magento\font\glyphicons-halflings-regular.woff" />
+    <Content Include="Components\raty\fonts\raty.eot" />
+    <Content Include="Components\raty\fonts\raty.ttf" />
+    <Content Include="Components\raty\fonts\raty.woff" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Shared\DisplayTemplates\ProductSummaryView.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
@@ -681,8 +704,8 @@
     <Content Include="Views\EmailTemplates\ContactUsTemplate.cshtml" />
     <Content Include="Views\EmailTemplates\_EmailLayout.cshtml" />
     <Content Include="Views\Products\Find.cshtml" />
-    <Content Include="Views\Shared\Partial\_SearchPagingToolbar.cshtml" />
-    <Content Include="Views\Shared\Partial\_SearchResults.cshtml" />
+    <Content Include="Views\Shared\_SearchPagingToolbar.cshtml" />
+    <Content Include="Views\Products\_SearchResults.cshtml" />
     <Content Include="Views\EmailTemplates\ForgotPassword.cshtml" />
     <Content Include="Views\Shared\Partial\_PersonalDetailsEditor.cshtml" />
     <Content Include="Views\Cart\Cancel.cshtml" />
@@ -698,14 +721,21 @@
     <Content Include="Views\Error\ServerFault.cshtml" />
     <Content Include="Views\Shared\_MagentoPlain.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
+    <None Include="Properties\PublishProfiles\Drogo.pubxml" />
     <None Include="Properties\PublishProfiles\ftp.pubxml" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
-    <Content Include="Views\Shared\Partial\_SearchFilters.cshtml" />
+    <Content Include="Views\Products\_SearchFilters.cshtml" />
     <Content Include="Views\Home\TermsAndConditions.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Privacy.cshtml" />
     <Content Include="Views\Home\ReturnPolicy.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Home\Index.Old.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\ProviderSummaryView.cshtml" />
+    <Content Include="Views\Providers\Details.cshtml" />
+    <Content Include="Views\Providers\Find.cshtml" />
+    <Content Include="Views\Providers\_ProviderFilters.cshtml" />
+    <Content Include="Views\EmailTemplates\ProviderReviewSubmitted.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Neemo.CarParts\Neemo.CarParts.csproj">
@@ -739,7 +769,16 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>11263</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/unixmo</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>

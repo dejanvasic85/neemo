@@ -11,7 +11,7 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
             originalQuery: querystring,
             newQuery: querystring,
             targetUrl: window.location.pathname,
-            items : getCurrentItems()
+            items: getCurrentItems()
         };
 
         function getCurrentItems() {
@@ -20,7 +20,7 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
             }
             return querystring.replace('?', '').split('&');
         }
-       
+
         function addOrUpdate(keyPair, go, ensureUrl) {
             var self = this;
             self.keyPair = keyPair;
@@ -186,14 +186,16 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
         searchFilters.setPageSize($(this).val());
     });
 
-    $('[data-apply-filters').on('click', function () {
-        var filter = searchFilters
-            .setKeyword($('#Keyword').val())
-            .setSortBy($('#SortBy').val())
-            .setPriceMin($('#PriceMin').val())
-            .setPriceMax($('#PriceMax').val());
+    $('[data-apply-filters]').on('click', function () {
+        var $filterContainer = $(this).closest('.product-filters');
 
-        $('[data-search-filter').each(function (index, item) {
+        var filter = searchFilters
+            .setKeyword($filterContainer.find('#Keyword').val())
+            .setSortBy($filterContainer.find('#SortBy').val())
+            .setPriceMin($filterContainer.find('#PriceMin').val())
+            .setPriceMax($filterContainer.find('#PriceMax').val());
+
+        $filterContainer.find('[data-search-filter]').each(function (index, item) {
             var sf = $(this).data().searchFilter;
             var value = $(this).val();
             filter.setFilter(sf, value);
@@ -201,6 +203,23 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
 
         $(this).button('loading');
 
+        filter.apply();
+    });
+
+    $('[data-apply-provider-filters]').on('click', function () {
+        var $filterContainer = $(this).closest('.product-filters');
+
+        var filter = searchFilters
+            .setKeyword($filterContainer.find('#Keyword').val())
+            .setSortBy($filterContainer.find('#SortBy').val());
+
+        $filterContainer.find('[data-search-filter]').each(function (index, item) {
+            var sf = $(this).data().searchFilter;
+            var value = $(this).val();
+            filter.setFilter(sf, value);
+        });
+
+        $(this).button('loading');
         filter.apply();
     });
 
@@ -293,6 +312,48 @@ neemo.ui = (function ($, broadcaster, svc, shoppingcart, lineItem) {
         var cart = new shoppingcart(viewModels);
         ui.cart = cart;
         ko.applyBindings(cart);
+    });
+
+    /*
+     * Advanced search
+     */
+    $('#advancedSearchBtn').on('click', function () {
+        $('#advancedSearch').slideDown(2000);
+        $(this).hide();
+    });
+
+    /*
+     * Google Maps
+     */
+    $('.provider-map').each(function () {
+
+        var $me = $(this);
+
+        var latitude = $me.data().latitude,
+            longitude = $me.data().longitude,
+            address = $me.data().providerAddress;
+
+        var mapCanvas = $(this).get(0);
+
+        function initialize() {
+            var latLng = new google.maps.LatLng(latitude, longitude);
+            var mapOptions = {
+                center: latLng,
+                zoom: 16,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                scrollwheel: false
+            };
+            var map = new google.maps.Map(mapCanvas, mapOptions);
+
+            var marker = new google.maps.Marker({
+                position: latLng,
+                title: address,
+                visible: true
+            });
+            marker.setMap(map);
+        }
+
+        initialize();
     });
 
     return ui;

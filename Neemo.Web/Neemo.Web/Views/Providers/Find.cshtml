@@ -1,0 +1,138 @@
+﻿@using Neemo
+@model FindProvidersModel
+
+
+@{
+    ViewBag.Title = "Search Results";
+    Layout = "~/Views/Shared/_Magento.cshtml";
+}
+
+@*Search Type Links*@
+<div class="row-fluid">
+    <div class="span12">
+        <div class="search-type-results">
+            <div class="item"><a data-search-products>Products</a></div>
+            <div class="item"><a data-search-provider>Wreckers</a></div>
+            <div class="item"><a data-search-provider>Repairers</a></div>
+            <div class="item"><a data-search-provider>Other</a></div>
+        </div>
+    </div>
+</div>
+
+
+<div class="ma-main-container col3-layout">
+    <div class="main">
+        <div class="row-fluid">
+
+            @*Filters*@
+            <div class="col-left sidebar span3">
+                <div class="block block-layered-nav hidden-phone">
+                    <div class="block-title"><strong><span>Filter Results</span></strong></div>
+                    @Html.Partial("_ProviderFilters", Model)
+                </div>
+
+                <div class="visible-phone bottom-buffer-10">
+
+                    <!-- Button to trigger modal -->
+                    <a href="#searchFilters" role="button" class="btn btn-block" data-toggle="modal">
+                        <i class="fa fa-edit"></i> Filter Results
+                    </a>
+
+                    <!-- Modal -->
+                    <div id="searchFilters" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h3 id="myModalLabel">Filter Results</h3>
+                        </div>
+                        <div class="modal-body">
+                            @Html.Partial("_ProviderFilters", Model)
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            @*Search Results*@
+            @if (Model.HasResults)
+            {
+                <div class="col-wrapper span9">
+                    <div class="row-fluid">
+                        <div class="col-main span12">
+                            @Html.Partial("_SearchPagingToolbar")
+                        </div>
+                    </div>
+
+                    <div class="provider-search-results">
+                        @foreach (var provider in Model.ProviderSummaryViews)
+                        {
+                            <div class="contact-card">
+                                <div class="row-fluid">
+                                    <div class="span12 provider-title">
+
+                                        <div class="provider-name">
+                                            <a href="@Url.Provider(provider.ProviderId, provider.ProviderNameSlug)">
+                                                @provider.ProviderName
+                                            </a>
+                                            <div class="pull-right rating">
+                                                <div data-provider-summary-rating="@provider.Rating" data-path="@Url.Content("~/Components/raty/images")"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="span12">
+                                        <div class="provider-description">
+                                            <span class="hidden-phone">
+                                                @provider.Description.TruncateOnWordBoundary(400)
+                                            </span>
+                                            <span class="visible-phone">
+                                                @provider.Description.TruncateOnWordBoundary(200)
+                                            </span>
+                                        </div>
+                                        <div class="provider-img">
+                                            <div class="thumbnail">
+                                                <img src="@Url.Image(provider.Image)">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="span12 contact-info">
+                                        @ContactStub(provider.Phone, "fa-phone-square", "tel:" + provider.Phone)
+                                        @ContactStub(provider.URL, "fa-globe", provider.URL)
+                                        @ContactStub(provider.Address, "fa-map-marker", "http://maps.google.com/?q=" + provider.Address, "_blank")
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="row-fluid top-buffer-10">
+                        <div class="col-main span12">
+                            @Html.Partial("_SearchPagingToolbar")
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="col-wrapper span9">
+                    <div class="alert">
+                        Sorry. It looks like we don't have any @Model.ProviderType.ToString() that match your search.
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+@helper ContactStub(string value, string icon, string href, string target = "_self")
+{
+    if (value.HasValue()) { 
+         <span>
+             <i class="fa @icon"></i>
+             <a href="@href" target="@target">
+                 @value
+             </a>
+         </span>
+    }
+}

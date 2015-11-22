@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Country.cs" />
+    <Compile Include="CustomerReviews\CustomerReview.cs" />
+    <Compile Include="CustomerReviews\ICustomerReviewRepository.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\SystemExtensions.cs" />
@@ -61,6 +63,12 @@
     <Compile Include="PersonalDetails.cs" />
     <Compile Include="Membership\UserProfile.cs" />
     <Compile Include="Notifications\INotificationService.cs" />
+    <Compile Include="Providers\AddressBuilder.cs" />
+    <Compile Include="Providers\IProviderRepository.cs" />
+    <Compile Include="Providers\IProviderService.cs" />
+    <Compile Include="Providers\Provider.cs" />
+    <Compile Include="Providers\ProviderServiceType.cs" />
+    <Compile Include="Providers\ProviderType.cs" />
     <Compile Include="Shipping\IShippingCalculatorService.cs" />
     <Compile Include="Shipping\IShippingRepository.cs" />
     <Compile Include="Shipping\ShippingCost.cs" />

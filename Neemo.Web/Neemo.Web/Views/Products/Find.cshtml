@@ -6,35 +6,78 @@
     Layout = "~/Views/Shared/_Magento.cshtml";
 }
 
+@*Search Type Links*@
+<div class="row-fluid">
+    <div class="span12">
+        <div class="search-type-results">
+            <div class="item selected"><a>Products</a></div>
+            <div class="item"><a data-search-provider>Wreckers</a></div>
+            <div class="item"><a data-search-provider>Repairers</a></div>
+            <div class="item"><a data-search-provider>Others</a></div>
+        </div>
+    </div>
+</div>
+
 <div class="ma-main-container col3-layout">
     <div class="main">
         <div class="row-fluid">
 
             @*Product Filters*@
             <div class="col-left sidebar span3">
-                <div class="block block-layered-nav">
-                    <div class="block-title"><strong><span>Categories </span></strong></div>
+
+                <div class="block block-layered-nav hidden-phone">
+                    <div class="block-title"><strong><span>Categories </span></strong>
+                    </div>
                     <div class="block-content">
-                        @Html.Partial("~/Views/Shared/Partial/_CategoriesSearchLinks.cshtml", (CategoryListView)@ViewBag.Categories)
+                        @Html.Partial("~/Views/Shared/Partial/_CategoriesSearchLinks.cshtml", (CategoryListView) @ViewBag.Categories)
                     </div>
                 </div>
 
-
-                <div class="block block-layered-nav">
+                <div class="block block-layered-nav hidden-phone">
                     <div class="block-title">
                         <strong><span>Product Filters</span></strong>
                     </div>
                     <div class="product-filters">
-                        
-                        @Html.Partial("~/Views/Shared/Partial/_SearchFilters.cshtml", Model)
-                        
-                        @Html.Partial("~/Views/Products/_CarPartFilters.cshtml")
+
+                        @Html.Partial("_SearchFilters", Model)
+
+                        @Html.Partial("_CarPartFilters")
 
                         <div class="control-group">
                             <button class="btn" data-apply-filters data-loading-text="Please wait...">Apply</button>
                         </div>
                     </div>
                 </div>
+                
+                <div class="visible-phone bottom-buffer-10">
+
+                    <!-- Button to trigger modal -->
+                    <a href="#searchFilters" role="button" class="btn btn-block" data-toggle="modal">
+                        <i class="fa fa-edit"></i> Filter Results
+                    </a>
+
+                    <!-- Modal -->
+                    <div id="searchFilters" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h3 id="myModalLabel">Filter Results</h3>
+                        </div>
+                        <div class="modal-body">
+                            <div class="product-filters">
+
+                                @Html.Partial("_SearchFilters", Model)
+
+                                @Html.Partial("_CarPartFilters")
+
+                                <div class="control-group">
+                                    <button class="btn" data-apply-filters data-loading-text="Please wait...">Apply</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
             </div>
 
             @*Search Results*@
@@ -44,17 +87,17 @@
                 <div class="col-wrapper span9">
                     <div class="row-fluid">
                         <div class="col-main span12">
-                            @Html.Partial("~/Views/Shared/Partial/_SearchPagingToolbar.cshtml")
+                            @Html.Partial("_SearchPagingToolbar")
                         </div>
                     </div>
                     <div class="row-fluid">
                         <div class="col-main span12">
-                            @Html.Partial("~/Views/Shared/Partial/_SearchResults.cshtml", Model.ProductResults)
+                            @Html.Partial("_SearchResults", Model.ProductResults)
                         </div>
                     </div>
                     <div class="row-fluid top-buffer-10">
                         <div class="col-main span12">
-                            @Html.Partial("~/Views/Shared/Partial/_SearchPagingToolbar.cshtml")
+                            @Html.Partial("_SearchPagingToolbar")
                         </div>
                     </div>
                 </div>

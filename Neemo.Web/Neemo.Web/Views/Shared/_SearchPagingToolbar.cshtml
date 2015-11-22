@@ -1,0 +1,61 @@
+﻿@model IPagingModel
+
+@{
+    // Work out the number of page links to be built
+    const int MaxPageLinks = 6;
+    int pageLinkStart = Model.Page - (MaxPageLinks / 2);
+    if (pageLinkStart <= 0)
+    {
+        pageLinkStart = 1;
+    }
+
+    int pageLinkEnd = pageLinkStart + (MaxPageLinks - 1);
+}
+
+<div class="search-result-summary">
+    <div class="summary-item">
+
+        <p>Found @Model.TotalResultCount items for your search</p>
+
+    </div>
+
+    <div class="summary-item right">
+        @if (Model.HasPages)
+        {
+
+            <div class="pagination">
+                <ul>
+                    @*Previous Button*@
+                    @if (Model.Page != 1)
+                    {
+                        <li><a id="PreviousBtn" data-page-num="@(Model.Page - 1)" class="fa fa-angle-double-left" title="Previous"></a></li>
+                    }
+
+                    @*Pages*@
+                    @for (var pageNum = pageLinkStart; pageNum <= pageLinkEnd; pageNum++)
+                    {
+                        <li class="@(Model.Page == pageNum ? "active" : "")">
+                            <a @(Model.Page != pageNum ? "data-page-num=" + pageNum : "")>@pageNum.ToString()</a>
+                        </li>
+                    }
+
+                    @*Next Button*@
+                    @if (Model.Page != Model.TotalPageCount)
+                    {
+                        <li><a data-page-num="@(Model.Page + 1)" class="fa fa-angle-double-right" title="Next"></a></li>
+                    }
+
+                    <li style="margin-left: 15px;">
+
+                        @Html.DropDownListFor(m => m.PageSize, Model.PageSizeItems, htmlAttributes: new { @style = "width: 50px", data_page_size = "" })
+                        <label>Page Size</label>
+                    </li>
+
+                </ul>
+            </div>
+
+        }
+    </div>
+
+    <div class="clearfix"></div>
+</div>

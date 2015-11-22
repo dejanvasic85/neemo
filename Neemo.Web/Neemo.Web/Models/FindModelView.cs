@@ -5,7 +5,7 @@ using System.Web.Mvc;
 
 namespace Neemo.Web.Models
 {
-    public class FindModelView
+    public class FindModelView : IPagingModel
     {
         public FindModelView()
         {
@@ -105,13 +105,5 @@ namespace Neemo.Web.Models
         public int? YearMax { get; set; }
 
         #endregion
-    }
-
-    public enum FindModelSortByView
-    {
-        NewestFirst,
-        OldestFirst,
-        PriceLowest,
-        PriceHighest,
     }
 }

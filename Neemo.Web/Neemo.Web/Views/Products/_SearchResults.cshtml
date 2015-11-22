@@ -1,0 +1,26 @@
+﻿@model List<ProductSummaryView>
+
+<ol class="products-list" id="products-list">
+
+    @{
+        var columns = 4;
+        var rows = Model.Count / columns;
+        if (Model.Count % columns > 0)
+        {
+            rows++;
+        }
+    }
+
+    @for (var i = 0; i < rows; i++)
+    {
+        <div class="row-fluid">
+
+            @foreach (var newProduct in Model.Skip(i * columns).Take(columns))
+            {
+                <div class="span3">
+                    @Html.DisplayFor(m => newProduct)
+                </div>
+            }
+        </div>
+    }
+</ol>

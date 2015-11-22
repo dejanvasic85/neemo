@@ -2,10 +2,10 @@
 @model ProductSummaryView
 
 
-<div class="span3 featured-product-tile">
+<div class="featured-tile">
     <div class="thumbnail text-center" style="min-height: 220px">
 
-        <a href="@Url.Product(Model.ProductId, Slug.Create(Model.Title))"
+        <a href="@Url.Product(Model.ProductId, Model.TitleSlug)"
            title="@Model.Title"
            class="product-image">
 
@@ -21,18 +21,24 @@
                 }
                 else
                 {
-                    <button type="button" title="Add to Cart" class="btn btn-cart" data-productid="@Model.ProductId">
-                        <i class="icon-plus icon-white"></i> Add To Cart
-                    </button>
+                    @*<button type="button" title="Add to Cart" class="btn btn-cart" data-productid="@Model.ProductId">
+                            <i class="icon-plus icon-white"></i> Add To Cart
+                        </button>*@
+                    <a class="btn" title="@Model.Title" href="@Url.Product(Model.ProductId, Slug.Create(Model.Title))">
+                        More Info <i class="fa fa-arrow-right"></i> 
+                    </a>
                 }
             </p>
             <h3 class="top-buffer-10">
-                <a href="@Url.Product(Model.ProductId, Slug.Create(Model.Title))">
+                <a title="@Model.Title" href="@Url.Product(Model.ProductId, Slug.Create(Model.Title))">
                     @Model.Title.TruncateOnWordBoundary(20)
                 </a>
             </h3>
-            <p>@Model.Price.ToString("C")</p>
             @*<p>@Model.Description.TruncateOnWordBoundary(100)</p>*@
+
+            <div class="bottom-separator">
+                <span>@Model.Price.ToString("C")</span>
+            </div>
 
         </div>
     </div>
