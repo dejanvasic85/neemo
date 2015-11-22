@@ -44,7 +44,7 @@
             {
                 NewProducts = newProducts.ToList(),
                 NewWreckers = GetProviders(ProviderType.Wreckers),
-                NewAuxiliaries = GetProviders(ProviderType.Auxiliaries),
+                NewOthers = GetProviders(ProviderType.Others),
                 NewRepairers = GetProviders(ProviderType.Repairers),
             };
 

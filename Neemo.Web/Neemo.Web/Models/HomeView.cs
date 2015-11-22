@@ -9,12 +9,12 @@ namespace Neemo.Web.Models
         {
             NewProducts = new List<ProductSummaryView>();
             NewWreckers = new List<ProviderSummaryView>();
-            NewAuxiliaries = new List<ProviderSummaryView>();
+            NewOthers = new List<ProviderSummaryView>();
             NewRepairers = new List<ProviderSummaryView>();
         }
         public List<ProductSummaryView> NewProducts { get; set; }
         public List<ProviderSummaryView> NewWreckers { get; set; }
-        public List<ProviderSummaryView> NewAuxiliaries { get; set; }
+        public List<ProviderSummaryView> NewOthers { get; set; }
         public List<ProviderSummaryView> NewRepairers { get; set; }
     }
 }

@@ -4,6 +4,6 @@
     {
         Wreckers,
         Repairers,
-        Auxiliaries
+        Others
     }
 }

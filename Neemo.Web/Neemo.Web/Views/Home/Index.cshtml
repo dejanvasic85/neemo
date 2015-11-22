@@ -57,12 +57,12 @@
             <div class="span3 bordered">
                 <div class="ma-featured-product-title">
                     <div class="section-header">
-                        <a href="@Url.FindProviders("Auxiliaries")">
+                        <a href="@Url.FindProviders("Others")">
                             <h3>Other</h3>
                             <span><i class="fa fa-angle-right"></i> see all</span>
                         </a>
                     </div>
-                    @foreach (var newProduct in Model.NewAuxiliaries)
+                    @foreach (var newProduct in Model.NewOthers)
                     {
                         @Html.DisplayFor(m => newProduct)
                     }
