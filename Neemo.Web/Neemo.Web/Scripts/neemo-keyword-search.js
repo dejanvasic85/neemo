@@ -33,6 +33,10 @@ neemo.navigator = (function (window, url) {
             // Find the search type value
             if (window.location.pathname.indexOf("providers") !== -1) {
                 searchType = window.location.pathname.substring(window.location.pathname.indexOf('find/') + 5);
+
+                if (searchType.toLowerCase().startsWith('aux')) {
+                    searchType = 'Other';
+                }
             }
 
             return {
